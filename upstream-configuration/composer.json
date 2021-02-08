@@ -1,16 +1,12 @@
 {
     "name": "pantheon-upstreams/upstream-configuration",
     "type": "project",
-    "repositories": {
-        "webspark-theme-renovation": {
-            "type": "vcs",
-            "url": "https://github.com/ASUWebPlatforms/webspark-theme-renovation"
-        },
-        "0": {
+    "repositories": [
+        {
             "type": "composer",
             "url": "https://packages.drupal.org/8"
         }
-    },
+    ],
     "require": {
         "php": ">=7.3",
         "composer/installers": "^1.8",
@@ -19,6 +15,6 @@
         "pantheon-systems/drupal-integrations": "^8 || ^9",
         "cweagans/composer-patches": "^1.0",
         "zaporylie/composer-drupal-optimizations": "^1.2",
-        "asuwebplatforms/webspark-theme-renovation": "dev-main"
+        "drupal/environment_indicator": "^4.0"
     }
 }
