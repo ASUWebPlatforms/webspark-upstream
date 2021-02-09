@@ -16,7 +16,8 @@
         "cweagans/composer-patches": "^1.0",
         "zaporylie/composer-drupal-optimizations": "^1.2",
         "drupal/environment_indicator": "^4.0",
-        "drupal/cas": "^1.7"
+        "drupal/cas": "^1.7",
+        "asuwebplatforms/webspark-theme-renovation": "dev-main"
     },
-    "version": "0.1.0"
+    "version": "0.1.1"
 }
