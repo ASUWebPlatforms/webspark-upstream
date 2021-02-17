@@ -17,7 +17,8 @@
         "zaporylie/composer-drupal-optimizations": "^1.2",
         "drupal/environment_indicator": "^4.0",
         "drupal/cas": "^1.7",
-        "asuwebplatforms/webspark-theme-renovation": "dev-main"
+        "asuwebplatforms/webspark-theme-renovation": "dev-main",
+        "drupal/seckit": "^2.0"
     },
-    "version": "0.1.1"
+    "version": "0.1.2"
 }
