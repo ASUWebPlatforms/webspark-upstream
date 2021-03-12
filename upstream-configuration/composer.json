@@ -21,7 +21,8 @@
         "drupal/seckit": "^2.0",
         "asuwebpplatforms/webspark-module-asu_brand": "dev-main",
         "drupal/radix": "^4.10",
-        "asuwebplatforms/webspark-profile-webspark": "dev-master"
+        "asuwebplatforms/webspark-profile-webspark": "dev-master",
+        "drupal/components" : "^2.2"
     },
     "version": "0.1.5"
 }
