@@ -22,7 +22,14 @@
         "asuwebpplatforms/webspark-module-asu_brand": "dev-main",
         "drupal/radix": "^4.10",
         "asuwebplatforms/webspark-profile-webspark": "dev-master",
-        "drupal/components" : "^2.2"
+        "drupal/components" : "^2.2",
+        "npm-asset/select2": "^4.0",
+        "npm-asset/fonticonpicker--fonticonpicker": "^3.1",
+        "oomphinc/composer-installers-extender": "^2.0",
+        "asuwebplatforms/webspark-module-webspark_utility": "dev-master",
+        "drupal/select2" : "^1.13",
+        "drupal/paragraphs" : "^1.12",
+        "drupal/fontawesome" : "^2.18"
     },
     "version": "0.1.5"
 }
