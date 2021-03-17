@@ -27,6 +27,12 @@
     "minimum-stability": "dev",
     "prefer-stable": true,
     "extra": {
+        "enable-patching": true,
+        "patches": {
+          "drupal/radix": {
+            "3053579: Integrate with OffCanvas (Layout Builder)": "https://www.drupal.org/files/issues/2020-10-20/3053579-25_0.patch"
+          }
+        },
         "installer-paths": {
             "web/core": ["type:drupal-core"],
             "web/libraries/{$name}": ["type:drupal-library", "type:npm-asset"],
