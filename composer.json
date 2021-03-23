@@ -31,6 +31,9 @@
         "patches": {
           "drupal/radix": {
             "3053579: Integrate with OffCanvas (Layout Builder)": "https://www.drupal.org/files/issues/2020-10-20/3053579-25_0.patch"
+          },
+          "drupal/paragraphs" : {
+            "2901390: fixing issue langcode cannot be null":  "https://www.drupal.org/files/issues/2021-03-01/2901390-76-integrity-constraint-violation-paragraph.patch"
           }
         },
         "installer-paths": {
