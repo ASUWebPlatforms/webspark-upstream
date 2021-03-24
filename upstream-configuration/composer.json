@@ -29,7 +29,9 @@
         "asuwebplatforms/webspark-module-webspark_utility": "dev-master",
         "drupal/select2" : "^1.13",
         "drupal/paragraphs" : "^1.12",
-        "drupal/fontawesome" : "^2.18"
+        "drupal/fontawesome" : "^2.18",
+        "drupal/devel": "^4.1",
+        "drupal/devel_kint_extras": "^1.0"
     },
-    "version": "0.1.5"
+    "version": "0.1.6"
 }
