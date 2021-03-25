@@ -34,6 +34,9 @@
           },
           "drupal/paragraphs" : {
             "2901390: fixing issue langcode cannot be null":  "https://www.drupal.org/files/issues/2021-03-01/2901390-76-integrity-constraint-violation-paragraph.patch"
+          },
+          "drupal/core": {
+            "#2951547: Fix issue with layout overflow": "https://www.drupal.org/files/issues/2020-01-08/layout-builder-tray-size-2951547-42.patch"
           }
         },
         "installer-paths": {
