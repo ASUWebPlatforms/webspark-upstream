@@ -23,15 +23,24 @@
         "drupal/radix": "^4.10",
         "asuwebplatforms/webspark-profile-webspark": "dev-master",
         "drupal/components" : "^2.2",
-        "npm-asset/select2": "^4.0",
+        "npm-asset/select2": "4.1.0-RC.0",
         "npm-asset/fonticonpicker--fonticonpicker": "^3.1",
         "oomphinc/composer-installers-extender": "^2.0",
         "asuwebplatforms/webspark-module-webspark_utility": "dev-master",
+        "asuwebplatforms/webspark_module_renovation_layouts": "dev-main",
         "drupal/select2" : "^1.13",
         "drupal/paragraphs" : "^1.12",
         "drupal/fontawesome" : "^2.18",
         "drupal/devel": "^4.1",
-        "drupal/devel_kint_extras": "^1.0"
+        "drupal/devel_kint_extras": "^1.0",
+        "drupal/crop": "^2.1",
+        "drupal/image_widget_crop": "^2.3",
+        "drupal/lb_section_navigation": "^1.1",
+        "drupal/media_library_theme_reset": "^1.0",
+        "drupal/layout_builder_restrictions" : "^2.8",
+        "asuwebplatforms/webspark_module_views_pager": "dev-main",
+        "asuwebplatforms/webspark-module-webspark_blocks": "dev-master"
+
     },
-    "version": "0.1.6"
+    "version": "0.1.7"
 }
