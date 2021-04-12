@@ -39,8 +39,8 @@
         "drupal/media_library_theme_reset": "^1.0",
         "drupal/layout_builder_restrictions" : "^2.8",
         "asuwebplatforms/webspark_module_views_pager": "dev-main",
-        "asuwebplatforms/webspark-module-webspark_blocks": "dev-master"
-
+        "asuwebplatforms/webspark-module-webspark_blocks": "dev-master",
+        "drupal/linkit": "^6.0@beta"
     },
-    "version": "0.1.10"
+    "version": "0.1.11"
 }
