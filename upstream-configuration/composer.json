@@ -42,5 +42,5 @@
         "asuwebplatforms/webspark-module-webspark_blocks": "dev-master",
         "drupal/linkit": "^6.0@beta"
     },
-    "version": "0.1.11"
+    "version": "0.1.12"
 }
