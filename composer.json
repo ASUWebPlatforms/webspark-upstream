@@ -41,7 +41,7 @@
         },
         "installer-paths": {
             "web/core": ["type:drupal-core"],
-            "web/libraries/{$name}": ["type:drupal-library", "type:npm-asset"],
+            "web/libraries/{$name}": ["type:drupal-library", "type:npm-asset", "type:bower-asset"],
             "web/modules/composer/{$name}": ["type:drupal-module"],
             "web/profiles/composer/{$name}": ["type:drupal-profile"],
             "web/themes/composer/{$name}": ["type:drupal-theme"],
@@ -49,7 +49,8 @@
             "web/private/scripts/quicksilver/{$name}/": ["type:quicksilver-script"]
         },
         "installer-types": [
-            "npm-asset"
+            "npm-asset",
+            "bower-asset"
         ],
         "composer-exit-on-patch-failure": true,
         "patchLevel": {
