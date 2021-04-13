@@ -43,5 +43,5 @@
         "drupal/linkit": "^6.0@beta",
         "bower-asset/fontawesome": "5.15.3"
     },
-    "version": "0.1.12"
+    "version": "0.1.13"
 }
