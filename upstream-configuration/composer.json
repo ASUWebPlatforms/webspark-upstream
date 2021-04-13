@@ -40,7 +40,8 @@
         "drupal/layout_builder_restrictions" : "^2.8",
         "asuwebplatforms/webspark_module_views_pager": "dev-main",
         "asuwebplatforms/webspark-module-webspark_blocks": "dev-master",
-        "drupal/linkit": "^6.0@beta"
+        "drupal/linkit": "^6.0@beta",
+        "bower-asset/fontawesome": "5.15.3"
     },
-    "version": "0.1.12"
+    "version": "0.1.13"
 }
