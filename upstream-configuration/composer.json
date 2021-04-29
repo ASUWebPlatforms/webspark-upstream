@@ -44,7 +44,17 @@
         "bower-asset/fontawesome": "5.15.3",
         "drupal/current_page_crumb": "^1.3",
         "drupal/pathauto": "^1.8",
-        "asuwebplatforms/webspark-module-webspark_isearch": "dev-main"
+        "asuwebplatforms/webspark-module-webspark_isearch": "dev-main",
+        "drupal/media_library_form_element": "^2.0",
+        "drupal/admin_toolbar": "^3.0",
+        "drupal/allowed_formats": "^1.3",
+        "drupal/field_menu": "^1.0",
+        "asuwebplatforms/webspark-module-webspark_section_navigation": "dev-master",
+        "asuwebplatforms/webspark-module-asu_news": "dev-master",
+        "asuwebplatforms/webspark-module-asu_events": "dev-master",
+        "asuwebplatforms/webspark-module-asu_footer": "dev-master",
+        "asuwebplatforms/webspark-module-asu_react_integration":"dev-master",
+        "asuwebplatforms/webspark_module_asu_breadcrumb": "dev-main"
     },
-    "version": "0.1.17"
+    "version": "0.1.18"
 }
