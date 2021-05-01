@@ -54,7 +54,8 @@
         "asuwebplatforms/webspark-module-asu_events": "dev-master",
         "asuwebplatforms/webspark-module-asu_footer": "dev-master",
         "asuwebplatforms/webspark-module-asu_react_integration":"dev-master",
-        "asuwebplatforms/webspark_module_asu_breadcrumb": "dev-main"
+        "asuwebplatforms/webspark_module_asu_breadcrumb": "dev-main",
+        "asuwebplatforms/webspark-module-asu_react_core": "dev-main"
     },
-    "version": "0.1.18"
+    "version": "0.1.19"
 }
