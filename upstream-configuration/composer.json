@@ -55,7 +55,11 @@
         "asuwebplatforms/webspark-module-asu_footer": "dev-master",
         "asuwebplatforms/webspark-module-asu_react_integration":"dev-master",
         "asuwebplatforms/webspark_module_asu_breadcrumb": "dev-main",
-        "asuwebplatforms/webspark-module-asu_react_core": "dev-main"
+        "asuwebplatforms/webspark-module-asu_react_core": "dev-main",
+        "asuwebplatforms/webspark-module-asu_components_appearance": "dev-main",
+        "drupal/layout_section_classes": "^1.0@RC",
+        "drupal/field_group": "^3.1",
+        "drupal/metatag": "^1.16"
     },
-    "version": "0.1.19"
+    "version": "0.1.20"
 }
