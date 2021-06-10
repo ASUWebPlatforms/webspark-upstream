@@ -46,7 +46,8 @@
             "web/profiles/composer/{$name}": ["type:drupal-profile"],
             "web/themes/composer/{$name}": ["type:drupal-theme"],
             "drush/Commands/contrib/{$name}": ["type:drupal-drush"],
-            "web/private/scripts/quicksilver/{$name}/": ["type:quicksilver-script"]
+            "web/private/scripts/quicksilver/{$name}/": ["type:quicksilver-script"],
+            "web/modules/custom/{$name}": ["type:drupal-custom-module"]
         },
         "installer-types": [
             "npm-asset",
