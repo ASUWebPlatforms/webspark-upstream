@@ -63,5 +63,5 @@
         "asuwebplatforms/webspark-module-webspark_ckeditor_plugins": "dev-master",
         "drupal/layout_builder_component_attributes": "^1.2"
     },
-    "version": "0.1.23"
+    "version": "0.1.24"
 }
