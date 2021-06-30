@@ -37,6 +37,9 @@
           },
           "drupal/core": {
             "#2951547: Fix issue with layout overflow": "https://www.drupal.org/files/issues/2020-01-08/layout-builder-tray-size-2951547-42.patch"
+          },
+          "drupal/core": {
+            "3102249: Changing an existing embedded media's attributes does not get saved with CKEditor": "https://www.drupal.org/files/issues/2020-06-01/3102249-21.patch"
           }
         },
         "installer-paths": {

@@ -64,5 +64,5 @@
         "drupal/layout_builder_component_attributes": "^1.2",
         "asuwebplatforms/webspark-module-asu_user": "dev-main"
     },
-    "version": "0.1.25"
+    "version": "0.1.26"
 }
