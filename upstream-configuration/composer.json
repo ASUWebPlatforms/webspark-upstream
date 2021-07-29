@@ -60,7 +60,7 @@
     "asuwebplatforms/webspark-module-webspark_ckeditor_plugins": "1.0.0",
     "drupal/layout_builder_component_attributes": "1.2.1",
     "asuwebplatforms/webspark-module-asu_user": "1.0.0",
-    "composer require asuwebplatforms/webspark-module-asu_degree_rfi": "1.0.0",
+    "asuwebplatforms/webspark-module-asu_degree_rfi": "1.0.0",
     "asuwebplatforms/webspark-module-webspark_cropper_theme": "1.0.0",
     "drupal/ckeditor_responsive_plugin": "2.0.1",
     "drupal/maxlength": "1.0.0-rc1",
