@@ -62,15 +62,10 @@
       "drupal/fakeobjects" : {
         "3002953: Fix js plugin seems to be missing":  "https://www.drupal.org/files/issues/2020-06-22/fakeobjects-missing_plugin-3002953-5.patch"
       },
-      "drupal/webform" : {
-        "3243431: Status report when plugin path exists":  "https://www.drupal.org/files/issues/2021-10-20/3243431-7.patch"
-      },
       "drupal/core": {
         "#2951547: Fix issue with layout overflow": "https://www.drupal.org/files/issues/2020-01-08/layout-builder-tray-size-2951547-42.patch",
         "3102249: Changing an existing embedded media's attributes does not get saved with CKEditor": "https://www.drupal.org/files/issues/2020-06-01/3102249-21.patch",
-        "2957953: Editing menus redirect to right parent": "https://www.drupal.org/files/issues/2021-09-02/2957953-134-9-2-x.patch",
-        "3109650: Refactor Xss::attributes() to allow filtering of style attribute values": "https://www.drupal.org/files/issues/2021-09-22/core-9.2-xss-refactor_filter_attributes-3109650-43.patch",
-        "3072231: Custom blocks break layout builder module - Quick Edit could not associate the rendered entity field markup": "https://www.drupal.org/files/issues/2020-10-19/3072231-39-core-9-2-x.patch"
+        "3109650: Refactor Xss::attributes() to allow filtering of style attribute values": "https://www.drupal.org/files/issues/2021-09-22/core-9.2-xss-refactor_filter_attributes-3109650-43.patch"
       },
       "drupal/config_readonly": {
         "#3085001: Config blacklist to only block some configuration while in read only mode": "https://www.drupal.org/files/issues/2019-10-31/config_readonly-3085001-2.patch"
