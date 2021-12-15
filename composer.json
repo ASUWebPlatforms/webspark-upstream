@@ -62,9 +62,6 @@
       "drupal/fakeobjects" : {
         "3002953: Fix js plugin seems to be missing":  "https://www.drupal.org/files/issues/2020-06-22/fakeobjects-missing_plugin-3002953-5.patch"
       },
-      "drupal/webform" : {
-        "3243431: Status report when plugin path exists":  "https://www.drupal.org/files/issues/2021-10-20/3243431-7.patch"
-      },
       "drupal/core": {
         "#2951547: Fix issue with layout overflow": "https://www.drupal.org/files/issues/2020-01-08/layout-builder-tray-size-2951547-42.patch",
         "3102249: Changing an existing embedded media's attributes does not get saved with CKEditor": "https://www.drupal.org/files/issues/2020-06-01/3102249-21.patch",
