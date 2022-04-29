@@ -69,6 +69,9 @@
       },
       "drupal/config_readonly": {
         "#3085001: Config blacklist to only block some configuration while in read only mode": "https://www.drupal.org/files/issues/2019-10-31/config_readonly-3085001-2.patch"
+      },
+      "drupal/field_states_ui": {
+        "#3225009: Cant add custom block with field states ui using layout builder": "https://www.drupal.org/files/issues/2022-03-07/3225009-5.patch"
       }
     },
     "installer-paths": {
