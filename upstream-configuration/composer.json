@@ -17,7 +17,7 @@
     "zaporylie/composer-drupal-optimizations": "1.2.0",
     "drupal/environment_indicator": "4.0.3",
     "drupal/cas": "1.7.0",
-    "asuwebplatforms/webspark-theme-renovation": "1.0.31",
+    "asuwebplatforms/webspark-theme-renovation": "1.0.32",
     "drupal/seckit": "2.0.0",
     "asuwebpplatforms/webspark-module-asu_brand": "1.2.8",
     "drupal/radix": "4.10.0",
@@ -79,8 +79,8 @@
     "drupal/decorative_image_widget":"1.0.0-alpha4",
     "drupal/block_field": "1.0.0-rc2",
     "asuwebplatforms/webspark-module-webspark_cas": "1.0.1",
-    "asuwebplatforms/webspark-module-webspark_webdir": "1.0.6",
+    "asuwebplatforms/webspark-module-webspark_webdir": "1.0.12",
     "drupal/field_states_ui": "2.0"
   },
-  "version": "2.5.0"
+  "version": "2.5.1"
 }
