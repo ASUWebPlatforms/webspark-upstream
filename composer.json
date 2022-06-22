@@ -1,123 +1,130 @@
 {
-  "name": "pantheon-upstreams/drupal-project",
-  "description": "Install Drupal 9 with Composer on Pantheon.",
-  "type": "project",
-  "license": "MIT",
-  "repositories": [
-    {
-      "type": "composer",
-      "url": "https://packages.drupal.org/8"
-    },
-    {
-      "type": "path",
-      "url": "upstream-configuration"
-    },
-    {
-      "type": "composer",
-      "url": "https://asset-packagist.org"
-    },
-    {
-      "type": "package",
-      "package": {
-        "name": "ckeditor/link",
-        "version": "4.16.1",
-        "type": "drupal-library",
-        "dist": {
-          "url": "https://download.ckeditor.com/link/releases/link_4.16.1.zip",
-          "type": "zip"
+    "name": "asuwebplatforms/webspark-upstream",
+    "description": "Install Drupal 9 with Composer on Pantheon.",
+    "type": "project",
+    "license": "MIT",
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://packages.drupal.org/8"
+        },
+        {
+            "type": "path",
+            "url": "upstream-configuration"
+        },
+        {
+            "type": "composer",
+            "url": "https://asset-packagist.org"
+        },
+        {
+            "type": "package",
+            "package": {
+                "name": "ckeditor/link",
+                "version": "4.16.1",
+                "type": "drupal-library",
+                "dist": {
+                    "url": "https://download.ckeditor.com/link/releases/link_4.16.1.zip",
+                    "type": "zip"
+                }
+            }
+        },
+        {
+            "type": "package",
+            "package": {
+                "name": "ckeditor/fakeobjects",
+                "version": "4.16.0",
+                "type": "drupal-library",
+                "dist": {
+                    "url": "https://download.ckeditor.com/fakeobjects/releases/fakeobjects_4.16.0.zip",
+                    "type": "zip"
+                }
+            }
         }
-      }
-    },
-    {
-      "type": "package",
-      "package": {
-        "name": "ckeditor/fakeobjects",
-        "version": "4.16.0",
-        "type": "drupal-library",
-        "dist": {
-          "url": "https://download.ckeditor.com/fakeobjects/releases/fakeobjects_4.16.0.zip",
-          "type": "zip"
-        }
-      }
-    }
-  ],
-  "require": {
-    "drush/drush": "^10",
-    "pantheon-upstreams/upstream-configuration": "*"
-  },
-  "conflict": {
-    "drupal/drupal": "*"
-  },
-  "minimum-stability": "dev",
-  "prefer-stable": true,
-  "extra": {
-    "enable-patching": true,
-    "patches": {
-      "drupal/radix": {
-        "3053579: Integrate with OffCanvas (Layout Builder)": "https://www.drupal.org/files/issues/2020-10-20/3053579-25_0.patch"
-      },
-      "drupal/paragraphs" : {
-        "2901390: fixing issue langcode cannot be null":  "https://www.drupal.org/files/issues/2021-05-03/paragraphs-2901390-82-withtests.patch"
-      },
-      "drupal/fakeobjects" : {
-        "3002953: Fix js plugin seems to be missing":  "https://www.drupal.org/files/issues/2020-06-22/fakeobjects-missing_plugin-3002953-5.patch"
-      },
-      "drupal/core": {
-        "#2951547: Fix issue with layout overflow": "https://www.drupal.org/files/issues/2020-01-08/layout-builder-tray-size-2951547-42.patch",
-        "3102249: Changing an existing embedded media's attributes does not get saved with CKEditor": "https://www.drupal.org/files/issues/2020-06-01/3102249-21.patch",
-        "3109650: Refactor Xss::attributes() to allow filtering of style attribute values": "https://www.drupal.org/files/issues/2021-09-22/core-9.2-xss-refactor_filter_attributes-3109650-43.patch"
-      },
-      "drupal/config_readonly": {
-        "#3085001: Config blacklist to only block some configuration while in read only mode": "https://www.drupal.org/files/issues/2019-10-31/config_readonly-3085001-2.patch"
-      },
-      "drupal/field_states_ui": {
-        "#3225009: Cant add custom block with field states ui using layout builder": "https://www.drupal.org/files/issues/2022-03-07/3225009-5.patch"
-      }
-    },
-    "installer-paths": {
-      "web/core": ["type:drupal-core"],
-      "web/libraries/{$name}": ["type:drupal-library", "type:npm-asset", "type:bower-asset"],
-      "web/modules/composer/{$name}": ["type:drupal-module"],
-      "web/profiles/composer/{$name}": ["type:drupal-profile"],
-      "web/themes/composer/{$name}": ["type:drupal-theme"],
-      "drush/Commands/contrib/{$name}": ["type:drupal-drush"],
-      "web/private/scripts/quicksilver/{$name}/": ["type:quicksilver-script"],
-      "web/modules/custom/{$name}": ["type:drupal-custom-module"],
-      "web/libraries/ckeditor/plugins/{$name}": ["vendor:ckeditor-plugin"]
-    },
-    "installer-types": [
-      "npm-asset",
-      "bower-asset"
     ],
-    "composer-exit-on-patch-failure": true,
-    "patchLevel": {
-      "drupal/core": "-p2"
+    "require": {
+        "drush/drush": "^10",
+        "pantheon-upstreams/upstream-configuration": "*"
     },
-    "drupal-scaffold": {
-      "allowed-packages": [
-        "pantheon-systems/drupal-integrations"
-      ],
-      "locations": {
-        "web-root": "./web"
-      },
-      "file-mapping": {
-        "[project-root]/.editorconfig": false,
-        "[project-root]/pantheon.upstream.yml": false,
-        "[project-root]/.gitattributes": false,
-        "[web-root]/robots.txt": false
-      }
+    "conflict": {
+        "drupal/drupal": "*"
     },
-    "merge-plugin": {
-      "include": [
-        "composer.libraries.json"
-      ]
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "extra": {
+        "enable-patching": true,
+        "patches": {
+            "drupal/radix": {
+                "3053579: Integrate with OffCanvas (Layout Builder)": "https://www.drupal.org/files/issues/2020-10-20/3053579-25_0.patch"
+            },
+            "drupal/paragraphs" : {
+                "2901390: fixing issue langcode cannot be null":  "https://www.drupal.org/files/issues/2021-05-03/paragraphs-2901390-82-withtests.patch"
+            },
+            "drupal/fakeobjects" : {
+                "3002953: Fix js plugin seems to be missing":  "https://www.drupal.org/files/issues/2020-06-22/fakeobjects-missing_plugin-3002953-5.patch"
+            },
+            "drupal/core": {
+                "#2951547: Fix issue with layout overflow": "https://www.drupal.org/files/issues/2020-01-08/layout-builder-tray-size-2951547-42.patch",
+                "3102249: Changing an existing embedded media's attributes does not get saved with CKEditor": "https://www.drupal.org/files/issues/2020-06-01/3102249-21.patch",
+                "3109650: Refactor Xss::attributes() to allow filtering of style attribute values": "https://www.drupal.org/files/issues/2021-09-22/core-9.2-xss-refactor_filter_attributes-3109650-43.patch"
+            },
+            "drupal/config_readonly": {
+                "#3085001: Config blacklist to only block some configuration while in read only mode": "https://www.drupal.org/files/issues/2019-10-31/config_readonly-3085001-2.patch"
+            },
+            "drupal/field_states_ui": {
+                "#3225009: Cant add custom block with field states ui using layout builder": "https://www.drupal.org/files/issues/2022-03-07/3225009-5.patch"
+            }
+        },
+        "installer-paths": {
+            "web/core": ["type:drupal-core"],
+            "web/libraries/{$name}": ["type:drupal-library", "type:npm-asset", "type:bower-asset"],
+            "web/modules/composer/{$name}": ["type:drupal-module"],
+            "web/profiles/composer/{$name}": ["type:drupal-profile"],
+            "web/themes/composer/{$name}": ["type:drupal-theme"],
+            "drush/Commands/contrib/{$name}": ["type:drupal-drush"],
+            "web/private/scripts/quicksilver/{$name}/": ["type:quicksilver-script"],
+            "web/modules/custom/{$name}": ["type:drupal-custom-module"],
+            "web/libraries/ckeditor/plugins/{$name}": ["vendor:ckeditor-plugin"]
+        },
+        "installer-types": [
+            "npm-asset",
+            "bower-asset"
+        ],
+        "composer-exit-on-patch-failure": true,
+        "patchLevel": {
+            "drupal/core": "-p2"
+        },
+        "drupal-scaffold": {
+            "allowed-packages": [
+                "pantheon-systems/drupal-integrations"
+            ],
+            "locations": {
+                "web-root": "./web"
+            },
+            "file-mapping": {
+                "[project-root]/.editorconfig": false,
+                "[project-root]/pantheon.upstream.yml": false,
+                "[project-root]/.gitattributes": false,
+                "[web-root]/robots.txt": false
+            }
+        },
+        "merge-plugin": {
+            "include": [
+                "composer.libraries.json"
+            ]
+        }
+    },
+    "config": {
+        "preferred-install": "dist",
+        "sort-packages": true,
+        "platform": {
+            "php": "7.4"
+        },
+        "allow-plugins": {
+            "composer/installers": true,
+            "cweagans/composer-patches": true,
+            "drupal/core-composer-scaffold": true,
+            "zaporylie/composer-drupal-optimizations": true,
+            "oomphinc/composer-installers-extender": true
+        }
     }
-  },
-  "config": {
-    "preferred-install": "dist",
-    "sort-packages": true,
-    "platform": {
-      "php": "7.4"
-    }
-  }
 }
