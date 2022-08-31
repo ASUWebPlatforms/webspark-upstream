@@ -39,7 +39,14 @@ if (file_exists($local_settings)) {
 if (PHP_SAPI !== 'cli') {
   $settings['config_readonly'] = TRUE;
 }
+
 /**
  * Allow all configuration to be changed.
  */
 $settings['config_readonly_whitelist_patterns'] = ['*'];
+
+/**
+ * Allow files to be deleted from the file system, similar to Drupal 7.
+ * See: https://www.drupal.org/node/2891902
+ */
+$config['file.settings']['make_unused_managed_files_temporary'] = TRUE;
