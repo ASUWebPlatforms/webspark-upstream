@@ -72,9 +72,6 @@
             },
             "drupal/field_states_ui": {
                 "#3225009: Cant add custom block with field states ui using layout builder": "https://www.drupal.org/files/issues/2022-03-07/3225009-5.patch"
-            },
-            "drupal/linkit": {
-                "2877535: Fix issue with path alias": "https://www.drupal.org/files/issues/2022-06-07/2877535-39.patch"
             }
         },
         "installer-paths": {
