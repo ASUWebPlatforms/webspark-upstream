@@ -42,7 +42,7 @@
         }
     ],
     "require": {
-        "drush/drush": "^10",
+        "drush/drush": "^11",
         "pantheon-upstreams/upstream-configuration": "*"
     },
     "conflict": {
@@ -54,10 +54,7 @@
         "enable-patching": true,
         "patches": {
             "drupal/radix": {
-                "3053579: Integrate with OffCanvas (Layout Builder)": "https://www.drupal.org/files/issues/2020-10-20/3053579-25_0.patch"
-            },
-            "drupal/paragraphs" : {
-                "2901390: fixing issue langcode cannot be null":  "https://www.drupal.org/files/issues/2021-05-03/paragraphs-2901390-82-withtests.patch"
+                "3053579: Integrate with OffCanvas (Layout Builder)": "https://www.drupal.org/files/issues/2021-12-15/3053579-32.patch"
             },
             "drupal/fakeobjects" : {
                 "3002953: Fix js plugin seems to be missing":  "https://www.drupal.org/files/issues/2020-06-22/fakeobjects-missing_plugin-3002953-5.patch"
@@ -72,6 +69,18 @@
             },
             "drupal/field_states_ui": {
                 "#3225009: Cant add custom block with field states ui using layout builder": "https://www.drupal.org/files/issues/2022-03-07/3225009-5.patch"
+            },
+            "drupal/linkit": {
+                "2877535: Fix issue with path alias": "https://www.drupal.org/files/issues/2022-06-07/2877535-39.patch"
+            },
+            "drupal/allowed_formats": {
+                "3269869: Drupal 10 compatibility": "https://git.drupalcode.org/project/allowed_formats/-/commit/9b52e52.patch"
+            },
+            "drupal/fontawesome": {
+                "#3219579: Hidding font awesome additional settings": "https://www.drupal.org/files/issues/2022-12-14/hidding_font_awesome_additional_settings-3219579-18.patch"
+            },
+            "drupal/cas": {
+                "3318382: TypeError: in_array(): Argument #2 ($haystack) must be of type array": "https://www.drupal.org/files/issues/2022-10-31/cas-null-in_array-3318382-0.patch"
             }
         },
         "installer-paths": {
@@ -117,7 +126,7 @@
         "preferred-install": "dist",
         "sort-packages": true,
         "platform": {
-            "php": "7.4"
+            "php": "8.1.6"
         },
         "allow-plugins": {
             "composer/installers": true,
