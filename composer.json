@@ -62,7 +62,8 @@
             "drupal/core": {
                 "#2951547: Fix issue with layout overflow": "https://www.drupal.org/files/issues/2020-01-08/layout-builder-tray-size-2951547-42.patch",
                 "3102249: Changing an existing embedded media's attributes does not get saved with CKEditor": "https://www.drupal.org/files/issues/2020-06-01/3102249-21.patch",
-                "3109650: Refactor Xss::attributes() to allow filtering of style attribute values": "https://www.drupal.org/files/issues/2021-09-22/core-9.2-xss-refactor_filter_attributes-3109650-43.patch"
+                "3109650: Refactor Xss::attributes() to allow filtering of style attribute values": "https://www.drupal.org/files/issues/2021-09-22/core-9.2-xss-refactor_filter_attributes-3109650-43.patch",
+                "3097338: Fix issue with image replacement in ckeditor": "https://www.drupal.org/files/issues/2021-06-03/drupal-3097338-68.patch"
             },
             "drupal/config_readonly": {
                 "#3085001: Config blacklist to only block some configuration while in read only mode": "https://www.drupal.org/files/issues/2019-10-31/config_readonly-3085001-2.patch"
@@ -81,6 +82,9 @@
             },
             "drupal/cas": {
                 "3318382: TypeError: in_array(): Argument #2 ($haystack) must be of type array": "https://www.drupal.org/files/issues/2022-10-31/cas-null-in_array-3318382-0.patch"
+            },
+            "drupal/ckeditor": {
+                "#3095304: Changes to a block's text field not saved when ckeditor source mode is active": "https://www.drupal.org/files/issues/2023-01-05/changes_to_a_blocks_text_field_not_saved_3095304-47_3.patch"
             }
         },
         "installer-paths": {
