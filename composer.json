@@ -85,6 +85,9 @@
             },
             "drupal/ckeditor": {
                 "#3095304: Changes to a block's text field not saved when ckeditor source mode is active": "https://www.drupal.org/files/issues/2023-01-05/changes_to_a_blocks_text_field_not_saved_3095304-47_3.patch"
+            },
+            "drupal/paragraphs": {
+                "#3090200: Paragraphs do not render: access check for view fail when using layout builder": "https://www.drupal.org/files/issues/2022-10-26/3084934-13_combine_3090200-22.patch"
             }
         },
         "installer-paths": {
