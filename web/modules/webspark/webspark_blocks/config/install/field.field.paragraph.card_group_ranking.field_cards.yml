@@ -1,0 +1,87 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_cards
+    - paragraphs.paragraphs_type.card_group_ranking
+    - paragraphs.paragraphs_type.card_ranking
+  module:
+    - entity_reference_revisions
+id: paragraph.card_group_ranking.field_cards
+field_name: field_cards
+entity_type: paragraph
+bundle: card_group_ranking
+label: Cards
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      card_ranking: card_ranking
+    negate: 0
+    target_bundles_drag_drop:
+      accordion_panel:
+        weight: 21
+        enabled: false
+      anchor_menu_settings:
+        weight: 22
+        enabled: false
+      blockquote:
+        weight: 23
+        enabled: false
+      card:
+        weight: 24
+        enabled: false
+      card_degree:
+        weight: 25
+        enabled: false
+      card_event:
+        weight: 26
+        enabled: false
+      card_group_default:
+        weight: 27
+        enabled: false
+      card_group_degree:
+        weight: 28
+        enabled: false
+      card_group_ranking:
+        weight: 29
+        enabled: false
+      card_group_story:
+        weight: 30
+        enabled: false
+      card_group_with_icon:
+        weight: 31
+        enabled: false
+      card_media:
+        weight: 32
+        enabled: false
+      card_ranking:
+        weight: 33
+        enabled: true
+      card_story:
+        weight: 34
+        enabled: false
+      card_with_icon:
+        weight: 35
+        enabled: false
+      cta:
+        weight: 36
+        enabled: false
+      gallery_image:
+        weight: 37
+        enabled: false
+      tab_content:
+        weight: 38
+        enabled: false
+      testimonial:
+        weight: 39
+        enabled: false
+      tooltip:
+        weight: 40
+        enabled: false
+field_type: entity_reference_revisions

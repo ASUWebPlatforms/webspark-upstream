@@ -1,0 +1,4 @@
+name: 'Webspark Installer Configure'
+type: module
+description: 'Contains the forms for each step of the webspark installation profile'
+core_version_requirement: ^8.8 || ^9

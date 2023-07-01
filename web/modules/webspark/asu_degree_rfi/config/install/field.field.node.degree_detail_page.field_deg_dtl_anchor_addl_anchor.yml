@@ -1,0 +1,25 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_deg_dtl_anchor_addl_anchor
+    - node.type.degree_detail_page
+  enforced:
+    module:
+      - asu_degree_rfi
+  module:
+    - link
+id: node.degree_detail_page.field_deg_dtl_anchor_addl_anchor
+field_name: field_deg_dtl_anchor_addl_anchor
+entity_type: node
+bundle: degree_detail_page
+label: 'Additional anchors'
+description: 'Add additional anchors to other non-degree components you''ve added to your page. Use the form of "#your-target-id". Note: components will need to have anchor targets attached to them.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  link_type: 1
+  title: 2
+field_type: link

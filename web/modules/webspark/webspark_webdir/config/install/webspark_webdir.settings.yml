@@ -1,0 +1,11 @@
+api: 'https://live-asu-isearch.ws.asu.edu'
+api_version: /api/v1/
+departments: webdir-departments
+people_departments: webdir-departments/profiles
+people_search: webdir-profiles/faculty-staff
+people_data: webdir-profiles/department
+people_department: webdir-departments/profiles
+profile_affiliations: webdir-affiliations
+employee_types: webdir-employee-types
+expertise_areas: webdir-expertise-areas
+filtered_people_department: webdir-profiles/faculty-staff/filtered

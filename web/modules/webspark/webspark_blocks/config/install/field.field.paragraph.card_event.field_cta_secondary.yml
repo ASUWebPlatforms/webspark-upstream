@@ -1,0 +1,54 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_cta_secondary
+    - paragraphs.paragraphs_type.card_event
+    - paragraphs.paragraphs_type.cta
+  module:
+    - entity_reference_revisions
+id: paragraph.card_event.field_cta_secondary
+field_name: field_cta_secondary
+entity_type: paragraph
+bundle: card_event
+label: 'CTA Secondary'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      cta: cta
+    target_bundles_drag_drop:
+      accordion_panel:
+        weight: 10
+        enabled: false
+      card:
+        weight: 11
+        enabled: false
+      card_degree:
+        weight: 12
+        enabled: false
+      card_event:
+        weight: 13
+        enabled: false
+      card_media:
+        weight: 14
+        enabled: false
+      card_story:
+        weight: 15
+        enabled: false
+      cta:
+        enabled: true
+        weight: 16
+      gallery_image:
+        weight: 17
+        enabled: false
+      tab_content:
+        weight: 18
+        enabled: false
+field_type: entity_reference_revisions

@@ -1,0 +1,307 @@
+{% if show_logo_social_media %}
+  <div class="wrapper" id="wrapper-endorsed-footer">
+    <div class="container" id="endorsed-footer">
+      <div class="row">
+        <div class="col-md" id="endorsed-logo">
+          {% if unit_custom_logo %}
+            <a
+              href="{{ unit_custom_logo_link }}"
+              data-ga-footer-type="internal link"
+              data-ga-footer-section="primary footer"
+              data-ga-footer="asu logo"
+              data-ga-footer-component=""
+            >
+              {{ unit_custom_logo }}
+            </a>
+          {% else %}
+            <a
+              href="https://www.asu.edu"
+              data-ga-footer-type="internal link"
+              data-ga-footer-section="primary footer"
+              data-ga-footer="asu logo"
+              data-ga-footer-component=""
+            >
+              <img
+                src="{{ src_unit_logo }}"
+                loading="lazy" height="{{ src_unit_logo_height }}" width="{{ src_unit_logo_width }}"
+                alt="Arizona State University."
+              />
+            </a>
+          {% endif %}
+        </div>
+        <div class="col-md" id="social-media">
+          <nav class="nav" aria-label="Social Media">
+            {% if facebook_url %}
+              <a
+                class="nav-link"
+                href="{{ facebook_url }}"
+                data-ga-footer-type="external link"
+                data-ga-footer-section="primary footer"
+                data-ga-footer="facebook icon"
+                data-ga-footer-component=""
+              >
+                <span title="Facebook Social Media Icon" class="fab fa-facebook-square"></span>
+              </a>
+            {% endif %}
+            {% if twitter_url %}
+              <a
+                class="nav-link"
+                href="{{ twitter_url }}"
+                data-ga-footer-type="external link"
+                data-ga-footer-section="primary footer"
+                data-ga-footer="twitter icon"
+                data-ga-footer-component=""
+              >
+                <span title="Twitter Social Media Icon" class="fab fa-twitter-square"></span>
+              </a>
+            {% endif %}
+            {% if instagram_ulr %}
+              <a
+                class="nav-link"
+                href="{{ instagram_ulr }}"
+                data-ga-footer-type="external link"
+                data-ga-footer-section="primary footer"
+                data-ga-footer="instagram icon"
+                data-ga-footer-component=""
+              >
+                <span title="Instagram Social Media Icon" class="fab fa-instagram-square"></span>
+              </a>
+            {% endif %}
+            {% if youtube_url %}
+              <a
+                class="nav-link"
+                href="{{ youtube_url }}"
+                data-ga-footer-type="external link"
+                data-ga-footer-section="primary footer"
+                data-ga-footer="youtube icon"
+                data-ga-footer-component=""
+              >
+                <span title="YouTube Social Media Icon" class="fab fa-youtube-square"></span>
+              </a>
+            {% endif %}
+            {% if linkedin_url %}
+              <a
+                class="nav-link"
+                href="{{ linkedin_url  }}"
+                data-ga-footer-type="external link"
+                data-ga-footer-section="primary footer"
+                data-ga-footer="linkedin icon"
+                data-ga-footer-component=""
+              >
+                <span title="LinkedIn Social Media Icon" class="fab fa-linkedin"></span>
+              </a>
+            {% endif %}
+          </nav>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endif %}
+
+{% if show_columns %}
+  <div class="wrapper" id="wrapper-footer-columns">
+    <div class="container" id="footer-columns">
+      <div class="row">
+        <div class="col-xl" id="info-column">
+          <h5>{{ unit_name }}</h5>
+          {% if link_url and link_title %}
+            <p class="contact-link">
+            <a
+              data-ga-footer-type="internal link"
+              data-ga-footer-region="footer"
+              data-ga-footer-section="primary footer"
+              data-ga-footer="{{ link_title }}"
+              data-ga-footer-component="{{ unit_name }}"
+              href="{{ link_url }}">{{ link_title }}</a></p>
+          {% endif %}
+          {% if cta_url and cta_title %}
+            <p class="contribute-button">
+            <a
+              data-ga-footer-type="internal link"
+              data-ga-footer-region="footer"
+              data-ga-footer-section="primary footer"
+              data-ga-footer="{{ cta_title }}"
+              data-ga-footer-component="{{ unit_name }}"
+              href="{{ cta_url }}" class="btn btn-small btn-gold">{{ cta_title }}</a></p>
+          {% endif %}
+        </div>
+        {% for key, column in columns_data %}
+        <div class="col-xl flex-footer">
+          <div class="card card-foldable desktop-disable-xl">
+          {% for c in column %}
+            <div class="card-header">
+              <h5>
+                <a
+                  id="footlink-header-{{ key }}-{{ loop.index }}"
+                  class="collapsed"
+                  data-toggle="collapse"
+                  data-ga-footer-type="internal link"
+                  data-ga-footer-region="footer"
+                  data-ga-footer-section="primary footer"
+                  data-ga-footer-component=""
+                  data-ga-footer="{{ c.title }}"
+                  href="#footlink-{{ key }}-{{ loop.index }}"
+                  role="button"
+                  aria-expanded="false"
+                  aria-controls="footlink-{{ key }}-{{ loop.index }}"
+                >
+                  {{ c.title }}
+                  <span class="fas fa-chevron-up"></span>
+                </a>
+              </h5>
+            </div>
+            <div
+              id="footlink-{{ key }}-{{ loop.index }}"
+              class="collapse card-body"
+              aria-labelledby="footlink-header-{{ key }}-{{ loop.index }}"
+            >
+              {# WS2-1268: Adding block title to data-ga-footer-component attribute.
+               Building menu items here to access block title, rather than in AsuFooterBlock.php
+               TODO: Rewrite this module as UDS react components similar to the ASU Header
+             #}
+            {% for menu_item in c.menu_items %}
+              {% if menu_item.0|render|length > 0 %}
+                <a href="{{ menu_item.0 }}"
+                  class="nav-link"
+                  data-ga-footer-type="internal link"
+                  data-ga-footer-region="footer"
+                  data-ga-footer-section="primary footer"
+                  data-ga-footer="{{ menu_item.1 }}"
+                  data-ga-footer-component="{{ c.title }}"
+                  >{{ menu_item.1 }}</a>
+              {% else %}
+                <span class="nav-link">{{ menu_item.1 }}</span>
+              {% endif %}
+            {% endfor %}
+            </div>
+          {% endfor %}
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+{% endif %}
+
+<div class="wrapper" id="wrapper-footer-innovation">
+  <div class="container" id="footer-innovation">
+    <div class="row">
+      <div class="col">
+        <div class="d-flex footer-innovation-links">
+          <nav class="nav" aria-label="University Services">
+            <a
+              class="nav-link"
+              href="https://www.asu.edu/about/locations-maps"
+              data-ga-footer-type="internal link"
+              data-ga-footer-section="secondary footer"
+              data-ga-footer="maps and locations"
+              data-ga-footer-component=""
+            >Maps and Locations</a>
+            <a
+              class="nav-link"
+              href="https://www.asu.edu/asujobs"
+              data-ga-footer-type="internal link"
+              data-ga-footer-section="secondary footer"
+              data-ga-footer="jobs"
+              data-ga-footer-component=""
+            >Jobs</a>
+            <a
+              class="nav-link"
+              href="https://isearch.asu.edu/"
+              data-ga-footer-type="internal link"
+              data-ga-footer-section="secondary footer"
+              data-ga-footer="directory"
+              data-ga-footer-component=""
+            >Directory</a>
+            <a
+              class="nav-link"
+              href="https://www.asu.edu/about/contact"
+              data-ga-footer-type="internal link"
+              data-ga-footer-section="secondary footer"
+              data-ga-footer="contact asu"
+              data-ga-footer-component=""
+            >Contact ASU</a>
+            <a
+              class="nav-link"
+              href="https://my.asu.edu/"
+              data-ga-footer-type="internal link"
+              data-ga-footer-section="secondary footer"
+              data-ga-footer="my asu"
+              data-ga-footer-component=""
+            >My ASU</a>
+          </nav>
+          <a
+            class="img-link"
+            href="https://www.asu.edu/rankings"
+            data-ga-footer-type="internal link"
+            data-ga-footer-section="secondary footer"
+            data-ga-footer="#1 in the u.s. for innovation"
+            data-ga-footer-component=""
+          >
+            <img src="{{ src_footer_img }}" loading="lazy" height="{{ src_footer_img_height }}" width="{{ src_footer_img_width }}" alt="Number one in the U.S. for innovation. #1 ASU, #2 Stanford, #3 MIT. - U.S. News and World Report, 8 years, 2016-2023">
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="wrapper" id="wrapper-footer-colophon">
+  <div class="container" id="footer-colophon">
+    <div class="row">
+      <div class="col">
+        <div class="footer-legal-links">
+          <nav class="nav colophon" aria-label="University Legal and Compliance">
+            <a
+              class="nav-link"
+              href="https://www.asu.edu/about/copyright-trademark"
+              data-ga-footer-type="internal link"
+              data-ga-footer-section="tertiary footer"
+              data-ga-footer="copyright and trademark"
+              data-ga-footer-component=""
+            >Copyright and Trademark</a>
+            <a
+              class="nav-link"
+              href="https://www.asu.edu/accessibility/"
+              data-ga-footer-type="internal link"
+              data-ga-footer-section="tertiary footer"
+              data-ga-footer="accessibility"
+              data-ga-footer-component=""
+            >Accessibility</a>
+            <a
+              class="nav-link"
+              href="https://www.asu.edu/about/privacy"
+              data-ga-footer-type="internal link"
+              data-ga-footer-section="tertiary footer"
+              data-ga-footer="privacy"
+              data-ga-footer-component=""
+            >Privacy</a>
+            <a
+              class="nav-link"
+              href="https://www.asu.edu/about/terms-of-use"
+              data-ga-footer-type="internal link"
+              data-ga-footer-section="tertiary footer"
+              data-ga-footer="terms of use"
+              data-ga-footer-component=""
+            >Terms of Use</a>
+            <a
+              class="nav-link"
+              href="https://www.asu.edu/emergency/"
+              data-ga-footer-type="internal link"
+              data-ga-footer-section="tertiary footer"
+              data-ga-footer="emergency"
+              data-ga-footer-component=""
+            >Emergency</a>
+            <a
+              class="nav-link"
+              href="https://eoss.asu.edu/health/announcements/coronavirus"
+              data-ga-footer-type="internal link"
+              data-ga-footer-section="tertiary footer"
+              data-ga-footer="covid-19 information"
+            >COVID-19 Information</a>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

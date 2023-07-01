@@ -1,0 +1,15 @@
+@import '../../../node_modules/@asu/bootstrap4-theme/src/scss/extends/tabbed-panels';
+
+.block-inline-blocktabbed-content {
+  .row {
+    margin: 0;
+  }
+
+  @media only screen and (max-width: $uds-grid-container-max-width-lg) {
+    .scroll-control-prev,
+    .scroll-control-next {
+      display: none !important;
+    }
+  }
+}
+

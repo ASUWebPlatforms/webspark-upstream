@@ -1,0 +1,24 @@
+{#
+/**
+ * @file
+ * Default theme implementation to display a list of links.
+ *
+ * Available variables:
+ * - links: A collection of links.
+ *
+ * @ingroup themeable
+ */
+#}
+<div class="uds-quicklinks uds-quicklinks-expanded-md">
+  <button class="btn" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+    On this page<span class="fas fa-chevron-down"></span>
+  </button>
+  <div class="separator"></div>
+  <div id="collapseExample" class="card card-body collapse">
+    <nav class="nav" aria-label="Same Page">
+      {% for link in links %}
+        <a class="nav-link" href="{{ link['#url'] }}"><span class="{{ link['#icon_style'] }} fa-{{ link['#icon'] }}"></span>{{ link['#title'] }}</a>
+      {% endfor %}
+    </nav>
+  </div>
+</div>

@@ -1,0 +1,235 @@
+<?php
+
+/**
+ * @file
+ * Contains asu_degree_rfi.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\Core\Entity\ContentEntityInterface;
+use Drupal\field\Entity\FieldStorageConfig;
+// Constants are implemented through interfaces in D9.
+// See https://www.drupal.org/forum/support/module-development-and-code-questions/2020-09-14/what-to-use-instead-of-a-global-const
+use Drupal\asu_degree_rfi\AsuDegreeRfiInterface;
+
+/**
+ * Implements hook_help().
+ */
+function asu_degree_rfi_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+      // Main module help for the asu_degree_rfi module.
+    case 'help.page.asu_degree_rfi':
+      // TODO Write the docs!
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('ASU Degree and RFI component launcher') . '</p>';
+      return $output;
+
+    default:
+  }
+}
+
+/**
+ * Implements hook_mail().
+ */
+function asu_degree_rfi_mail($key, &$message, $params) {
+  $options = array(
+    'langcode' => $message['langcode'],
+  );
+
+  switch ($key) {
+    case 'rfi_failure':
+      $message['from'] = \Drupal::config('system.site')->get('mail');
+      $message['subject'] = t('RFI submit failure: @url', array('@url' => $params['failure_url']), $options);
+      $message['body'][] = $params['message'];
+      break;
+  }
+}
+
+/**
+ * Implements hook_form_alter().
+ */
+function asu_degree_rfi_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
+
+  $intro_markup = 'Configure your @type page with this form.
+    Non-required fields represent optional overrides or additional
+    content that will be used in place of the default results returned from
+    the Degree Search service. Please note when you use these overrides,
+    updates to the overidden data will not be reflected unless you
+    clear the entry.';
+
+  if ("node_degree_detail_page_form" === $form_id) {
+
+    $form['field_asu_degree_rfi_intro_markup'] = [
+      '#type' => 'markup',
+      '#markup' => t($intro_markup, ['@type' => "degree detail"]),
+      '#weight' => -5,
+    ];
+  }
+
+  $form_to_alter = [
+    'node_degree_listing_page_form',
+    'node_degree_listing_page_edit_form',
+  ];
+  if (in_array($form_id, $form_to_alter)) {
+
+    // More descriptive "none" label.
+    $form['field_degree_list_hero_size']['widget']['#options']['_none'] = t("- system default / reset -");
+
+    // None defaults to gold, and that's the first option, so just unset none
+    // as it's redundant and confusing. If the default or field options order
+    // ever changes, this may need to be tweaked.
+    unset($form['field_degree_list_hero_highlight']['widget']['#options']['_none']);
+
+    $form['field_asu_degree_rfi_intro_markup'] = [
+      '#type' => 'markup',
+      '#markup' => t($intro_markup, ['@type' => "degree listing"]),
+      '#weight' => -5,
+    ];
+
+    // Use form states API to conditionally show/hide props based on intro type.
+    $form['field_degree_list_photo_grid']['#states'] = [
+      'visible' => [
+        ':input[name="field_degree_list_intro_type"]' => ['value' => 'text-photo-grid']
+      ]
+    ];
+    $form['field_degree_listing_intro_media']['#states'] = [
+      'visible' => [
+        [
+          ':input[name="field_degree_list_intro_type"]' => ['value' => 'text-media'],
+        ],
+        [
+          ':input[name="field_degree_list_intro_type"]' => ['value' => 'text-image-overlay']
+        ]
+      ]
+    ];
+    $form['field_degree_list_header']['#states'] = [
+      'visible' => [
+        ':input[name="field_degree_list_intro_type"]' => ['value' => 'text-image-overlay']
+      ]
+    ];
+  }
+}
+
+/**
+ * Implements hook_field_widget_multivalue_form_alter().
+ */
+function asu_degree_rfi_field_widget_multivalue_form_alter(array &$elements, \Drupal\Core\Form\FormStateInterface $form_state, array $context) {
+  // Additional anchor field help text needs some help for a better UX.
+  if (isset($elements['#field_name']) && $elements['#field_name'] == 'field_deg_dtl_anchor_addl_anchor') {
+    // If this is a multivalue field, we want to modify every instance of the
+    // field on the form, so we iterate.
+    foreach (\Drupal\Core\Render\Element::children($elements) as $key => $child) {
+      // Only act on children from numeric key. I.e. skip add_more.
+      if (is_numeric($child)) {
+        $elements[$key]['uri']['#title'] = t('Anchor target');
+        unset($elements[$key]['uri']['#field_prefix']);
+        $elements[$key]['uri']['#description'] = t('e.g. #my-anchor-target');
+      }
+    }
+  }
+}
+
+/**
+ * Allowed values function for field_degree_list_college_code #options.
+ *
+ * Reference for implementing this
+ * https://drupal.stackexchange.com/a/242011/104979
+ *
+ * Does service call with dataPotluckClient service.
+ */
+function asu_degree_rfi_college_code_allowed_values(FieldStorageConfig $definition, ContentEntityInterface $entity = NULL, $cacheable) {
+
+  $dataPotluckClient = \Drupal::getContainer()->get('asu_degree_rfi_data_potluck_client');
+
+  // Get colleges from Data Potluck service.
+  $college_options = [];
+
+  // Pull in service client for Data Potluck.
+  $college_options = $dataPotluckClient->colleges();
+
+  return $college_options;
+}
+
+/**
+ * Allowed values function for field_degree_list_dept_code #options.
+ *
+ * Reference for implementing this
+ * https://drupal.stackexchange.com/a/242011/104979
+ *
+ * Does service call with degreeSearchClient service.
+ */
+function asu_degree_rfi_dept_code_allowed_values(FieldStorageConfig $definition, ContentEntityInterface $entity = NULL, $cacheable) {
+
+  $cache_time_to_live = AsuDegreeRfiInterface::ASU_DEGREE_RFI_CACHE_LIFE;
+
+  // Pull in service client for Degree Search.
+  $degreeSearchClient = \Drupal::getContainer()->get('asu_degree_rfi_degree_search_client');
+
+  // TODO Would be better if we could get from dedicated service or DPL.
+  // TODO Improve: some duplication of code between
+  // AsuDegreeRfiRfiBlock blockForm() method and the code below.
+
+  // Get Department options. Get from, or set cache.
+  $cid = 'asu_degree_rfi:dept_options';
+  $dept_options = [];
+  if ($cache = \Drupal::cache()->get($cid)) {
+    // Use the cached data.
+    $dept_options = $cache->data;
+  } else {
+    // Call DS REST service to get all the Program of Interest permutations.
+    $dept_ugrad = $degreeSearchClient->departments('undergrad', 'false');
+    $dept_grad = $degreeSearchClient->departments('graduate', 'false');
+    $dept_ucert = $degreeSearchClient->departments('undergrad', 'true');
+    $dept_gcert = $degreeSearchClient->departments('graduate', 'true');
+    // Merge with headings to break up a looong select list.
+    $dept_options = array_merge($dept_ugrad, $dept_grad, $dept_ucert, $dept_gcert);
+    asort($dept_options);
+    // Set the cache.
+    \Drupal::cache()
+      ->set($cid, $dept_options, strtotime($cache_time_to_live));
+  }
+
+  return $dept_options;
+}
+
+/**
+ * Helper function for sending RFI failure email.
+ */
+function asu_degree_rfi_send_rfi_fail_email($message, $payload) {
+  $mailManager = \Drupal::service('plugin.manager.mail');
+  $module = 'asu_degree_rfi';
+  $key = 'rfi_failure';
+  $to = \Drupal::config('system.site')->get('mail');
+  $params['message'] = $message;
+  $params['failure_url'] = $payload["URL"];
+  $langcode = \Drupal::currentUser()->getPreferredLangcode();
+  $send = true;
+
+  $result = $mailManager->mail($module, $key, $to, $langcode, $params, NULL, $send);
+  if ($result['result'] !== true) {
+    \Drupal::logger('RFI failure email failed')->error('There was a problem sending an RFI submission failure warning email message and it was not sent. Please check the email settings for your site.');
+  } else {
+    \Drupal::logger('RFI failure email sent')->notice('An RFI submission failed. It was logged and an email sent to the site admin email.');
+  }
+}
+
+/**
+ * Implements hook_config_readonly_whitelist_patterns();
+ * Make all the config files from this module readonly.
+ * @return array
+ */
+function asu_degree_rfi_config_readonly_whitelist_patterns() {
+  // Get all the module configuration files.
+  $module = \Drupal::service('module_handler')
+    ->getModule(basename(__FILE__, '.module'))
+    ->getName();
+  $configs = \Drupal::service('webspark.config_manager')->getModuleConfigFiles($module);
+  // Lock all the configurations from this module.
+  if (\Drupal::state()->get('configuration_locked', TRUE)) {
+    return array_map(function ($item) { return '~' . $item; }, $configs);
+  }
+  else {
+    return [];
+  }
+}

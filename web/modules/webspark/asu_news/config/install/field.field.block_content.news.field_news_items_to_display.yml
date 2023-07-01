@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.news
+    - field.storage.block_content.field_news_items_to_display
+id: block_content.news.field_news_items_to_display
+field_name: field_news_items_to_display
+entity_type: block_content
+bundle: news
+label: 'Items to Display'
+description: 'Leave blank for "Show All".'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: 1
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

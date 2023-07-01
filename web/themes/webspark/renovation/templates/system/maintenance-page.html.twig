@@ -1,0 +1,47 @@
+{#
+/**
+ * @file
+ * Default theme implementation to display a single Drupal page while offline.
+ *
+ * All available variables are mirrored in page.html.twig.
+ * Some may be blank but they are provided for consistency.
+ *
+ * @see template_preprocess_maintenance_page()
+ *
+ * @ingroup themeable
+ */
+#}
+
+
+  <div class="container">
+    <main role="main" style="padding-top:50px; padding-bottom:5px">
+      <header role="banner">
+        <div id="ws2HeaderContainer"></div>
+        {{header}}
+      </header>
+
+      <h1>{{heading}}</h1>
+
+      {{ page.highlighted }}
+
+      {{ page.content }}
+      <p>&nbsp;</p>
+    </main>
+
+    {% if page.sidebar_first %}
+      <aside role="complementary">
+        {{ page.sidebar_first }}
+      </aside>
+    {% endif %}
+
+    {% if page.sidebar_second %}
+      <aside role="complementary">
+        {{ page.sidebar_second }}
+      </aside>
+    {% endif %}
+
+  </div>
+
+  <footer role="contentinfo">
+    {{footer}}
+  </footer>

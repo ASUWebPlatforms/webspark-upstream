@@ -1,0 +1,7 @@
+langcode: en
+status: true
+dependencies: {  }
+id: divider
+label: Divider
+revision: 0
+description: 'Add spacing between blocks.'

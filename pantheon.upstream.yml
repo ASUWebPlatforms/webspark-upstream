@@ -11,3 +11,22 @@ protected_web_paths:
   - /private/
   - /sites/default/files/private/
   - /sites/default/files/config/
+  - /core/COPYRIGHT.txt
+  - /core/INSTALL.mysql.txt
+  - /core/INSTALL.pgsql.txt
+  - /core/INSTALL.sqlite.txt
+  - /core/INSTALL.txt
+  - /core/lib/README.txt
+  - /core/LICENSE.txt
+  - /core/MAINTAINERS.txt
+  - /core/PATCHES.txt
+  - /core/README.md
+  - /core/UPDATE.txt
+  - /core/USAGE.txt
+  - /core/lib/README.txt
+  - /core/tests/README.md
+  - /libraries/README.txt
+  - /modules/README.txt
+  - /profiles/README.txt
+  - /sites/README.txt
+  - /themes/README.txt

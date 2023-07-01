@@ -1,0 +1,29 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_content
+    - options
+id: block_content.field_events_items_to_display
+field_name: field_events_items_to_display
+entity_type: block_content
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: All
+      label: All
+    -
+      value: Three
+      label: Three
+    -
+      value: ThreeCards
+      label: 'Three Cards'
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.card_carousel
+    - field.storage.block_content.field_card_orientation
+id: block_content.card_carousel.field_card_orientation
+field_name: field_card_orientation
+entity_type: block_content
+bundle: card_carousel
+label: 'Card Orientation'
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: Landscape
+  off_label: Portrait
+field_type: boolean

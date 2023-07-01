@@ -1,0 +1,18 @@
+{% set tooltip_color = 'uds-tooltip-bg-' ~ background %}
+<div class="{{ tooltip_color }}">
+  <div class="uds-tooltip-container">
+    <button tabindex="0" class="uds-tooltip uds-tooltip-{{ background }}" aria-describedby="tooltip-desc-{{ paragraph_id }}">
+      <span class="fa-stack">
+        <i class="fas fa-circle fa-stack-2x"></i>
+        <i class="fas fa-info fa-stack-1x"></i>
+      </span>
+      <span class="uds-tooltip-visually-hidden">Notifications</span>
+    </button>
+
+    <div role="tooltip" class="uds-tooltip-description" id="tooltip-desc-{{ paragraph_id }}">
+      <span class="uds-tooltip-heading">{{ heading }}</span>
+      {{ tooltip }}
+    </div>
+  </div>
+</div>
+{{ attach_library('renovation/tooltips') }}

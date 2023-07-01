@@ -1,0 +1,30 @@
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - asu_degree_rfi
+  config:
+    - field.storage.node.field_degree_dtl_intro_content
+    - node.type.degree_detail_page
+  module:
+    - allowed_formats
+    - text
+third_party_settings:
+  allowed_formats:
+    basic_html: basic_html
+    restricted_html: '0'
+    full_html: '0'
+    plain_text: '0'
+id: node.degree_detail_page.field_degree_dtl_intro_content
+field_name: field_degree_dtl_intro_content
+entity_type: node
+bundle: degree_detail_page
+label: 'Intro content'
+description: 'Overrides default market text retrieved from Degree Search.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

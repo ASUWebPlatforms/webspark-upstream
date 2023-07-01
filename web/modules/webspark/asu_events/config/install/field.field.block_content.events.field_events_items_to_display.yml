@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.events
+    - field.storage.block_content.field_events_items_to_display
+  module:
+    - options
+id: block_content.events.field_events_items_to_display
+field_name: field_events_items_to_display
+entity_type: block_content
+bundle: events
+label: 'Items to Display'
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    value: ThreeCards
+default_value_callback: ''
+settings: {  }
+field_type: list_string

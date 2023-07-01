@@ -1,0 +1,106 @@
+name: Webspark
+type: profile
+core_version_requirement: ^9.0
+description: 'ASU custom profile.'
+version: 2.10.0
+distribution:
+  name: 'Webspark'
+install:
+  # Webspark.
+  - node
+  - history
+  - block
+  - breakpoint
+  - ckeditor
+  - color
+  - config
+  - comment
+  - contextual
+  - contact
+  - menu_link_content
+  - datetime
+  - block_content
+  - quickedit
+  - editor
+  - help
+  - image
+  - menu_ui
+  - options
+  - path
+  - page_cache
+  - dynamic_page_cache
+  - big_pipe
+  - taxonomy
+  - dblog
+  - search
+  - shortcut
+  - toolbar
+  - field_ui
+  - file
+  - rdf
+  - views
+  - views_ui
+  - automated_cron
+  - media
+  - media_library
+  - layout_builder
+  - components
+  - cas
+  - asu_brand
+  - webspark_utility
+  - select2
+  - paragraphs
+  - fontawesome
+  - fontawesome_iconpicker_widget
+  - layout_section_classes
+  - webspark_module_renovation_layouts
+  - crop
+  - image_widget_crop
+  - layout_builder_restrictions
+  - webspark_module_views_pager
+  - webspark_blocks
+  - linkit
+  - current_page_crumb
+  - pathauto
+  - media_library_form_element
+  - admin_toolbar
+  - allowed_formats
+  - field_menu
+  - asu_react_integration
+  - asu_news
+  - asu_events
+  - asu_footer
+  - webspark_module_asu_breadcrumb
+  - datetime_range
+  - asu_react_core
+  - field_group
+  - asu_components_appearance
+  - metatag
+  - webspark_ckeditor_plugins
+  - asu_user
+  - webspark_cropper_theme
+  - seckit
+  - redirect
+  - simple_sitemap
+  - inline_form_errors
+  - webform
+  - webform_ui
+  - config_update
+  - robotstxt
+  - captcha
+  - schema_metatag
+  - editoria11y
+  - decorative_image_widget
+  - block_field
+  - webspark_cas
+  - webspark_webdir
+  - maxlength
+  - field_states_ui
+  - file_mdm
+  - sophron
+  - imagemagick
+themes:
+  - bartik
+  - seven
+  - renovation
+project: 'asu_webspark_profile'

@@ -1,0 +1,7 @@
+langcode: en
+status: true
+dependencies: {  }
+id: article_date
+label: 'Article date'
+locked: false
+pattern: 'F j, Y'

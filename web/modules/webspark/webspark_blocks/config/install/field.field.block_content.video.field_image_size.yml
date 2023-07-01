@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.video
+    - field.storage.block_content.field_image_size
+  module:
+    - options
+id: block_content.video.field_image_size
+field_name: field_image_size
+entity_type: block_content
+bundle: video
+label: 'Video Size'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: default
+default_value_callback: ''
+settings: {  }
+field_type: list_string

@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.web_directory
+    - field.storage.block_content.field_department_ids
+id: block_content.web_directory.field_department_ids
+field_name: field_department_ids
+entity_type: block_content
+bundle: web_directory
+label: Departments
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

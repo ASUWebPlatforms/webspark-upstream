@@ -1,0 +1,23 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - renovation
+id: pagetitle
+theme: renovation
+region: content
+weight: -3
+provider: null
+plugin: page_title_block
+settings:
+  id: page_title_block
+  label: 'Page title'
+  label_display: '0'
+  provider: core
+visibility:
+  request_path:
+    id: request_path
+    pages: "/user/*\r\n/node/*/layout/discard-changes\r\n/node/*/layout/revert"
+    negate: false

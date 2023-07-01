@@ -1,0 +1,56 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.image_background_with_cta
+    - field.field.block_content.image_background_with_cta.field_anchor_menu_settings
+    - field.field.block_content.image_background_with_cta.field_cta
+    - field.field.block_content.image_background_with_cta.field_heading
+    - field.field.block_content.image_background_with_cta.field_media
+    - field.field.block_content.image_background_with_cta.field_spacing_bottom
+    - field.field.block_content.image_background_with_cta.field_spacing_top
+  module:
+    - entity_reference_revisions
+id: block_content.image_background_with_cta.default
+targetEntityType: block_content
+bundle: image_background_with_cta
+mode: default
+content:
+  field_anchor_menu_settings:
+    weight: 3
+    label: above
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    type: entity_reference_revisions_entity_view
+    region: content
+  field_cta:
+    weight: 0
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    type: entity_reference_revisions_entity_view
+    region: content
+  field_heading:
+    weight: 1
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_media:
+    weight: 2
+    label: hidden
+    settings:
+      link: true
+      view_mode: default
+    third_party_settings: {  }
+    type: entity_reference_entity_view
+    region: content
+hidden:
+  field_spacing_bottom: true
+  field_spacing_top: true

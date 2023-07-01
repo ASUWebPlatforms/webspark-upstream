@@ -1,0 +1,7 @@
+# Define default links for this module.
+
+asu_brand.asu_brand_settings:
+  title: ASU Brand Settings
+  description: ASU Brand global settings for header, cookie consent and Google Tag Manager.
+  parent: system.admin_config_system
+  route_name: asu_brand.asu_brand_settings

@@ -1,0 +1,57 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.testimonial_carousel
+    - field.storage.block_content.field_testimonial
+    - paragraphs.paragraphs_type.testimonial
+  module:
+    - entity_reference_revisions
+id: block_content.testimonial_carousel.field_testimonial
+field_name: field_testimonial
+entity_type: block_content
+bundle: testimonial_carousel
+label: Testimonial
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      testimonial: testimonial
+    target_bundles_drag_drop:
+      accordion_panel:
+        weight: 11
+        enabled: false
+      card:
+        weight: 12
+        enabled: false
+      card_degree:
+        weight: 13
+        enabled: false
+      card_event:
+        weight: 14
+        enabled: false
+      card_media:
+        weight: 15
+        enabled: false
+      card_story:
+        weight: 16
+        enabled: false
+      cta:
+        weight: 17
+        enabled: false
+      gallery_image:
+        weight: 18
+        enabled: false
+      tab_content:
+        weight: 19
+        enabled: false
+      testimonial:
+        enabled: true
+        weight: 20
+field_type: entity_reference_revisions

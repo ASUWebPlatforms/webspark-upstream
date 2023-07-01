@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.donut_chart
+    - field.storage.block_content.field_heading
+id: block_content.donut_chart.field_heading
+field_name: field_heading
+entity_type: block_content
+bundle: donut_chart
+label: Text
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

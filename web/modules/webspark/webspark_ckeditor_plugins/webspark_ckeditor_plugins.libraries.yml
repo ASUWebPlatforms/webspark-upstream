@@ -1,0 +1,5 @@
+# Custom module library for general purposes.
+webspark.ckeditor.plugins:
+  css:
+    theme:
+      css/webspark-ckeditor.css: {}

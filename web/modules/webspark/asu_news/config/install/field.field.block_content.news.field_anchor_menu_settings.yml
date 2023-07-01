@@ -1,0 +1,147 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.news
+    - field.storage.block_content.field_anchor_menu_settings
+    - paragraphs.paragraphs_type.anchor_menu_settings
+  module:
+    - entity_reference_revisions
+id: block_content.news.field_anchor_menu_settings
+field_name: field_anchor_menu_settings
+entity_type: block_content
+bundle: news
+label: 'anchor Menu Settings'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      anchor_menu_settings: anchor_menu_settings
+    target_bundles_drag_drop:
+      accordion_panel:
+        weight: 41
+        enabled: false
+      anchor_menu_settings:
+        enabled: true
+        weight: 42
+      basic_list:
+        weight: 43
+        enabled: false
+      blockquote:
+        weight: 44
+        enabled: false
+      card:
+        weight: 45
+        enabled: false
+      card_degree:
+        weight: 46
+        enabled: false
+      card_event:
+        weight: 47
+        enabled: false
+      card_group_default:
+        weight: 48
+        enabled: false
+      card_group_degree:
+        weight: 49
+        enabled: false
+      card_group_story:
+        weight: 50
+        enabled: false
+      card_media:
+        weight: 51
+        enabled: false
+      card_story:
+        weight: 52
+        enabled: false
+      cta:
+        weight: 53
+        enabled: false
+      display_list:
+        weight: 54
+        enabled: false
+      display_list_item:
+        weight: 55
+        enabled: false
+      gallery_image:
+        weight: 56
+        enabled: false
+      icon_list:
+        weight: 57
+        enabled: false
+      icon_list_item:
+        weight: 58
+        enabled: false
+      level_1:
+        weight: 59
+        enabled: false
+      level_2:
+        weight: 60
+        enabled: false
+      level_3:
+        weight: 61
+        enabled: false
+      level_4:
+        weight: 62
+        enabled: false
+      level_5:
+        weight: 63
+        enabled: false
+      level_6:
+        weight: 64
+        enabled: false
+      list_item_simple:
+        weight: 66
+        enabled: false
+      lists:
+        weight: 65
+        enabled: false
+      multi_level_item:
+        weight: 67
+        enabled: false
+      multi_level_list:
+        weight: 68
+        enabled: false
+      ordered_level_1:
+        weight: 69
+        enabled: false
+      ordered_level_2:
+        weight: 70
+        enabled: false
+      ordered_level_3:
+        weight: 71
+        enabled: false
+      ordered_level_4:
+        weight: 72
+        enabled: false
+      ordered_level_5:
+        weight: 73
+        enabled: false
+      ordered_level_6:
+        weight: 74
+        enabled: false
+      ordered_multi_level_list:
+        weight: 75
+        enabled: false
+      step_list:
+        weight: 76
+        enabled: false
+      step_list_item:
+        weight: 77
+        enabled: false
+      tab_content:
+        weight: 78
+        enabled: false
+      testimonial:
+        weight: 79
+        enabled: false
+      tooltip:
+        weight: 80
+        enabled: false
+field_type: entity_reference_revisions

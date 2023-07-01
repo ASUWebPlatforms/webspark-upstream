@@ -1,0 +1,57 @@
+// ----------------------------------------------------------------------------
+// This file should contain only CSS that is different between Bootstrap
+// versions and should be deleted when Bootstrap is up to date.
+// ----------------------------------------------------------------------------
+
+.nav-link {
+  text-decoration: if($link-decoration == none, null, none);
+}
+
+.fa-stack {
+  vertical-align: middle;
+}
+
+// See _forms.scs from Bootstrap
+.invalid-feedback {
+  color: $uds-color-font-dark-error;
+}
+
+// The _cards.css from Bootstrap was updated
+.page__footer .card-header {
+  &:first-child {
+    @include border-radius(0 0 0 0);
+  }
+}
+
+// To be deleted when we update Bootstrap
+.accordion .card.card-foldable {
+  border-bottom: 1px solid #d0d0d0 !important;
+}
+
+// TODO:
+// These CSS rules are taken from the bootstrap4-theme package.
+// The same CSS rules are supposed to be inside Drupal,
+// but right now the CSS rules in Drupal are outdated.
+// Keep this class until Bootstrap is updated to a higher version.
+.container,
+.container-fluid,
+.container-xl,
+.container-lg,
+.container-md,
+.container-sm {
+  width: 100%;
+  padding-right: 12px;
+  padding-left: 12px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+@media (min-width: 1260px) {
+  .container-xl,
+  .container-lg,
+  .container-md,
+  .container-sm,
+  .container {
+    max-width: 1224px;
+  }
+}

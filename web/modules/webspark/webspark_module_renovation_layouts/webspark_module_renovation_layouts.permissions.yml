@@ -1,0 +1,4 @@
+administer webspark_module_renovation_layouts configuration:
+  title: 'Administer renovation_layouts configuration'
+  description: 'Optional description.'
+  restrict access: true

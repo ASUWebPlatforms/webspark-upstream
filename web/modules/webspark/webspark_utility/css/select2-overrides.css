@@ -1,0 +1,7 @@
+.webspark__option {
+  padding: 10px;
+}
+.webspark__option[class$="-bg"],
+.webspark__option {
+  color: transparent;
+}

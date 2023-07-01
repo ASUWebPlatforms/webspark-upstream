@@ -1,0 +1,19 @@
+langcode: en
+status: false
+dependencies:
+  module:
+    - webspark_blocks
+  theme:
+    - renovation
+id: backtotop
+theme: renovation
+region: content
+weight: -2
+provider: null
+plugin: webspark_blocks_back_to_top
+settings:
+  id: webspark_blocks_back_to_top
+  label: 'Back to Top'
+  label_display: '0'
+  provider: webspark_blocks
+visibility: {  }

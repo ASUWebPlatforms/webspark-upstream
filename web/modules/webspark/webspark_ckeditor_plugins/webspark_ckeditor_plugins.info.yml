@@ -1,0 +1,7 @@
+name: Webspark Ckeditor plugins
+type: module
+description: Module with custom ckeditor plugins
+core_version_requirement: ^8 || ^9
+package: webspark
+dependencies:
+  - ckeditor

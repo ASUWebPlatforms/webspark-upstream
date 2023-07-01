@@ -1,0 +1,54 @@
+.jstree-icon.jstree-checkbox.jstree-checkbox-disabled {
+  display: none;
+}
+.jstree-themeicon.fa-bookmark {
+  color: #a30046;
+}
+.jstree-anchor.jstree-disabled {
+  color: #000000;
+}
+
+#profiles-control-options-add-people,
+#profiles-control-options-list {
+  width: 100%;
+  text-align: center;
+  margin-top: 2rem;
+}
+
+#profiles-control-options-add-people .page-indicator-add-people,
+#profiles-control-options-list .page-indicator-add-people {
+  font-size: .85rem;
+}
+
+#profiles-control-options-add-people .left-control,
+#profiles-control-options-add-people .right-control,
+#profiles-control-options-list .left-control,
+#profiles-control-options-list .right-control {
+  cursor: pointer;
+  font-weight: bold;
+}
+#profiles-control-options-add-people .left-control,
+#profiles-control-options-list .left-control {
+  margin-right: 20px;
+}
+#profiles-control-options-add-people .left-control::before,
+#profiles-control-options-list .left-control::before {
+  content: '\00ab';
+  padding: .25rem;
+}
+#profiles-control-options-add-people .right-control::after,
+#profiles-control-options-list .right-control::after {
+  content: '\00bb';
+  padding-left: .25rem;
+}
+
+#profiles-control-options-add-people .right-control,
+#profiles-control-options-list .right-control {
+  margin-left: 20px;
+}
+#profiles-control-options-add-people .left-control:hover,
+#profiles-control-options-add-people .right-control:hover,
+#profiles-control-options-list .left-control:hover,
+#profiles-control-options-list .right-control:hover {
+  border-bottom: 1px solid rgb(221, 221, 221);
+}

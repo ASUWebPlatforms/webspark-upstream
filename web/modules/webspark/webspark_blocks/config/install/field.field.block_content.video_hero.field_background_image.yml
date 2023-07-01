@@ -1,0 +1,28 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.video_hero
+    - field.storage.block_content.field_background_image
+    - media.type.video_poster_image_73_100
+id: block_content.video_hero.field_background_image
+field_name: field_background_image
+entity_type: block_content
+bundle: video_hero
+label: Poster
+description: "Please add a poster image for image fall back in mobile devices.<br>\r\nRecommended image size: 375 x 512px."
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      video_poster_image_73_100: video_poster_image_73_100
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

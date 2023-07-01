@@ -1,0 +1,56 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.card_story.field_body
+    - field.field.paragraph.card_story.field_card_link
+    - field.field.paragraph.card_story.field_clickable
+    - field.field.paragraph.card_story.field_cta
+    - field.field.paragraph.card_story.field_cta_secondary
+    - field.field.paragraph.card_story.field_heading
+    - field.field.paragraph.card_story.field_link
+    - field.field.paragraph.card_story.field_media
+    - field.field.paragraph.card_story.field_show_borders
+    - field.field.paragraph.card_story.field_tags
+    - paragraphs.paragraphs_type.card_story
+  module:
+    - link
+  enforced:
+    module:
+      - webspark_blocks
+id: paragraph.card_story.default
+targetEntityType: paragraph
+bundle: card_story
+mode: default
+content:
+  field_card_link:
+    type: link
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_show_borders:
+    type: boolean
+    label: above
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    weight: 1
+    region: content
+hidden:
+  field_body: true
+  field_clickable: true
+  field_cta: true
+  field_cta_secondary: true
+  field_heading: true
+  field_link: true
+  field_media: true
+  field_tags: true

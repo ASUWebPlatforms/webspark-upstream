@@ -1,0 +1,7 @@
+asu_user.admin_settings:
+  path: /admin/config/people/asu_user
+  defaults:
+    _title: 'ASU User settings'
+    _form: \Drupal\asu_user\Form\AsuUserAdminSettings
+  requirements:
+    _permission: 'administer users'

@@ -1,0 +1,28 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.text_content
+    - field.storage.block_content.field_formatted_text
+  module:
+    - allowed_formats
+    - text
+third_party_settings:
+  allowed_formats:
+    basic_html: '0'
+    minimal_format: '0'
+    restricted_html: '0'
+    full_html: '0'
+    plain_text: '0'
+id: block_content.text_content.field_formatted_text
+field_name: field_formatted_text
+entity_type: block_content
+bundle: text_content
+label: 'Formatted Text'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

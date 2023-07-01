@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.video
+    - field.storage.block_content.field_add_drop_shadow
+id: block_content.video.field_add_drop_shadow
+field_name: field_add_drop_shadow
+entity_type: block_content
+bundle: video
+label: 'Add Drop Shadow'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

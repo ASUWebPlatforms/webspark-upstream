@@ -1,0 +1,9 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - paragraphs
+id: paragraph.link
+label: Link
+targetEntityType: paragraph
+cache: true

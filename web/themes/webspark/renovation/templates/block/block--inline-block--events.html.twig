@@ -1,0 +1,41 @@
+{#
+/**
+ * @file
+ * Template for event block.
+ */
+#}
+{% set classes = [
+  'block',
+  'block-' ~ configuration.provider|clean_class,
+  'block-' ~ plugin_id|clean_class,
+] %}
+{{ attach_library('asu_events/event-components-library') }}
+{{ attach_library('asu_react_integration/reactjs') }}
+
+<div{{ attributes.addClass(classes) }}>
+  {{ content.field_anchor_menu_settings }}
+  {{ title_prefix }}
+  {% if label %}
+    {% block label %}
+      <h2{{ title_attributes }}>{{ label }}</h2>
+    {% endblock %}
+  {% endif %}
+  {{ title_suffix }}
+  {{ content.field_tooltip }}
+
+  <div class="mt-2" id="{{ events_id }}">
+    ASU Events
+    {{ content|without(
+      'field_events_feed_filter',
+      'field_events_items_to_display',
+      'field_tooltip',
+      'field_spacing_bottom',
+      'field_spacing_top',
+      'field_events_heading',
+      'field_events_header_text_color',
+      'field_events_cta',
+      'field_events_cta_color',
+      'field_anchor_menu_settings',
+    )}}
+  </div>
+</div>

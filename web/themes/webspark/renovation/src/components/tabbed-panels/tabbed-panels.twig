@@ -1,0 +1,103 @@
+{# Generate tab headings #}
+<nav class="uds-tabbed-panels uds-content-align{% if is_dark %} uds-tabbed-panels-dark{% endif %}" aria-label="tabbed panels">
+
+  <div class="nav nav-tabs" id="nav-tab" role="tablist"  data-scroll-position="0">
+    {% for tab in tabs %}
+      {% if loop.first %}
+        <a class="nav-item nav-link active"
+           id="nav-{{ tab.heading|clean_id|lower }}-tab"
+           data-toggle="tab"
+           href="#nav-{{ tab.heading|clean_id|lower }}"
+           role="tab"
+           aria-controls="nav-{{ tab.heading|clean_id|lower }}"
+           aria-selected="true"
+           data-ga-event="link"
+           data-ga-action="click"
+           data-ga-name="onclick"
+           data-ga-type="internal link"
+           data-ga-section="{{ label }}"
+           data-ga-region="main content"
+           data-ga-text="{{ tab.heading }}">
+          {{ tab.heading }}
+        </a>
+      {% else %}
+        <a class="nav-item nav-link"
+           id="nav-{{ tab.heading|clean_id|lower }}-tab"
+           data-toggle="tab"
+           href="#nav-{{ tab.heading|clean_id|lower }}"
+           role="tab"
+           aria-controls="nav-{{ tab.heading|clean_id|lower }}"
+           aria-selected="false"
+           data-ga-event="link"
+           data-ga-action="click"
+           data-ga-name="onclick"
+           data-ga-type="internal link"
+           data-ga-section="{{ label }}"
+           data-ga-region="main content"
+           data-ga-text="{{ tab.heading }}">
+          {{ tab.heading }}
+        </a>
+      {% endif %}
+    {% endfor %}
+  </div>
+    <a
+      class="scroll-control-prev"
+      href="#carouselExampleControls"
+      role="button"
+      data-scroll="prev"
+      tabIndex="-1"
+      data-ga-event="select"
+      data-ga-action="click"
+      data-ga-name="onclick"
+      data-ga-type="carousel"
+      data-ga-section="{{ label }}"
+      data-ga-region="main content"
+      data-ga-text="left chevron">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a
+      class="scroll-control-next"
+      href="#carouselExampleControls"
+      role="button"
+      data-scroll="next"
+      tabIndex="-1"
+      data-ga-event="select"
+      data-ga-action="click"
+      data-ga-name="onclick"
+      data-ga-type="carousel"
+      data-ga-section="{{ label }}"
+      data-ga-region="main content"
+      data-ga-text="right chevron">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+</nav>
+
+{# Generate tab content #}
+<div class="tab-content" id="nav-tabContent">
+  {% for tab in tabs %}
+    {% if loop.first %}
+      <div class="tab-pane fade{% if is_dark %} text-white{% endif %} show active"
+           id="nav-{{ tab.heading|clean_id|lower }}"
+           role="tabpanel"
+           aria-labelledby="nav-{{ tab.heading|clean_id|lower }}-tab">
+        {{ tab.copy|raw }}
+
+        {{ tab.blocks }}
+      </div>
+    {% else %}
+      <div class="tab-pane fade{% if is_dark %} text-white{% endif %}"
+           id="nav-{{ tab.heading|clean_id|lower }}"
+           role="tabpanel"
+           aria-labelledby="nav-{{ tab.heading|clean_id|lower }}-tab">
+        {{ tab.copy|raw }}
+
+        {{ tab.blocks }}
+      </div>
+    {% endif %}
+  {% endfor %}
+</div>
+
+{{ attach_library('renovation/tabbed-panels') }}
+

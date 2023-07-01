@@ -1,0 +1,19 @@
+cropper:
+  version: 1.x
+  css:
+    component:
+      css/vertical-tabs.css: {}
+      css/details.css: {}
+    theme:
+      css/media-library.css: {}
+      css/overrides.css: {}
+modal:
+  version: 1.x
+  css:
+    theme:
+      css/modal.css: {}
+dialog-overrides:
+  version: 1.x
+  css:
+    theme:
+      css/dialog-overrides.css: {}

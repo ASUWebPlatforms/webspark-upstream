@@ -1,0 +1,12 @@
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - asu_degree_rfi
+id: degree_details_next_steps
+label: 'Degree details next steps card'
+icon_uuid: null
+icon_default: null
+description: 'Next steps cards for individual Degree Details pages'
+behavior_plugins: {  }

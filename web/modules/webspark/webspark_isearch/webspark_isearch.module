@@ -1,0 +1,46 @@
+<?php
+
+use Drupal\block\Entity\Block;
+use Drupal\media\Entity\Media;
+use Drupal\file\Entity\File;
+
+function webspark_isearch_theme_suggestions_block_alter(array &$suggestions, array $variables) {
+  if (isset($variables['elements']['content']['#block_content'])) {
+    $blockType = $variables['elements']['content']['#block_content']->bundle();
+    if ($blockType == 'isearch') {
+      if (isset($variables['elements']['content']['#block_content'])) {
+        $blockContent = $variables['elements']['content']['#block_content'];
+        $type = $blockContent->get('field_isearchtype');
+        $typeString = $type->get(0)->get('value')->getString();
+        $suggestions[] = 'block__' . 'isearch_' . $typeString;
+      }
+    }
+  }
+}
+
+/*
+ * Implements hook_preprocess_block().
+ */
+function webspark_isearch_preprocess_block(&$variables) {
+  // Check if we have a block entity.
+  if (isset($variables['content']['#block_content']) && ($block = $variables['content']['#block_content']) &&
+    isset($variables['derivative_plugin_id']) && $variables['derivative_plugin_id'] == 'isearch') {
+    // Split the asurite id for the react component.
+    if (isset($block->field_ids->value) && $asurite_id = $block->field_ids->value) {
+      // Should be in form: "asuriteId1"-deptid1, "asuriteId2"-deptid2, ...
+      $persons = explode(",", $asurite_id);
+      $ids = $sourceIds = [];
+      foreach ($persons as $person) {
+        $parts = explode("-", $person);
+        $ids[] = $parts[0];
+        $sourceIds[] = $parts[1];
+      }
+      $variables['ids'] = implode(",", $ids);
+      $variables['sourceIds'] = implode(",", $sourceIds);
+    }
+    //Set default image.
+    $module_handler = \Drupal::service('module_handler');
+    $path_module = $module_handler->getModule('webspark_isearch')->getPath();
+    $variables['defaultPhoto'] = base_path() . $path_module . '/img/avatar.png';
+  }
+}

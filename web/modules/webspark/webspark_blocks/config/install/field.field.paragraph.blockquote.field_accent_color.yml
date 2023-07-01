@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_accent_color
+    - paragraphs.paragraphs_type.blockquote
+  module:
+    - options
+id: paragraph.blockquote.field_accent_color
+field_name: field_accent_color
+entity_type: paragraph
+bundle: blockquote
+label: 'Accent Color'
+description: ''
+required: true
+translatable: true
+default_value:
+  -
+    value: accent-maroon
+default_value_callback: ''
+settings: {  }
+field_type: list_string

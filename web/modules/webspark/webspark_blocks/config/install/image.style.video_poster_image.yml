@@ -1,0 +1,25 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - crop.type.mobile_video_poster
+  module:
+    - crop
+name: video_poster_image
+label: 'Video Poster Image'
+effects:
+  2fc58e46-4deb-4b5f-8770-e2a0a1c41dec:
+    uuid: 2fc58e46-4deb-4b5f-8770-e2a0a1c41dec
+    id: crop_crop
+    weight: 1
+    data:
+      crop_type: mobile_video_poster
+      automatic_crop_provider: null
+  675ebd1f-0b5c-4040-8b98-11268d137f67:
+    uuid: 675ebd1f-0b5c-4040-8b98-11268d137f67
+    id: image_scale
+    weight: 2
+    data:
+      width: 375
+      height: null
+      upscale: false

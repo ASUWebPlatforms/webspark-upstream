@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.web_directory
+    - field.storage.block_content.field_filter_title
+id: block_content.web_directory.field_filter_title
+field_name: field_filter_title
+entity_type: block_content
+bundle: web_directory
+label: 'Filter by title'
+description: '<span class="description form-text text-muted">Add one title per row. Title match is case-sensitive. Profiles displayed must match one of these titles.</span>'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

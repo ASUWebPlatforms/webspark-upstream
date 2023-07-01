@@ -1,0 +1,9 @@
+.jstree-icon.jstree-checkbox.jstree-checkbox-disabled {
+  display: none;
+}
+.jstree-themeicon.fa-bookmark {
+  color: #a30046;
+}
+.jstree-anchor.jstree-disabled {
+  color: #000000;
+}

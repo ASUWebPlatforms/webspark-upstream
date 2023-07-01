@@ -1,0 +1,17 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.gallery_image.field_formatted_text
+    - field.field.paragraph.gallery_image.field_media
+    - field.field.paragraph.gallery_image.field_title
+    - paragraphs.paragraphs_type.gallery_image
+id: paragraph.gallery_image.default
+targetEntityType: paragraph
+bundle: gallery_image
+mode: default
+content: {  }
+hidden:
+  field_formatted_text: true
+  field_media: true
+  field_title: true

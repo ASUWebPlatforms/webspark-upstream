@@ -1,0 +1,25 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - crop.type.16_9
+  module:
+    - crop
+name: block_image_16_9_med
+label: 'Block Image 16:9 MED'
+effects:
+  66481a99-9729-4a4f-8358-4709592f117f:
+    uuid: 66481a99-9729-4a4f-8358-4709592f117f
+    id: crop_crop
+    weight: 1
+    data:
+      crop_type: '16_9'
+      automatic_crop_provider: null
+  9189f0ad-656f-4ea0-9914-3a7252b0f900:
+    uuid: 9189f0ad-656f-4ea0-9914-3a7252b0f900
+    id: image_scale
+    weight: 2
+    data:
+      width: 600
+      height: null
+      upscale: false

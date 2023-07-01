@@ -1,0 +1,100 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.card_media.field_cta
+    - field.field.paragraph.card_media.field_cta_secondary
+    - field.field.paragraph.card_media.field_formatted_text
+    - field.field.paragraph.card_media.field_heading
+    - field.field.paragraph.card_media.field_icon
+    - field.field.paragraph.card_media.field_link
+    - field.field.paragraph.card_media.field_media
+    - field.field.paragraph.card_media.field_tags
+    - paragraphs.paragraphs_type.card_media
+  module:
+    - fontawesome
+    - link
+    - paragraphs
+    - text
+id: paragraph.card_media.default
+targetEntityType: paragraph
+bundle: card_media
+mode: default
+content:
+  field_cta:
+    weight: 5
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: cta
+    third_party_settings: {  }
+    type: entity_reference_paragraphs
+    region: content
+  field_cta_secondary:
+    weight: 7
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: ''
+    third_party_settings: {  }
+    type: entity_reference_paragraphs
+    region: content
+  field_formatted_text:
+    weight: 3
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
+    region: content
+  field_heading:
+    weight: 2
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_icon:
+    weight: 0
+    settings: {  }
+    third_party_settings: {  }
+    type: fontawesome_icon_widget
+    region: content
+  field_link:
+    weight: 4
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+    type: link_default
+    region: content
+  field_media:
+    weight: 1
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
+  field_tags:
+    weight: 6
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
+hidden:
+  created: true
+  status: true

@@ -1,0 +1,5 @@
+webdir.settings:
+  title: Web Directory
+  parent: system.admin_config
+  route_name: webdir.settings
+  weight: 1

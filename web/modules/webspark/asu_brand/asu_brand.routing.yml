@@ -1,0 +1,7 @@
+asu_brand.asu_brand_settings:
+  path: '/admin/config/asu_brand/settings'
+  defaults:
+    _form: '\Drupal\asu_brand\Form\AsuBrandSettingsForm'
+    _title: 'ASU Brand settings'
+  requirements:
+    _permission: 'administer site configuration'

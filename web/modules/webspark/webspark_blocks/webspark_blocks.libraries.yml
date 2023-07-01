@@ -1,0 +1,11 @@
+# Custom module library for general purposes.
+webspark_blocks:
+  css:
+    component:
+      css/webspark-blocks.css: {}
+
+anchor_menu:
+  dependencies:
+    - asu_brand/components-library
+  js:
+    js/anchor-menu.js: { weight: -1 }

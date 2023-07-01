@@ -1,0 +1,14 @@
+langcode: en
+status: true
+dependencies: {  }
+name: hero
+label: 'Hero (1920x1200)'
+effects:
+  869ce27f-f47e-42ed-87b4-5f4c4181e47d:
+    uuid: 869ce27f-f47e-42ed-87b4-5f4c4181e47d
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 1920
+      height: 1200
+      anchor: center-center

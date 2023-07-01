@@ -1,0 +1,12 @@
+langcode: en
+status: true
+dependencies: {  }
+id: video_poster_image_73_100
+label: 'Video Poster Image (73:100)'
+description: 'Use for video poster images in mobile devices'
+source: image
+queue_thumbnail_downloads: false
+new_revision: false
+source_configuration:
+  source_field: field_media_image
+field_map: {  }

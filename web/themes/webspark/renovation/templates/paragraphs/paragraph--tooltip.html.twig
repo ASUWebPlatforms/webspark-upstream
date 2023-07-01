@@ -1,0 +1,12 @@
+{% if content.field_heading|render is not empty or content.field_formatted_text|render is not empty %}
+  {% block paragraph %}
+    {% block content %}
+      {% include '@renovation/tooltips/tooltip.twig' with {
+        background: content.field_tooltip_background[0]['#markup'],
+        heading: content.field_heading|render,
+        tooltip : content.field_formatted_text|render,
+        paragraph_id: paragraph.uuid.value,
+      } %}
+    {% endblock %}
+  {% endblock paragraph %}
+{% endif %}

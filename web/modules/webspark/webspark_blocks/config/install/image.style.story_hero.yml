@@ -1,0 +1,14 @@
+langcode: en
+status: true
+dependencies: {  }
+name: story_hero
+label: 'Story Hero'
+effects:
+  521a625c-de7c-4152-8a9d-a668d846c3c0:
+    uuid: 521a625c-de7c-4152-8a9d-a668d846c3c0
+    id: image_scale
+    weight: 2
+    data:
+      width: 1800
+      height: null
+      upscale: false

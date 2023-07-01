@@ -1,0 +1,44 @@
+.layout-builder-form {
+  .form-actions {
+    display: flex;
+    justify-content: space-between;
+    background: #efefef;
+    padding: 10px;
+    position: fixed;
+    bottom: 0;
+    left: calc(50% - 400px);
+    z-index: 10;
+    align-items: baseline;
+    border-radius: 20px 20px 0 0;
+    width: 800px;
+  }
+}
+
+body .layout-builder-block {
+  background: none;
+}
+
+// Adjust the styles of the description boxes found in .layout-builder-configure-section
+#drupal-off-canvas {
+  .form-text,
+  .form-tel,
+  .form-email,
+  .form-url,
+  .form-search,
+  .form-number,
+  .form-color,
+  .form-file,
+  .form-textarea,
+  .form-date,
+  .form-time {
+    &.description {
+      background-color: transparent;
+      border-color: transparent;
+      box-shadow: none;
+      color: #ddd !important;
+      font-size: 10px !important;
+      margin-top: 0 !important;
+      padding-left: 0;
+    }
+  }
+}

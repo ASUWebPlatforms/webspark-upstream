@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.webform
+    - field.storage.block_content.field_spacing_bottom
+  module:
+    - options
+id: block_content.webform.field_spacing_bottom
+field_name: field_spacing_bottom
+entity_type: block_content
+bundle: webform
+label: 'Spacing bottom'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

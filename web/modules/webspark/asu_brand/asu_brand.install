@@ -1,0 +1,13 @@
+<?php
+
+/**
+ * Implements hook_update_N();
+ * Set search default settings.
+ */
+function asu_brand_update_9001() {
+  $config_factory = \Drupal::configFactory();
+  $config = $config_factory->getEditable('asu_brand.settings');
+  $config->set('asu_brand.asu_brand_search_url', 'https://search.asu.edu/search');
+  $config->set('asu_brand.asu_brand_local_search_url', $GLOBALS['base_url']);
+  $config->save(TRUE);
+}

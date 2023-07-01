@@ -1,0 +1,25 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.menu_sidebar
+    - field.field.block_content.menu_sidebar.field_menu
+    - field.field.block_content.menu_sidebar.field_spacing_bottom
+    - field.field.block_content.menu_sidebar.field_spacing_top
+  module:
+    - field_menu
+id: block_content.menu_sidebar.default
+targetEntityType: block_content
+bundle: menu_sidebar
+mode: default
+content:
+  field_menu:
+    weight: 0
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: field_menu_tree_formatter
+    region: content
+hidden:
+  field_spacing_bottom: true
+  field_spacing_top: true

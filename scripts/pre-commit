@@ -1,0 +1,41 @@
+#!/bin/bash
+
+# Run Drupal code sniffing before committing
+PROJECT_PATH=$(git rev-parse --show-toplevel)
+PHPCS_BIN="$PROJECT_PATH/vendor/bin/phpcs"
+PHPCSCHANGED="$PROJECT_PATH/vendor/bin/phpcs-changed"
+DRUPAL_STANDARD="$PROJECT_PATH/vendor/drupal/coder/coder_sniffer/Drupal"
+WEBSPARK_MODULE_PATH="$PROJECT_PATH/web/modules/webspark/"
+
+# Get the list of files with changes to be committed
+STAGED_FILES=$(git diff-index --name-only --cached HEAD --diff-filter=ACM $WEBSPARK_MODULE_PATH | grep -E '\.(php|module|inc|install|test|profile|theme|css|info|txt|md)$')
+
+# Run the code sniffing on each staged file
+echo "Running Drupal code standard validation on staged files..."
+# Initialize FLAG to zero. If there are any errors, it will be set to 1.
+FLAG=0
+for FILE in $STAGED_FILES
+do
+    OUTPUT=$($PHPCSCHANGED --git --git-staged --phpcs-path $PHPCS_BIN --extensions=php,module,inc,install,test,profile,theme,css,info,txt,md --standard $DRUPAL_STANDARD $FILE)
+
+    # Check if there are any errors
+    if [ -n "$OUTPUT" ]; then
+        echo ""
+        echo "PHP CodeSniffer found coding standards violations in file: $FILE"
+        echo "Staged code that needs to be fixed:"
+        echo "------------------------------------"
+        echo ""
+        echo "$OUTPUT"
+        echo ""
+        echo "Please fix the violations before committing."
+        echo ""
+        FLAG=1
+    fi
+done
+
+# When FLAG is set to 1, we need to stop the commit action and check/fix errors.
+if [[ $FLAG -eq 1 ]]; then
+	exit 1
+fi
+
+exit 0

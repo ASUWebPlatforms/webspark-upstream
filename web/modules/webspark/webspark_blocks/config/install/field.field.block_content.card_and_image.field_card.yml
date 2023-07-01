@@ -1,0 +1,81 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.card_and_image
+    - field.storage.block_content.field_card
+    - paragraphs.paragraphs_type.card_with_icon
+  module:
+    - entity_reference_revisions
+id: block_content.card_and_image.field_card
+field_name: field_card
+entity_type: block_content
+bundle: card_and_image
+label: Card
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      card_with_icon: card_with_icon
+    target_bundles_drag_drop:
+      accordion_panel:
+        weight: 19
+        enabled: false
+      anchor_menu_settings:
+        weight: 20
+        enabled: false
+      blockquote:
+        weight: 21
+        enabled: false
+      card:
+        weight: 22
+        enabled: false
+      card_degree:
+        weight: 23
+        enabled: false
+      card_event:
+        weight: 24
+        enabled: false
+      card_group_default:
+        weight: 25
+        enabled: false
+      card_group_degree:
+        weight: 26
+        enabled: false
+      card_group_story:
+        weight: 27
+        enabled: false
+      card_group_with_icon:
+        weight: 28
+        enabled: false
+      card_media:
+        weight: 29
+        enabled: false
+      card_story:
+        weight: 30
+        enabled: false
+      card_with_icon:
+        enabled: true
+        weight: 31
+      cta:
+        weight: 32
+        enabled: false
+      gallery_image:
+        weight: 33
+        enabled: false
+      tab_content:
+        weight: 34
+        enabled: false
+      testimonial:
+        weight: 35
+        enabled: false
+      tooltip:
+        weight: 36
+        enabled: false
+field_type: entity_reference_revisions

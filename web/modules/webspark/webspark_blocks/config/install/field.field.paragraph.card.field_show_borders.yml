@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_show_borders
+    - paragraphs.paragraphs_type.card
+id: paragraph.card.field_show_borders
+field_name: field_show_borders
+entity_type: paragraph
+bundle: card
+label: 'Show borders'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

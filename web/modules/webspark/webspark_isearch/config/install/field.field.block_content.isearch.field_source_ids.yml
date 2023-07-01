@@ -1,0 +1,21 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.isearch
+    - field.storage.block_content.field_source_ids
+  enforced:
+    module:
+      - webspark_isearch
+id: block_content.isearch.field_source_ids
+field_name: field_source_ids
+entity_type: block_content
+bundle: isearch
+label: 'Dept IDs'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

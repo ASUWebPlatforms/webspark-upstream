@@ -1,0 +1,23 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.banner
+    - field.storage.block_content.field_banner_text
+  module:
+    - text
+  enforced:
+    module:
+      - webspark_blocks
+id: block_content.banner.field_banner_text
+field_name: field_banner_text
+entity_type: block_content
+bundle: banner
+label: 'Banner Text'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

@@ -1,0 +1,25 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.isearch
+    - field.storage.block_content.field_isearchtype
+  enforced:
+    module:
+      - webspark_isearch
+  module:
+    - options
+id: block_content.isearch.field_isearchtype
+field_name: field_isearchtype
+entity_type: block_content
+bundle: isearch
+label: Type
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: customList
+default_value_callback: ''
+settings: {  }
+field_type: list_string

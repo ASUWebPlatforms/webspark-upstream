@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.grid_links
+    - field.storage.block_content.field_links_color
+  module:
+    - options
+id: block_content.grid_links.field_links_color
+field_name: field_links_color
+entity_type: block_content
+bundle: grid_links
+label: 'Links Text Color'
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    value: ''' '''
+default_value_callback: ''
+settings: {  }
+field_type: list_string

@@ -1,0 +1,14 @@
+langcode: en
+status: true
+dependencies: {  }
+name: card_top_image
+label: 'Card top image'
+effects:
+  23d32fd3-5255-494d-be76-fe554fb13dc8:
+    uuid: 23d32fd3-5255-494d-be76-fe554fb13dc8
+    id: image_scale
+    weight: 1
+    data:
+      width: 382
+      height: null
+      upscale: true

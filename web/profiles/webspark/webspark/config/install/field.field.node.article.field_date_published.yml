@@ -1,0 +1,23 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_date_published
+    - node.type.article
+  module:
+    - datetime
+id: node.article.field_date_published
+field_name: field_date_published
+entity_type: node
+bundle: article
+label: 'Article published date'
+description: 'Date you want displayed above article. By default, it''s the publication date - but it can be updated to whenever. (There is no "Created on X, Updated on Y" functionality.)'
+required: false
+translatable: false
+default_value:
+  -
+    default_date_type: now
+    default_date: now
+default_value_callback: ''
+settings: {  }
+field_type: datetime

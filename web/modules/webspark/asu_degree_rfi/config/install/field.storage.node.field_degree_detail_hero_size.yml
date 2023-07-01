@@ -1,0 +1,32 @@
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - asu_degree_rfi
+  module:
+    - node
+    - options
+id: node.field_degree_detail_hero_size
+field_name: field_degree_detail_hero_size
+entity_type: node
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: small
+      label: small
+    -
+      value: medium
+      label: medium
+    -
+      value: large
+      label: large
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

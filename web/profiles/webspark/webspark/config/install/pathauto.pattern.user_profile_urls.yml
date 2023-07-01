@@ -1,0 +1,13 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - user
+id: user_profile_urls
+label: 'User Profile URLs'
+type: 'canonical_entities:user'
+pattern: 'user/[user:account-name]'
+selection_criteria: {  }
+selection_logic: and
+weight: 10
+relationships: {  }

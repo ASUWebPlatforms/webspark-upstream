@@ -1,0 +1,17 @@
+{#
+/**
+ * @file
+ * Template for a Dropdown menu component.
+ */
+#}
+
+{% set nav_link_class = 'nav-link' %}
+
+
+<div id="{{ item_title|replace({' ' : '-'})|lower }}" class="collapse card-body" aria-labelledby="{{ item_title|replace({' ' : '-'})|lower }}" data-parent=".sidebar">
+  {% for item in items %}
+    {%  set link_class = item.link['#options'].set_active_class ? 'active' %}
+    {{ link(item.title, item.url, { 'class': nav_link_class }) }}
+  {% endfor %}
+</div>
+

@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_header_style
+    - node.type.article
+  module:
+    - options
+id: node.article.field_header_style
+field_name: field_header_style
+entity_type: node
+bundle: article
+label: 'Hero Size'
+description: 'Select either default or large header.'
+required: true
+translatable: false
+default_value:
+  -
+    value: default
+default_value_callback: ''
+settings: {  }
+field_type: list_string

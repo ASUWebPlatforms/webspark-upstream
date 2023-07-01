@@ -1,0 +1,40 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.tooltip.field_formatted_text
+    - field.field.paragraph.tooltip.field_heading
+    - field.field.paragraph.tooltip.field_tooltip_background
+    - paragraphs.paragraphs_type.tooltip
+  module:
+    - text
+id: paragraph.tooltip.default
+targetEntityType: paragraph
+bundle: tooltip
+mode: default
+content:
+  field_formatted_text:
+    weight: 1
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
+    region: content
+  field_heading:
+    weight: 0
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_tooltip_background:
+    weight: 2
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+hidden:
+  created: true
+  status: true

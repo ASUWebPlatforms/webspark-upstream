@@ -1,0 +1,102 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.content_image
+    - field.field.block_content.content_image.field_anchor_menu_settings
+    - field.field.block_content.content_image.field_content_position
+    - field.field.block_content.content_image.field_formatted_text
+    - field.field.block_content.content_image.field_heading
+    - field.field.block_content.content_image.field_media
+    - field.field.block_content.content_image.field_spacing_bottom
+    - field.field.block_content.content_image.field_spacing_top
+  module:
+    - field_group
+    - media_library
+    - paragraphs
+    - text
+third_party_settings:
+  field_group:
+    group_appearance_settings:
+      children:
+        - field_anchor_menu_settings
+        - field_spacing_top
+        - field_spacing_bottom
+      parent_name: ''
+      weight: 5
+      format_type: tab
+      region: content
+      format_settings:
+        id: ''
+        classes: ''
+        description: ''
+        formatter: closed
+        required_fields: true
+      label: 'Appearance Settings'
+id: block_content.content_image.default
+targetEntityType: block_content
+bundle: content_image
+mode: default
+content:
+  field_anchor_menu_settings:
+    weight: 8
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: ''
+    third_party_settings: {  }
+    type: entity_reference_paragraphs
+    region: content
+  field_content_position:
+    weight: 4
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  field_formatted_text:
+    weight: 3
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
+    region: content
+  field_heading:
+    weight: 2
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_media:
+    weight: 1
+    settings:
+      media_types: {  }
+    third_party_settings: {  }
+    type: media_library_widget
+    region: content
+  field_spacing_bottom:
+    weight: 10
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  field_spacing_top:
+    weight: 9
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  info:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden: {  }

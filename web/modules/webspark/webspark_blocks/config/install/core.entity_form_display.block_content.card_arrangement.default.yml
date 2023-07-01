@@ -1,0 +1,174 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.card_arrangement
+    - field.field.block_content.card_arrangement.field_anchor_menu_settings
+    - field.field.block_content.card_arrangement.field_card_arrangement_display
+    - field.field.block_content.card_arrangement.field_card_group
+    - field.field.block_content.card_arrangement.field_cta
+    - field.field.block_content.card_arrangement.field_formatted_text
+    - field.field.block_content.card_arrangement.field_heading
+    - field.field.block_content.card_arrangement.field_spacing_bottom
+    - field.field.block_content.card_arrangement.field_spacing_top
+    - field.field.block_content.card_arrangement.field_text_color
+    - field.field.block_content.card_arrangement.field_tooltip
+  module:
+    - field_group
+    - paragraphs
+    - text
+third_party_settings:
+  field_group:
+    group_appearance_settings:
+      children:
+        - field_anchor_menu_settings
+        - field_spacing_top
+        - field_spacing_bottom
+      parent_name: ''
+      weight: 4
+      format_type: details
+      region: content
+      format_settings:
+        id: ''
+        classes: ''
+        description: ''
+        formatter: closed
+        required_fields: true
+        direction: vertical
+        open: false
+      label: 'Appearance Settings'
+    group_main_content:
+      children:
+        - field_heading
+        - field_text_color
+        - field_cta
+        - field_formatted_text
+        - field_tooltip
+      parent_name: ''
+      weight: 2
+      format_type: details
+      region: content
+      format_settings:
+        id: ''
+        classes: ''
+        description: ''
+        formatter: closed
+        required_fields: true
+        open: false
+      label: 'Main Content'
+    group_cards:
+      children:
+        - field_card_group
+      parent_name: ''
+      weight: 3
+      format_type: details
+      region: content
+      format_settings:
+        id: ''
+        classes: ''
+        description: ''
+        open: false
+        required_fields: true
+      label: Cards
+id: block_content.card_arrangement.default
+targetEntityType: block_content
+bundle: card_arrangement
+mode: default
+content:
+  field_anchor_menu_settings:
+    weight: 26
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: ''
+    third_party_settings: {  }
+    type: entity_reference_paragraphs
+    region: content
+  field_card_arrangement_display:
+    weight: 29
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  field_card_group:
+    weight: 1
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      add_mode: button
+      form_display_mode: default
+      default_paragraph_type: _none
+    third_party_settings: {  }
+    type: entity_reference_paragraphs
+    region: content
+  field_cta:
+    type: entity_reference_paragraphs
+    weight: 3
+    region: content
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      add_mode: dropdown
+      form_display_mode: styled
+      default_paragraph_type: cta
+    third_party_settings: {  }
+  field_formatted_text:
+    type: text_textarea
+    weight: 4
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_heading:
+    type: string_textfield
+    weight: 1
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_spacing_bottom:
+    weight: 28
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  field_spacing_top:
+    weight: 27
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  field_text_color:
+    weight: 2
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  field_tooltip:
+    weight: 5
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: _none
+    third_party_settings: {  }
+    type: entity_reference_paragraphs
+    region: content
+  info:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden: {  }

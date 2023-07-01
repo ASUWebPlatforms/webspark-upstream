@@ -1,0 +1,24 @@
+# CSS libraries for Layout plugins.
+twocol_bootstrap_section:
+  version: VERSION
+  css:
+    theme:
+      layouts/twocol_bootstrap_section/twocol_bootstrap_section.css: {}
+
+onecol_full_width_section:
+  version: 1.0
+  css:
+    theme:
+      layouts/onecol_full_width_section/onecol_full_width_section.css: {}
+
+threecol_fixed_width_section:
+  version: 1.0
+  css:
+    theme:
+      layouts/threecol_fixed_width_section/threecol-fixed-width-section.css: {}
+
+fourcol_fixed_width_section:
+  version: 1.0
+  css:
+    theme:
+      layouts/fourcol_fixed_width_section/fourcol-fixed-width-section.css: {}

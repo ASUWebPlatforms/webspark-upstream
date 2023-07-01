@@ -1,0 +1,11 @@
+news-component:
+  version: 1.0.0
+  dependencies:
+    - asu_react_integration/reactjs
+    - core/jquery
+    - core/drupal
+    - core/drupalSettings
+  js:
+    node_modules/@asu/component-news/dist/vendor.umd.js: { }
+    node_modules/@asu/component-news/dist/asuNews.umd.js: { }
+    js/asu_news.js: { }

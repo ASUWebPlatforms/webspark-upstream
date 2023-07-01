@@ -1,0 +1,33 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_form_mode.paragraph.with_icon
+    - field.field.paragraph.cta.field_cta_link
+    - field.field.paragraph.cta.field_icon
+    - paragraphs.paragraphs_type.cta
+  module:
+    - fontawesome_iconpicker_widget
+    - link
+id: paragraph.cta.with_icon
+targetEntityType: paragraph
+bundle: cta
+mode: with_icon
+content:
+  field_cta_link:
+    type: link_default
+    weight: 0
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+  field_icon:
+    type: fontawesome_iconpicker_widget
+    weight: 1
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

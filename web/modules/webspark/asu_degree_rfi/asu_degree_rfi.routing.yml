@@ -1,0 +1,15 @@
+asu_degree_rfi.asu_degree_rfi_settings:
+  path: '/admin/config/asu_degree_rfi/settings'
+  defaults:
+    _form: '\Drupal\asu_degree_rfi\Form\AsuDegreeRfiSettingsForm'
+    _title: 'ASU Degree RFI settings'
+  requirements:
+    _permission: 'administer site configuration'
+asu_degree_rfi.asu_degree_rfi_proxy:
+  path: '/endpoint/asu-rfi-submit-proxy'
+  defaults:
+    _controller: Drupal\asu_degree_rfi\Controller\AsuDegreeRfiSubmitProxy::asuRfiSubmit
+    _title: 'RFI Submit Proxy'
+  requirements:
+    _permission: 'access content'
+  methods: [POST]

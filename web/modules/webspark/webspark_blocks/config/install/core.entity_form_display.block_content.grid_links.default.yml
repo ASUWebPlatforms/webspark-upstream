@@ -1,0 +1,93 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.grid_links
+    - field.field.block_content.grid_links.field_grid_links_display
+    - field.field.block_content.grid_links.field_links
+    - field.field.block_content.grid_links.field_links_color
+    - field.field.block_content.grid_links.field_spacing_bottom
+    - field.field.block_content.grid_links.field_spacing_top
+    - field.field.block_content.grid_links.field_tooltip
+  module:
+    - field_group
+    - paragraphs
+third_party_settings:
+  field_group:
+    group_appearance_settings:
+      children:
+        - field_spacing_top
+        - field_spacing_bottom
+      parent_name: ''
+      weight: 4
+      format_type: tab
+      region: content
+      format_settings:
+        id: ''
+        classes: ''
+        description: ''
+        formatter: closed
+        required_fields: true
+      label: 'Appearance Settings'
+id: block_content.grid_links.default
+targetEntityType: block_content
+bundle: grid_links
+mode: default
+content:
+  field_grid_links_display:
+    weight: 1
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  field_links:
+    type: entity_reference_paragraphs
+    weight: 3
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      add_mode: dropdown
+      form_display_mode: with_icon
+      default_paragraph_type: cta
+    third_party_settings: {  }
+    region: content
+  field_links_color:
+    weight: 2
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  field_spacing_bottom:
+    weight: 6
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  field_spacing_top:
+    weight: 5
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  field_tooltip:
+    weight: 5
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: _none
+    third_party_settings: {  }
+    type: entity_reference_paragraphs
+    region: content
+  info:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden: {  }

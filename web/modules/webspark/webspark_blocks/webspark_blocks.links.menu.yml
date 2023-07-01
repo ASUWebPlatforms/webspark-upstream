@@ -1,0 +1,5 @@
+webspark_blocks.admin_settings:
+  route_name: webspark_blocks.admin_settings
+  title: 'Webspark blocks settings'
+  description: 'Configure Webspark blocks settings'
+  parent: system.admin_config_system

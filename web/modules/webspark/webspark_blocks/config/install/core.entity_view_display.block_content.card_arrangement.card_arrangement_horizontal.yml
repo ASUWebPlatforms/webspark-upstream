@@ -1,0 +1,38 @@
+langcode: en
+status: false
+dependencies:
+  config:
+    - block_content.type.card_arrangement
+    - core.entity_view_mode.block_content.card_arrangement_horizontal
+    - field.field.block_content.card_arrangement.field_anchor_menu_settings
+    - field.field.block_content.card_arrangement.field_card_arrangement_display
+    - field.field.block_content.card_arrangement.field_card_group
+    - field.field.block_content.card_arrangement.field_cta
+    - field.field.block_content.card_arrangement.field_formatted_text
+    - field.field.block_content.card_arrangement.field_heading
+    - field.field.block_content.card_arrangement.field_spacing_bottom
+    - field.field.block_content.card_arrangement.field_spacing_top
+    - field.field.block_content.card_arrangement.field_text_color
+    - field.field.block_content.card_arrangement.field_tooltip
+  module:
+    - layout_builder
+third_party_settings:
+  layout_builder:
+    allow_custom: false
+    enabled: false
+id: block_content.card_arrangement.card_arrangement_horizontal
+targetEntityType: block_content
+bundle: card_arrangement
+mode: card_arrangement_horizontal
+content: {  }
+hidden:
+  field_anchor_menu_settings: true
+  field_card_arrangement_display: true
+  field_card_group: true
+  field_cta: true
+  field_formatted_text: true
+  field_heading: true
+  field_spacing_bottom: true
+  field_spacing_top: true
+  field_text_color: true
+  field_tooltip: true

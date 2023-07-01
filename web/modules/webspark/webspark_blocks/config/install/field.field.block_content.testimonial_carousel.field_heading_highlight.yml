@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.testimonial_carousel
+    - field.storage.block_content.field_heading_highlight
+  module:
+    - options
+id: block_content.testimonial_carousel.field_heading_highlight
+field_name: field_heading_highlight
+entity_type: block_content
+bundle: testimonial_carousel
+label: 'Heading Highlight'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

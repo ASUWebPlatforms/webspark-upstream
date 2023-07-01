@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.news
+    - field.storage.block_content.field_heading_text_color
+  module:
+    - options
+id: block_content.news.field_heading_text_color
+field_name: field_heading_text_color
+entity_type: block_content
+bundle: news
+label: 'Heading Text Color'
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    value: black
+default_value_callback: ''
+settings: {  }
+field_type: list_string

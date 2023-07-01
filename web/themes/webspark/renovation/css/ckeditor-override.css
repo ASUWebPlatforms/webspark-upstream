@@ -1,0 +1,230 @@
+span.btn.btn-maroon,
+span.btn.btn-dark,
+span.btn.btn-gold,
+span.btn.btn-gray {
+  margin-right: 2rem;
+}
+
+span.btn.btn-maroon a:link,
+span.btn.btn-dark a:link {
+  color: #fff;
+  text-decoration: none;
+}
+span.btn.btn-maroon a:visited,
+span.btn.btn-dark a:visited,
+span.btn.btn-maroon a:hover,
+span.btn.btn-dark a:hover,
+span.btn.btn-maroon a:active,
+span.btn.btn-dark a:active {
+  color: #fff;
+}
+
+span.btn.btn-gold a:link,
+span.btn.btn-gray a:link {
+  color: #212529;
+  text-decoration: none;
+}
+span.btn.btn-gold a:visited,
+span.btn.btn-gray a:visited,
+span.btn.btn-gold a:hover,
+span.btn.btn-gray a:hover,
+span.btn.btn-gold a:active,
+span.btn.btn-gray a:active {
+  color: #212529;
+}
+
+ul ul {
+  list-style: none;
+}
+
+ol ol {
+  list-style: none;
+}
+
+.caption > figcaption {
+  display: block;
+  width: 100%;
+}
+
+/*Overrides for Tool Tip*/
+.uds-tooltip .fa-stack {
+  height: 1em;
+  width: 1.5em;
+}
+.uds-tooltip .svg-inline--fa.fa-stack-2x {
+  height: 2em;
+  width: 2em;
+}
+.uds-tooltip:hover .fa-stack .fa-circle {
+  fill: #00b0f3;
+}
+.uds-tooltip-white .fa-stack .fa-circle {
+  fill: #d0d0d0;
+}
+.uds-tooltip-white .fa-stack .fa-info {
+  fill: #ffffff;
+}
+.uds-tooltip-base-gray .fa-stack .fa-circle {
+  fill: #bfbfbf;
+}
+.uds-tooltip-base-gray .fa-stack .fa-info {
+  fill: #fafafa;
+}
+.uds-tooltip-gray .fa-stack .fa-circle {
+  fill: #bfbfbf;
+}
+.uds-tooltip-gray .fa-stack .fa-info {
+  fill: #e8e8e8;
+}
+.uds-tooltip-dark .fa-stack .fa-circle {
+  color: #747474;
+}
+.uds-tooltip-dark .fa-stack .fa-info {
+  color: #191919;
+}
+
+/* Media library. Positions the edit button top left of inserted image as default position breaks the alignment of
+images in ckeditor.*/
+button.media-library-item__edit {
+  position: absolute;
+  left: 10px;
+  top: 10px;
+}
+
+/* Figcaption uses table layout in CK which conflicts with renovation css. */
+.caption > figcaption {
+  display: block;
+}
+
+.crop-preview-wrapper__preview-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin-bottom: 1em;
+}
+
+.image-data__crop-wrapper .crop-preview-wrapper__crop-reset {
+  margin-top: 1em;
+}
+
+.cropper--width-soft-limit-reached .point-n,
+.cropper--width-soft-limit-reached .point-s,
+.cropper--width-soft-limit-reached .point-ne,
+.cropper--width-soft-limit-reached .point-se,
+.cropper--width-soft-limit-reached .point-sw,
+.cropper--width-soft-limit-reached .point-nw {
+  background-color: #a51b00;
+}
+
+.cropper--height-soft-limit-reached .point-w,
+.cropper--height-soft-limit-reached .point-e,
+.cropper--height-soft-limit-reached .point-ne,
+.cropper--height-soft-limit-reached .point-se,
+.cropper--height-soft-limit-reached .point-nw,
+.cropper--height-soft-limit-reached .point-sw {
+  background-color: #a51b00;
+}
+
+.cropper--width-soft-limit-reached .cropper-point {
+  background-color: #a51b00;
+}
+
+.cropper--height-soft-limit-reached .line-w {
+  background-color: #ff0000;
+  opacity: 1;
+  width: 1px;
+  left: -1px;
+}
+
+.cropper--height-soft-limit-reached .line-e {
+  background-color: #ff0000;
+  opacity: 1;
+  width: 1px;
+  right: -1px;
+}
+
+.cropper--width-soft-limit-reached .line-n {
+  background-color: #ff0000;
+  opacity: 1;
+  height: 1px;
+  top: -1px;
+}
+
+.cropper--width-soft-limit-reached .line-s {
+  background-color: #ff0000;
+  opacity: 1;
+  height: 1px;
+  bottom: -1px;
+}
+
+.ckeditor-col-container > div {
+  margin: 0 !important;
+}
+
+@media screen and (max-width: 480px) {
+  .details-wrapper th {
+    display: none;
+  }
+
+  .details-wrapper table,
+  .details-wrapper thead,
+  .details-wrapper tbody,
+  .details-wrapper tr,
+  .details-wrapper td,
+  .details-wrapper th:first-child {
+    display: block;
+  }
+
+  .details-wrapper tr {
+    position: relative;
+    padding: 0;
+  }
+
+  .details-wrapper td {
+    padding: 10px 0;
+  }
+
+  .details-wrapper td  .button.js-form-submit.form-submit {
+    position: absolute;
+    left: 10px;
+    bottom: 10px;
+    max-width: 265px;
+  }
+}
+
+@media screen and (min-width: 641px) and (max-width: 1250px) {
+  .responsive-enabled--opened th {
+    display: none;
+  }
+
+  .responsive-enabled--opened,
+  .responsive-enabled--opened thead,
+  .responsive-enabled--opened tbody,
+  .responsive-enabled--opened tr,
+  .responsive-enabled--opened td,
+  .responsive-enabled--opened th:first-child {
+    display: block;
+  }
+
+  .responsive-enabled--opened tr {
+    position: relative;
+    width: 100%;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .responsive-enabled--opened td > .button.js-form-submit.form-submit {
+    position: absolute;
+    left: 10px;
+    bottom: 10px;
+    max-width: 265px;
+  }
+
+  .responsive-enabled--opened .vertical-tabs__menu {
+    width: 206px;
+  }
+
+  .responsive-enabled--opened .vertical-tabs__panes {
+    margin-left: 205px;
+  }
+}

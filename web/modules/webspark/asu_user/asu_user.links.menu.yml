@@ -1,0 +1,5 @@
+asu_user.admin_settings:
+  route_name: asu_user.admin_settings
+  title: 'ASU User settings'
+  description: 'Configure ASU User settings'
+  parent: user.admin_index

@@ -1,0 +1,85 @@
+<?php
+
+/**
+ * Implements hook_form_alter().
+ */
+function webspark_utility_form_media_library_add_form_upload_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
+  $form['#attached']['library'][] = 'webspark_utility/medialibrary';
+}
+
+/**
+ * Implements hook_entity_bundle_field_info_alter().
+ */
+function webspark_utility_entity_bundle_field_info_alter(&$fields, \Drupal\Core\Entity\EntityTypeInterface $entity_type, $bundle) {
+  if ($bundle === 'hero') {
+    if (isset($fields['field_hero_unformatted_text'])) {
+      // Use the ID as defined in the annotation of the constraint definition
+      $fields['field_hero_unformatted_text']->addConstraint('HeroCharacterConstraint', []);
+    }
+  }
+}
+
+
+/**
+ * Implements hook_form_FORM_ID_alter()
+ */
+function webspark_utility_form_node_type_add_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
+  $form['actions']['submit']['#submit'][] = '_webspark_utility_form_node_type_add_form_submit';
+  // If the form is already processed.
+  if (isset($form['actions']['save_continue']['#submit'])) {
+    $form['actions']['save_continue']['#submit'][] = '_webspark_utility_form_node_type_add_form_submit';
+  }
+}
+
+/**
+ * Submit function for the node_type_add_form to set some defaults to display view.
+ */
+function _webspark_utility_form_node_type_add_form_submit(array $form, \Drupal\Core\Form\FormStateInterface $form_state) {
+
+  if (!\Drupal::moduleHandler()->moduleExists('layout_builder')) {
+    return TRUE;
+  }
+  // Take the currently created bundle.
+  $bundle = $form_state->getFormObject()->getEntity()->id();
+
+  // In case you need all the view modes.
+  // $view_modes = \Drupal::service('entity_display.repository')->getViewModeOptionsByBundle('node', $bundle);
+
+  // Set as default to use layout builder on the default view.
+  $default_view = \Drupal::entityTypeManager()
+    ->getStorage('entity_view_display')
+    ->load('node.' . $bundle . '.default');
+
+  $default_view
+    ->enableLayoutBuilder()
+    ->setOverridable()
+    ->save();
+}
+
+/**
+ * Implements hook_field_widget_WIDGET_TYPE_form_alter()
+ */
+function webspark_utility_field_widget_field_menu_tree_widget_form_alter(&$element, \Drupal\Core\Form\FormStateInterface $form_state, $context) {
+  // Remove the default menus. If you need more in depth solution, check the
+  // locked parameter; parentSelectElement() method doesnt have an option for this.
+  $default_menus = ['account', 'admin', 'devel', 'footer', 'tools'];
+  foreach ($element['menu_item_key']['#options'] as $key => $menu) {
+    $menu_key = substr($key, 0, strpos($key, ":"));
+    if (in_array($menu_key, $default_menus)) {
+      unset($element['menu_item_key']['#options'][$key]);
+    }
+  }
+
+}
+
+/**
+ * Implements hook_form_alter().
+ */
+function webspark_utility_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
+  if (isset($form['#entity_type']) && $form['#entity_type'] == 'block_content') {
+    if (isset($form['field_icon'])) {
+      // Remove the browser validation on the icon picker widget.
+      $form['#attributes']['novalidate'] = 'novalidate';
+    }
+  }
+}

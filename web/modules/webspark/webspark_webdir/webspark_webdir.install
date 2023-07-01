@@ -1,0 +1,274 @@
+<?php
+
+use Drupal\field\Entity\FieldConfig;
+use Drupal\field\Entity\FieldStorageConfig;
+
+/**
+ * @file
+ * Install, update and uninstall functions for the Web Directory Component module.
+ */
+
+
+ function webspark_webdir_install(&$sandbox): void
+ {
+  // We need to leave the yml files for renamed fields from WS2-1587in place
+  // otherwise in some cases the field settings revert calls will wipe them out
+  // before the content can be copied. That's a problem though, since at
+  // install on new
+  // sites we'll have duplicate fields. This is the solution. A hook_install()
+  // that runs at site install, and re-runs update_9009 to delink the fields
+  // we need removed. See WS2-1587 for more details on why this cleanup was
+  // needed.
+  webspark_webdir_update_9009($sandbox);
+  // Note: we also invoke update 9009 in
+  // _webspark_webdir_revert_all_module_config() to do cleanup after reverts.
+ }
+
+/**
+ * Updates the Department field label (ASUIS-474).
+ */
+function webspark_webdir_update_9001(&$sandbox): void
+{
+  $module_cfg = Drupal::configFactory()
+    ->getEditable('field.field.block_content.web_directory.field_department_ids');
+
+  $module_cfg->set('label', 'Departments')->save();
+}
+
+/**
+ * Removes field form conditions (ASUIS-501).
+ */
+function webspark_webdir_update_9002(&$sandbox): void
+{
+  $module_cfg = Drupal::configFactory()
+    ->getEditable('core.entity_form_display.block_content.web_directory.default');
+  $keys = [
+    'content',
+    'field_component_type',
+    'third_party_settings',
+    'field_states_ui',
+  ];
+
+  $keys1 = $keys;
+  $keys1[] = 'form';
+  $keys1[] = 'list';
+  $key1 = implode('.', $keys1);
+
+  $module_cfg->set($key1, '');
+
+  $keys2 = $keys;
+  $keys2[] = 'field_states';
+  $key2 = implode('.', $keys2);
+
+  $module_cfg->clear($key2);
+  $module_cfg->save();
+}
+
+/**
+ * Updates the filter fields descriptions (ASUIS-492).
+ */
+function webspark_webdir_update_9003(&$sandbox): void
+{
+  $module_cfg_title = Drupal::configFactory()
+    ->getEditable('field.field.block_content.web_directory.field_filter_title');
+  $module_cfg_title->set(
+    'description',
+    '<i><small>Add one title per row. Title match is case-sensitive. Profiles displayed must match one of these titles.</small></i>'
+  )
+    ->save();
+
+  $module_cfg_campus = Drupal::configFactory()
+    ->getEditable('field.field.block_content.web_directory.field_filter_campus');
+  $module_cfg_campus->set(
+    'description',
+    '<i><small>Only display profiles with a primary job campus matching one of these campuses.</small></i>'
+  )
+    ->save();
+
+  $module_cfg_employee = Drupal::configFactory()
+    ->getEditable('field.field.block_content.web_directory.field_filter_employee');
+  $module_cfg_employee->set(
+    'description',
+    '<i><small>Only display profiles with a primary employee class matching one of these employee types.</small></i>'
+  )
+    ->save();
+
+  $module_cfg_expertise = Drupal::configFactory()
+    ->getEditable('field.field.block_content.web_directory.field_filter_expertise');
+  $module_cfg_expertise->set(
+    'description',
+    '<i><small>Display profiles with at least one matching expertise area.</small></i>'
+  )
+    ->save();
+}
+
+/**
+ * Fix filter title markup (ASUIS-758).
+ */
+function webspark_webdir_update_9004(&$sandbox): void
+{
+  $module_cfg_title = Drupal::configFactory()
+    ->getEditable('field.field.block_content.web_directory.field_filter_title');
+  $module_cfg_title->set(
+    'description',
+    'Add one title per row. Title match is case-sensitive. Profiles displayed must match one of these titles.'
+  )
+    ->save();
+}
+
+/**
+ * Revert all the module config.
+ */
+function webspark_webdir_update_9005(&$sandbox): void
+{
+  _webspark_webdir_revert_all_module_config($legacy_cleanup = FALSE);
+}
+
+/**
+ * Revert all the module's configs.
+ */
+function webspark_webdir_update_9006(&$sandbox): void
+{
+  _webspark_webdir_revert_all_module_config($legacy_cleanup = FALSE);
+}
+
+/**
+ * Create the "field_ids", "field_show_title", and "field_news_items_to_display" field replacements.
+ */
+function webspark_webdir_update_9007(&$sandbox): void
+{
+  _webspark_webdir_revert_all_module_config($legacy_cleanup = FALSE);
+}
+
+/**
+ * Update the new fields created in 9007 with the values from the old ones.
+ */
+function webspark_webdir_update_9008(&$sandbox): void
+{
+  $block_storage = Drupal::entityTypeManager()->getStorage('block_content');
+  $query = $block_storage->getQuery();
+  $query->condition('type', 'web_directory');
+  $query->accessCheck(false);
+  $block_ids = $query->execute();
+  $blocks = $block_storage->loadMultiple($block_ids);
+
+  if (empty($blocks)) {
+    return;
+  }
+
+  // Map the old fields to the new
+  $fields = [
+    'field_ids' => 'field_webdir_exclude_profiles',
+    'field_show_title' => 'field_webdir_use_pager',
+    'field_news_items_to_display' => 'field_webdir_items_to_display',
+  ];
+
+  // Copy the values from the old fields to the new ones
+  foreach ($blocks as $block) {
+    foreach ($fields as $old_field => $new_field) {
+      if ($block->hasField($old_field) && !$block->get($old_field)->isEmpty()) {
+        $block->{$new_field}->value = $block->{$old_field}->value;
+      }
+    }
+
+    $block->save();
+  }
+}
+
+/**
+ * Delete the old fields from the Web Directory block.
+ */
+function webspark_webdir_update_9009(&$sandbox): void
+{
+  $fields = [
+    'field_ids',
+    'field_show_title',
+    'field_news_items_to_display',
+  ];
+
+  foreach ($fields as $field) {
+    // If this is 'field_news_items_to_display', only delete the field instance so the News module can still use it.
+    if ($field === 'field_news_items_to_display') {
+      $field_instance = FieldConfig::loadByName('block_content', 'web_directory', $field);
+
+      if ($field_instance) {
+        $field_instance->delete();
+      }
+    } else {
+      $field_storage = FieldStorageConfig::loadByName('block_content', $field);
+
+      if ($field_storage) {
+        $field_storage->delete();
+      }
+    }
+  }
+}
+
+/**
+ * Uninstall the old webspark_isearch module, if enabled.
+ */
+function webspark_webdir_update_9010(&$sandbox): void
+{
+  if (Drupal::moduleHandler()->moduleExists('webspark_isearch')) {
+    Drupal::service('module_installer')->uninstall(['webspark_isearch']);
+  }
+}
+
+/**
+ * Delete the old field config files.
+ */
+// function webspark_webdir_update_9011(&$sandbox): void
+// {
+//   $module_path = \Drupal::moduleHandler()->getModule('webspark_webdir')->getPath();
+
+//   $config_files = [
+//     'field.field.block_content.web_directory.field_ids.yml',
+//     'field.field.block_content.web_directory.field_show_title.yml',
+//     'field.field.block_content.web_directory.field_news_items_to_display.yml',
+//     'field.storage.block_content.field_ids.yml',
+//     'field.storage.block_content.field_show_title.yml',
+//     'field.storage.block_content.field_news_items_to_display.yml',
+//   ];
+
+//   foreach ($config_files as $config_file) {
+//     $config_file_path = $module_path . '/config/install/' . $config_file;
+
+//     if (file_exists($config_file_path)) {
+//       unlink($config_file_path);
+//     }
+//   }
+// }
+
+/**
+ * Update the component_type description.
+ */
+function webspark_webdir_update_9012(&$sandbox): void {
+  \Drupal::service('webspark.config_manager')->updateConfigFile('field.field.block_content.web_directory.field_component_type');
+}
+
+/**
+ * Revert all the module's configs.
+ */
+function _webspark_webdir_revert_all_module_config($legacy_cleanup = TRUE): void
+{
+  // Get this module name.
+  $module = Drupal::service('module_handler')
+    ->getModule(basename(__FILE__, '.install'))
+    ->getName();
+
+  // Unlock the configuration storage.
+  Drupal::state()->set('configuration_locked', false);
+
+  // Revert all configs from this module.
+  Drupal::service('webspark.config_manager')->revertAll($module);
+
+  // Lock the configuration storage.
+  Drupal::state()->set('configuration_locked', true);
+
+  // See note in webspark_webdir_install(). Need to re-run whenever we revert
+  // configs since update 9009 so we don't regress on removed fields we need
+  // to keep in config/install due not having control on order hooks will run.
+  if ($legacy_cleanup) {
+    webspark_webdir_update_9009([]);
+  }
+}

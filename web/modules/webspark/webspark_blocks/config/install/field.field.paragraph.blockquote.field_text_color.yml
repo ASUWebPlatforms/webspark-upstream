@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_text_color
+    - paragraphs.paragraphs_type.blockquote
+  module:
+    - options
+id: paragraph.blockquote.field_text_color
+field_name: field_text_color
+entity_type: paragraph
+bundle: blockquote
+label: 'Text Color'
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    value: default
+default_value_callback: ''
+settings: {  }
+field_type: list_string

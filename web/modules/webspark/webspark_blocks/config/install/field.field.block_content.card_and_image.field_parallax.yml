@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.card_and_image
+    - field.storage.block_content.field_parallax
+id: block_content.card_and_image.field_parallax
+field_name: field_parallax
+entity_type: block_content
+bundle: card_and_image
+label: Parallax
+description: 'Enables the Parallax effect'
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

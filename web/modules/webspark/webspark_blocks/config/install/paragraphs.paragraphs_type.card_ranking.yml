@@ -1,0 +1,9 @@
+langcode: en
+status: true
+dependencies: {  }
+id: card_ranking
+label: 'Card Ranking'
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

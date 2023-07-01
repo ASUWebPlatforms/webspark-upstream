@@ -1,0 +1,6 @@
+asu_brand:
+  asu_brand_cookie_consent_enabled: true
+  asu_brand_universal_gtm_id: GTM-KDWN8Z
+  asu_brand_gtm_enabled: true
+  asu_brand_extra_gtm_id: ''
+  asu_brand_search_url: 'https://search.asu.edu/search'

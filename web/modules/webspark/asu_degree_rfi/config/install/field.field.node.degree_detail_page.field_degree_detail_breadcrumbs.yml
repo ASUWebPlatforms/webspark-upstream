@@ -1,0 +1,25 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_degree_detail_breadcrumbs
+    - node.type.degree_detail_page
+  enforced:
+    module:
+      - asu_degree_rfi
+  module:
+    - link
+id: node.degree_detail_page.field_degree_detail_breadcrumbs
+field_name: field_degree_detail_breadcrumbs
+entity_type: node
+bundle: degree_detail_page
+label: Breadcrumbs
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  link_type: 17
+  title: 2
+field_type: link

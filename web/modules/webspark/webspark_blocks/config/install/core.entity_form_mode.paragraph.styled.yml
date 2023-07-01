@@ -1,0 +1,9 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - paragraphs
+id: paragraph.styled
+label: Styled
+targetEntityType: paragraph
+cache: true

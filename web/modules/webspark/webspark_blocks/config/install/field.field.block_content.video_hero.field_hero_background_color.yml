@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.video_hero
+    - field.storage.block_content.field_hero_background_color
+  module:
+    - options
+id: block_content.video_hero.field_hero_background_color
+field_name: field_hero_background_color
+entity_type: block_content
+bundle: video_hero
+label: 'Hero Heading Background Color'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

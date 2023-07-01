@@ -1,0 +1,29 @@
+langcode: en
+status: false
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.portrait
+    - field.field.paragraph.card_group_story.field_cards
+    - paragraphs.paragraphs_type.card_group_story
+  module:
+    - entity_reference_revisions
+    - layout_builder
+third_party_settings:
+  layout_builder:
+    allow_custom: false
+    enabled: false
+id: paragraph.card_group_story.portrait
+targetEntityType: paragraph
+bundle: card_group_story
+mode: portrait
+content:
+  field_cards:
+    weight: 0
+    label: hidden
+    settings:
+      view_mode: portrait
+      link: ''
+    third_party_settings: {  }
+    type: entity_reference_revisions_entity_view
+    region: content
+hidden: {  }

@@ -1,0 +1,25 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - crop.type.1_1
+  module:
+    - crop
+name: block_image_1_1_sml
+label: 'Block Image 1:1 SML'
+effects:
+  9b94e874-f727-48c7-9304-8171a7ea8d76:
+    uuid: 9b94e874-f727-48c7-9304-8171a7ea8d76
+    id: crop_crop
+    weight: 1
+    data:
+      crop_type: '1_1'
+      automatic_crop_provider: null
+  dcca3cee-9b08-4dd1-ac36-830fed719a2b:
+    uuid: dcca3cee-9b08-4dd1-ac36-830fed719a2b
+    id: image_scale
+    weight: 2
+    data:
+      width: 300
+      height: null
+      upscale: false

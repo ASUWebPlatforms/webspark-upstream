@@ -1,0 +1,56 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_blocks
+    - paragraphs.paragraphs_type.tab_content
+  module:
+    - block_field
+id: paragraph.tab_content.field_blocks
+field_name: field_blocks
+entity_type: paragraph
+bundle: tab_content
+label: 'Tab Blocks'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  selection: categories
+  selection_settings:
+    categories:
+      Block: Block
+      'Lists (Views)': 'Lists (Views)'
+      ASU: '0'
+      'ASU brand': '0'
+      'ASU Breadcrumb': '0'
+      'ASU Degrees and RFI': '0'
+      'ASU footer': '0'
+      'Chaos Tools': '0'
+      'Comment fields': '0'
+      'Contact message fields': '0'
+      'Content fields': '0'
+      core: '0'
+      'Crop fields': '0'
+      Custom: '0'
+      'Custom block fields': '0'
+      'Custom menu link fields': '0'
+      'File fields': '0'
+      Forms: '0'
+      Help: '0'
+      'Inline blocks': '0'
+      'Media fields': '0'
+      Menus: '0'
+      'Paragraph fields': '0'
+      'Redirect fields': '0'
+      'Shortcut link fields': '0'
+      System: '0'
+      'Taxonomy term fields': '0'
+      'URL alias fields': '0'
+      User: '0'
+      'User fields': '0'
+      Webform: '0'
+      'Webform submission fields': '0'
+      'Webspark blocks': '0'
+field_type: block_field

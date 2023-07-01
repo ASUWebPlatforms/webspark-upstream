@@ -1,0 +1,17 @@
+/*
+ * @file
+ * Provides the layout styles for one column full width layout.
+ */
+
+
+@media screen and (min-width: 40em) {
+  .layout__full-width {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .layout__full-width .layout__region--first {
+    width: 100%;
+  }
+}

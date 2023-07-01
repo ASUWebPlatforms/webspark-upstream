@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.news
+    - field.storage.block_content.field_feed_taxonomy_term
+id: block_content.news.field_feed_taxonomy_term
+field_name: field_feed_taxonomy_term
+entity_type: block_content
+bundle: news
+label: 'Feed taxonomy term'
+description: 'Optional. Provide a taxonomy term to use when calling the News feed. Consult the <a href="https://news.asu.edu/reports/taxonomy-terms-count" target="_blank">News feed reference to identify a term value.</a>'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

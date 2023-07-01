@@ -1,0 +1,104 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.card_and_image
+    - field.field.block_content.card_and_image.field_anchor_menu_settings
+    - field.field.block_content.card_and_image.field_card
+    - field.field.block_content.card_and_image.field_content_position
+    - field.field.block_content.card_and_image.field_media
+    - field.field.block_content.card_and_image.field_parallax
+    - field.field.block_content.card_and_image.field_spacing_bottom
+    - field.field.block_content.card_and_image.field_spacing_top
+  module:
+    - field_group
+    - media_library
+    - paragraphs
+third_party_settings:
+  field_group:
+    group_appearance_settings:
+      children:
+        - field_anchor_menu_settings
+        - field_spacing_top
+        - field_spacing_bottom
+      parent_name: ''
+      weight: 4
+      format_type: tab
+      region: content
+      format_settings:
+        id: ''
+        classes: ''
+        description: ''
+        formatter: closed
+        required_fields: true
+      label: 'Appearance Settings'
+id: block_content.card_and_image.default
+targetEntityType: block_content
+bundle: card_and_image
+mode: default
+content:
+  field_anchor_menu_settings:
+    weight: 4
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: ''
+    third_party_settings: {  }
+    type: entity_reference_paragraphs
+    region: content
+  field_card:
+    weight: 3
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      add_mode: dropdown
+      form_display_mode: card_and_image
+      default_paragraph_type: card_with_icon
+    third_party_settings: {  }
+    type: entity_reference_paragraphs
+    region: content
+  field_content_position:
+    weight: 5
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  field_media:
+    weight: 1
+    settings:
+      media_types: {  }
+    third_party_settings: {  }
+    type: media_library_widget
+    region: content
+  field_parallax:
+    weight: 2
+    settings:
+      display_label: true
+    third_party_settings: {  }
+    type: boolean_checkbox
+    region: content
+  field_spacing_bottom:
+    weight: 6
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  field_spacing_top:
+    weight: 5
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  info:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden: {  }

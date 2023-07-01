@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.events
+    - field.storage.block_content.field_events_header_text_color
+  module:
+    - options
+id: block_content.events.field_events_header_text_color
+field_name: field_events_header_text_color
+entity_type: block_content
+bundle: events
+label: 'Header Text Color'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: dark
+default_value_callback: ''
+settings: {  }
+field_type: list_string

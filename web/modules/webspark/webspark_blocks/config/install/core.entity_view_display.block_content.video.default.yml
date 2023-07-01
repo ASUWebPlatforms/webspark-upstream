@@ -1,0 +1,59 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.video
+    - field.field.block_content.video.field_add_drop_shadow
+    - field.field.block_content.video.field_anchor_menu_settings
+    - field.field.block_content.video.field_image_caption
+    - field.field.block_content.video.field_image_size
+    - field.field.block_content.video.field_media
+    - field.field.block_content.video.field_spacing_bottom
+    - field.field.block_content.video.field_spacing_top
+    - field.field.block_content.video.field_tooltip
+  module:
+    - entity_reference_revisions
+id: block_content.video.default
+targetEntityType: block_content
+bundle: video
+mode: default
+content:
+  field_anchor_menu_settings:
+    weight: 3
+    label: above
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    type: entity_reference_revisions_entity_view
+    region: content
+  field_image_caption:
+    weight: 1
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: basic_string
+    region: content
+  field_media:
+    weight: 0
+    label: hidden
+    settings:
+      view_mode: full
+      link: false
+    third_party_settings: {  }
+    type: entity_reference_entity_view
+    region: content
+  field_tooltip:
+    weight: 2
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    type: entity_reference_revisions_entity_view
+    region: content
+hidden:
+  field_add_drop_shadow: true
+  field_image_size: true
+  field_spacing_bottom: true
+  field_spacing_top: true

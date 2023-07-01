@@ -1,0 +1,19 @@
+{#
+/**
+ * @file
+ * Template for a block.
+ */
+#}
+
+<div{{ attributes.addClass(classes) }}>
+  {{ title_prefix }}
+  {% if label %}
+    {% block label %}
+      <h2{{ title_attributes }}>{{ label }}</h2>
+    {% endblock %}
+  {% endif %}
+  {{ title_suffix }}
+  {% include '@renovation/divider/divider.twig' with {
+    color: content.field_divider_color,
+} %}
+</div>

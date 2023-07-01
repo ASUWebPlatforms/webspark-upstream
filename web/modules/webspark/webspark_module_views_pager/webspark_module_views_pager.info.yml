@@ -1,0 +1,8 @@
+name: Webspark module views pager
+type: module
+description: Provides pagers for the renovation theme.
+package: Views
+core: 8.x
+core_version_requirement: ^8 || ^9
+dependencies:
+  - views

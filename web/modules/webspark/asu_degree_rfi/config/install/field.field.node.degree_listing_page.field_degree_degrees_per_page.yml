@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_degree_degrees_per_page
+    - node.type.degree_listing_page
+  module:
+    - options
+id: node.degree_listing_page.field_degree_degrees_per_page
+field_name: field_degree_degrees_per_page
+entity_type: node
+bundle: degree_listing_page
+label: 'Degrees per page'
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    value: 6
+default_value_callback: ''
+settings: {  }
+field_type: list_integer

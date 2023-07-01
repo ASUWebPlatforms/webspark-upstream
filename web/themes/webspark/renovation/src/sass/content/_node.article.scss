@@ -1,0 +1,26 @@
+// Article: Default
+.article--headinfo {
+  font-weight: 700;
+  &.article--date-published {
+    margin-bottom: 1rem;
+  }
+  &.article--author {
+    text-transform: uppercase
+  }
+}
+// Restores padding to articles with hero images
+.node.article.article--full .uds-story-hero .content h1.type--article {
+  margin-top: 3rem;
+}
+
+// Article: Teaser
+// -----------------------------------------------------------------------------
+.article--teaser {
+
+}
+
+// Article: Full
+// -----------------------------------------------------------------------------
+.article--full {
+
+}

@@ -1,0 +1,87 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_deg_dtl_why_choose_1
+    - node.type.degree_detail_page
+    - paragraphs.paragraphs_type.degree_details_why_choose
+  module:
+    - entity_reference_revisions
+id: node.degree_detail_page.field_deg_dtl_why_choose_1
+field_name: field_deg_dtl_why_choose_1
+entity_type: node
+bundle: degree_detail_page
+label: 'Why Choose - top row'
+description: 'Top row (#1) of cards. If you use this field, you <strong>must</strong> generate exactly three cards in this row.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      degree_details_why_choose: degree_details_why_choose
+    negate: 0
+    target_bundles_drag_drop:
+      accordion_panel:
+        weight: -41
+        enabled: false
+      anchor_menu_settings:
+        weight: -40
+        enabled: false
+      blockquote:
+        weight: -39
+        enabled: false
+      card:
+        weight: -38
+        enabled: false
+      card_degree:
+        weight: -37
+        enabled: false
+      card_event:
+        weight: -36
+        enabled: false
+      card_group_default:
+        weight: -35
+        enabled: false
+      card_group_degree:
+        weight: -34
+        enabled: false
+      card_group_story:
+        weight: -33
+        enabled: false
+      card_group_with_icon:
+        weight: -32
+        enabled: false
+      card_media:
+        weight: -31
+        enabled: false
+      card_story:
+        weight: -30
+        enabled: false
+      card_with_icon:
+        weight: -29
+        enabled: false
+      cta:
+        weight: -28
+        enabled: false
+      degree_details_next_steps:
+        weight: -27
+        enabled: false
+      degree_details_why_choose:
+        weight: -26
+        enabled: true
+      gallery_image:
+        weight: -25
+        enabled: false
+      tab_content:
+        weight: -24
+        enabled: false
+      testimonial:
+        weight: -23
+        enabled: false
+      tooltip:
+        weight: -22
+        enabled: false
+field_type: entity_reference_revisions

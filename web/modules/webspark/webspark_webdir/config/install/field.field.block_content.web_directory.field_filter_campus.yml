@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.web_directory
+    - field.storage.block_content.field_filter_campus
+id: block_content.web_directory.field_filter_campus
+field_name: field_filter_campus
+entity_type: block_content
+bundle: web_directory
+label: 'Filter by campus'
+description: '<span class="description form-text text-muted">Only display profiles with a primary job campus matching one of these campuses.</span>'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

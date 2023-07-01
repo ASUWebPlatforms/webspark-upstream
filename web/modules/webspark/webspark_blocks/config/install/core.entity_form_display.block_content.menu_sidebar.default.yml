@@ -1,0 +1,64 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.menu_sidebar
+    - field.field.block_content.menu_sidebar.field_menu
+    - field.field.block_content.menu_sidebar.field_spacing_bottom
+    - field.field.block_content.menu_sidebar.field_spacing_top
+  module:
+    - field_group
+    - field_menu
+third_party_settings:
+  field_group:
+    group_appearance_settings:
+      children:
+        - field_spacing_top
+        - field_spacing_bottom
+      parent_name: ''
+      weight: 2
+      format_type: tab
+      region: content
+      format_settings:
+        id: ''
+        classes: ''
+        description: ''
+        formatter: closed
+        required_fields: true
+      label: 'Appearance Settings'
+id: block_content.menu_sidebar.default
+targetEntityType: block_content
+bundle: menu_sidebar
+mode: default
+content:
+  field_menu:
+    weight: 1
+    settings:
+      max_depth: 0
+      menu_item_key: ''
+      include_root: false
+      menu_title: ''
+    third_party_settings: {  }
+    type: field_menu_tree_widget
+    region: content
+  field_spacing_bottom:
+    weight: 4
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  field_spacing_top:
+    weight: 3
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  info:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden: {  }

@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.hero
+    - field.storage.block_content.field_sub_heading_background
+  module:
+    - options
+id: block_content.hero.field_sub_heading_background
+field_name: field_sub_heading_background
+entity_type: block_content
+bundle: hero
+label: 'Sub Heading Background Color'
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    value: highlight-white
+default_value_callback: ''
+settings: {  }
+field_type: list_string

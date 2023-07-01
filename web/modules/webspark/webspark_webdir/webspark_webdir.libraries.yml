@@ -1,0 +1,56 @@
+jstree:
+  version: 1.x
+  css:
+    theme:
+      jquery-plugin/jstree/dist/themes/default/style.min.css: {}
+  js:
+    jquery-plugin/jstree/dist/jstree.min.js: {}
+  dependencies:
+    - core/jquery
+
+departments_field:
+  js:
+    js/departments-field.js: {}
+  css:
+    theme:
+      css/directory-field.css: { weight: 10 }
+asurite_field:
+  js:
+    js/asurite-field.js: {}
+add_field:
+  js:
+    js/add-field.js: {}
+add_people_field:
+  js:
+    js/add-people-field.js: {}
+list_field:
+  js:
+    js/list-field.js: {}
+
+expertise_field:
+  js:
+    js/expertise-field.js: {}
+
+campus_field:
+  js:
+    js/campus-field.js: {}
+
+employee_type_field:
+  js:
+    js/employee-type-field.js: {}
+
+webdir-core:
+  version: 1.0.0
+  dependencies:
+    - asu_react_integration/reactjs
+    - core/jquery
+    - core/drupal
+    - core/drupalSettings
+    - core/once
+search-ui:
+  version: 1.0.0
+  dependencies:
+    - webspark_webdir/webdir-core
+  js:
+    node_modules/@asu/app-webdir-ui/dist/webdirUI.umd.js: {}
+    js/webspark_webdir.js: {}

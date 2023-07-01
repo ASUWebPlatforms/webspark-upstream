@@ -1,0 +1,21 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.isearch
+    - field.storage.block_content.field_ids
+  enforced:
+    module:
+      - webspark_isearch
+id: block_content.isearch.field_ids
+field_name: field_ids
+entity_type: block_content
+bundle: isearch
+label: 'Asurite IDs'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

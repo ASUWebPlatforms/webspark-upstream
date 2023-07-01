@@ -1,0 +1,21 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.divider
+    - field.field.block_content.divider.field_divider_type
+  module:
+    - options
+id: block_content.divider.default
+targetEntityType: block_content
+bundle: divider
+mode: default
+content:
+  field_divider_type:
+    weight: 0
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: list_key
+    region: content
+hidden: {  }

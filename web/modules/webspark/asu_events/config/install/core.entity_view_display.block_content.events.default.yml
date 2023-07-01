@@ -1,0 +1,96 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.events
+    - field.field.block_content.events.field_anchor_menu_settings
+    - field.field.block_content.events.field_events_cta
+    - field.field.block_content.events.field_events_cta_color
+    - field.field.block_content.events.field_events_feed_filter
+    - field.field.block_content.events.field_events_header_text_color
+    - field.field.block_content.events.field_events_heading
+    - field.field.block_content.events.field_events_items_to_display
+    - field.field.block_content.events.field_feed_taxonomy_term
+    - field.field.block_content.events.field_spacing_bottom
+    - field.field.block_content.events.field_spacing_top
+    - field.field.block_content.events.field_tooltip
+  module:
+    - entity_reference_revisions
+    - link
+    - options
+id: block_content.events.default
+targetEntityType: block_content
+bundle: events
+mode: default
+content:
+  field_anchor_menu_settings:
+    weight: 0
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    type: entity_reference_revisions_entity_view
+    region: content
+  field_events_cta:
+    weight: 6
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    type: link
+    region: content
+  field_events_cta_color:
+    weight: 7
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: list_default
+    region: content
+  field_events_feed_filter:
+    type: string
+    weight: 1
+    region: content
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+  field_events_header_text_color:
+    weight: 5
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: list_default
+    region: content
+  field_events_heading:
+    weight: 4
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_events_items_to_display:
+    type: list_key
+    weight: 2
+    region: content
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+  field_tooltip:
+    weight: 3
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    type: entity_reference_revisions_entity_view
+    region: content
+hidden:
+  field_feed_taxonomy_term: true
+  field_spacing_bottom: true
+  field_spacing_top: true

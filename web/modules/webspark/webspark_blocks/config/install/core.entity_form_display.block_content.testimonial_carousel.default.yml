@@ -1,0 +1,101 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.testimonial_carousel
+    - field.field.block_content.testimonial_carousel.field_accent_color
+    - field.field.block_content.testimonial_carousel.field_anchor_menu_settings
+    - field.field.block_content.testimonial_carousel.field_heading_highlight
+    - field.field.block_content.testimonial_carousel.field_spacing_bottom
+    - field.field.block_content.testimonial_carousel.field_spacing_top
+    - field.field.block_content.testimonial_carousel.field_testimonial
+    - field.field.block_content.testimonial_carousel.field_text_color
+  module:
+    - field_group
+    - paragraphs
+third_party_settings:
+  field_group:
+    group_appearance_settings:
+      children:
+        - field_anchor_menu_settings
+        - field_spacing_top
+        - field_spacing_bottom
+      parent_name: ''
+      weight: 6
+      format_type: tab
+      region: content
+      format_settings:
+        id: ''
+        classes: ''
+        description: ''
+        formatter: closed
+        required_fields: true
+      label: 'Appearance Settings'
+id: block_content.testimonial_carousel.default
+targetEntityType: block_content
+bundle: testimonial_carousel
+mode: default
+content:
+  field_accent_color:
+    weight: 4
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  field_anchor_menu_settings:
+    weight: 26
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: ''
+    third_party_settings: {  }
+    type: entity_reference_paragraphs
+    region: content
+  field_heading_highlight:
+    weight: 5
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  field_spacing_bottom:
+    weight: 28
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  field_spacing_top:
+    weight: 27
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  field_testimonial:
+    type: entity_reference_paragraphs
+    weight: 2
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: ''
+    third_party_settings: {  }
+    region: content
+  field_text_color:
+    weight: 3
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  info:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden: {  }

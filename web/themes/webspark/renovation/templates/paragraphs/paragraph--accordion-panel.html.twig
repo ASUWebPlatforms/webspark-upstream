@@ -1,0 +1,33 @@
+{#
+/**
+ * @file
+ * Default theme implementation to display a accordion paragraph.
+ *
+ * @see template_preprocess_paragraph()
+ *
+ * @ingroup themeable
+ */
+#}
+{%
+  set classes = [
+    'paragraph',
+    'paragraph--type--' ~ paragraph.bundle|clean_class,
+    view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
+    not paragraph.isPublished() ? 'paragraph--unpublished'
+  ]
+%}
+
+{% set unique_id = paragraph.id.value %}
+
+{% block paragraph %}
+  {% block content %}
+    {% include '@renovation/accordions/accordion.twig' with {
+      icon: content.field_icon,
+      heading: content.field_heading[0]['#context']['value'],
+      body_text: content.field_formatted_text,
+      color: content.field_color_options[0]['#markup'],
+      unique_id: unique_id,
+      parent_id: parent_id,
+    } %}
+  {% endblock %}
+{% endblock paragraph %}

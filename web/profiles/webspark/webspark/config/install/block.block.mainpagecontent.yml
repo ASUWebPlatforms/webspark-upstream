@@ -1,0 +1,28 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - system
+  theme:
+    - renovation
+id: mainpagecontent
+theme: renovation
+region: content
+weight: -2
+provider: null
+plugin: system_main_block
+settings:
+  id: system_main_block
+  label: 'Main page content'
+  label_display: '0'
+  provider: system
+visibility:
+  node_type:
+    id: node_type
+    bundles:
+      article: article
+      page: page
+    negate: false
+    context_mapping:
+      node: '@node.node_route_context:node'

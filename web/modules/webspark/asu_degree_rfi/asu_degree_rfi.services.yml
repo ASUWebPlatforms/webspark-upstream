@@ -1,0 +1,15 @@
+services:
+  asu_degree_rfi_degree_search_client:
+    class: Drupal\asu_degree_rfi\AsuDegreeRfiDegreeSearchClient
+    arguments:
+      - '@http_client_factory'
+  asu_degree_rfi_data_potluck_client:
+    class: Drupal\asu_degree_rfi\AsuDegreeRfiDataPotluckClient
+    arguments:
+      - '@http_client_factory'
+  asu_degree_rfi.helper_functions:
+    class: Drupal\asu_degree_rfi\AsuDegreeRfiHelperFunctions
+  asu_degree_rfi.route_subscriber:
+    class: Drupal\asu_degree_rfi\Routing\RouteSubscriber
+    tags:
+      - { name: event_subscriber }

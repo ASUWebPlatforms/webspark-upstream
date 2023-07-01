@@ -1,0 +1,59 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.landscape
+    - field.field.paragraph.card_with_icon.field_body
+    - field.field.paragraph.card_with_icon.field_cta
+    - field.field.paragraph.card_with_icon.field_heading
+    - field.field.paragraph.card_with_icon.field_icon
+    - field.field.paragraph.card_with_icon.field_show_borders
+    - paragraphs.paragraphs_type.card_with_icon
+  module:
+    - entity_reference_revisions
+    - fontawesome
+    - layout_builder
+    - text
+third_party_settings:
+  layout_builder:
+    enabled: false
+    allow_custom: false
+id: paragraph.card_with_icon.landscape
+targetEntityType: paragraph
+bundle: card_with_icon
+mode: landscape
+content:
+  field_body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_cta:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_heading:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_icon:
+    type: fontawesome_icon_formatter
+    label: hidden
+    settings:
+      layers: false
+    third_party_settings: {  }
+    weight: 3
+    region: content
+hidden:
+  field_show_borders: true

@@ -1,0 +1,79 @@
+<?php
+
+use Drupal\Core\Url;
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function asu_events_preprocess_block(&$variables) {
+  $plugin_id = $variables['base_plugin_id'] ?? '';
+
+  if ($plugin_id != 'inline_block') {
+    return;
+  }
+
+  if ($variables['derivative_plugin_id'] == 'events') {
+    $rand_id = random_int(0, PHP_INT_MAX);
+    $events_block = (object)[
+      'header' => new \stdClass(),
+      'ctaButton' => new \stdClass(),
+      'dataSource' => new \stdClass(),
+    ];
+
+    $variables['events_id'] = 'events-wrapper-' . $rand_id;
+    $block = $variables['content']['#block_content'];
+
+    if ($block->field_events_heading->value) {
+      $events_block->header->text = $block->field_events_heading->value;
+    }
+    if ($block->field_events_header_text_color->value) {
+      $events_block->header->color = $block->field_events_header_text_color->value;
+    }
+    if ($block->field_events_cta && $block->field_events_cta->title && $block->field_events_cta->uri) {
+      $events_block->ctaButton->text = $block->field_events_cta->title;
+      $link = Url::fromUri($block->field_events_cta->uri);
+      $events_block->ctaButton->url = $link->toString();
+    }
+    if ($block->field_events_cta_color->value) {
+      $events_block->ctaButton->color = $block->field_events_cta_color->value;
+    }
+    if ($block->field_events_items_to_display->value) {
+      $events_block->display = $block->field_events_items_to_display->value;
+    }
+    $events_block->dataSource->url = '/asu-events-feed/';
+    if ($block->field_feed_taxonomy_term->value) {
+      // Allow only alphanumeric characters and underscore.
+      $events_block->dataSource->url .= preg_replace('/[^A-Za-z0-9\_]/', '', $block->field_feed_taxonomy_term->value);
+    }
+    if ($block->field_events_feed_filter->value) {
+      $events_block->dataSource->filters = $block->field_events_feed_filter->value;
+    }
+
+    $settings = [];
+    $settings['components']['asu_events'][$rand_id] = $events_block;
+
+    $variables['content']['#attached']['drupalSettings']['asu'] = $settings;
+    $variables['content']['#attached']['library'][] = 'asu_events/events-component';
+
+  }
+}
+
+/**
+ * Implements hook_config_readonly_whitelist_patterns();
+ * Make all the config files from this module readonly.
+ * @return array
+ */
+function asu_events_config_readonly_whitelist_patterns() {
+  // Get all the module configuration files.
+  $module = \Drupal::service('module_handler')
+    ->getModule(basename(__FILE__, '.module'))
+    ->getName();
+  $configs = \Drupal::service('webspark.config_manager')->getModuleConfigFiles($module);
+  // Lock all the configurations from this module.
+  if (\Drupal::state()->get('configuration_locked', TRUE)) {
+    return array_map(function ($item) { return '~' . $item; }, $configs);
+  }
+  else {
+    return [];
+  }
+}

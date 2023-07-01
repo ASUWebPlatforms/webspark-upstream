@@ -1,0 +1,18 @@
+{#
+/**
+ * @file
+ * Default template for a field.
+ */
+#}
+{%
+  set classes = [
+  bundle|clean_class ~ '__' ~ field_name_clean|clean_class,
+  label_display == 'inline' ? 'd-flex',
+]
+%}
+
+{% for item in items %}
+  <div{{ attributes.addClass(classes) }}>{{ item.content }}</div>
+{% endfor %}
+
+

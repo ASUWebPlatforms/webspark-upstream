@@ -1,0 +1,31 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_body
+    - paragraphs.paragraphs_type.card_degree
+  module:
+    - allowed_formats
+    - text
+  enforced:
+    module:
+      - webspark_blocks
+third_party_settings:
+  allowed_formats:
+    minimal_format: minimal_format
+    basic_html: '0'
+    restricted_html: '0'
+    full_html: '0'
+    plain_text: '0'
+id: paragraph.card_degree.field_body
+field_name: field_body
+entity_type: paragraph
+bundle: card_degree
+label: Body
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

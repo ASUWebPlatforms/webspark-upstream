@@ -1,0 +1,17 @@
+{#
+/**
+ * @file
+ * Default template for a field.
+ */
+#}
+
+{% for item in items %}
+  {# Heading #}
+
+    {% include '@renovation/headings/card-heading.twig' with {
+      html_tag : 'h3',
+      heading: item.content['#context'].value,
+    } %}
+
+{% endfor %}
+

@@ -1,0 +1,6 @@
+langcode: en
+status: true
+dependencies: {  }
+name: image
+label: Image
+effects: {  }

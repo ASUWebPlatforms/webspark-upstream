@@ -1,0 +1,11 @@
+langcode: en
+status: true
+dependencies: {  }
+id: story_hero
+label: 'Story Hero'
+description: ''
+aspect_ratio: '15:4'
+soft_limit_width: null
+soft_limit_height: null
+hard_limit_width: 1800
+hard_limit_height: null

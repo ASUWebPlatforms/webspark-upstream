@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_tooltip_background
+    - paragraphs.paragraphs_type.tooltip
+  module:
+    - options
+id: paragraph.tooltip.field_tooltip_background
+field_name: field_tooltip_background
+entity_type: paragraph
+bundle: tooltip
+label: 'Tooltip Background'
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    value: white
+default_value_callback: ''
+settings: {  }
+field_type: list_string

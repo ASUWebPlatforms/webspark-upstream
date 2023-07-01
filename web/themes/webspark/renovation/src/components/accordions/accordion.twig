@@ -1,0 +1,46 @@
+{% set is_icon = content.field_icon|render %}
+
+{% set link_id = paragraph.id() %}
+{# Card #}
+<div class="card card-foldable mt-3{% if color != 'default' %} {{ color }}{% endif %}">
+
+  {# Card Header #}
+  <div class="card-header{% if is_icon  %} card-header-icon{% endif %}">
+    <h3>
+      <a id="accordion-header-{{ link_id|lower }}" class="collapsed"
+         href="#accordion-content-{{ link_id|lower }}" data-toggle="collapse"
+         role="button" aria-expanded="false"
+         aria-controls="accordion-content-{{ link_id|lower }}"
+         data-ga-event="collapse"
+         data-ga-action="open"
+         data-ga-name="onclick"
+         data-ga-type="click"
+         data-ga-section="accordion block"
+         data-ga-region="main content"
+         data-ga-text="{{ heading }}">
+        {# If there is an icon print it else print header only. #}
+        {% if is_icon  %}
+        <span class="card-icon">
+          <i class="{{ content.field_icon[0]['#icons'][0]['#style'] }} {{ content.field_icon[0]['#icons'][0]['#name'] }}  mr-2" role="img" aria-label="..."></i>
+          {{ heading }}
+         </span>
+        {% else %}
+          {{ heading }}
+        {% endif %}
+
+        <span class="fas fa-chevron-up"></span>
+      </a>
+    </h3>
+  </div>
+
+  {# Card Body #}
+  <div id="accordion-content-{{ link_id }}" class="collapse card-body" aria-labelledby="{{ heading }}" data-parent="#accordion-{{ parent_id }}">
+    {# Body value #}
+    {{ body_text  }}
+  </div>
+  {# End body #}
+
+</div>
+{# End card #}
+
+{{ attach_library('renovation/accordions') }}

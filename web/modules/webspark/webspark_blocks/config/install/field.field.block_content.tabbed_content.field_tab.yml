@@ -1,0 +1,54 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.tabbed_content
+    - field.storage.block_content.field_tab
+    - paragraphs.paragraphs_type.tab_content
+  module:
+    - entity_reference_revisions
+id: block_content.tabbed_content.field_tab
+field_name: field_tab
+entity_type: block_content
+bundle: tabbed_content
+label: Tab
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      tab_content: tab_content
+    target_bundles_drag_drop:
+      accordion_panel:
+        weight: 10
+        enabled: false
+      card:
+        weight: 7
+        enabled: false
+      card_degree:
+        weight: 8
+        enabled: false
+      card_event:
+        weight: 9
+        enabled: false
+      card_story:
+        weight: 10
+        enabled: false
+      carousel_card:
+        weight: 11
+        enabled: false
+      cta:
+        weight: 16
+        enabled: false
+      gallery_image:
+        weight: 17
+        enabled: false
+      tab_content:
+        enabled: true
+        weight: 12
+field_type: entity_reference_revisions

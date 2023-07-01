@@ -1,0 +1,94 @@
+/* Overrides to ensure cropper works with Layout Builder. */
+.media-library-add-form .vertical-tabs__menu {
+  margin: 0 -100% -1px 0;
+  border: none;
+  border-bottom: 1px solid #ccc;
+  line-height: 1;
+}
+
+.media-library-add-form .vertical-tabs__panes {
+  border-left: none;
+}
+
+.media-library-add-form .vertical-tabs__menu-item.is-selected {
+  border-left: none;
+  border-radius: 4px 0 0 0;
+  border-right: none;
+}
+
+.media-library-add-form .vertical-tabs {
+  margin: 1em 0 1em 0em;
+}
+
+.media-library-add-form__description {
+  margin: 2rem 0;
+}
+
+.media-library-add-form__added-media {
+  margin-top: 1.5em;
+}
+
+.media-library-menu .nav-item {
+
+}
+
+.media-library-menu li {
+  background: #fff;
+  display: block;
+  margin: 0!important;
+  padding: 0 4px!important;
+  list-style: none;
+}
+
+.media-library-menu li a {
+  text-decoration: none;
+  display: block;
+  width: 100%;
+  padding: 15px;
+}
+
+ul.media-library-menu.nav {
+  display: block;
+  margin-top: 2em;
+}
+
+.media-library-content {
+  margin-top: 2em;
+}
+
+.crop-preview-wrapper__preview-image.img-thumbnail.cropper-hidden {
+  padding: 0;
+  background-color: initial;
+  border: none;
+  border-radius: initial;
+  max-width: 100%;
+}
+
+.media-library-item__preview .img-thumbnail {
+  padding: 0;
+  border: none;
+  border-radius: initial;
+}
+
+.media-library-view .form--inline .form-item {
+  margin-right: 5px;
+}
+
+.image-data__crop-wrapper .seven-details__summary {
+  padding: 10px 32px;
+  font-weight: 700;
+  color: #8c1d40;
+}
+
+.form-required:after {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  margin: 0 0.3em;
+  content: "";
+  vertical-align: super;
+  background-image: url(../icons/required.svg);
+  background-repeat: no-repeat;
+  background-size: 6px 6px;
+}
+

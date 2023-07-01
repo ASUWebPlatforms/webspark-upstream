@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.content_image
+    - field.storage.block_content.field_content_position
+  module:
+    - options
+id: block_content.content_image.field_content_position
+field_name: field_content_position
+entity_type: block_content
+bundle: content_image
+label: 'Content Position'
+description: ''
+required: true
+translatable: true
+default_value:
+  -
+    value: left
+default_value_callback: ''
+settings: {  }
+field_type: list_string

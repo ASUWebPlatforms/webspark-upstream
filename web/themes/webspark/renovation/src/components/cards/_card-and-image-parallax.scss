@@ -1,0 +1,30 @@
+@import '../../../node_modules/@asu/bootstrap4-theme/src/scss/extends/card-and-image';
+
+.block-inline-blockcard-and-image {
+  .parallax-container {
+    height: 36rem;
+    position: relative;
+    overflow: hidden;
+    img {
+      position: absolute;
+      left: 0 !important;
+      object-fit: cover;
+    }
+
+    @media screen and (max-width: $uds-breakpoint-md) {
+      height: 45rem;
+    }
+
+    .parallax-container-content {
+      width: 100%;
+      position: absolute;
+      top: 50px;
+
+      @media screen and (max-width: $uds-breakpoint-md) {
+        display: block;
+        margin: 0;
+        top: 150px;
+      }
+    }
+  }
+}

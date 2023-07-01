@@ -1,0 +1,13 @@
+<?php
+
+/**
+ * Apply Bio field related changes.
+ */
+function webspark_isearch_update_9001(&$sandbox) {
+  // Unlock the configuration storage.
+  \Drupal::state()->set('configuration_locked', FALSE);
+  // Revert all configs from this module.
+  \Drupal::service('webspark.config_manager')->updateConfigFile('field.field.block_content.isearch.field_show_bio');
+  // Lock the configuration storage.
+  \Drupal::state()->set('configuration_locked', TRUE);
+}

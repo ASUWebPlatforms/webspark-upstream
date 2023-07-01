@@ -1,0 +1,43 @@
+{#
+/**
+ * @file
+ * Template for a block.
+ */
+#}
+
+{% set classes = [
+  'block',
+  'block-' ~ configuration.provider|clean_class,
+  'block-' ~ plugin_id|clean_class,
+  'block-inline-blockhero',
+] %}
+{# We add block-inline-blockhero to ensure that this class is always there. It
+   isn't added normally outside of layout builder contexts, but we want to
+   uniformly apply styles. See WS2-1550 #}
+
+{# Get an array of buttons so they can be counted. #}
+{%  set buttons = content.field_two_cta['#object'].get('field_two_cta').value %}
+
+<div{{ attributes.addClass(classes) }}>
+  {# To allow contextual links to display the title_suffix is required. #}
+  {{ title_prefix }}
+  {% if label %}
+    {% block label %}
+      <h2{{ title_attributes }}>{{ label }}</h2>
+    {% endblock %}
+  {% endif %}
+  {{ title_suffix }}
+  {% include '@renovation/heroes/heroes.twig' with {
+    size: content.field_hero_size[0]['#markup'],
+    heading_background: heading_background_color,
+    hero_background: file_url(content.field_media[0]['#media'].field_media_image.entity.uri.value),
+    hero_alt: content.field_media[0]['#media'].field_media_image.alt,
+    hero_body: content.field_hero_unformatted_text[0]['#context']['value'],
+    sub_heading: content.field_sub_heading[0]['#context']['value'],
+    sub_heading_background: content.field_sub_heading_background[0]['#markup'],
+    heading: content.field_heading[0]['#context']['value'],
+    cta_btn: content.field_two_cta,
+    has_button_row: buttons | length > 1 ? true : null,
+    media_bundle: 'image',
+  } %}
+</div>

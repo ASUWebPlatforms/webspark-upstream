@@ -1,0 +1,25 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_degree_list_certs_minors
+    - node.type.degree_listing_page
+  enforced:
+    module:
+      - asu_degree_rfi
+id: node.degree_listing_page.field_degree_list_certs_minors
+field_name: field_degree_list_certs_minors
+entity_type: node
+bundle: degree_listing_page
+label: 'Certificates and Minors'
+description: 'If you select to display certificates and minors, only certificates and minors will be listed, matching the selected program.'
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

@@ -1,0 +1,28 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - system
+  theme:
+    - renovation
+id: messages
+theme: renovation
+region: pre_content
+weight: -2
+provider: null
+plugin: system_messages_block
+settings:
+  id: system_messages_block
+  label: Messages
+  label_display: '0'
+  provider: system
+visibility:
+  node_type:
+    id: node_type
+    bundles:
+      article: article
+      page: page
+    negate: false
+    context_mapping:
+      node: '@node.node_route_context:node'

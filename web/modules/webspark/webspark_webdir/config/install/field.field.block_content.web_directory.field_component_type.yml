@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.web_directory
+    - field.storage.block_content.field_component_type
+  module:
+    - options
+id: block_content.web_directory.field_component_type
+field_name: field_component_type
+entity_type: block_content
+bundle: web_directory
+label: 'Component type'
+description: "Note: For large department listings (over 99 profiles), we recommend using 'Departments' or 'Faculty by rank.'<br>\r\nThe other options are not intended or optimized for large data sets."
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

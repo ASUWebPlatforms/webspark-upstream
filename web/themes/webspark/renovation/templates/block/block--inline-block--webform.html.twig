@@ -1,0 +1,24 @@
+{#
+/**
+ * @file
+ * Template for a webform block.
+ */
+#}
+{% set classes = [
+  'block',
+  'block-' ~ configuration.provider|clean_class,
+  'block-' ~ plugin_id|clean_class,
+] %}
+
+<div{{ attributes.addClass(classes) }}>
+  {{ title_prefix }}
+  {% if label %}
+    {% block label %}
+      <h2{{ title_attributes }}>{{ label }}</h2>
+    {% endblock %}
+  {% endif %}
+  {{ title_suffix }}
+  {{ content.field_anchor_menu_settings }}
+  {{ content.field_tooltip }}
+  {{ content|without('field_tooltip', 'field_anchor_menu_settings') }}
+</div>

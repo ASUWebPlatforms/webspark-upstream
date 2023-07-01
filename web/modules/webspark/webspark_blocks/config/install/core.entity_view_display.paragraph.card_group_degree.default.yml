@@ -1,0 +1,23 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.card_group_degree.field_cards
+    - paragraphs.paragraphs_type.card_group_degree
+  module:
+    - entity_reference_revisions
+id: paragraph.card_group_degree.default
+targetEntityType: paragraph
+bundle: card_group_degree
+mode: default
+content:
+  field_cards:
+    weight: 0
+    label: hidden
+    settings:
+      view_mode: portrait
+      link: ''
+    third_party_settings: {  }
+    type: entity_reference_revisions_entity_view
+    region: content
+hidden: {  }

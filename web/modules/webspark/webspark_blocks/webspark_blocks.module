@@ -1,0 +1,173 @@
+<?php
+
+use Drupal\block_content\BlockContentInterface;
+use  \Drupal\Core\Form\FormStateInterface;
+
+function webspark_blocks_theme_suggestions_block_alter(array &$suggestions, array $variables) {
+
+  // Block suggestions for custom block bundles.
+  if (isset($variables['elements']['content']['#block_content'])
+    && $variables['elements']['content']['#block_content'] instanceof BlockContentInterface) {
+    $bundle = $variables['elements']['content']['#block_content']->bundle();
+    $view_mode = strtr($variables['elements']['#configuration']['view_mode'], '.', '_');
+    $suggestions[] = 'block__' . $bundle;
+    $suggestions[] = 'block__' . $bundle . '__' . $view_mode;
+    $suggestions[] = 'block__inline_block__' . $bundle;
+  }
+}
+
+function webspark_blocks_form_block_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  $form['settings']['label']['#title'] = t('Block admin title');
+}
+
+function webspark_blocks_form_layout_builder_add_block_alter(&$form, FormStateInterface $form_state, $form_id) {
+  // WS2-1279 - Placing default value of false for new blocks only
+  $form['settings']['label_display']['#default_value'] = FALSE;
+  $form['settings']['label']['#title'] = t('Block admin title');
+}
+
+/**
+ * Implements hook_page_attachments().
+ */
+function webspark_blocks_page_attachments(array &$attachments) {
+  $attachments['#attached']['library'][] = 'webspark_blocks/webspark_blocks';
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function webspark_blocks_preprocess_input__submit(&$variables) {
+  $variables['attributes']['class'][] = 'btn-maroon';
+}
+
+function webspark_blocks_theme($existing, $type, $theme, $path){
+  return [
+    'webspark_blocks__back-to-top' => [],
+    'webspark_blocks_anchor_menu' => [
+      'variables' => [],
+    ],
+    'webspark_blocks__asu_search' => [
+      'variables' => [
+        'form' => [],
+        'subtitle' => NULL,
+      ],
+    ],
+    'webspark_blocks__links' => [
+      'variables' => [
+        'links' => [],
+        'title' => NULL,
+      ],
+    ],
+  ];
+}
+
+/**
+ * Implements hook_form_alter().
+ */
+function webspark_blocks_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  $form_ids = ['layout_builder_update_block', 'layout_builder_add_block'];
+
+  // Alter only the layout builder blocks.
+  if (!in_array($form_id, $form_ids)) {
+    return;
+  }
+
+  $form['settings']['block_form']['#process'][] = '_webspark_blocks_hero_block_form_alter';
+}
+
+/**
+ * Process callback for hero custom block form.
+ */
+function _webspark_blocks_hero_block_form_alter(array $element, FormStateInterface $form_state) {
+  // Hide the text field in the small heros.
+  if (isset($element['field_hero_unformatted_text']) && isset($element['field_hero_size'])) {
+    $element['field_hero_unformatted_text']['#states'] = [
+      'invisible' => [
+        'select[name="settings[block_form][field_hero_size]"]' => ['value' => 'sm']
+     ]
+    ];
+  }
+
+  return $element;
+}
+
+/**
+ * Implements hook_preprocess_page().
+ */
+function webspark_blocks_preprocess_page(&$variables)  {
+  $route_name = \Drupal::routeMatch()->getRouteName();
+  switch ($route_name) {
+    case 'system.404':
+      // Page Not Found.
+      _webspark_blocks_preprocess_page_404($variables);
+      break;
+  }
+}
+
+/**
+ * Private function to preprocess the 404 page.
+ */
+function _webspark_blocks_preprocess_page_404(&$variables) {
+
+  // Remove the default behaviour.
+  unset($variables['page']['content']['system_main']);
+  // Create a wrapper, so we can add classes here.
+  $wrapper = [
+    '#type' => 'container',
+    '#attributes' => [
+      'class' => ['container', 'container-page-404'],
+    ],
+  ];
+  // Title for the 404 page.
+  $wrapper['title'] = [
+    '#type' => 'html_tag',
+    '#tag' => 'h1',
+    '#value' => t('Hmm, we can\'t find that page'),
+  ];
+
+  // Get the search block.
+  $block_manager = \Drupal::service('plugin.manager.block');
+  $config = [];
+  $block_plugin = $block_manager->createInstance('webspark_asu_search_block', $config);
+  $wrapper['search'] = [
+    '#theme' => 'block', // Use block template.
+    '#plugin_id' => $block_plugin->getPluginId(),
+    '#base_plugin_id' => $block_plugin->getBaseId(),
+    '#derivative_plugin_id' => $block_plugin->getDerivativeId(),
+    '#configuration' => $block_plugin->getConfiguration(),
+    'content' => $block_plugin->build(),
+  ];
+
+
+  // Get the links.
+  $config = \Drupal::config('webspark_blocks.settings');
+  $links = $config->get('webspark_utility_links');
+  $wrapper['links'] = [
+    '#theme' => 'webspark_blocks__links',
+    '#title' => t('Here are some links you may find helpful'),
+    '#links' => $links,
+  ];
+
+  $variables['page']['content']['page_404_content'] = $wrapper;
+}
+
+/**
+ * Implements hook_config_readonly_whitelist_patterns();
+ * Make all the config files from this module readonly.
+ * @return array
+ */
+function webspark_blocks_config_readonly_whitelist_patterns() {
+  
+  // Get all the module configuration files.
+  $module = \Drupal::service('module_handler')
+      ->getModule(basename(__FILE__, '.module'))
+      ->getName();
+  $configs = \Drupal::service('webspark.config_manager')->getModuleConfigFiles($module);
+  // Lock all the configurations from this module.
+  if (\Drupal::state()->get('configuration_locked', TRUE)) {
+    return array_map(function ($item) { return '~' . $item; }, $configs);
+  }
+  else {
+    return [];
+  }
+}

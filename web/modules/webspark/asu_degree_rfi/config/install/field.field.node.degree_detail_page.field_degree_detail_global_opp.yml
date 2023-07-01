@@ -1,0 +1,31 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_degree_detail_global_opp
+    - media.type.image
+    - node.type.degree_detail_page
+  enforced:
+    module:
+      - asu_degree_rfi
+id: node.degree_detail_page.field_degree_detail_global_opp
+field_name: field_degree_detail_global_opp
+entity_type: node
+bundle: degree_detail_page
+label: 'Global opportunity image'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      image: image
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

@@ -1,0 +1,24 @@
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - asu_degree_rfi
+  module:
+    - node
+id: degree_listing_page
+label: 'Degree listing page'
+type: 'canonical_entities:node'
+pattern: '[node:title]'
+selection_criteria:
+  0c40221b-a799-43c3-b5b2-753a61044b7c:
+    id: node_type
+    bundles:
+      degree_listing_page: degree_listing_page
+    negate: false
+    context_mapping:
+      node: node
+    uuid: 0c40221b-a799-43c3-b5b2-753a61044b7c
+selection_logic: and
+weight: -5
+relationships: {  }

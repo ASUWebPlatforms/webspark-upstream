@@ -1,0 +1,15 @@
+{
+    "name": "webspark/custom-dependencies",
+    "type": "project",
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://packages.drupal.org/8"
+        }
+    ],
+    "require": {},
+    "config": {
+        "sort-packages": true
+    },
+    "version": "1.0.0"
+}
