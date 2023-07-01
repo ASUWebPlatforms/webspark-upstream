@@ -1,0 +1,25 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - crop.type.16_9
+  module:
+    - crop
+name: block_image_16_9_lge
+label: 'Block Image 16:9 LGE'
+effects:
+  bbe8fa87-e0f6-4c16-827d-f2b3ea4cab22:
+    uuid: bbe8fa87-e0f6-4c16-827d-f2b3ea4cab22
+    id: crop_crop
+    weight: 1
+    data:
+      crop_type: '16_9'
+      automatic_crop_provider: null
+  176d45d2-41a1-47d5-92f8-6f92eeaf7f7f:
+    uuid: 176d45d2-41a1-47d5-92f8-6f92eeaf7f7f
+    id: image_scale
+    weight: 2
+    data:
+      width: 1200
+      height: null
+      upscale: false

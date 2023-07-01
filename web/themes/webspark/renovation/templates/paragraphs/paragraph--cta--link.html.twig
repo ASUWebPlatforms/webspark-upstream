@@ -1,0 +1,18 @@
+{% set classes = [
+  'paragraph',
+  'paragraph--type--' ~ paragraph.bundle|clean_class,
+  view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
+  not paragraph.isPublished() ? 'paragraph--unpublished'
+] %}
+{% block paragraph %}
+  {% block content %}
+    {% include '@renovation/links/link-icon.twig' with {
+      url : content.field_cta_link[0]['#url'],
+      title: content.field_cta_link[0]['#title'],
+      icon_name: content.field_icon[0]['#icons'][0]['#name'],
+      icon_style: content.field_icon[0]['#icons'][0]['#style'],
+      icon_settings: content.field_icon[0]['#icons'][0]['#settings'],
+    } %}
+  {% endblock %}
+{% endblock paragraph %}
+

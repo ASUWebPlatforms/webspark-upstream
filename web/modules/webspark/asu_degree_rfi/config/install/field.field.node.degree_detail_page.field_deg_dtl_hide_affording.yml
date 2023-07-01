@@ -1,0 +1,25 @@
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - asu_degree_rfi
+  config:
+    - field.storage.node.field_deg_dtl_hide_affording
+    - node.type.degree_detail_page
+id: node.degree_detail_page.field_deg_dtl_hide_affording
+field_name: field_deg_dtl_hide_affording
+entity_type: node
+bundle: degree_detail_page
+label: 'Hide affording college'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

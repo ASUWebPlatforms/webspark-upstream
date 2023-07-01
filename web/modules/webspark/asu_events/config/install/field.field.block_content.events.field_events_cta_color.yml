@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.events
+    - field.storage.block_content.field_events_cta_color
+  module:
+    - options
+id: block_content.events.field_events_cta_color
+field_name: field_events_cta_color
+entity_type: block_content
+bundle: events
+label: 'Header CTA color'
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    value: gold
+default_value_callback: ''
+settings: {  }
+field_type: list_string

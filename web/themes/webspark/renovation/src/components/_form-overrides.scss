@@ -1,0 +1,141 @@
+.layout-builder-discard-changes.confirmation,
+.layout-builder-revert-overrides.confirmation {
+  padding-top: 2.5rem;
+  .form-actions {
+    margin-top: 2.5rem;
+  }
+}
+
+form.uds-form {
+  input {
+    padding-left: $uds-size-spacing-4 !important;
+  }
+}
+
+form.uds-form.layout-builder-configure-block .form-check input[type=radio] {
+  opacity: 1;
+}
+
+form.uds-form.layout-builder-configure-block .form-check input[type=radio]+label:before {
+  content: none;
+}
+
+form.uds-form.layout-builder-configure-block .form-check input[type=radio]+label:after {
+  content: none;
+}
+
+form.uds-form .form-check input[type=checkbox]+label:before {
+  top: 0.1rem;
+}
+
+#drupal-off-canvas {
+  form {
+    &.uds-form {
+      &.layout-builder-configure-block {
+
+        .media-library-widget {
+          .fieldset-legend::after {
+            background-image: none;
+          }
+
+          .media-library-selection {
+            margin-bottom: 0;
+          }
+
+          .media-library-item--grid {
+            background: none;
+            &::before {
+              border: none;
+            }
+
+            .media-library-item__name {
+              color: inherit;
+            }
+
+            .media-library-item__attributes {
+              background: none;
+              bottom: 0.5rem;
+            }
+          }
+        }
+
+      }
+
+      label {
+        svg {
+          &.uds-field-required {
+            color: $uds-color-background-error;
+          }
+        }
+      }
+
+      .form-required {
+        &::after {
+          color: $uds-color-background-error;
+        }
+      }
+    }
+
+    button.tabledrag-toggle-weight {
+      color: $uds-color-background-info;
+      &:hover {
+        color: $uds-color-background-info;
+        font-weight: $uds-font-weight-bold;
+      }
+      &:focus {
+        color: $uds-color-background-info;
+        box-shadow: none;
+      }
+    }
+
+    .alert-danger {
+      a {
+        color: $uds-color-base-gray-7;
+        text-decoration: underline;
+      }
+    }
+  }
+
+  .layout-selection {
+    li {
+      div {
+        color: $uds-color-background-info;
+      }
+    }
+  }
+
+  a {
+    color: $uds-color-background-info;
+  }
+
+  input[type=search]:not(.js-off-canvas-computed-ignore) {
+    color: $uds-color-base-gray-7;
+
+    &::placeholder {
+      color: $uds-color-base-gray-7;
+    }
+  }
+
+  .description {
+    &.text-muted {
+      color: inherit !important;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: underline;
+    }
+  }
+
+  .banner-green,
+  .banner-orange,
+  .banner-blue,
+  .banner-gray {
+    outline: black 5px solid;
+  }
+
+  .banner-black {
+    outline: $uds-color-border-light 5px solid;
+  }
+
+}

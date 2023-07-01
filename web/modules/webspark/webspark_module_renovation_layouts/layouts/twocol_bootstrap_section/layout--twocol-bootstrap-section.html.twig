@@ -1,0 +1,32 @@
+{#
+/**
+ * @file
+ * Default theme implementation to display a two-column bootstrap layout.
+ *
+ * Available variables:
+ * - content: The content for this layout.
+ * - attributes: HTML attributes for the layout <div>.
+ *
+ * @ingroup themeable
+ */
+#}
+
+{% if content.first is not empty or content.second is not empty %}
+{% set widths = settings.additional.classes.widths|split('-') %}
+<div {{ attributes }}>
+  <div class="container">
+    <div class="row">
+      {% if content.first %}
+        <div {{ region_attributes.first.addClass('layout__region', 'layout__region--first', 'col-md-' ~ widths[0]) }}>
+          {{ content.first }}
+        </div>
+      {% endif %}
+      {% if content.second %}
+        <div {{ region_attributes.second.addClass('layout__region', 'layout__region--second', 'col-md-' ~ widths[1]) }}>
+          {{ content.second }}
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</div>
+{% endif %}

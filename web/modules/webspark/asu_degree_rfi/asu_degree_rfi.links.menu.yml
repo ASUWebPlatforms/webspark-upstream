@@ -1,0 +1,7 @@
+# Define default links for this module.
+
+asu_degree_rfi.asu_degree_rfi_settings::
+  title: ASU Degree RFI settings
+  description: ASU Degree RFI global settings for RFI forms and degree listing and details pages.
+  parent: system.admin_config_system
+  route_name: asu_degree_rfi.asu_degree_rfi_settings

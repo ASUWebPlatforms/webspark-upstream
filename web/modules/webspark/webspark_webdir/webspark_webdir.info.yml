@@ -1,0 +1,13 @@
+name: Web Directory Component
+description: Contains the Web Directory Component
+package: ASU
+
+type: module
+core: 8.x
+core_version_requirement: ^8 || ^9
+dependencies:
+  - field_states_ui
+  - maxlength
+  - field_group
+  - options
+  - block_content

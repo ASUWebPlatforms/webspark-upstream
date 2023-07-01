@@ -1,0 +1,37 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.webform
+    - field.field.block_content.webform.field_anchor_menu_settings
+    - field.field.block_content.webform.field_spacing_bottom
+    - field.field.block_content.webform.field_spacing_top
+    - field.field.block_content.webform.field_webform
+  module:
+    - entity_reference_revisions
+    - webform
+id: block_content.webform.default
+targetEntityType: block_content
+bundle: webform
+mode: default
+content:
+  field_anchor_menu_settings:
+    weight: 1
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    type: entity_reference_revisions_entity_view
+    region: content
+  field_webform:
+    weight: 0
+    label: hidden
+    settings:
+      source_entity: true
+    third_party_settings: {  }
+    type: webform_entity_reference_entity_view
+    region: content
+hidden:
+  field_spacing_bottom: true
+  field_spacing_top: true

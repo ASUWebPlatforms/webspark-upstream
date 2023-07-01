@@ -1,0 +1,34 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.card_image_and_content
+    - field.storage.block_content.field_media
+    - media.type.cropped_image_sqare
+    - media.type.cropped_image_wide
+    - media.type.image
+    - media.type.image_block_images
+id: block_content.card_image_and_content.field_media
+field_name: field_media
+entity_type: block_content
+bundle: card_image_and_content
+label: Image
+description: 'Recommended image size (W x H): 1200 x 512 px'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      image_block_images: image_block_images
+      cropped_image_sqare: cropped_image_sqare
+      cropped_image_wide: cropped_image_wide
+      image: image
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: image_block_images
+field_type: entity_reference

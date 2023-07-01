@@ -1,0 +1,7 @@
+langcode: en
+status: true
+dependencies: {  }
+id: web_directory
+label: 'Web Directory'
+revision: 0
+description: ''

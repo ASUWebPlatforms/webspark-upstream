@@ -1,0 +1,6 @@
+select2overrides:
+  js:
+    js/select2-overrides.js: {}
+  css:
+    component:
+      css/select2-overrides.css: {}

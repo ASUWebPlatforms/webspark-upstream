@@ -1,0 +1,12 @@
+{#
+/**
+ * @file
+ * Template for field_tags.
+ */
+#}
+{% for item in items %}
+  {% include '@renovation/buttons/button-tag.twig' with {
+    url : item.content['#url'],
+    title: item.content['#title'],
+  } %}
+{% endfor %}

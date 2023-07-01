@@ -1,0 +1,21 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.card_with_icon.field_body
+    - field.field.paragraph.card_with_icon.field_cta
+    - field.field.paragraph.card_with_icon.field_heading
+    - field.field.paragraph.card_with_icon.field_icon
+    - field.field.paragraph.card_with_icon.field_show_borders
+    - paragraphs.paragraphs_type.card_with_icon
+id: paragraph.card_with_icon.default
+targetEntityType: paragraph
+bundle: card_with_icon
+mode: default
+content: {  }
+hidden:
+  field_body: true
+  field_cta: true
+  field_heading: true
+  field_icon: true
+  field_show_borders: true

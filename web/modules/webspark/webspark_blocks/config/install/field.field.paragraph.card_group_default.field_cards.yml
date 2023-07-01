@@ -1,0 +1,135 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_cards
+    - paragraphs.paragraphs_type.card
+    - paragraphs.paragraphs_type.card_group_default
+  module:
+    - entity_reference_revisions
+id: paragraph.card_group_default.field_cards
+field_name: field_cards
+entity_type: paragraph
+bundle: card_group_default
+label: Cards
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      card: card
+    target_bundles_drag_drop:
+      accordion_panel:
+        weight: 37
+        enabled: false
+      basic_list:
+        weight: 38
+        enabled: false
+      card:
+        enabled: true
+        weight: 39
+      card_degree:
+        weight: 40
+        enabled: false
+      card_event:
+        weight: 41
+        enabled: false
+      card_group_default:
+        weight: 42
+        enabled: false
+      card_media:
+        weight: 43
+        enabled: false
+      card_story:
+        weight: 44
+        enabled: false
+      cta:
+        weight: 45
+        enabled: false
+      display_list:
+        weight: 46
+        enabled: false
+      display_list_item:
+        weight: 47
+        enabled: false
+      gallery_image:
+        weight: 48
+        enabled: false
+      icon_list:
+        weight: 49
+        enabled: false
+      icon_list_item:
+        weight: 50
+        enabled: false
+      level_1:
+        weight: 51
+        enabled: false
+      level_2:
+        weight: 52
+        enabled: false
+      level_3:
+        weight: 53
+        enabled: false
+      level_4:
+        weight: 54
+        enabled: false
+      level_5:
+        weight: 55
+        enabled: false
+      level_6:
+        weight: 56
+        enabled: false
+      list_item_simple:
+        weight: 58
+        enabled: false
+      lists:
+        weight: 57
+        enabled: false
+      multi_level_item:
+        weight: 59
+        enabled: false
+      multi_level_list:
+        weight: 60
+        enabled: false
+      ordered_level_1:
+        weight: 61
+        enabled: false
+      ordered_level_2:
+        weight: 62
+        enabled: false
+      ordered_level_3:
+        weight: 63
+        enabled: false
+      ordered_level_4:
+        weight: 64
+        enabled: false
+      ordered_level_5:
+        weight: 65
+        enabled: false
+      ordered_level_6:
+        weight: 66
+        enabled: false
+      ordered_multi_level_list:
+        weight: 67
+        enabled: false
+      step_list:
+        weight: 68
+        enabled: false
+      step_list_item:
+        weight: 69
+        enabled: false
+      tab_content:
+        weight: 70
+        enabled: false
+      testimonial:
+        weight: 71
+        enabled: false
+      tooltip:
+        weight: 72
+        enabled: false
+field_type: entity_reference_revisions

@@ -1,0 +1,32 @@
+{% set classes = [
+    'block',
+    'block-' ~ configuration.provider|clean_class,
+    'block-' ~ plugin_id|clean_class,
+] %}
+
+{{ attach_library('webspark_isearch/reactjs') }}
+{{ attach_library('webspark_isearch/isearch') }}
+<div{{ attributes.addClass(classes) }}>
+  {{ title_prefix }}
+  {% if label %}
+    {% block label %}
+      <h2{{ title_attributes }}>{{ label }}</h2>
+    {% endblock %}
+  {% endif %}
+  {{ title_suffix }}
+    <div class="clas-isearch-view"
+         data-config='{
+            "type":"depList",
+            "displayType":"{{ isearch_display|striptags }}",
+            "defaultPhoto":"{{ isearch_image|striptags }}",
+            "testURL":"/isearch/?",
+            "selectedFilters":[{{ isearch_filters|striptags|raw }}],
+            "ids":[{{ isearch_ids|striptags }}],
+            "showPhoto":{{ isearch_show_photo|striptags }},
+            "showTitle":{{ isearch_show_title|striptags }},
+            "showBio":{{ isearch_show_bio|striptags }},
+            "showEmail":{{ isearch_show_email|striptags }},
+            "showPhone":{{ isearch_show_phone|striptags }}
+         }'>
+    </div>
+</div>

@@ -1,0 +1,47 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.card_degree.field_body
+    - field.field.paragraph.card_degree.field_card_link
+    - field.field.paragraph.card_degree.field_clickable
+    - field.field.paragraph.card_degree.field_cta
+    - field.field.paragraph.card_degree.field_cta_secondary
+    - field.field.paragraph.card_degree.field_heading
+    - field.field.paragraph.card_degree.field_link
+    - field.field.paragraph.card_degree.field_media
+    - field.field.paragraph.card_degree.field_show_borders
+    - field.field.paragraph.card_degree.field_tags
+    - paragraphs.paragraphs_type.card_degree
+  module:
+    - link
+  enforced:
+    module:
+      - webspark_blocks
+id: paragraph.card_degree.default
+targetEntityType: paragraph
+bundle: card_degree
+mode: default
+content:
+  field_card_link:
+    type: link
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  field_body: true
+  field_clickable: true
+  field_cta: true
+  field_cta_secondary: true
+  field_heading: true
+  field_link: true
+  field_media: true
+  field_show_borders: true
+  field_tags: true

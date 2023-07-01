@@ -1,0 +1,49 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.media.image.field_caption
+    - field.field.media.image.field_image_caption
+    - field.field.media.image.field_media_image
+    - image.style.thumbnail
+    - media.type.image
+  module:
+    - decorative_image_widget
+    - image
+id: media.image.default
+targetEntityType: media
+bundle: image
+mode: default
+content:
+  field_caption:
+    weight: 26
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_media_image:
+    type: image_image
+    weight: 1
+    region: content
+    settings:
+      preview_image_style: thumbnail
+      progress_indicator: throbber
+    third_party_settings:
+      decorative_image_widget:
+        use_decorative_checkbox: true
+  name:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  field_image_caption: true
+  path: true
+  status: true
+  uid: true

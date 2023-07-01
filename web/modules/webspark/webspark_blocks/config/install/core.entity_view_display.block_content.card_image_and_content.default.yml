@@ -1,0 +1,69 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.card_image_and_content
+    - field.field.block_content.card_image_and_content.field_anchor_menu_settings
+    - field.field.block_content.card_image_and_content.field_card
+    - field.field.block_content.card_image_and_content.field_formatted_text
+    - field.field.block_content.card_image_and_content.field_heading
+    - field.field.block_content.card_image_and_content.field_heading_color
+    - field.field.block_content.card_image_and_content.field_media
+    - field.field.block_content.card_image_and_content.field_spacing_bottom
+    - field.field.block_content.card_image_and_content.field_spacing_top
+    - field.field.block_content.card_image_and_content.field_text_color
+  module:
+    - entity_reference_revisions
+    - text
+id: block_content.card_image_and_content.default
+targetEntityType: block_content
+bundle: card_image_and_content
+mode: default
+content:
+  field_anchor_menu_settings:
+    weight: 4
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    type: entity_reference_revisions_entity_view
+    region: content
+  field_card:
+    type: entity_reference_revisions_entity_view
+    weight: 3
+    label: hidden
+    settings:
+      view_mode: portrait
+      link: ''
+    third_party_settings: {  }
+    region: content
+  field_formatted_text:
+    weight: 2
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  field_heading:
+    weight: 1
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_media:
+    weight: 0
+    label: hidden
+    settings:
+      link: true
+      view_mode: default
+    third_party_settings: {  }
+    type: entity_reference_entity_view
+    region: content
+hidden:
+  field_heading_color: true
+  field_spacing_bottom: true
+  field_spacing_top: true
+  field_text_color: true

@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_exclude_from_display
+    - node.type.degree_listing_page
+id: node.degree_listing_page.field_exclude_from_display
+field_name: field_exclude_from_display
+entity_type: node
+bundle: degree_listing_page
+label: 'Exclude from display'
+description: 'Please add a comma-separated list of plan codes for each degree you would like to exclude from being displayed. For example: "BAACCBS, LAACTBS, etc."'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

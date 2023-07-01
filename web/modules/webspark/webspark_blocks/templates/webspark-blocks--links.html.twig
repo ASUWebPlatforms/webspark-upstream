@@ -1,0 +1,12 @@
+{% if links is iterable %}
+  <div class="webspark-block-links">
+    <h4> {{ title }} </h4>
+    {% for row in links|batch(2) %}
+    <div class="row">
+      {% for ws_link in row %}
+          <div class="col"><a href="{{ ws_link.link_url }}"> {{ ws_link.link_title }} </a></div>
+      {% endfor %}
+    </div>
+    {% endfor %}
+  </div>
+{% endif %}

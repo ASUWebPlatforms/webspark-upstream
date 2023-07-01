@@ -1,0 +1,8 @@
+asu_news.request:
+  path: '/asu-news-feed/{filter}'
+  defaults:
+    _controller: '\Drupal\asu_news\Controller\AsuNewsController::content'
+    _title: 'Asu News Feed'
+    filter: ''
+  requirements:
+    _permission: 'access content'

@@ -1,0 +1,13 @@
+.article.article--full {
+  .layout__region.layout__region--first {
+    .container {
+      max-width: 992px;
+    }
+  }
+}
+
+.layout__region > .row > h2{
+  margin-left: 12px;
+  margin-right: 12px;
+  width: 100%;
+}

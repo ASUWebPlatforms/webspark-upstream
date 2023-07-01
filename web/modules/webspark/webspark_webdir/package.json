@@ -1,0 +1,8 @@
+{
+  "name": "webspark-module-webspark_webdir",
+  "version": "1.0.0",
+  "license": "MIT",
+  "dependencies": {
+    "@asu/app-webdir-ui": "1.2.16"
+  }
+}

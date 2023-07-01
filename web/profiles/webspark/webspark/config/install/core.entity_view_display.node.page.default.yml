@@ -1,0 +1,103 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.page.body
+    - field.field.node.page.layout_builder__layout
+    - node.type.page
+  module:
+    - layout_builder
+    - layout_builder_restrictions
+    - text
+    - user
+    - webspark_module_renovation_layouts
+third_party_settings:
+  layout_builder:
+    allow_custom: true
+    enabled: true
+    sections:
+      -
+        layout_id: onecol_full_width_section
+        layout_settings:
+          label: Top
+        components: {  }
+        third_party_settings: {  }
+      -
+        layout_id: onecol_fixed_width_section
+        layout_settings:
+          label: Content
+        components:
+          b1f7d7f8-38d7-4200-8c45-357e5160b763:
+            uuid: b1f7d7f8-38d7-4200-8c45-357e5160b763
+            region: first
+            configuration:
+              id: 'field_block:node:page:title'
+              label: Title
+              provider: layout_builder
+              label_display: '0'
+              formatter:
+                label: hidden
+                type: string
+                settings:
+                  link_to_entity: false
+                third_party_settings: {  }
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+            weight: 0
+            additional: {  }
+          de05504e-2a2d-4f37-a27e-fdcfca9c470e:
+            uuid: de05504e-2a2d-4f37-a27e-fdcfca9c470e
+            region: first
+            configuration:
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              id: 'field_block:node:page:body'
+              formatter:
+                label: above
+                settings: {  }
+                third_party_settings: {  }
+                type: text_default
+            weight: 1
+            additional: {  }
+        third_party_settings: {  }
+  layout_builder_restrictions:
+    allowed_block_categories: {  }
+    entity_view_mode_restriction:
+      whitelisted_blocks:
+        'Content fields': {  }
+        System: {  }
+        core: {  }
+      blacklisted_blocks:
+        'ASU brand':
+          - asu_brand_header
+        'ASU footer':
+          - asu_footer
+        'Custom blocks':
+          - webspark_blocks_back_to_top
+      allowed_layouts:
+        - layout_twocol_bootstrap_section
+        - onecol_full_width_section
+        - onecol_fixed_width_section
+        - threecol_fixed_width_section
+        - fourcol_fixed_width_section
+id: node.page.default
+targetEntityType: node
+bundle: page
+mode: default
+content:
+  body:
+    weight: 102
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: first
+  links:
+    weight: 101
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  layout_builder__layout: true

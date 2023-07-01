@@ -1,0 +1,8 @@
+{% set classes = [
+  'block',
+  'block-' ~ configuration.provider|clean_class,
+  'block-' ~ plugin_id|clean_class,
+] %}
+
+{% include '@renovation/back-to-top/back-to-top.twig' %}
+

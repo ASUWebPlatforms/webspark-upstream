@@ -1,0 +1,6 @@
+{# Passes the extracted icon vaue to icon template. #}
+
+{% include '@renovation/icons/icon.twig' with {
+  icon: element[0]['#icons'][0]['#name'],
+  }
+%}

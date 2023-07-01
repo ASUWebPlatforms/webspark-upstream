@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.divider
+    - field.storage.block_content.field_divider_type
+  module:
+    - options
+id: block_content.divider.field_divider_type
+field_name: field_divider_type
+entity_type: block_content
+bundle: divider
+label: 'Divider type'
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    value: margin-width
+default_value_callback: ''
+settings: {  }
+field_type: list_string

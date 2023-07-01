@@ -1,0 +1,55 @@
+{#
+/**
+ * @file
+ * Template for Radix Whelan.
+ *
+ * Variables:
+ * - $css_id: An optional CSS id to use for the layout.
+ * - $content: An array of content, each item in the array is keyed to one
+ * panel of the layout. This layout supports the following sections:
+ */
+#}
+{%
+    set container_classes = [
+    'clearfix'
+]
+%}
+{% if classes %}
+    {% set container_classes = container_classes|merge(classes) %}
+{% endif %}
+{% if class %}
+    {% set container_classes = container_classes|merge(class) %}
+{% endif %}
+
+<div {% if css_id %}{{ css_id }}{% endif %}>
+
+  <div {{ attributes.addClass('max-size-container', 'center-container', container_classes) }}>
+    <div class="container">
+      <div class="row">
+        {% if content.first %}
+          <div {{ region_attributes.first.addClass('layout__region', 'layout__region--first', 'col-md-3') }}>
+            {{ content.first }}
+          </div>
+        {% endif %}
+        {% if content.second %}
+          <div {{ region_attributes.second.addClass('layout__region', 'layout__region--second', 'col-md-3') }}>
+            {{ content.second }}
+          </div>
+        {% endif %}
+        {% if content.third %}
+          <div {{ region_attributes.third.addClass('layout__region', 'layout__region--third', 'col-md-3') }}>
+            {{ content.third }}
+          </div>
+        {% endif %}
+        {% if content.fourth %}
+          <div {{ region_attributes.fourth.addClass('layout__region', 'layout__region--fourth', 'col-md-3') }}>
+            {{ content.fourth }}
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+
+</div>
+
+

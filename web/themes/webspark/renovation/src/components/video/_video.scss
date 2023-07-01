@@ -1,0 +1,19 @@
+@import '../../../node_modules/@asu/bootstrap4-theme/src/scss/extends/video';
+
+.block-inline-blockvideo {
+  .container {
+    padding: 0;
+    .col-12,
+    .col-md-10,
+    .col-lg-12 {
+      padding: 0;
+    }
+  }
+}
+
+.uds-video-player {
+  img {
+    display: block;
+    margin: auto;
+  }
+}

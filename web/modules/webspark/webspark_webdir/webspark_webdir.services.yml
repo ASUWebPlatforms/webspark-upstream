@@ -1,0 +1,14 @@
+services:
+  logger.channel.webspark_webdir:
+    parent: logger.channel_base
+    arguments: ['webspark_webdir']
+  webspark_webdir.data_potluck_client:
+    class: Drupal\webspark_webdir\DataPotluckClient
+    arguments:
+      - '@http_client_factory'
+      - '@logger.channel.webspark_webdir'
+      - '@messenger'
+  webspark_webdir.webdir_api_url:
+    class: Drupal\webspark_webdir\WebdirApiUrl
+  webspark_webdir.helper_functions:
+    class: Drupal\webspark_webdir\WebsparkWebdirHelpers

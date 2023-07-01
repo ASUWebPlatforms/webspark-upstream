@@ -1,0 +1,32 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - options
+    - paragraphs
+id: paragraph.field_color_options
+field_name: field_color_options
+entity_type: paragraph
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: default
+      label: Gold
+    -
+      value: card-maroon
+      label: Maroon
+    -
+      value: card-gray
+      label: 'Gray 2'
+    -
+      value: card-dark
+      label: 'Gray 7'
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

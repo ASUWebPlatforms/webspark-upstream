@@ -1,0 +1,8 @@
+name: ASU Events
+description: ASU Events Integration
+type: module
+core_version_requirement: ^8 || ^9
+package: ASU
+dependencies:
+  - asu_react_integration
+  - webspark_blocks

@@ -1,0 +1,23 @@
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - asu_degree_rfi
+  config:
+    - field.storage.paragraph.field_degree_nxtsteps_btn_color
+    - paragraphs.paragraphs_type.degree_details_next_steps
+  module:
+    - options
+id: paragraph.degree_details_next_steps.field_degree_nxtsteps_btn_color
+field_name: field_degree_nxtsteps_btn_color
+entity_type: paragraph
+bundle: degree_details_next_steps
+label: 'Card button link color'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

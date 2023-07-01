@@ -1,0 +1,67 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.card_carousel
+    - field.field.block_content.card_carousel.field_anchor_menu_settings
+    - field.field.block_content.card_carousel.field_card_group
+    - field.field.block_content.card_carousel.field_card_orientation
+    - field.field.block_content.card_carousel.field_layout
+    - field.field.block_content.card_carousel.field_spacing_bottom
+    - field.field.block_content.card_carousel.field_spacing_top
+    - field.field.block_content.card_carousel.field_tooltip
+  module:
+    - entity_reference_revisions
+    - options
+id: block_content.card_carousel.default
+targetEntityType: block_content
+bundle: card_carousel
+mode: default
+content:
+  field_anchor_menu_settings:
+    weight: 4
+    label: above
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    type: entity_reference_revisions_entity_view
+    region: content
+  field_card_group:
+    type: entity_reference_revisions_entity_view
+    weight: 0
+    label: above
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    region: content
+  field_card_orientation:
+    weight: 2
+    label: above
+    settings:
+      format: true-false
+      format_custom_true: ''
+      format_custom_false: ''
+    third_party_settings: {  }
+    type: boolean
+    region: content
+  field_layout:
+    weight: 1
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: list_default
+    region: content
+  field_tooltip:
+    weight: 3
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    type: entity_reference_revisions_entity_view
+    region: content
+hidden:
+  field_spacing_bottom: true
+  field_spacing_top: true

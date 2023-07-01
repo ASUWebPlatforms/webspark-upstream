@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_degree_list_default_view
+    - node.type.degree_listing_page
+  module:
+    - options
+id: node.degree_listing_page.field_degree_list_default_view
+field_name: field_degree_list_default_view
+entity_type: node
+bundle: degree_listing_page
+label: 'Default view'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: list-view
+default_value_callback: ''
+settings: {  }
+field_type: list_string

@@ -1,0 +1,11 @@
+events-component:
+  version: 1.0.0
+  dependencies:
+    - asu_react_integration/reactjs
+    - core/jquery
+    - core/drupal
+    - core/drupalSettings
+  js:
+    node_modules/@asu/component-events/dist/vendor.umd.js: { }
+    node_modules/@asu/component-events/dist/asuEvents.umd.js: { }
+    js/asu_events.js: { }

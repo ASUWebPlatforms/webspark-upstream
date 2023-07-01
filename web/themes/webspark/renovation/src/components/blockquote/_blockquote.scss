@@ -1,0 +1,16 @@
+@import '../../../node_modules/@asu/bootstrap4-theme/src/scss/extends/blockquotes';
+
+@include media-breakpoint-down(lg) {
+  .uds-blockquote {
+    grid-template-columns: auto auto;
+  }
+}
+
+@include media-breakpoint-up(md) {
+  .uds-blockquote.with-image  {
+    img {
+      width: 180px;
+      height: 180px;
+    }
+  }
+}

@@ -1,0 +1,101 @@
+{#
+/**
+ * @file
+ * Template for a Nav component.
+ *
+ * Available config:
+ * - alignment: left | right | center | vertical.
+ * - style: tabs | pills
+ * - fill: fill | justify
+ * - utility_classes: An array of utility classes.
+ */
+#}
+{% import _self as menus %}
+
+{% set alignment = 'flex-column' %}
+
+{% set nav_classes = [ 'nav', style, alignment, fill]|merge(utility_classes ? utility_classes : []) %}
+
+{% if items %}
+  {% if title %}
+    <h2>{{ title }}</h2>
+  {% endif %}
+  <div class="sidebar-toggler" data-toggle="collapse" data-target="#sidebar-left" aria-expanded="false" aria-controls="sidebar-left">
+    <p>Select Section</p>
+    <span class="fas fa-chevron-down"/>
+  </div>
+  <nav id="sidebar-left" class="sidebar collapse" aria-label="Secondary">
+    {% block items %}
+      {% for item in items %}
+        {% set nav_link_class = [
+          'nav-link',
+          item.in_active_trail ? 'active',
+        ] %}
+        {% if item.is_expanded and item.below %}
+          <div class="card card-foldable">
+
+            <div class="card-header">
+              <a id="{{ item.title|clean_id|lower }}"
+                 class="collapsed nav-link"
+                 href="#cardBody{{ item.title|clean_id|lower }}"
+                 data-toggle="collapse"
+                 data-target="#cardBody{{ item.title|clean_id|lower }}"
+                 aria-expanded="false"
+                 aria-controls="cardBody{{ item.title|clean_id|lower }}"
+                 data-ga-event="collapse"
+                 data-ga-action="open"
+                 data-ga-name="onclick"
+                 data-ga-type="click"
+                 data-ga-section="{{ title }}"
+                 data-ga-region="main content"
+                 data-ga-text="{{ item.title }}">
+                {{ item.title }}
+                <span class="fas fa-chevron-down"></span>
+              </a>
+            </div>
+
+            <div id="cardBody{{ item.title|clean_id|lower }}"
+                 class="collapse card-body"
+                 aria-labelledby="{{ item.title|clean_id|lower }}"
+                 data-parent=".sidebar">
+              {% if item.below %}
+                {% for subitem in item.below %}
+                  {{ link(
+                    subitem.title,
+                    subitem.url, {
+                      'class': nav_link_class,
+                      'data-ga-event':'link',
+                      'data-ga-action':'click',
+                      'data-ga-name':'onclick',
+                      'data-ga-type':'internal link',
+                      'data-ga-region':'main content',
+                      'data-ga-section':title,
+                      'data-ga-text':subitem.title }) }}
+                {% endfor %}
+              {% endif %}
+
+            </div><!-- end .card-body -->
+
+          </div><!-- end .card -->
+        {% else %}
+          <div class="nav-link-container">
+            {{ link(
+              item.title,
+              item.url, {
+                'id': item.title|clean_id|lower,
+                'class': nav_link_class,
+                'data-ga-event':'link',
+                'data-ga-action':'click',
+                'data-ga-name':'onclick',
+                'data-ga-type':'internal link',
+                'data-ga-region':'main content',
+                'data-ga-section':title,
+                'data-ga-text':item.title }) }}
+          </div>
+        {% endif %}
+      {% endfor %}
+    {% endblock %}
+  </nav><!-- end .sidebar -->
+{% endif %}
+
+{{ attach_library('renovation/sidebar') }}

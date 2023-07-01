@@ -1,0 +1,138 @@
+<?php
+
+use Drupal\field\Entity\FieldConfig;
+
+function asu_degree_rfi_module_preinstall($module) {
+  // Unlock the configuration storage for install.
+  \Drupal::state()->set('configuration_locked', FALSE);
+}
+
+function asu_degree_rfi_modules_installed($modules) {
+  if (in_array('asu_degree_rfi', $modules)) {
+    // Lock the configuration storage after install.
+    \Drupal::state()->set('configuration_locked', TRUE);
+  }
+}
+
+/**
+ * Update field descriptions for Degree Listing page College and Department
+ * fields.
+ */
+function asu_degree_rfi_update_9001(&$sandbox) {
+
+  // Update degree listing page college field description
+  $college_description = t('By selecting a College, degrees listed on the Degree listing page will be limited to those offered at that college. Colleges may consist of multiple departments and results will include degrees for all of them if Department is set to None.');
+  $college_config = \Drupal::configFactory()->getEditable('field.field.node.degree_listing_page.field_degree_list_college_code');
+  $college_config->set('description', $college_description);
+  $college_config->save();
+
+  $college_field = FieldConfig::loadByName('node', 'degree_listing_page', 'field_degree_list_college_code');
+  $college_field->setDescription($college_description);
+  $college_field->save();
+
+  // Update degree listing page dept field description
+  $dept_description = t('By selecting a Department, degrees listed on the Degree listing page will be limited to those offered at that department. There may be multiple departments in a college. It is not necessary to select both a College and a Department. They are configured as independent filters. If you set College to None and select an individual Department, you can narrow your results.');
+  $dept_config = \Drupal::configFactory()->getEditable('field.field.node.degree_listing_page.field_degree_list_dept_code');
+  $dept_config->set('description', $dept_description);
+  $dept_config->save();
+
+  $dept_field = FieldConfig::loadByName('node', 'degree_listing_page', 'field_degree_list_dept_code');
+  $dept_field->setDescription($dept_description);
+  $dept_field->save();
+
+  return 'Updated ASU Degree RFI field configs.';
+}
+
+/**
+ * Revert all the module config.
+ */
+function asu_degree_rfi_update_9002(&$sandbox) {
+  // Get this module name.
+  $module = \Drupal::service('module_handler')
+    ->getModule(basename(__FILE__, '.install'))
+    ->getName();
+  // Unlock the configuration storage.
+  \Drupal::state()->set('configuration_locked', FALSE);
+  // Revert all configs from this module.
+  \Drupal::service('webspark.config_manager')->revertAll($module);
+  // Lock the configuration storage.
+  \Drupal::state()->set('configuration_locked', TRUE);
+}
+
+/**
+ * Revert all the module config.
+ */
+function asu_degree_rfi_update_9003(&$sandbox) {
+  // Get this module name.
+  $module = \Drupal::service('module_handler')
+    ->getModule(basename(__FILE__, '.install'))
+    ->getName();
+  // Unlock the configuration storage.
+  \Drupal::state()->set('configuration_locked', FALSE);
+  // Revert all configs from this module.
+  \Drupal::service('webspark.config_manager')->revertAll($module);
+  // Lock the configuration storage.
+  \Drupal::state()->set('configuration_locked', TRUE);
+}
+
+/**
+ * Revert all the module config.
+ */
+function asu_degree_rfi_update_9004(&$sandbox) {
+  _asu_degree_rfi_revert_all_module_config();
+}
+
+/**
+ * Revert all the module config.
+ */
+function asu_degree_rfi_update_9005(&$sandbox) {
+  _asu_degree_rfi_revert_all_module_config();
+}
+
+/**
+ * Revert all the module config.
+ */
+function asu_degree_rfi_update_9006(&$sandbox) {
+  _asu_degree_rfi_revert_all_module_config();
+}
+
+/**
+ * Revert all the module config.
+ */
+function asu_degree_rfi_update_9007(&$sandbox) {
+  _asu_degree_rfi_revert_all_module_config();
+}
+
+/**
+ * Revert all the module config.
+ */
+function asu_degree_rfi_update_9008(&$sandbox) {
+  _asu_degree_rfi_revert_all_module_config();
+}
+
+/**
+ * Revert all the module config.
+ */
+function asu_degree_rfi_update_9009(&$sandbox) {
+  _asu_degree_rfi_revert_all_module_config();
+}
+
+/**
+ * Revert all the module config.
+ */
+function asu_degree_rfi_update_9010(&$sandbox) {
+  _asu_degree_rfi_revert_all_module_config();
+}
+
+function _asu_degree_rfi_revert_all_module_config() {
+  // Get this module name.
+  $module = \Drupal::service('module_handler')
+    ->getModule(basename(__FILE__, '.install'))
+    ->getName();
+  // Unlock the configuration storage.
+  \Drupal::state()->set('configuration_locked', FALSE);
+  // Revert all configs from this module.
+  \Drupal::service('webspark.config_manager')->revertAll($module);
+  // Lock the configuration storage.
+  \Drupal::state()->set('configuration_locked', TRUE);
+}

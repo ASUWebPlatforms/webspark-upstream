@@ -1,0 +1,7 @@
+webspark_blocks.admin_settings:
+  path: /admin/config/system/blocks
+  defaults:
+    _title: 'Webspark block settings'
+    _form: \Drupal\webspark_blocks\Form\WebsparkBlocksAdminSettings
+  requirements:
+    _permission: 'administer users'

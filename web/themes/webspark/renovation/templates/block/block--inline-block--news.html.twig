@@ -1,0 +1,40 @@
+{#
+/**
+ * @file
+ * Template for event block.
+ */
+#}
+{% set classes = [
+  'block',
+  'block-' ~ configuration.provider|clean_class,
+  'block-' ~ plugin_id|clean_class,
+] %}
+
+<div{{ attributes.addClass(classes) }}>
+  {{ title_prefix }}
+  {% if label %}
+    {% block label %}
+      <h2{{ title_attributes }}>{{ label }}</h2>
+    {% endblock %}
+  {% endif %}
+  {{ title_suffix }}
+  {{ content.field_anchor_menu_settings }}
+
+  <div class="mt-2" id="{{ news_id }}">
+    ASU News
+    {{ content|without(
+      'field_display',
+      'field_card_cta_color',
+      'field_news_link',
+      'field_news_feed_filter',
+      'field_heading',
+      'field_header_cta_color',
+      'field_heading_text_color',
+      'field_news_items_to_display',
+      'field_spacing_bottom',
+      'field_spacing_top',
+      'field_anchor_menu_settings',
+      )
+    }}
+  </div>
+</div>

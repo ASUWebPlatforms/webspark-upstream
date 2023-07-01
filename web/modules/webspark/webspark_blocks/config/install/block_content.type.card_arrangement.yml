@@ -1,0 +1,7 @@
+langcode: en
+status: true
+dependencies: {  }
+id: card_arrangement
+label: 'Card Arrangement'
+revision: 0
+description: ''

@@ -1,0 +1,7 @@
+{% if poster %}
+<img src="{{ poster }}" alt="" class="poster">
+{% endif %}
+
+<video autoplay muted loop playsinline class="{{ video_class }}" preload="auto" >
+  <source src="{{ source }}#t=0.001" type="video/mp4">
+</video>

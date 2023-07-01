@@ -1,0 +1,35 @@
+@import '../../../node_modules/@asu/bootstrap4-theme/src/scss/extends/breadcrumb';
+
+// Override for full width layout.
+.layout__full-width {
+  .block-webspark-module-asu-breadcrumb {
+    .container {
+      max-width: 100%;
+    }
+    nav {
+      ol.breadcrumb {
+        border-radius: 0;
+        margin-bottom: 0;
+      }
+    }
+  }
+}
+
+// Override for fixed width layout.
+.layout__fixed-width {
+  .block-webspark-module-asu-breadcrumb {
+    nav {
+      max-width: 1200px;
+      ol.breadcrumb {
+        border-radius: 0;
+      }
+    }
+  }
+}
+
+// WS2-1036 and UDS-1129 hide breadcrumb on mobile
+@media screen and (max-width: $uds-breakpoint-sm) {
+  .breadcrumb {
+    display: none;
+  }
+}

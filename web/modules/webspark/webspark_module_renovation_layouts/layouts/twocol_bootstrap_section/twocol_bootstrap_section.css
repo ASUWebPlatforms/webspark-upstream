@@ -1,0 +1,26 @@
+/*
+ * @file
+ * Provides the layout styles for two-column layout section.
+ */
+
+
+@media screen and (min-width: 40em) {
+    .layout-builder__region.js-layout-builder-region.layout__region.layout__region--first.col-md-3,
+    .layout-builder__region.js-layout-builder-region.layout__region.layout__region--first.col-md-4,
+    .layout-builder__region.js-layout-builder-region.layout__region.layout__region--first.col-md-8,
+    .layout-builder__region.js-layout-builder-region.layout__region.layout__region--first.col-md-6,
+    .layout-builder__region.js-layout-builder-region.layout__region.layout__region--first.col-md-9,
+    .layout-builder__region.js-layout-builder-region.layout__region.layout__region--second.col-md-9,
+    .layout-builder__region.js-layout-builder-region.layout__region.layout__region--second.col-md-4,
+    .layout-builder__region.js-layout-builder-region.layout__region.layout__region--second.col-md-8,
+    .layout-builder__region.js-layout-builder-region.layout__region.layout__region--second.col-md-6,
+    .layout-builder__region.js-layout-builder-region.layout__region.layout__region--second.col-md-3 {
+        padding: 0;
+    }
+}
+
+@media (max-width: 767.98px) {
+    .uds-flex-order-reversed .row {
+        flex-direction: column-reverse;
+    }
+}

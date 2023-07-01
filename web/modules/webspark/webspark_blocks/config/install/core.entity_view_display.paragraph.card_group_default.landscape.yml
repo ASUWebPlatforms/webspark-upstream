@@ -1,0 +1,29 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.landscape
+    - field.field.paragraph.card_group_default.field_cards
+    - paragraphs.paragraphs_type.card_group_default
+  module:
+    - entity_reference_revisions
+    - layout_builder
+third_party_settings:
+  layout_builder:
+    allow_custom: false
+    enabled: false
+id: paragraph.card_group_default.landscape
+targetEntityType: paragraph
+bundle: card_group_default
+mode: landscape
+content:
+  field_cards:
+    type: entity_reference_revisions_entity_view
+    weight: 0
+    label: hidden
+    settings:
+      view_mode: landscape
+      link: ''
+    third_party_settings: {  }
+    region: content
+hidden: {  }

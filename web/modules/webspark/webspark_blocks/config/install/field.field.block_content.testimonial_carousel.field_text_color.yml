@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.testimonial_carousel
+    - field.storage.block_content.field_text_color
+  module:
+    - options
+id: block_content.testimonial_carousel.field_text_color
+field_name: field_text_color
+entity_type: block_content
+bundle: testimonial_carousel
+label: 'Text Color'
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    value: default
+default_value_callback: ''
+settings: {  }
+field_type: list_string

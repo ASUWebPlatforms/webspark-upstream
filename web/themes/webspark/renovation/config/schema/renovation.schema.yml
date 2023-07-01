@@ -1,0 +1,5 @@
+# Schema for the configuration files of the Renovation theme.
+
+renovation.settings:
+  type: theme_settings
+  label: 'Renovation settings'

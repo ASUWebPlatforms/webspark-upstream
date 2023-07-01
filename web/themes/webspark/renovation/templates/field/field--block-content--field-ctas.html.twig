@@ -1,0 +1,24 @@
+{#
+/**
+ * @file
+ * Template for a ctas field.
+ */
+#}
+
+{# Variables come from preprocess field function #}
+{% for button in buttons %}
+  {% if button.icon == '' %}
+    {% include '@renovation/buttons/button-cta.twig' with {
+      url : button.link,
+      title: button.title,
+      button_color: button.background_color == 'banner-black' ? 'btn-gold' : 'btn-dark',
+    } %}
+  {% else %}
+    {% include '@renovation/buttons/button-icon.twig' with {
+      url : button.link,
+      title: button.title,
+      button_color: button.color,
+      icon: button.icon
+    } %}
+  {% endif %}
+{% endfor %}

@@ -1,0 +1,15 @@
+<a 
+    href="{{ url }}" 
+    class="btn {{ button_color }}" 
+    role="button" target="{{ target }}"
+    data-ga-event="link"
+    data-ga-action="click"
+    data-ga-name="onclick"
+    data-ga-type="internal link"
+    {% if sub_heading is empty %}
+      data-ga-section="{{ heading }}"
+    {% else %}
+      data-ga-section="{{ sub_heading }}"
+    {% endif %}
+    data-ga-region="main content"
+    data-ga-text="default button"><span class="fas fa-{{ icon }}"></span>&nbsp;&nbsp;{{ title }}</a>

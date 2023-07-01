@@ -1,0 +1,62 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_content
+    - options
+id: block_content.field_spacing_top
+field_name: field_spacing_top
+entity_type: block_content
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: spacing-top-8
+      label: 8px
+    -
+      value: spacing-top-16
+      label: 16px
+    -
+      value: spacing-top-24
+      label: 24px
+    -
+      value: spacing-top-32
+      label: 32px
+    -
+      value: spacing-top-48
+      label: 48px
+    -
+      value: spacing-top-72
+      label: 72px
+    -
+      value: spacing-top-96
+      label: 96px
+    -
+      value: spacing-top-minus-8
+      label: '-8px'
+    -
+      value: spacing-top-minus-16
+      label: '-16px'
+    -
+      value: spacing-top-minus-24
+      label: '-24px'
+    -
+      value: spacing-top-minus-32
+      label: '-32px'
+    -
+      value: spacing-top-minus-48
+      label: '-48px'
+    -
+      value: spacing-top-minus-72
+      label: '-72px'
+    -
+      value: spacing-top-minus-96
+      label: '-96px'
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

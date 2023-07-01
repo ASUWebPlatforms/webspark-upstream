@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - asu_degree_rfi
+  module:
+    - media
+    - node
+id: node.field_degree_list_photo_grid
+field_name: field_degree_list_photo_grid
+entity_type: node
+type: entity_reference
+settings:
+  target_type: media
+module: core
+locked: false
+cardinality: 4
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

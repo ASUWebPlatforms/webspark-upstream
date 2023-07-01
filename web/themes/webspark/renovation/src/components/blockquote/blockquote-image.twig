@@ -1,0 +1,17 @@
+<div class="uds-blockquote with-image {% if image_position != 'left' %} reversed {% endif %} {{ text_color }} uds-content-align">
+  {{ media }}
+  <blockquote>
+    <h3>
+      <span class="{{ highlight }}">{{ heading }}</span>
+    </h3>
+    <p>{{ body_text['#text']|spaceless|replace({'</p><p>': '<br>'})|striptags('<a><br>')|raw }}</p>
+    {% if citation_author is not empty or citation_description is not empty %}
+      <div class="citation">
+        <div class="citation-content">
+          <cite class="name">{{ citation_author }}</cite>
+          <cite class="description">{{ citation_description }}</cite>
+        </div>
+      </div>
+    {% endif %}
+  </blockquote>
+</div>

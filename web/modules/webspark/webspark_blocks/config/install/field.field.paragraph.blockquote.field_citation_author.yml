@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_citation_author
+    - paragraphs.paragraphs_type.blockquote
+id: paragraph.blockquote.field_citation_author
+field_name: field_citation_author
+entity_type: paragraph
+bundle: blockquote
+label: 'Citation author'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.events
+    - field.storage.block_content.field_events_cta
+  module:
+    - link
+id: block_content.events.field_events_cta
+field_name: field_events_cta
+entity_type: block_content
+bundle: events
+label: CTA
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  link_type: 17
+  title: 1
+field_type: link

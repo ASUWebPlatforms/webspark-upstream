@@ -1,0 +1,29 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_content
+    - options
+id: block_content.field_color
+field_name: field_color
+entity_type: block_content
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: gold
+      label: Gold
+    -
+      value: maroon
+      label: Maroon
+    -
+      value: black
+      label: 'Gray 7'
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

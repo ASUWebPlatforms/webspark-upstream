@@ -1,0 +1,31 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.anchor_menu_settings.field_icon
+    - field.field.paragraph.anchor_menu_settings.field_title
+    - paragraphs.paragraphs_type.anchor_menu_settings
+  module:
+    - fontawesome_iconpicker_widget
+id: paragraph.anchor_menu_settings.default
+targetEntityType: paragraph
+bundle: anchor_menu_settings
+mode: default
+content:
+  field_icon:
+    weight: 1
+    settings: {  }
+    third_party_settings: {  }
+    type: fontawesome_iconpicker_widget
+    region: content
+  field_title:
+    weight: 0
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+hidden:
+  created: true
+  status: true

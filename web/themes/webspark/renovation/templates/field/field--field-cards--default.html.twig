@@ -1,0 +1,7 @@
+{% set col_width = items|length > 4 ? 12 : 12 / items|length %}
+
+{% for item in items %}
+
+    {{ item.content }}
+
+{% endfor %}

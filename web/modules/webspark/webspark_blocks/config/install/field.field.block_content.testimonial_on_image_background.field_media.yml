@@ -1,0 +1,34 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.testimonial_on_image_background
+    - field.storage.block_content.field_media
+    - media.type.cropped_image_sqare
+    - media.type.cropped_image_wide
+    - media.type.image
+    - media.type.image_block_images
+id: block_content.testimonial_on_image_background.field_media
+field_name: field_media
+entity_type: block_content
+bundle: testimonial_on_image_background
+label: 'Image Background'
+description: 'Recommended image size (W x H): 1920 x 512 px'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      image_block_images: image_block_images
+      cropped_image_sqare: cropped_image_sqare
+      cropped_image_wide: cropped_image_wide
+      image: image
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: image_block_images
+field_type: entity_reference

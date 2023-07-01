@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.donut_chart
+    - field.storage.block_content.field_text_color
+  module:
+    - options
+id: block_content.donut_chart.field_text_color
+field_name: field_text_color
+entity_type: block_content
+bundle: donut_chart
+label: 'Text Color'
+description: ''
+required: true
+translatable: true
+default_value:
+  -
+    value: default
+default_value_callback: ''
+settings: {  }
+field_type: list_string

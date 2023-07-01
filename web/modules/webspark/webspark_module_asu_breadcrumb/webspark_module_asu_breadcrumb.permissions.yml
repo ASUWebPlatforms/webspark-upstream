@@ -1,0 +1,4 @@
+administer webspark_module_asu_breadcrumb configuration:
+  title: 'Administer webspark_module_asu_breadcrumb configuration'
+  description: 'Optional description.'
+  restrict access: true

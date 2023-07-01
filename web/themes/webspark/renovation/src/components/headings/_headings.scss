@@ -1,0 +1,6 @@
+@import '../../../node_modules/@asu/bootstrap4-theme/src/scss/extends/headings';
+// Override the default headings to match max width of content
+.h2, h2, .h3, h3 {
+    max-width: 700px;
+    overflow-wrap: break-word;
+}

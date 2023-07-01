@@ -1,0 +1,9 @@
+name: Renovation Layouts
+type: module
+description: Provides layouts for the renovation theme.
+package: Layouts
+dependencies:
+  - layout_discovery
+  - layout_section_classes
+core: 8.x
+core_version_requirement: ^8 || ^9

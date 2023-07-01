@@ -1,0 +1,28 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.video_hero
+    - field.storage.block_content.field_media
+    - media.type.video
+id: block_content.video_hero.field_media
+field_name: field_media
+entity_type: block_content
+bundle: video_hero
+label: Video
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      video: video
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: remote_video
+field_type: entity_reference

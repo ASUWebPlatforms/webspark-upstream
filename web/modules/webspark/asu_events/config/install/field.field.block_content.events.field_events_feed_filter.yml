@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.events
+    - field.storage.block_content.field_events_feed_filter
+id: block_content.events.field_events_feed_filter
+field_name: field_events_feed_filter
+entity_type: block_content
+bundle: events
+label: 'Feed Filter'
+description: 'Filters are a string containing all desired filters separated by a comma '','''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

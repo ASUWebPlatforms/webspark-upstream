@@ -1,0 +1,39 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_form_mode.media.media_library
+    - field.field.media.story_hero.field_media_image
+    - image.style.thumbnail
+    - media.type.story_hero
+  module:
+    - decorative_image_widget
+    - image
+id: media.story_hero.media_library
+targetEntityType: media
+bundle: story_hero
+mode: media_library
+content:
+  field_media_image:
+    weight: 5
+    settings:
+      preview_image_style: thumbnail
+      progress_indicator: throbber
+    third_party_settings:
+      decorative_image_widget:
+        use_decorative_checkbox: true
+    type: image_image
+    region: content
+  name:
+    type: string_textfield
+    settings:
+      size: 60
+      placeholder: ''
+    weight: 0
+    third_party_settings: {  }
+    region: content
+hidden:
+  created: true
+  path: true
+  status: true
+  uid: true

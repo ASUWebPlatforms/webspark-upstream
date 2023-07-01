@@ -1,0 +1,17 @@
+{#
+/**
+ * @file
+ * Default template for a node title field.
+ */
+#}
+
+{% if not is_inline %}
+  {% include "field.html.twig" %}
+{% else %}
+  {% for item in items %}
+    {% include '@renovation/headings/heading.twig' with {
+      html_tag : 'h1',
+      heading: item.content['#context'].value,
+    } %}
+  {% endfor %}
+{% endif %}

@@ -1,0 +1,11 @@
+langcode: en
+status: true
+dependencies: {  }
+id: images_block
+label: '4:3'
+description: 'Used for the images block in Layout Builder.'
+aspect_ratio: '4:3'
+soft_limit_width: null
+soft_limit_height: null
+hard_limit_width: 800
+hard_limit_height: 600

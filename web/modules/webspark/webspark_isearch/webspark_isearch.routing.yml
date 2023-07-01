@@ -1,0 +1,21 @@
+isearch.settings:
+  path: '/admin/config/isearch/settings'
+  defaults:
+    _form: '\Drupal\webspark_isearch\Form\IsearchConfigForm'
+    _title: 'iSearch Settings'
+  requirements:
+    _permission: 'administer site configuration'
+isearch.call:
+  path: '/isearch'
+  defaults:
+    _controller: '\Drupal\webspark_isearch\Controller\iSearchController::content'
+    _title: 'iSearch'
+  requirements:
+    _permission: 'access content'
+isearch.directory:
+  path: '/directory'
+  defaults:
+    _controller: '\Drupal\webspark_isearch\Controller\iSearchController::directory'
+    _title: 'Directory'
+  requirements:
+    _permission: 'access content'

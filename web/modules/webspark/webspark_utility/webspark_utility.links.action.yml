@@ -1,0 +1,5 @@
+webspark_utility.add_media:
+  route_name: entity.media.add_page
+  title: 'Add media'
+  appears_on:
+    - system.admin_content

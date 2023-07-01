@@ -1,0 +1,4 @@
+{% block paragraph %}
+  <div class="div" id="testimonial-{{ paragraph.uuid.value }}"></div>
+  {{ content|without('field_accent_color', 'field_citation_author', 'field_citation_title', 'field_formatted_text', 'field_heading', 'field_heading_highlight', 'field_media') }}
+{% endblock paragraph %}

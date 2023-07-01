@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_degree_nxtstep_card_contnt
+    - paragraphs.paragraphs_type.degree_details_why_choose
+id: paragraph.degree_details_why_choose.field_degree_nxtstep_card_contnt
+field_name: field_degree_nxtstep_card_contnt
+entity_type: paragraph
+bundle: degree_details_why_choose
+label: 'Card content'
+description: 'Limited HTML only. Keep this as short as possible.'
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

@@ -1,0 +1,330 @@
+<?php
+
+/**
+ * @file
+ * Install, update and uninstall functions for the webspark installation profile.
+ */
+
+use Drupal\user\Entity\User;
+use Drupal\menu_link_content\Entity\MenuLinkContent;
+use Drupal\pathauto\PathautoGeneratorInterface;
+
+/**
+ * Implements hook_install().
+ *
+ * Perform actions to set up the site for this profile.
+ *
+ * @see system_install()
+ */
+function webspark_install() {
+  // Enable radix theme.
+  \Drupal::service('theme_installer')
+    ->install(['radix']);
+  //Set default theme.
+  \Drupal::configFactory()
+    ->getEditable('system.theme')
+    ->set('default', 'renovation')
+    ->save();
+
+  // Assign user 1 the "administrator" role.
+  $user = User::load(1);
+  $user->roles[] = 'administrator';
+  $user->save();
+
+  // Enable webspark_installer module.
+  \Drupal::service('module_installer')
+    ->install(['webspark_installer_forms'], TRUE);
+
+  // Populate the main menu.
+  $home = MenuLinkContent::create(array(
+    'title' => t('Home'),
+    'link' => array('uri' => 'internal:/'),
+    'menu_name' => 'main',
+    'weight' => -50,
+  ));
+  $home->save();
+
+  // Enable default (global) disable client-side validation on all webforms.
+  \Drupal::configFactory()->getEditable('webform.settings')
+    ->set('settings.default_form_novalidate', TRUE)
+    ->save();
+
+  // Enable config_readonly module.
+  \Drupal::service('module_installer')->install(['config_readonly']);
+}
+
+/**
+ * Install the webform module and set its defaults.
+ */
+function webspark_update_9001(&$sandbox) {
+  \Drupal::service("module_installer")->install(["inline_form_errors"]);
+  \Drupal::service("module_installer")->install(["webform"]);
+  \Drupal::service('module_installer')->install(['webform_ui']);
+  \Drupal::service('module_installer')->install(['config_update']);
+  \Drupal::service('module_installer')->install(['config_readonly']);
+
+  // Enable default (global) disable client-side validation on all webforms.
+  \Drupal::configFactory()->getEditable('webform.settings')
+    ->set('settings.default_form_novalidate', TRUE)
+    ->save();
+}
+
+/**
+ * Add the robots txt module.
+ */
+function webspark_update_9002(&$sandbox) {
+  \Drupal::service("module_installer")->install(["robotstxt"]);
+
+  // Remove the robots file.
+  unlink('robots.txt');
+  // Clear browser cache to test right after: CTRL+R.
+}
+
+/**
+ * Install new modules.
+ */
+function webspark_update_9003(&$sandbox) {
+  $module_installer = \Drupal::service("module_installer");
+  
+  $module_installer->install(["captcha"]);
+  $module_installer->install(["schema_metatag"]);
+  $module_installer->install(["editoria11y"]);
+}
+
+/**
+ * Install new modules.
+ */
+function webspark_update_9004(&$sandbox) {
+  $module_installer = \Drupal::service("module_installer");
+  
+  $module_installer->install(["decorative_image_widget"]);
+}
+
+/**
+ * Install new modules.
+ */
+function webspark_update_9005(&$sandbox) {
+  $module_installer = \Drupal::service("module_installer");
+
+  $module_installer->install(["block_field"]);
+}
+
+/**
+ * Install webspark_cas module.
+ */
+function webspark_update_9006(&$sandbox) {
+  $module_installer = \Drupal::service("module_installer");
+
+  $module_installer->install(["webspark_cas"]);
+}
+
+/**
+ * Install webspark_webdir module and dependencies.
+ */
+function webspark_update_9007(&$sandbox) {
+  $module_installer = \Drupal::service("module_installer");
+
+  $module_installer->install(["maxlength"]);
+  $module_installer->install(["field_states_ui"]);
+  $module_installer->install(["webspark_webdir"]);
+}
+
+/**
+* Adding image media type as an option within Media types selectable in the Media Library for Full HTML and Basic HTML formats.
+*/
+function webspark_update_9008(&$sandbox) {
+    \Drupal::configFactory()->getEditable('filter.format.basic_html')
+        ->set('filters.media_embed.settings.allowed_media_types.image', 'image')
+        ->save();
+
+    \Drupal::configFactory()->getEditable('filter.format.full_html')
+        ->set('filters.media_embed.settings.allowed_media_types.image', 'image')
+        ->save();
+}
+
+/**
+ * Uninstall webspark_isearch module.
+ */
+function webspark_update_9009(&$sandbox) {
+  
+  // NOTE: The uninstall of the webspark_isearch module has been deferred
+  // to a future release due to dependencies on some of its fields, used
+  // by the webspark_webdir module. See WS2-1586 and WS2-1587 for more details.
+  
+  //$module_installer = \Drupal::service("module_installer");
+  //$module_installer->uninstall(["webspark_isearch"]);
+}
+
+/**
+ * Applying new URL alias to all Drupal users
+ */
+function webspark_update_9010(&$sandbox) {
+  $apply_user_aliases = 1;
+  ## If Pathauto pattern already exists for User entities, skip rest of update.
+  $patterns_list = \Drupal::service('config.factory')->listAll($prefix = 'pathauto.pattern');
+  if (!empty($patterns_list)) {
+    foreach ($patterns_list as $value) {
+      $type = \Drupal::config($value)->get('type') ?? '';
+      if ($type === 'canonical_entities:user') {
+        \Drupal::service('messenger')
+          ->addMessage("Added new user ID URL pattern, but skipped user URL alias updates because another pattern already exists.");
+        $apply_user_aliases = 0;
+        break;
+      }
+    }
+  }
+  # Set new User alias pattern (but set last/lowest in priority)
+  \Drupal::state()->set('configuration_locked', FALSE);
+  \Drupal::service('webspark.config_manager')->importConfigFile('pathauto.pattern.user_profile_urls');
+  \Drupal::state()->set('configuration_locked', TRUE);
+
+  # Apply update to existing users IF they don't already have an alias.
+  if ($apply_user_aliases === 1) {
+    $orig = \Drupal::config('pathauto.settings')->get('update_action');
+    # Temporary pathauto setting change: If individual alias already exists, it will be skipped
+    \Drupal::state()->set('configuration_locked', FALSE);
+    \Drupal::service('config.factory')->getEditable('pathauto.settings')
+      ->set('update_action', PathautoGeneratorInterface::UPDATE_ACTION_NO_NEW)->save();
+    \Drupal::state()->set('configuration_locked', TRUE);
+
+    $entities = [];
+    $entities['user'] = \Drupal::entityQuery('user')->execute();
+    $result = [];
+    foreach ($entities as $type => $entity_list) {
+      foreach ($entity_list as $entity_id) {
+        $result[] = [
+          'entity_type' => $type,
+          'id' => $entity_id,
+        ];
+      }
+    }
+
+    ## Batch API
+    if (!isset($sandbox['current'])) {
+      $sandbox['current'] = 0;
+      $sandbox['max'] = count($result);
+    }
+    $limit = 50;
+    $result = array_slice($result, $sandbox['current'], $limit);
+
+    # Alias updates
+    foreach ($result as $row) {
+      $entity_storage = \Drupal::entityTypeManager()
+        ->getStorage($row['entity_type']);
+      $entity = $entity_storage->load($row['id']);
+      \Drupal::service('pathauto.generator')
+        ->updateEntityAlias($entity, 'update');
+      $sandbox['current']++;
+    }
+
+    # Restore original pathauto overwrite/update settings
+    \Drupal::state()->set('configuration_locked', FALSE);
+    \Drupal::service('config.factory')->getEditable('pathauto.settings')
+      ->set('update_action', $orig)->save();
+    \Drupal::state()->set('configuration_locked', TRUE);
+
+    # More Batch API
+    $sandbox['#finished'] = empty($sandbox['max']) ? 1 : ($sandbox['current'] / $sandbox['max']);
+    if ($sandbox['#finished'] >= 1) {
+      return t('Adding URL aliases to user accounts that did not have an alias has been completed.');
+    }
+  }
+}
+
+/**
+ * Adding Article content type fields.
+ */
+function webspark_update_9011(&$sandbox) {
+  // Unlock the configuration storage.
+  \Drupal::logger("webspark")->notice("Started updating article content type configs...");
+
+  \Drupal::state()->set('configuration_locked', FALSE);
+  // Importing new configs from webspark profile
+  \Drupal::service('webspark.config_manager')->importConfigFile('core.base_field_override.node.article.promote');
+  \Drupal::service('webspark.config_manager')->importConfigFile('core.date_format.article_date');
+  \Drupal::service('webspark.config_manager')->importConfigFile('field.field.node.article.field_author');
+  \Drupal::service('webspark.config_manager')->importConfigFile('field.field.node.article.field_byline');
+  \Drupal::service('webspark.config_manager')->importConfigFile('field.field.node.article.field_date_published');
+  \Drupal::service('webspark.config_manager')->importConfigFile('field.storage.node.field_author');
+  \Drupal::service('webspark.config_manager')->importConfigFile('field.storage.node.field_byline');
+  \Drupal::service('webspark.config_manager')->importConfigFile('field.storage.node.field_date_published');
+  // Update existing configs from webspark profile
+  \Drupal::service('webspark.config_manager')->updateConfigFile('core.entity_form_display.node.article.default');
+  \Drupal::service('webspark.config_manager')->updateConfigFile('core.entity_view_display.node.article.default');
+  \Drupal::service('webspark.config_manager')->updateConfigFile('core.entity_view_display.node.article.rss');
+  \Drupal::service('webspark.config_manager')->updateConfigFile('core.entity_view_display.node.article.teaser');
+  \Drupal::service('webspark.config_manager')->updateConfigFile('node.type.article');
+  // Lock the configuration storage.
+  \Drupal::state()->set('configuration_locked', TRUE);
+
+  \Drupal::logger("webspark")->notice("Updates to Article content type were attempted.");
+  // @TODO Not sure why simple sitemap XML setting isn't applying?
+}
+
+/**
+ * Raising lower log message caps to 10K
+ */
+function webspark_update_9012(&$sandbox) {
+  // Unlock the configuration storage.
+  \Drupal::state()->set('configuration_locked', FALSE);
+  // Importing new configs from webspark profile
+  $limit = \Drupal::service('config.factory')->get('dblog.settings')->get('row_limit');
+  if ( $limit < 10000 && $limit > 0) {
+    \Drupal::service('config.factory')->getEditable('dblog.settings')->set('row_limit', 10000)->save();
+    \Drupal::logger("webspark")->notice("Logging threshold increased from %lim to 10K", ["%lim" => $limit]);
+  } else {
+    \Drupal::logger("webspark")->notice("Logging threshold already 10K or higher. Skipping increase.");
+  }
+  // Lock the configuration storage.
+  \Drupal::state()->set('configuration_locked', TRUE);
+}
+
+/**
+ * Install imagemagick module and dependencies.
+ */
+function webspark_update_9013(&$sandbox) {
+  $module_installer = \Drupal::service("module_installer");
+
+  $module_installer->install(["file_mdm"]);
+  $module_installer->install(["sophron"]);
+  $module_installer->install(["imagemagick"]);
+
+  // Importing configs for ImageMagick module.
+  \Drupal::state()->set('configuration_locked', FALSE);
+  \Drupal::service('webspark.config_manager')->updateConfigFile('file_mdm.file_metadata_plugin.getimagesize');
+  \Drupal::service('webspark.config_manager')->updateConfigFile('file_mdm.settings');
+  \Drupal::service('webspark.config_manager')->updateConfigFile('imagemagick.file_metadata_plugin.imagemagick_identify');
+  \Drupal::service('webspark.config_manager')->updateConfigFile('imagemagick.settings');
+  \Drupal::service('webspark.config_manager')->updateConfigFile('sophron.settings');
+  \Drupal::service('webspark.config_manager')->updateConfigFile('system.image');
+  \Drupal::state()->set('configuration_locked', TRUE);
+}
+
+/**
+ * Updating Article content type to include top hero, improved node edit form
+ */
+function webspark_update_9014(&$sandbox) {
+  // Unlock the configuration storage.
+  \Drupal::logger("webspark")->notice("Updating article content type configs...");
+  \Drupal::state()->set('configuration_locked', FALSE);
+  // Update existing configs from webspark profile
+  \Drupal::service('webspark.config_manager')->updateConfigFile('field.field.node.article.body');
+  \Drupal::service('webspark.config_manager')->updateConfigFile('field.field.node.article.field_author');
+  \Drupal::service('webspark.config_manager')->updateConfigFile('field.field.node.article.field_date_published');
+  \Drupal::service('webspark.config_manager')->updateConfigFile('field.field.node.article.field_header_style');
+  \Drupal::service('webspark.config_manager')->updateConfigFile('field.field.node.article.field_media');
+  \Drupal::service('webspark.config_manager')->updateConfigFile('core.entity_form_display.node.article.default');
+  \Drupal::service('webspark.config_manager')->updateConfigFile('core.entity_view_display.node.article.default');
+  // Lock the configuration storage.
+  \Drupal::state()->set('configuration_locked', TRUE);
+  \Drupal::logger("webspark")->notice("Article content type updated.");
+}
+
+/**
+ * Update the allowed HTML tags for the Basic HTML format.
+ */
+function webspark_update_9015(&$sandbox) {
+  \Drupal::state()->set('configuration_locked', FALSE);
+  \Drupal::service('webspark.config_manager')->updateConfigFile('filter.format.basic_html');
+  \Drupal::state()->set('configuration_locked', TRUE);
+}

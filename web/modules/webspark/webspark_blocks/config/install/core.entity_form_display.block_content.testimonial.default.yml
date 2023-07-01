@@ -1,0 +1,114 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.testimonial
+    - field.field.block_content.testimonial.field_accent_color
+    - field.field.block_content.testimonial.field_anchor_menu_settings
+    - field.field.block_content.testimonial.field_heading_highlight
+    - field.field.block_content.testimonial.field_spacing_bottom
+    - field.field.block_content.testimonial.field_spacing_top
+    - field.field.block_content.testimonial.field_testimonial_component
+    - field.field.block_content.testimonial.field_text_color
+    - field.field.block_content.testimonial.field_tooltip
+  module:
+    - field_group
+    - paragraphs
+third_party_settings:
+  field_group:
+    group_appearance_settings:
+      children:
+        - field_spacing_top
+        - field_spacing_bottom
+        - field_anchor_menu_settings
+      parent_name: ''
+      weight: 6
+      format_type: tab
+      region: content
+      format_settings:
+        id: ''
+        classes: ''
+        description: ''
+        formatter: closed
+        required_fields: true
+      label: 'Appearance Settings'
+id: block_content.testimonial.default
+targetEntityType: block_content
+bundle: testimonial
+mode: default
+content:
+  field_accent_color:
+    weight: 1
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  field_anchor_menu_settings:
+    weight: 4
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: anchor_menu_settings
+    third_party_settings: {  }
+    type: entity_reference_paragraphs
+    region: content
+  field_heading_highlight:
+    weight: 3
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  field_spacing_bottom:
+    weight: 3
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  field_spacing_top:
+    weight: 2
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  field_testimonial_component:
+    type: entity_reference_paragraphs
+    weight: 4
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: testimonial
+    third_party_settings: {  }
+    region: content
+  field_text_color:
+    weight: 2
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  field_tooltip:
+    weight: 5
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: _none
+    third_party_settings: {  }
+    type: entity_reference_paragraphs
+    region: content
+  info:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden: {  }

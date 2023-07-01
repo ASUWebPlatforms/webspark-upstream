@@ -1,0 +1,9 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - paragraphs
+id: paragraph.carousel_card
+label: 'Carousel Card'
+targetEntityType: paragraph
+cache: true

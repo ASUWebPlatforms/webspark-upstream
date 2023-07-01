@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.news
+    - field.storage.block_content.field_display
+  module:
+    - options
+id: block_content.news.field_display
+field_name: field_display
+entity_type: block_content
+bundle: news
+label: Display
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    value: Cards
+default_value_callback: ''
+settings: {  }
+field_type: list_string

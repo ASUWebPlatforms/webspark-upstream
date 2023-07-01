@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_citation_style
+    - paragraphs.paragraphs_type.blockquote
+  module:
+    - options
+id: paragraph.blockquote.field_citation_style
+field_name: field_citation_style
+entity_type: paragraph
+bundle: blockquote
+label: 'Citation Style'
+description: '* Only for quotes without images added'
+required: false
+translatable: true
+default_value:
+  -
+    value: default
+default_value_callback: ''
+settings: {  }
+field_type: list_string

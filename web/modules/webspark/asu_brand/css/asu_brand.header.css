@@ -1,0 +1,191 @@
+/*
+  Header style rules related to Drupal toolbar module. Depends on code and
+  classes applied through js/asu_brand.header.js.
+*/
+
+/* Default padding for header for anonymous users. Overridden by rules below
+   for authenticated users. */
+body {
+  padding-top: 105px; /* Adjust space below header */
+}
+
+/* If #toolbar_administration our js adds asu_brand-toolbar-*-compat classes */
+#ws2HeaderContainer.asu-brand-toolbar-header-tray-open-compat header {
+  top:79px;
+}
+#ws2HeaderContainer.asu-brand-toolbar-header-tray-closed-compat header {
+  top:39px;
+}
+body.toolbar-horizontal.toolbar-tray-open {
+  padding-top:184px !important; /* Adjust space below header */
+}
+body.toolbar-horizontal {
+  padding-top:144px !important; /* Adjust space below header */
+}
+/* vertical variations */
+#ws2HeaderContainer.asu-brand-toolbar-header-tray-open-compat-vertical header,
+#ws2HeaderContainer.asu-brand-toolbar-header-tray-closed-compat-vertical header {
+  top:39px;
+  z-index: 1200 !important;
+}
+body.toolbar-vertical,
+body.toolbar-vertical.toolbar-tray-open {
+  /* TODO Identify mechanism to differentiate between when user toggles
+    toolbar to vertical while on desktop vs. when the breakpoint automatically
+    toggles toolbar to vertical for mobile. Ideally, we would be able to
+    target the two independently. The following commented line value would be
+    the adjustment to use for for the breakpoint change. At current, since this
+    applies in both cases, we use the larger option which means there's a
+    bit of extra padding-top on the body when the vertical toolbar is used on
+    mobile. Not a public-user facing issue, so leaving for future
+    improvement. UPDATE: value is now obsolete and will need to be adjusted */
+  /*padding-top:158px !important; /* less padding because toolbar transition occurs with breakpoint/mobile menu */
+  padding-top:144px !important; /* Adjust space below header */
+}
+/* Adjust toolbar vertical spacing to be below header */
+#toolbar-administration .toolbar-tray-vertical nav.toolbar-lining {
+  padding-top:158px;
+}
+
+/* Layout Builder dialogs for content editing UI need to be adjusted. */
+.ui-dialog.ui-widget.ui-widget-content.ui-dialog-position-side {
+  top: 233px !important;
+  padding-bottom: 158px; /* So we don't have dialog content clipped off */
+}
+/* And adjust internal padding impacted by tweak above */
+.ui-dialog.ui-widget.ui-widget-content.ui-dialog-position-side
+.ui-front.ui-dialog-content.ui-widget-content {
+  padding-top: 4px !important;
+}
+
+/* Media modal uses code that adapts where it is within the page based on
+  viewport size and it can end up under the header. Solve it simply using
+  z-index. */
+body .ui-dialog.ui-widget.ui-widget-content.media-library-widget-modal {
+  z-index: 1500 !important;
+}
+
+/* Body adjustments for mobile 992px breakpoint */
+@media only screen and (max-width: 992px) {
+  /* Default padding for header for anonymous users. Overridden by rules below
+    for authenticated users. */
+  body {
+    padding-top: 73px; /* Adjust space below header */
+  }
+  body.toolbar-horizontal.toolbar-tray-open {
+    padding-top:148px !important; /* Adjust space below header */
+  }
+  body.toolbar-horizontal {
+    padding-top:112px !important; /* Adjust space below header */
+  }
+  body.toolbar-vertical,
+  body.toolbar-vertical.toolbar-tray-open {
+    padding-top:112px !important; /* Adjust space below header */
+  }
+
+  /* Guard against css bleeding in from CMS */
+  #ws2HeaderContainer header .navbar-container ul.navlist li {
+    max-width: 100% !important;
+  }
+
+  /* No admin toolbar */
+  body:not(.toolbar-vertical):not(.toolbar-fixed) nav#asu-header-nav {
+    min-height: calc(100vh - 286px) !important;
+  }
+  /* Admin toolbar */
+  body.toolbar-vertical nav#asu-header-nav {
+    min-height: calc(100vh - 324px) !important;
+  }
+  /* Needed for between 975px and 992px before toolbar forces to vertical */
+  body.toolbar-horizontal nav#asu-header-nav {
+    min-height: calc(100vh - 364px) !important;
+  }
+
+  #ws2HeaderContainer header .shadow.mobile-open {
+    position: fixed;
+    bottom: 174px !important;
+  }
+  #ws2HeaderContainer header .universal-nav.mobile-open {
+    position: fixed;
+    bottom: 0px;
+  }
+}
+
+/* Body adjustments for mobile and admin toolbar 609px breakpoint */
+@media only screen and (max-width: 609px) {
+
+  /* Admin menu collapses on scroll, so adjust top for scrolled state */
+  #ws2HeaderContainer header.scrolled {
+    top: 0 !important;
+  }
+
+  /* Admin toolbar */
+  body.toolbar-vertical nav#asu-header-nav {
+    min-height: calc(100vh - 326px) !important;
+  }
+  /* Admin toolbar, scrolled state */
+  body.toolbar-vertical header.scrolled nav#asu-header-nav {
+    min-height: calc(100vh - 286px) !important;
+  }
+}
+
+/* Body adjustments for admin toolbar 468px breakpoint */
+@media only screen and (max-width: 468px) {
+
+  /* Admin toolbar */
+  body.toolbar-vertical nav#asu-header-nav {
+    min-height: calc(100vh - 346px) !important;
+  }
+  /* Admin toolbar, scrolled state */
+  body.toolbar-vertical header.scrolled nav#asu-header-nav {
+    min-height: calc(100vh - 306px) !important;
+  }
+
+  /* shadow rules if admin toolbar */
+  body.toolbar-vertical #ws2HeaderContainer header .shadow.mobile-open {
+    bottom: 194px !important;
+  }
+
+}
+
+/* Body adjustments for mobile and admin toolbar 366px breakpoint */
+@media only screen and (max-width: 366px) {
+
+  /* No admin toolbar */
+  body:not(.toolbar-vertical):not(.toolbar-fixed) nav#asu-header-nav {
+    min-height: calc(100vh - 306px) !important;
+  }
+  /* Admin toolbar */
+  body.toolbar-vertical nav#asu-header-nav {
+    min-height: calc(100vh - 346px) !important;
+  }
+
+  #ws2HeaderContainer header .shadow.mobile-open {
+    bottom: 194px !important;
+  }
+
+}
+
+@media screen and (max-width: 1260px) {
+  #ws2HeaderContainer .container-xl .navbar-toggler {
+    padding: 0.25rem 0.5rem;
+  }
+
+  body.toolbar-horizontal #ws2HeaderContainer .content-container,
+  body.toolbar-vertical #ws2HeaderContainer .content-container {
+    min-height: calc(100vh - 319px);
+    max-height: calc(100vh - 319px);
+  }
+
+  body.toolbar-horizontal.toolbar-tray-open #ws2HeaderContainer .content-container {
+    min-height: calc(100vh - 360px);
+    max-height: calc(100vh - 360px);
+  }
+
+}
+
+@media screen and (min-width: 1261px) {
+  #ws2HeaderContainer a.home::after {
+    top: 0.55rem
+  }
+}

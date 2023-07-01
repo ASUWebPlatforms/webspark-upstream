@@ -1,0 +1,6 @@
+name: ASU Brand
+description: ASU Web Standards 2 Header with bundled ASU Cookie Consent and ASU Google Tag Manager code. Theme independent.
+type: module
+core_version_requirement: ^8 || ^9
+package: ASU
+configure: asu_brand.asu_brand_settings

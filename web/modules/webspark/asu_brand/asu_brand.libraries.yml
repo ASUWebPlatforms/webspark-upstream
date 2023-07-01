@@ -1,0 +1,19 @@
+components-library:
+  version: 1.3.1
+  dependencies:
+    - core/jquery
+    - core/drupal
+    - core/drupalSettings
+  js:
+    node_modules/@asu/component-header/dist/vendor.umd.js: {}
+    node_modules/@asu/component-header/dist/asuHeader.umd.js: {}
+    node_modules/@asu/component-cookie-consent/dist/vendor.umd.js: {}
+    node_modules/@asu/component-cookie-consent/dist/asuCookieConsent.umd.js: {}
+    js/asu_brand.header.js: {}
+  css:
+    component:
+      css/asu_brand.header.css: {}
+block__system_main_block:
+  css:
+    theme:
+      css/asu-brand-edit-form.css: {}

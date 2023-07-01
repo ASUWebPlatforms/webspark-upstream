@@ -1,0 +1,25 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_degree_list_hide_colschl
+    - node.type.degree_listing_page
+  enforced:
+    module:
+      - asu_degree_rfi
+id: node.degree_listing_page.field_degree_list_hide_colschl
+field_name: field_degree_list_hide_colschl
+entity_type: node
+bundle: degree_listing_page
+label: 'Hide College/School column'
+description: 'Check to hide the College/School column in the degree listing results.'
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

@@ -1,0 +1,66 @@
+
+{% set bg_color = element['#object'].get('field_list_color').value == 'default' ? '' : element['#object'].get('field_list_color').value %}
+{% set step_list_color = element['#object'].get('field_step_list_color').value == 'default' ? 'default' : element['#object'].get('field_step_list_color').value %}
+{% set type = items[0]['content']['#paragraph'].bundle() %}
+{% set view_mode = element['#view_mode'] %}
+
+{# Basic lists #}
+{% if type == 'basic_list' %}
+  {% set list_type = view_mode == 'default' ? 'ul' : 'ol' %}
+    <{{ list_type }} class="uds-list{% if bg_color is not empty %} {{ bg_color }}{% endif %}">
+  {% for item in items %}
+    {{ item.content }}
+  {% endfor %}
+    </{{ list_type }}>
+{% endif %}
+
+{# Step List #}
+{% if type == 'step_list' %}
+  {# set step list color class #}
+  {% set step_list_color = step_list_color == 'default' ? '' :  step_list_color|replace({'_':' '}) %}
+  {# Concatenate the background color and step list color if there is a bg_color #}
+  {% if bg_color != '' %}
+    {% set step_list_color = bg_color ~ ' ' ~ step_list_color %}
+  {% endif %}
+  <ol class="uds-list uds-steplist{% if step_list_color is not empty %} {{ step_list_color }}{% endif %}">
+    {% for item in items %}
+      {{ item.content }}
+    {% endfor %}
+  </ol>
+{% endif %}
+
+{# Icon List #}
+{% if type == 'icon_list' %}
+  <ul class="uds-list fa-ul{% if bg_color is not empty %} {{ bg_color|replace({'_':' '}) }}{% endif %}">
+    {% for item in items %}
+      {{ item.content }}
+    {% endfor %}
+  </ul>
+{% endif %}
+
+{# Display List #}
+{% if type == 'display_list' %}
+  <ul class="uds-list uds-display-list{% if bg_color is not empty %} {{ bg_color|replace({'_':' '}) }}{% endif %}">
+    {% for item in items %}
+      {{ item.content }}
+    {% endfor %}
+  </ul>
+{% endif %}
+
+{# UnOrdered Multi level List #}
+{% if type == 'multi_level_list' %}
+  <ul class="uds-list {% if bg_color is not empty %} {{ bg_color|replace({'_':' '}) }}{% endif %}">
+    {% for item in items %}
+      {{ item.content }}
+    {% endfor %}
+  </ul>
+{% endif %}
+
+{# Ordered Multi level List #}
+{% if type == 'ordered_multi_level_list' %}
+  <ol class="uds-list {% if bg_color is not empty %} {{ bg_color|replace({'_':' '}) }}{% endif %}">
+    {% for item in items %}
+      {{ item.content }}
+    {% endfor %}
+  </ol>
+{% endif %}

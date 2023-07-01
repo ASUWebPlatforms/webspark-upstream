@@ -1,0 +1,7 @@
+langcode: en
+status: true
+dependencies: {  }
+id: image_background_with_cta
+label: 'Image Background With Call To Action'
+revision: 0
+description: ''

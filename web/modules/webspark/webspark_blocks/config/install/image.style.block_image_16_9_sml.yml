@@ -1,0 +1,25 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - crop.type.16_9
+  module:
+    - crop
+name: block_image_16_9_sml
+label: 'Block Image 16:9 SML'
+effects:
+  f0e568b2-eef4-4953-afbd-332c1b8e9393:
+    uuid: f0e568b2-eef4-4953-afbd-332c1b8e9393
+    id: crop_crop
+    weight: 1
+    data:
+      crop_type: '16_9'
+      automatic_crop_provider: null
+  850e3332-df80-4773-bdc4-4ef08495d250:
+    uuid: 850e3332-df80-4773-bdc4-4ef08495d250
+    id: image_scale
+    weight: 2
+    data:
+      width: 300
+      height: null
+      upscale: false

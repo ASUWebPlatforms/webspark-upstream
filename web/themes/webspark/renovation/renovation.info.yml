@@ -1,0 +1,49 @@
+name: Renovation
+description: "ASU's implementation of Web Standards 2.0 in Drupal 8+"
+screenshot: screenshot.png
+core_version_requirement: ^8.7.7 || ^9.0
+# version: VERSION
+engine: twig
+type: theme
+base theme: radix
+
+regions:
+  header: Header
+  pre_content: Pre Content
+  content: Content
+  page_bottom: Page bottom
+  mega_footer: Mega Footer
+  footer: Footer
+
+libraries:
+  - radix/style
+  - renovation/style
+  - renovation/tables
+
+libraries-override:
+  radix/bootstrap: false
+  core/drupal.dialog.off_canvas:
+    css:
+      base:
+        misc/dialog/off-canvas.reset.css: css/core/dialog/off-canvas.reset.css
+        misc/dialog/off-canvas.base.css: css/core/dialog/off-canvas.base.css
+      component:
+        misc/dialog/off-canvas.table.css: css/core/dialog/off-canvas.table.css
+        misc/dialog/off-canvas.button.css: css/core/dialog/off-canvas.button.css
+
+
+ckeditor_stylesheets:
+  - assets/css/renovation.style.css
+  - css/ckeditor-override.css
+
+components:
+  namespaces:
+    renovation: ./src/components
+
+dependencies:
+  - asu_brand
+
+# Information added by Drupal.org packaging script on 2020-09-30
+version: '8.x-4.10'
+project: 'radix'
+datestamp: 1601449011

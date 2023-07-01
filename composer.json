@@ -1,5 +1,5 @@
 {
-    "name": "asuwebplatforms/webspark-upstream",
+    "name": "asuwebplatforms/webspark-ci",
     "description": "Install Drupal 9 with Composer on Pantheon.",
     "type": "project",
     "license": "MIT",
@@ -7,10 +7,6 @@
         {
             "type": "composer",
             "url": "https://packages.drupal.org/8"
-        },
-        {
-            "type": "path",
-            "url": "upstream-configuration"
         },
         {
             "type": "composer",
@@ -39,11 +35,36 @@
                     "type": "zip"
                 }
             }
+        },
+        {
+            "type": "path",
+            "url": "upstream-configuration"
+        },
+        {
+            "type": "path",
+            "url": "custom-dependencies"
         }
     ],
     "require": {
-        "drush/drush": "^11",
-        "pantheon-upstreams/upstream-configuration": "*"
+        "pantheon-upstreams/upstream-configuration": "*",
+        "webspark/custom-dependencies": "*"
+    },
+    "require-dev": {
+        "behat/behat": "3.13.0",
+        "behat/mink": "1.10.0",
+        "behat/mink-extension": "2.3.1",
+        "dealerdirect/phpcodesniffer-composer-installer": "1.0",
+        "dmore/behat-chrome-extension": "1.4",
+        "drupal/coder": "8.3.18",
+        "drupal/core-dev": "^9.2",
+        "drupal/drupal-driver": "2.2.2",
+        "drupal/drupal-extension": "4.2.1",
+        "genesis/behat-fail-aid": "3.7.5",
+        "jcalderonzumba/mink-phantomjs-driver": "0.3.3",
+        "mikey179/vfsstream": "1.6.11",
+        "phpunit/phpunit": "9.6.8",
+        "squizlabs/php_codesniffer": "3.7.2",
+        "sirbrillig/phpcs-changed": "v2.11.0-beta.2"
     },
     "conflict": {
         "drupal/drupal": "*"
@@ -52,70 +73,59 @@
     "prefer-stable": true,
     "extra": {
         "enable-patching": true,
-        "patches": {
-            "drupal/radix": {
-                "3053579: Integrate with OffCanvas (Layout Builder)": "https://www.drupal.org/files/issues/2021-12-15/3053579-32.patch"
-            },
-            "drupal/fakeobjects" : {
-                "3002953: Fix js plugin seems to be missing":  "https://www.drupal.org/files/issues/2020-06-22/fakeobjects-missing_plugin-3002953-5.patch"
-            },
-            "drupal/core": {
-                "#2951547: Fix issue with layout overflow": "https://www.drupal.org/files/issues/2020-01-08/layout-builder-tray-size-2951547-42.patch",
-                "3102249: Changing an existing embedded media's attributes does not get saved with CKEditor": "https://www.drupal.org/files/issues/2020-06-01/3102249-21.patch",
-                "3109650: Refactor Xss::attributes() to allow filtering of style attribute values": "https://www.drupal.org/files/issues/2021-09-22/core-9.2-xss-refactor_filter_attributes-3109650-43.patch",
-                "3097338: Fix issue with image replacement in ckeditor": "https://www.drupal.org/files/issues/2021-06-03/drupal-3097338-68.patch"
-            },
-            "drupal/config_readonly": {
-                "#3085001: Config blacklist to only block some configuration while in read only mode": "https://www.drupal.org/files/issues/2019-10-31/config_readonly-3085001-2.patch"
-            },
-            "drupal/field_states_ui": {
-                "#3225009: Cant add custom block with field states ui using layout builder": "https://www.drupal.org/files/issues/2022-03-07/3225009-5.patch"
-            },
-            "drupal/linkit": {
-                "2877535: Fix issue with path alias": "https://www.drupal.org/files/issues/2022-06-07/2877535-39.patch"
-            },
-            "drupal/allowed_formats": {
-                "3269869: Drupal 10 compatibility": "https://git.drupalcode.org/project/allowed_formats/-/commit/9b52e52.patch"
-            },
-            "drupal/fontawesome": {
-                "#3219579: Hidding font awesome additional settings": "https://www.drupal.org/files/issues/2022-12-14/hidding_font_awesome_additional_settings-3219579-18.patch"
-            },
-            "drupal/cas": {
-                "3318382: TypeError: in_array(): Argument #2 ($haystack) must be of type array": "https://www.drupal.org/files/issues/2022-10-31/cas-null-in_array-3318382-0.patch"
-            },
-            "drupal/ckeditor": {
-                "#3095304: Changes to a block's text field not saved when ckeditor source mode is active": "https://www.drupal.org/files/issues/2023-01-05/changes_to_a_blocks_text_field_not_saved_3095304-47_3.patch"
-            },
-            "drupal/paragraphs": {
-                "#3090200: Paragraphs do not render: access check for view fail when using layout builder": "https://www.drupal.org/files/issues/2022-10-26/3084934-13_combine_3090200-22.patch"
-            }
-        },
-        "installer-paths": {
-            "web/core": ["type:drupal-core"],
-            "web/libraries/{$name}": ["type:drupal-library", "type:npm-asset", "type:bower-asset"],
-            "web/modules/composer/{$name}": ["type:drupal-module"],
-            "web/profiles/composer/{$name}": ["type:drupal-profile"],
-            "web/themes/composer/{$name}": ["type:drupal-theme"],
-            "drush/Commands/contrib/{$name}": ["type:drupal-drush"],
-            "web/private/scripts/quicksilver/{$name}/": ["type:quicksilver-script"],
-            "web/modules/custom/{$name}": ["type:drupal-custom-module"],
-            "web/libraries/ckeditor/plugins/{$name}": ["vendor:ckeditor-plugin"]
+        "patches-file": "composer.patches.json",
+        "composer-exit-on-patch-failure": true,
+        "patchLevel": {
+            "drupal/core": "-p2"
         },
         "installer-types": [
             "npm-asset",
             "bower-asset"
         ],
-        "composer-exit-on-patch-failure": true,
-        "patchLevel": {
-            "drupal/core": "-p2"
+        "installer-paths": {
+            "web/core": [
+                "type:drupal-core"
+            ],
+            "web/libraries/{$name}": [
+                "type:drupal-library",
+                "type:npm-asset",
+                "type:bower-asset"
+            ],
+            "web/modules/composer/{$name}": [
+                "type:drupal-module"
+            ],
+            "web/profiles/composer/{$name}": [
+                "type:drupal-profile"
+            ],
+            "web/themes/composer/{$name}": [
+                "type:drupal-theme"
+            ],
+            "drush/Commands/contrib/{$name}": [
+                "type:drupal-drush"
+            ],
+            "web/modules/custom/{$name}": [
+                "type:drupal-custom-module"
+            ],
+            "web/profiles/custom/{$name}": [
+                "type:drupal-custom-profile"
+            ],
+            "web/themes/custom/{$name}": [
+                "type:drupal-custom-theme"
+            ],
+            "web/private/scripts/quicksilver/{$name}/": [
+                "type:quicksilver-script"
+            ],
+            "web/libraries/ckeditor/plugins/{$name}": [
+                "vendor:ckeditor-plugin"
+            ]
         },
         "drupal-scaffold": {
-            "allowed-packages": [
-                "pantheon-systems/drupal-integrations"
-            ],
             "locations": {
                 "web-root": "./web"
             },
+            "allowed-packages": [
+                "pantheon-systems/drupal-integrations"
+            ],
             "file-mapping": {
                 "[project-root]/.editorconfig": false,
                 "[project-root]/pantheon.upstream.yml": false,
@@ -123,11 +133,50 @@
                 "[web-root]/robots.txt": false
             }
         },
-        "merge-plugin": {
-            "include": [
-                "composer.libraries.json"
-            ]
+        "build-env": {
+            "export-configuration": "drush config-export --yes"
         }
+    },
+    "autoload": {
+        "classmap": [
+            "upstream-configuration/scripts/ComposerScripts.php",
+            "custom-dependencies/scripts/CustomComposerScripts.php"
+        ]
+    },
+    "scripts": {
+        "pre-command-run": [
+            "WebsparkCustomScripts\\CustomComposerScripts::checkCommand",
+            "DrupalComposerManaged\\ComposerScripts::writeComposerPatchFile"
+        ],
+        "unit-test": "echo 'No unit test step defined.'",
+        "lint": "find web/modules/custom web/themes/custom -name '*.php' -exec php -l {} \\;",
+        "code-sniff": [
+            "./vendor/bin/phpcs --standard=Drupal --extensions=php,module,inc,install,test,profile,theme,css,info,txt,md --ignore=node_modules,bower_components,vendor ./web/modules/custom",
+            "./vendor/bin/phpcs --standard=Drupal --extensions=php,module,inc,install,test,profile,theme,css,info,txt,md --ignore=node_modules,bower_components,vendor ./web/themes/custom",
+            "./vendor/bin/phpcs --standard=DrupalPractice --extensions=php,module,inc,install,test,profile,theme,css,info,txt,md --ignore=node_modules,bower_components,vendor ./web/modules/custom",
+            "./vendor/bin/phpcs --standard=DrupalPractice --extensions=php,module,inc,install,test,profile,theme,css,info,txt,md --ignore=node_modules,bower_components,vendor ./web/themes/custom"
+        ],
+        "lint-webspark": "find web/profiles/webspark web/modules/webspark web/themes/webspark -name '*.php' -exec php -l {} \\;",
+        "code-sniff-webspark": [
+            "./vendor/bin/phpcs --standard=Drupal --extensions=php,module,inc,install,test,profile,theme,css,info,txt,md --ignore=node_modules,bower_components,vendor ./web/profiles/webspark",
+            "./vendor/bin/phpcs --standard=Drupal --extensions=php,module,inc,install,test,profile,theme,css,info,txt,md --ignore=node_modules,bower_components,vendor ./web/modules/webspark",
+            "./vendor/bin/phpcs --standard=Drupal --extensions=php,module,inc,install,test,profile,theme,css,info,txt,md --ignore=node_modules,bower_components,vendor ./web/themes/webspark",
+            "./vendor/bin/phpcs --standard=DrupalPractice --extensions=php,module,inc,install,test,profile,theme,css,info,txt,md --ignore=node_modules,bower_components,vendor ./web/profiles/webspark",
+            "./vendor/bin/phpcs --standard=DrupalPractice --extensions=php,module,inc,install,test,profile,theme,css,info,txt,md --ignore=node_modules,bower_components,vendor ./web/modules/webspark",
+            "./vendor/bin/phpcs --standard=DrupalPractice --extensions=php,module,inc,install,test,profile,theme,css,info,txt,md --ignore=node_modules,bower_components,vendor ./web/themes/webspark"
+        ],
+        "pre-update-cmd": [
+            "DrupalComposerManaged\\ComposerScripts::preUpdate"
+        ],
+        "post-update-cmd": [
+            "DrupalComposerManaged\\ComposerScripts::postUpdate"
+        ],
+        "custom-require": [
+            "WebsparkCustomScripts\\CustomComposerScripts::customRequire"
+        ],
+        "custom-remove": [
+            "WebsparkCustomScripts\\CustomComposerScripts::customRemove"
+        ]
     },
     "config": {
         "preferred-install": "dist",
@@ -138,9 +187,11 @@
         "allow-plugins": {
             "composer/installers": true,
             "cweagans/composer-patches": true,
+            "dealerdirect/phpcodesniffer-composer-installer": true,
             "drupal/core-composer-scaffold": true,
-            "zaporylie/composer-drupal-optimizations": true,
-            "oomphinc/composer-installers-extender": true
+            "oomphinc/composer-installers-extender": true,
+            "phpstan/extension-installer": true,
+            "zaporylie/composer-drupal-optimizations": true
         }
     }
 }

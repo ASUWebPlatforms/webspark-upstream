@@ -1,0 +1,433 @@
+<?php
+
+use Drupal\Core\Field\BaseFieldDefinition;
+use Drupal\Component\Utility\Html;
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\Component\Uuid\Uuid;
+use Drupal\Component\Serialization\Json;
+
+/**
+ * @file
+ * ASU Brand header, cookie consent and Google Tag Manager.
+ */
+
+/**
+ * Implments hook_entity_base_field_info().
+ *
+ * Add custom fields to content menu links for use by header.
+ */
+function asu_brand_entity_base_field_info(\Drupal\Core\Entity\EntityTypeInterface $entity_type) {
+  if ($entity_type->id() === 'menu_link_content') {
+
+    // TODO Future improvement: Use form alter (below) to make these fields
+    // present better and add form states api logic for the button color
+    // control and maybe to hide the "Show as expanded" field if this field is
+    // a header block menu, since we don't consult that setting.
+
+    // Menu link type
+    $fields['menu_link_asu_brand_link_type'] = BaseFieldDefinition::create('list_string')
+      ->setLabel(t('ASU Brand menu link type'))
+      ->setDescription(t('This setting only applies if this link is used in the ASU Brand header as a second level menu link. Note: top level call to action buttons are configured in the header block.'))
+      ->setSettings([
+        'allowed_values' => [
+          //'icon' => 'Icon', // First link always becomes icon. Not allowing select for this.
+          'heading' => 'Heading - starts a column',
+          'column break' => 'Column break - starts a column without a heading',
+          'button' => 'Button - within column',
+        ],
+      ])
+      ->setDisplayOptions('form', ['type' => 'options_select', 'weight' => 50]);
+
+    // Is button
+    $fields['menu_link_asu_brand_link_is_button'] = BaseFieldDefinition::create('boolean')
+      ->setLabel(t('Display as ASU Brand button in dropdown tray'))
+      ->setDescription(t('Only applies if menu link is in the second level in the ASU Brand header. Button will appear below dropdown columns.'))
+      ->setDisplayOptions('form', ['type' => 'string', 'weight' => 52]);
+
+    // Button color
+    $fields['menu_link_asu_brand_link_button_color'] = BaseFieldDefinition::create('list_string')
+      ->setLabel(t('ASU Brand dropdown tray button color'))
+      ->setDescription(t('Only applies if used in the ASU Brand header and menu link is a dropdown tray button.'))
+      ->setSettings([
+        'allowed_values' => [
+          'gold' => 'Gold',
+          'maroon' => 'Maroon',
+          'light' => 'Light gray',
+        ],
+      ])
+      ->setDisplayOptions('form', ['type' => 'options_select', 'weight' => 53]);
+
+    return $fields;
+  }
+}
+
+/**
+ * Implements hook_form_alter().
+ */
+function asu_brand_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
+
+  $link_type = null;
+  $is_button = null;
+  // Menu overview tree form. Add column to show special Header configs in tree.
+  if ($form_id == "menu_edit_form") {
+    $form['links']['links']['#header'][] = t("Header settings");
+    foreach (\Drupal\Core\Render\Element::children($form['links']['links']) as $key => $child) {
+      $link_parts = explode(':', $child);
+      if ($link_parts[2] && Uuid::isValid($link_parts[2])) { // TODO Is there a better check we can do here?
+        $link_uuid = $link_parts[2];
+        $link_entity = \Drupal::service('entity.repository')
+          ->loadEntityByUuid('menu_link_content', $link_uuid);
+        $link_type = $link_entity->menu_link_asu_brand_link_type->value;
+        $is_button = $link_entity->menu_link_asu_brand_link_is_button->value;
+      }
+
+      //$form['links']['links'][$child]['title'][1]['#title'] = "whatevs";
+      $form['links']['links'][$child]['asu_brand']['#type'] = "item";
+      if ($link_type) {
+        $form['links']['links'][$child]['asu_brand']['#markup'] = $link_type;
+      }
+      if ($is_button) {
+        $form['links']['links'][$child]['asu_brand']['#markup'] = t("dropdown tray button");
+      }
+    }
+  }
+
+  // Header block form UX improvements
+  if ($form_id === 'block_form' && $form['settings']['provider']['#value'] === "asu_brand") {
+    $form['region']['#weight'] = 0;
+    $form['region']['#description'] = $form['region']['#description'] . " If unsure, select Header.";
+    $form['#attached']['library'][] = 'asu_brand/block__system_main_block';
+    // Form body
+    $form['settings']['admin_label']['#access'] = FALSE;
+    $form['settings']['admin_label']['#weight'] = -2;
+    $form['settings']['label']['#weight'] = -1;
+    // Disable ability to show ASU Brand header titles above blocks
+    $form['settings']['label_display']['#title'] = t("Display block admin title");
+    $form['settings']['label_display']['#value'] = FALSE;
+    $form['settings']['label_display']['#disabled'] = TRUE;
+    $form['settings']['label_display']['#access'] = FALSE;
+  }
+
+  // Menu link edit forms for content links.
+  if ($form_id === "menu_link_content_menu_link_content_form") {
+
+    // We can get the header component in an error state if a menu link item is
+    // configured as both a column button and a dropdown tray button. Prevent
+    // that using forms api states.
+
+    // Disable menu link type when dropdown tray button is enabled.
+    $form['menu_link_asu_brand_link_type']['#states'] = [
+      'disabled' => [
+        ':input[name="menu_link_asu_brand_link_is_button[value]"]' => ['checked' => TRUE],
+      ],
+    ];
+    // Enable tray button only if menu link type is not header or column button.
+    $form['menu_link_asu_brand_link_is_button']['#states'] = [
+      'enabled' => [
+        ':input[name="menu_link_asu_brand_link_type"]' => ['value' => '_none'],
+      ],
+    ];
+    // Enable tray button color only when is (tray) button checked.
+    $form['menu_link_asu_brand_link_button_color']['#states'] = [
+      'enabled' => [
+        ':input[name="menu_link_asu_brand_link_is_button[value]"]' => ['checked' => TRUE],
+      ],
+    ];
+  }
+}
+
+/**
+ * @param array $form
+ * @param FormStateInterface $form_state
+ * @param int $form_id
+ */
+function asu_brand_form_menu_link_content_form_alter(array &$form, FormStateInterface $form_state, $form_id) {
+
+  $module_handler = \Drupal::service('module_handler');
+  $readme_path = '/' . $module_handler->getModule('asu_brand')->getPath() . '/README.md';
+
+  $form['help'] = [
+    '#type' => 'item',
+    '#title' => t('Header menu item controls'),
+    '#markup' => t('<p>The menu item settings below are only used in menus
+      configured as ASU Brand Header menus. Some guidelines to assist in
+      building your Header menu:</p>
+      <ul>
+        <li>The first menu item in an ASU Brand menu will automatically be
+        turned into the Home icon.</li>
+        <li>If you place a menu item at or below the third level in a menu, it
+        will not render. Only first and second level items are supported in
+        ASU Brand Headers.</li>
+        <li>Create columns by configuring "Heading" or "Column break" menu
+        items at the second level. These special menu items will not render as
+        links, but will instead start new columns. Use &lt;nolink&gt; as
+        their link value.</li>
+        <li>When you configure a second level menu item as a button within a
+        column, please ensure it is the last item in a column, otherwise it may
+        render incorrectly in the mobile menu.</li>
+        <li>Web Standards requires menu dropdowns to be limited to 500px height
+        for desktop. Please check your dropdowns to ensure they comply.</li>
+        <li>For more help configuring your header, see the
+        <a href=":readme">README</a>.</li>
+      </ul>
+      ', [":readme" => $readme_path]),
+    '#weight' => 49,
+  ];
+}
+
+/** Google Analytics, Google Tag Manager and dataLayer initialization below. */
+
+/**
+ * Implements hook_page_top().
+ *
+ * Adds ASU Google Tag Manager
+ */
+function asu_brand_page_top(array &$page_top) {
+
+  $config = \Drupal::config('asu_brand.settings');
+  // ASU Universal GTM ID is stored in settings, but not updatable through UI.
+  $asu_gtm = $config->get('asu_brand.asu_brand_universal_gtm_id');
+  $gtm_enabled = $config->get('asu_brand.asu_brand_gtm_enabled');
+  $extra_gtm = $config->get('asu_brand.asu_brand_extra_gtm_id');
+
+  // TODO Show on admin or not? Currently inserted everwhere. Uncomment to
+  //   avoid adding on admin pages. TBD in the future.
+  // Only insert inline GTMs for on-admin routes.
+  //if (!\Drupal::service('router.admin_context')->isAdminRoute()) {
+
+  // Insert ASU Universal GTM
+  if ($gtm_enabled) {
+
+    $asu_universal_gtm = $asu_gtm;
+    $gtm_body_snippet = _asu_brand_gtm_body_snippet($asu_universal_gtm);
+
+    // We insert the JS inline with the HTML due to load time needs. Turns
+    // out that's not super easy in D9. But the following works. For discussion
+    // of options for inline JS in D8+ see
+    // https://dev.to/gapple/inline-javascript-in-drupal-8-4o28 and for
+    // preserving all markup, use #children instead of #markup.
+    // https://drupal.stackexchange.com/questions/184963/pass-raw-html-to-markup
+    // Avoiding sanitization isn't ideal, but because the markup inserted
+    // originates in this module, and the only user supplied bit is the
+    // GTM ID, which we sanitize, we're considering this acceptable. See
+    // _asu_brand_gtm_snippet().
+
+    // Add GTM snippet to page_top render array as #children which is assumed
+    // to be a string of already rendered markup.
+    $page_top['asu_brand_universal_gtm'] = [
+      '#children' => $gtm_body_snippet,
+      // Alternatively, but strips style attribute and possibly more:
+      //'#markup' => $gtm_body_snippet,
+      //'#allowed_tags' => ['script', 'noscript', 'iframe'],
+    ];
+  }
+
+  // Extra GTM
+  if ($extra_gtm) {
+
+    $extra_gtm_snippet = _asu_brand_gtm_body_snippet($extra_gtm);
+
+    // Add to page_top render array as #markup with allowed tags defined to
+    // avoid sanitization of snippet on render.
+    $page_top['asu_brand_extra_gtm'] = [
+      '#children' => $extra_gtm_snippet,
+      // Alternatively, but strips style attribute and possibly more:
+      //'#markup' => $extra_gtm_snippet,
+      //'#allowed_tags' => ['script', 'noscript', 'iframe'],
+    ];
+  }
+  //}
+}
+
+/**
+ * Internal helper function to return a GTM header snippet with GTM ID embedded.
+ */
+function _asu_brand_gtm_head_snippet($gtm_id) {
+
+  // Santize GTM ID. Secure code high-five!
+  $gtm_id = HTML::escape($gtm_id);
+
+  // <script> tags will be added for us.
+  $gtm_head_snippet = <<<EOT
+
+    // Google Tag Manager - $gtm_id
+    (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','$gtm_id');
+
+EOT;
+  return $gtm_head_snippet;
+}
+
+/**
+ * Internal helper function to return a GTM body snippet with GTM ID embedded.
+ */
+function _asu_brand_gtm_body_snippet($gtm_id) {
+
+  // Santize GTM ID. Secure code high-five!
+  $gtm_id = HTML::escape($gtm_id);
+
+  // Note: IF the following is added via #markup in the render array, code
+  // comments and style attributes get stripped and for a11y we'd have to
+  // add in style rules for the noscript iframe. We avoid that using
+  // #children in the render array. It's important that any code here is
+  // owned 100% by this module OR sanitized, as we've done with the $gtm_id.
+
+  $gtm_body_snippet = <<<EOT
+
+    <!-- Google Tag Manager (noscript) - $gtm_id -->
+    <noscript><iframe src="//www.googletagmanager.com/ns.html?id=$gtm_id"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe>
+    </noscript>
+    <!-- End Google Tag Manager (noscript) - $gtm_id -->
+
+EOT;
+  return $gtm_body_snippet;
+}
+
+/**
+ * Implements hook_page_attachments().
+ *
+ * Initialize GTM dataLayer and add GTM head snippet.
+ *
+ * Much of the concept for how we implement the dataLayer comes from the
+ * Drupal dataLayer contrib module. An entrypoint for comparing that approach
+ * to ours would be to start at
+ * https://git.drupalcode.org/project/datalayer/-/blob/8.x-1.0-beta2/datalayer.module#L65
+ */
+function asu_brand_page_attachments(array &$attachments) {
+  $config = \Drupal::config('asu_brand.settings');
+  // ASU Universal GTM ID is stored in settings, but not updatable through UI.
+  $asu_gtm = $config->get('asu_brand.asu_brand_universal_gtm_id');
+  $gtm_enabled = $config->get('asu_brand.asu_brand_gtm_enabled');
+  $extra_gtm = $config->get('asu_brand.asu_brand_extra_gtm_id');
+
+  if ($gtm_enabled || $extra_gtm) {
+
+    if (empty($attachments['#attached'])) {
+      $attachments['#attached'] = [];
+    }
+    if (empty($attachments['#attached']['html_head'])) {
+      $attachments['#attached']['html_head'] = [];
+    }
+
+    // Check if site is sending in dataLayer details to push. Otherwise, just
+    // initialize dataLayer for frontend component use.
+    $datalayer_attachment = asu_brand_gtm_datalayer_get_data_from_page();
+    if (empty($datalayer_attachment)) {
+      $datalayer_init = 'window.dataLayer = window.dataLayer || [];';
+    } else {
+      $datalayer_init = 'window.dataLayer = window.dataLayer || []; window.dataLayer.push(' . Json::encode($datalayer_attachment) . ');';
+    }
+
+    $attachments['#attached']['html_head'][] = [
+      [
+        '#type' => 'html_tag',
+        '#tag' => 'script',
+        '#value' => $datalayer_init,
+      ],
+      'asu-brand-datalayers-js',
+    ];
+  }
+
+  if ($gtm_enabled) {
+    $asu_universal_gtm = $asu_gtm;
+    $universal_gtm_header_snippet = _asu_brand_gtm_head_snippet($asu_universal_gtm);
+    $attachments['#attached']['html_head'][] = [
+      [
+        '#type' => 'html_tag',
+        '#tag' => 'script',
+        '#value' => $universal_gtm_header_snippet,
+      ],
+      'asu-brand-universal-gtm-head-snippet',
+    ];
+  }
+
+  if ($extra_gtm) {
+    $extra_gtm_header_snippet = _asu_brand_gtm_head_snippet($extra_gtm);
+    $attachments['#attached']['html_head'][] = [
+      [
+        '#type' => 'html_tag',
+        '#tag' => 'script',
+        '#value' => $extra_gtm_header_snippet,
+      ],
+      'asu-brand-extra-gtm-head-snippet',
+    ];
+  }
+}
+
+/**
+ * Allow adding to the data layer easy on the fly, similar to drupal_add_js().
+ *
+ * Passing empty params will return current dataLayer output.
+ *
+ * @param array $data
+ *   An array of dataLayer data keyed by variable name (optional).
+ * @param bool $overwrite
+ *   If data should overwrite existing dataLayer vars of same name (optional).
+ *
+ * @return array
+ *   All data layer data added thus far.
+ */
+function asu_brand_datalayer_add(array $data = [], $overwrite = FALSE) {
+  $output_data = &drupal_static(__FUNCTION__, _asu_brand_datalayer_defaults());
+
+  // If we've been given data, add it to the output.
+  if (!empty($data)) {
+    if ($overwrite) {
+      $output_data = array_merge($output_data, $data);
+    } else {
+      $output_data += $data;
+    }
+  }
+
+  return $output_data;
+}
+
+/**
+ * Add data for output. Opportunity to gather data from current execution.
+ *
+ * Also invokes hook_asu_brand_gtm_datalayer_alter()
+ */
+function asu_brand_gtm_datalayer_get_data_from_page() {
+
+  $datalayer = _asu_brand_datalayer_defaults();
+
+  // Example: Add active user uid using asu_brand_datalayer_add().
+  // $user = \Drupal::currentUser();
+  // $datalayer = asu_brand_datalayer_add(['userUid' => $user->id()]);
+
+  // Allow modules to alter data with hook_asu_brand_gtm_datalayer_alter().
+  \Drupal::moduleHandler()->alter('asu_brand_gtm_datalayer', $datalayer);
+
+  return $datalayer;
+}
+
+/**
+ * Defines Drupal-wide data layer defaults.
+ */
+function _asu_brand_datalayer_defaults() {
+
+  // We could set default data to always include from CMS later, if we want.
+
+  // We return nothing, by default. Just initializing for frontend components.
+  return [];
+}
+
+/**
+ * Example: Modules can alter the dataLayer data before it is output.
+ *
+ * Implements hook_asu_brand_gtm_datalayer_alter().
+ *
+ * @param array $datalayer
+ *   GTM data layer data for the current page.
+ */
+/*
+function asu_brand_asu_brand_gtm_datalayer_alter(array &$datalayer) {
+  // EXAMPLE:
+  // Set a "site" variable return.
+  $datalayer['site'] = 'My Site';
+}
+*/

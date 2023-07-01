@@ -1,0 +1,6 @@
+footer-block:
+  version: 0.0.1
+  dependencies:
+    - core/jquery
+  js:
+    js/footer-block.js: {}

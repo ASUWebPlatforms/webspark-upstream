@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.web_directory
+    - field.storage.block_content.field_asurite_ids
+id: block_content.web_directory.field_asurite_ids
+field_name: field_asurite_ids
+entity_type: block_content
+bundle: web_directory
+label: Profiles
+description: '<span class="description form-text text-muted">*Click on a profile to remove it from the list.</span>'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

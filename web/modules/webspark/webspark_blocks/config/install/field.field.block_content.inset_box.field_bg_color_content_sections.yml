@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.inset_box
+    - field.storage.block_content.field_bg_color_content_sections
+  module:
+    - options
+id: block_content.inset_box.field_bg_color_content_sections
+field_name: field_bg_color_content_sections
+entity_type: block_content
+bundle: inset_box
+label: 'Background Color'
+description: ''
+required: true
+translatable: true
+default_value:
+  -
+    value: white-bg
+default_value_callback: ''
+settings: {  }
+field_type: list_string

@@ -1,0 +1,97 @@
+<?php
+
+use Drupal\Core\Config\FileStorage;
+
+/**
+ * Removes the basic block entities and basic block entity type.
+ * Apply the latest updates.
+ */
+function webspark_blocks_update_9002(&$sandbox) {
+  // Remove all the blocks of type basic.
+  $bids = \Drupal::entityQuery('block_content')->condition('type','basic')->execute();
+  $blocks = \Drupal\block_content\Entity\BlockContent::loadMultiple($bids);
+  foreach ($blocks as $block) {
+    $block->delete();
+  }
+  // Remove the block type basic.
+  $storage = \Drupal::entityTypeManager()->getStorage('block_content_type');
+  $block_type = $storage->load('basic');
+  if ($block_type) {
+    $block_type->delete();
+  }
+}
+
+/**
+ * Updates allowed values for field_background_color.
+ */
+function webspark_blocks_update_9005(&$sandbox) {
+  // Queries for relevant nodes already using that field.
+  $bids = \Drupal::entityQuery('block_content')
+    ->condition('type', 'tabbed_content')
+    ->condition('field_background_color', 'default')
+    ->execute();
+
+  $blocks = Drupal\block_content\Entity\BlockContent::loadMultiple($bids);
+  // Updates field_background_color values.
+  $updated_value_map = [
+    'default' => 'bg-white',
+  ];
+  foreach ($blocks as $block) {
+    $block
+      ->set('field_background_color', $updated_value_map[$block->field_background_color->value])
+      ->save();
+  }
+
+  // Unlock the configuration storage.
+  \Drupal::state()->set('configuration_locked', FALSE);
+  // Revert all configs from this module.
+  \Drupal::service('webspark.config_manager')->updateConfigFile('field.storage.block_content.field_background_color');
+  // Lock the configuration storage.
+  \Drupal::state()->set('configuration_locked', TRUE);
+}
+
+/**
+ * Update 'Show borders' field on cards paragraphs to ensure it has a default value.
+ */
+function webspark_blocks_update_9017() {
+  $paragraph_storage = \Drupal::entityTypeManager()->getStorage('paragraph');
+  $query = $paragraph_storage->getQuery();
+
+  $query->condition('type', ['card', 'card_degree', 'card_story', 'card_with_icon'], 'IN');
+  $query->condition('status', 1);
+  $result = $query->execute();
+
+  $cards = $paragraph_storage->loadMultiple($result);
+
+  foreach ($cards as $card) {
+    if ($card->get('field_show_borders')->value == NULL) {
+        $card->set('field_show_borders', '1');
+        $card->save();
+    }
+  }
+}
+
+/**
+ * WS2-1674 - Add Ranking Card to Card Arrangement
+ * Note: Deleted webspark_blocks_update_9006 - webspark_blocks_update_9016, in favor of webspark_blocks_update_9018
+ */
+function webspark_blocks_update_9018(&$sandbox) {
+  _webspark_blocks_revert_module_config();
+}
+
+/**
+ * Reverts the module related configuration.
+ */
+function _webspark_blocks_revert_module_config() {
+  // Get this module name.
+  $module = \Drupal::service('module_handler')
+      ->getModule(basename(__FILE__, '.install'))
+      ->getName();
+
+  // Unlock the configuration storage.
+  \Drupal::state()->set('configuration_locked', FALSE);
+  // Revert all configs from this module.
+  \Drupal::service('webspark.config_manager')->revertAll($module);
+  // Lock the configuration storage.
+  \Drupal::state()->set('configuration_locked', TRUE);
+}

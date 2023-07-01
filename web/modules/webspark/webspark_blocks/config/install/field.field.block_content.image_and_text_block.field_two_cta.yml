@@ -1,0 +1,81 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.image_and_text_block
+    - field.storage.block_content.field_two_cta
+    - paragraphs.paragraphs_type.cta
+  module:
+    - entity_reference_revisions
+id: block_content.image_and_text_block.field_two_cta
+field_name: field_two_cta
+entity_type: block_content
+bundle: image_and_text_block
+label: CTAs
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      cta: cta
+    target_bundles_drag_drop:
+      accordion_panel:
+        weight: 19
+        enabled: false
+      anchor_menu_settings:
+        weight: 20
+        enabled: false
+      blockquote:
+        weight: 21
+        enabled: false
+      card:
+        weight: 22
+        enabled: false
+      card_degree:
+        weight: 23
+        enabled: false
+      card_event:
+        weight: 24
+        enabled: false
+      card_group_default:
+        weight: 25
+        enabled: false
+      card_group_degree:
+        weight: 26
+        enabled: false
+      card_group_story:
+        weight: 27
+        enabled: false
+      card_group_with_icon:
+        weight: 28
+        enabled: false
+      card_media:
+        weight: 29
+        enabled: false
+      card_story:
+        weight: 30
+        enabled: false
+      card_with_icon:
+        weight: 31
+        enabled: false
+      cta:
+        enabled: true
+        weight: 32
+      gallery_image:
+        weight: 33
+        enabled: false
+      tab_content:
+        weight: 34
+        enabled: false
+      testimonial:
+        weight: 35
+        enabled: false
+      tooltip:
+        weight: 36
+        enabled: false
+field_type: entity_reference_revisions

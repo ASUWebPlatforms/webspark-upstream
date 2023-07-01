@@ -1,0 +1,54 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.card_arrangement
+    - field.storage.block_content.field_cta
+    - paragraphs.paragraphs_type.cta
+  module:
+    - entity_reference_revisions
+id: block_content.card_arrangement.field_cta
+field_name: field_cta
+entity_type: block_content
+bundle: card_arrangement
+label: CTA
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      cta: cta
+    target_bundles_drag_drop:
+      accordion_panel:
+        weight: 10
+        enabled: false
+      card:
+        weight: 11
+        enabled: false
+      card_degree:
+        weight: 12
+        enabled: false
+      card_event:
+        weight: 13
+        enabled: false
+      card_story:
+        weight: 14
+        enabled: false
+      carousel_card:
+        weight: 15
+        enabled: false
+      cta:
+        enabled: true
+        weight: 16
+      gallery_image:
+        weight: 17
+        enabled: false
+      tab_content:
+        weight: 18
+        enabled: false
+field_type: entity_reference_revisions

@@ -1,0 +1,18 @@
+.gray-7-bg {
+  .block-inline-blocktext-content {
+    &.text-white {
+      .formatted-text {
+        a:not(.btn) {
+          color: $uds-color-brand-gold;
+        }
+      }
+    }
+  }
+}
+
+.block-inline-blocktext-content {
+  /* WS2-1480 - target anchor tags wrapping font-awesome svg */
+  :is(a):has(span):has(svg) {
+    display: inline-block;
+  }
+}

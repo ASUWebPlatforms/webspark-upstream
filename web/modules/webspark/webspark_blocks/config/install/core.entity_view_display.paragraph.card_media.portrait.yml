@@ -1,0 +1,91 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.portrait
+    - field.field.paragraph.card_media.field_cta
+    - field.field.paragraph.card_media.field_cta_secondary
+    - field.field.paragraph.card_media.field_formatted_text
+    - field.field.paragraph.card_media.field_heading
+    - field.field.paragraph.card_media.field_icon
+    - field.field.paragraph.card_media.field_link
+    - field.field.paragraph.card_media.field_media
+    - field.field.paragraph.card_media.field_tags
+    - paragraphs.paragraphs_type.card_media
+  module:
+    - entity_reference_revisions
+    - fontawesome
+    - layout_builder
+    - link
+    - text
+third_party_settings:
+  layout_builder:
+    allow_custom: false
+    enabled: false
+id: paragraph.card_media.portrait
+targetEntityType: paragraph
+bundle: card_media
+mode: portrait
+content:
+  field_cta:
+    weight: 7
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    type: entity_reference_revisions_entity_view
+    region: content
+  field_formatted_text:
+    weight: 3
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  field_heading:
+    weight: 2
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_icon:
+    weight: 0
+    label: hidden
+    settings:
+      layers: false
+    third_party_settings: {  }
+    type: fontawesome_icon_formatter
+    region: content
+  field_link:
+    weight: 5
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    type: link
+    region: content
+  field_media:
+    weight: 1
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  field_tags:
+    weight: 6
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+hidden:
+  field_cta_secondary: true

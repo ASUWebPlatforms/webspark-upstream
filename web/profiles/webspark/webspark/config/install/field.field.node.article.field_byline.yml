@@ -1,0 +1,28 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_byline
+    - node.type.article
+  module:
+    - allowed_formats
+    - text
+third_party_settings:
+  allowed_formats:
+    allowed_formats:
+      - basic_html
+id: node.article.field_byline
+field_name: field_byline
+entity_type: node
+bundle: article
+label: Byline
+description: 'Use the capital "P" button in the WYSIWYG editor to add a byline.'
+required: false
+translatable: false
+default_value:
+  -
+    value: "<p class=\"lead\">Replace or delete this \"lead paragraph\" text with your byline text.</p>\r\n"
+    format: basic_html
+default_value_callback: ''
+settings: {  }
+field_type: text_long

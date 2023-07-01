@@ -1,0 +1,5 @@
+{% if highlight == 'default' %}
+  <{{ html_tag }} class="text-white">{{ heading }}</{{ html_tag }}>
+{% else %}
+  <{{ html_tag }}><span class="highlight-{{ highlight }}">{{ heading }}</span></{{ html_tag }}>
+{% endif %}

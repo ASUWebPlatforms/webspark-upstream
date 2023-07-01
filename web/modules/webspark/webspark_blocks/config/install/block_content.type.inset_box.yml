@@ -1,0 +1,7 @@
+langcode: en
+status: true
+dependencies: {  }
+id: inset_box
+label: 'Inset Box'
+revision: 0
+description: ''

@@ -1,0 +1,7 @@
+{% if paragraph.field_title.value %}
+  <div class="webspark-anchor-link-data"
+       id="webspark-anchor-link--{{ paragraph.id.value }}"
+       data-title="{{ paragraph.field_title.value }}">
+  </div>
+  <div class="anchor-link-icon d-none">{{ content.field_icon }}</div>
+{% endif %}

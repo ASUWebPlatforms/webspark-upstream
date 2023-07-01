@@ -1,0 +1,9 @@
+langcode: en
+status: true
+dependencies: {  }
+id: anchor_menu_settings
+label: 'anchor Menu Settings'
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

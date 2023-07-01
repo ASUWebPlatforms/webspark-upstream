@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.image_and_text_block
+    - field.storage.block_content.field_spacing_top
+  module:
+    - options
+id: block_content.image_and_text_block.field_spacing_top
+field_name: field_spacing_top
+entity_type: block_content
+bundle: image_and_text_block
+label: 'Spacing top'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

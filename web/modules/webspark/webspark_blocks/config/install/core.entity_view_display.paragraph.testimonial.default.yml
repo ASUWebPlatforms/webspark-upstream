@@ -1,0 +1,23 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.testimonial.field_citation_author
+    - field.field.paragraph.testimonial.field_citation_title
+    - field.field.paragraph.testimonial.field_formatted_text
+    - field.field.paragraph.testimonial.field_heading
+    - field.field.paragraph.testimonial.field_media
+    - paragraphs.paragraphs_type.testimonial
+  module:
+    - options
+id: paragraph.testimonial.default
+targetEntityType: paragraph
+bundle: testimonial
+mode: default
+content: {  }
+hidden:
+  field_citation_author: true
+  field_citation_title: true
+  field_formatted_text: true
+  field_heading: true
+  field_media: true

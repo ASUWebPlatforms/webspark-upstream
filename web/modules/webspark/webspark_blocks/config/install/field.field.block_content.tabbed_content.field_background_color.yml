@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.tabbed_content
+    - field.storage.block_content.field_background_color
+  module:
+    - options
+id: block_content.tabbed_content.field_background_color
+field_name: field_background_color
+entity_type: block_content
+bundle: tabbed_content
+label: 'Background Color'
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    value: bg-white
+default_value_callback: ''
+settings: {  }
+field_type: list_string

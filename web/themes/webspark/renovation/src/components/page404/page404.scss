@@ -1,0 +1,28 @@
+
+.container-page-404 {
+  width: 30%;
+  margin-top: 75px;
+  margin-bottom: 75px;
+  .asu-search-form {
+    margin: 50px 0px;
+    form {
+      position: relative;
+      .search-icon {
+        position: absolute;
+        left: 10px;
+        top: 50%;
+        transform: translate(0, -50%);
+        color: #747474;
+      }
+      #edit-search {
+        padding-left: 30px;
+      }
+    }
+  }
+}
+
+@include media-breakpoint-down(md) {
+  .container-page-404 {
+    width: 100%;
+  }
+}

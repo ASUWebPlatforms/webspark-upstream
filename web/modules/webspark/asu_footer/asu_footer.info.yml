@@ -1,0 +1,8 @@
+name: ASU Footer
+description: ASU Web Standards 2 Footer
+type: module
+core_version_requirement: ^8 || ^9
+package: ASU
+configure: asu_footer.asu_footer_settings
+dependencies:
+  - media_library_form_element

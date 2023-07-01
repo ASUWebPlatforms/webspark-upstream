@@ -1,0 +1,25 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - crop.type.1_1
+  module:
+    - crop
+name: block_image_1_1_lge
+label: 'Block Image 1:1 LGE'
+effects:
+  071b0935-1cf4-4dc3-b607-d166df982aa1:
+    uuid: 071b0935-1cf4-4dc3-b607-d166df982aa1
+    id: crop_crop
+    weight: 1
+    data:
+      crop_type: '1_1'
+      automatic_crop_provider: null
+  f99e0dde-2884-4351-8da9-8ba18fd4cb6f:
+    uuid: f99e0dde-2884-4351-8da9-8ba18fd4cb6f
+    id: image_scale
+    weight: 2
+    data:
+      width: 1200
+      height: null
+      upscale: false

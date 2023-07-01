@@ -1,0 +1,42 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.gallery
+    - field.storage.block_content.field_carousel_card
+    - paragraphs.paragraphs_type.gallery_image
+  module:
+    - entity_reference_revisions
+id: block_content.gallery.field_carousel_card
+field_name: field_carousel_card
+entity_type: block_content
+bundle: gallery
+label: 'Gallery Images'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      gallery_image: gallery_image
+    target_bundles_drag_drop:
+      card:
+        weight: 6
+        enabled: false
+      card_degree:
+        weight: 7
+        enabled: false
+      card_event:
+        weight: 8
+        enabled: false
+      card_story:
+        weight: 9
+        enabled: false
+      gallery_image:
+        enabled: true
+        weight: 10
+field_type: entity_reference_revisions

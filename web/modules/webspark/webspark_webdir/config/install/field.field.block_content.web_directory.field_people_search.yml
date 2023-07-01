@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.web_directory
+    - field.storage.block_content.field_people_search
+id: block_content.web_directory.field_people_search
+field_name: field_people_search
+entity_type: block_content
+bundle: web_directory
+label: Search
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -1,0 +1,34 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_media
+    - media.type.cropped_image_sqare
+    - media.type.cropped_image_wide
+    - media.type.image
+    - media.type.image_block_images
+    - paragraphs.paragraphs_type.blockquote
+id: paragraph.blockquote.field_media
+field_name: field_media
+entity_type: paragraph
+bundle: blockquote
+label: Media
+description: 'Recommended image size: 182 x 182px'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      image_block_images: image_block_images
+      cropped_image_sqare: cropped_image_sqare
+      cropped_image_wide: cropped_image_wide
+      image: image
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: image_block_images
+field_type: entity_reference

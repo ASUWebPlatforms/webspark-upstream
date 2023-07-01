@@ -1,0 +1,13 @@
+/*
+ * @file
+ * Provides the layout styles for three-column layout section.
+ */
+
+
+@media screen and (min-width: 40em) {
+  .layout-builder__region.js-layout-builder-region.layout__region.layout__region--first.col-md-4,
+  .layout-builder__region.js-layout-builder-region.layout__region.layout__region--second.col-md-4,
+  .layout-builder__region.js-layout-builder-region.layout__region.layout__region--third.col-md-4 {
+    padding: 0;
+  }
+}

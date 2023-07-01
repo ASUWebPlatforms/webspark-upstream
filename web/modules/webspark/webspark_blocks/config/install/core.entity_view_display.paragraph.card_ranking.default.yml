@@ -1,0 +1,71 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.card_ranking.field_body
+    - field.field.paragraph.card_ranking.field_card_ranking_image_size
+    - field.field.paragraph.card_ranking.field_citation_title
+    - field.field.paragraph.card_ranking.field_heading
+    - field.field.paragraph.card_ranking.field_link
+    - field.field.paragraph.card_ranking.field_media
+    - paragraphs.paragraphs_type.card_ranking
+  module:
+    - link
+    - options
+    - text
+id: paragraph.card_ranking.default
+targetEntityType: paragraph
+bundle: card_ranking
+mode: default
+content:
+  field_body:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_card_ranking_image_size:
+    type: list_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 5
+    region: content
+  field_citation_title:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_heading:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_link:
+    type: link
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  field_media:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 3
+    region: content
+hidden: {  }

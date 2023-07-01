@@ -1,0 +1,29 @@
+{#
+/**
+ * @file
+ * Template for a block.
+ */
+#}
+{% set classes = [
+  'block',
+  'block-' ~ configuration.provider|clean_class,
+  'block-' ~ plugin_id|clean_class,
+] %}
+
+<div{{ attributes.addClass(classes) }}>
+  {{ title_prefix }}
+  {% if label %}
+    {% block label %}
+      <h2{{ title_attributes }}>{{ label }}</h2>
+    {% endblock %}
+  {% endif %}
+  {{ title_suffix }}
+  {{ content.field_tooltip }}
+  {% block content %}
+    {% include '@renovation/grid-links/grid-links.twig' with {
+      links: content.field_links,
+      style: content.field_links_color.0,
+      display: content.field_grid_links_display.0
+    } %}
+  {% endblock %}
+</div>

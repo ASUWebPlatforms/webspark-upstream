@@ -1,0 +1,6 @@
+services:
+  cas.subscriber:
+    class: Drupal\webspark_cas\EventSubscriber\WebSparkCasSubscriber
+    arguments: ['@request_stack', '@current_route_match', '@config.factory',  '@current_user', '@plugin.manager.condition', '@cas.helper', '@cas.redirector']
+    tags:
+      - { name: event_subscriber }

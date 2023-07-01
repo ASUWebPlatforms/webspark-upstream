@@ -1,0 +1,111 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.card_event.field_body
+    - field.field.paragraph.card_event.field_cta
+    - field.field.paragraph.card_event.field_cta_secondary
+    - field.field.paragraph.card_event.field_date
+    - field.field.paragraph.card_event.field_date_event
+    - field.field.paragraph.card_event.field_heading
+    - field.field.paragraph.card_event.field_link
+    - field.field.paragraph.card_event.field_location
+    - field.field.paragraph.card_event.field_media
+    - field.field.paragraph.card_event.field_tags
+    - paragraphs.paragraphs_type.card_event
+  module:
+    - datetime_range
+    - entity_reference_revisions
+    - link
+    - text
+  enforced:
+    module:
+      - webspark_blocks
+id: paragraph.card_event.default
+targetEntityType: paragraph
+bundle: card_event
+mode: default
+content:
+  field_body:
+    weight: 1
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  field_cta:
+    weight: 8
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    type: entity_reference_revisions_entity_view
+    region: content
+  field_cta_secondary:
+    weight: 11
+    label: above
+    settings:
+      view_mode: small
+      link: ''
+    third_party_settings: {  }
+    type: entity_reference_revisions_entity_view
+    region: content
+  field_date_event:
+    weight: 12
+    label: above
+    settings:
+      separator: '-'
+      format_type: medium
+      timezone_override: ''
+    third_party_settings: {  }
+    type: daterange_default
+    region: content
+  field_heading:
+    weight: 0
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_link:
+    weight: 3
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    type: link
+    region: content
+  field_location:
+    weight: 7
+    label: hidden
+    settings:
+      link: true
+      view_mode: default
+    third_party_settings: {  }
+    type: entity_reference_entity_view
+    region: content
+  field_media:
+    weight: 9
+    label: hidden
+    settings:
+      link: true
+      view_mode: default
+    third_party_settings: {  }
+    type: entity_reference_entity_view
+    region: content
+  field_tags:
+    weight: 6
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+hidden:
+  field_date: true

@@ -1,0 +1,105 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.banner
+    - field.field.block_content.banner.field_anchor
+    - field.field.block_content.banner.field_banner_background_color
+    - field.field.block_content.banner.field_banner_text
+    - field.field.block_content.banner.field_ctas
+    - field.field.block_content.banner.field_heading
+    - field.field.block_content.banner.field_icon
+    - field.field.block_content.banner.field_spacing_bottom
+    - field.field.block_content.banner.field_spacing_top
+  module:
+    - field_group
+    - fontawesome_iconpicker_widget
+    - paragraphs
+    - text
+  enforced:
+    module:
+      - webspark_blocks
+third_party_settings:
+  field_group:
+    group_appearance_settings:
+      children:
+        - field_spacing_top
+        - field_spacing_bottom
+      parent_name: ''
+      weight: 6
+      format_type: tab
+      region: content
+      format_settings:
+        id: ''
+        classes: ''
+        description: ''
+        formatter: closed
+        required_fields: true
+      label: 'Appearance Settings'
+id: block_content.banner.default
+targetEntityType: block_content
+bundle: banner
+mode: default
+content:
+  field_banner_background_color:
+    weight: 3
+    settings: {  }
+    third_party_settings: {  }
+    type: options_buttons
+    region: content
+  field_banner_text:
+    weight: 2
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
+    region: content
+  field_ctas:
+    type: entity_reference_paragraphs
+    weight: 5
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: ''
+    third_party_settings: {  }
+    region: content
+  field_heading:
+    weight: 1
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_icon:
+    weight: 4
+    settings: {  }
+    third_party_settings: {  }
+    type: fontawesome_iconpicker_widget
+    region: content
+  field_spacing_bottom:
+    weight: 8
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  field_spacing_top:
+    weight: 7
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  info:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  field_anchor: true

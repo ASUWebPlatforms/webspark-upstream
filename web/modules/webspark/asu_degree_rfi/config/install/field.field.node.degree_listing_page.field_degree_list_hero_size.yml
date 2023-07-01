@@ -1,0 +1,23 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_degree_list_hero_size
+    - node.type.degree_listing_page
+  enforced:
+    module:
+      - asu_degree_rfi
+  module:
+    - options
+id: node.degree_listing_page.field_degree_list_hero_size
+field_name: field_degree_list_hero_size
+entity_type: node
+bundle: degree_listing_page
+label: 'Hero size'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

@@ -1,0 +1,30 @@
+{% block paragraph %}
+  <div{{ attributes.addClass(classes) }}>
+    {% if content.field_media|render %}
+      {% include '@renovation/blockquote/blockquote-image.twig' with {
+        accent_color: content.field_accent_color,
+        background_color: bg_color,
+        citation_author: content.field_citation_author.0,
+        citation_description: content.field_citation_title.0,
+        media: content.field_media,
+        body_text: content.field_formatted_text[0],
+        image_position: content.field_image_position[0]['#markup'],
+        citation_style: content.field_citation_style,
+        heading: content.field_heading,
+        highlight: content.field_heading_highlight[0]['#markup'],
+        text_color: content.field_text_color
+      } %}
+    {% endif %}
+    {% if not content.field_media|render %}
+      {% include '@renovation/blockquote/blockquote.twig' with {
+        accent_color: content.field_accent_color,
+        background_color: bg_color,
+        citation_author: content.field_citation_author.0,
+        citation_description: content.field_citation_title.0,
+        body_text: content.field_formatted_text[0],
+        citation_style: content.field_citation_style,
+        text_color: content.field_text_color
+      } %}
+    {% endif %}
+  </div>
+{% endblock paragraph %}

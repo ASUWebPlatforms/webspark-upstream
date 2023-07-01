@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - asu_degree_rfi
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus:
+      - main
+    parent: 'main:'
+name: 'Degree detail page'
+type: degree_detail_page
+description: 'IMPORTANT NOTE: Degree detail pages are created on-demand when first accessed through their link on a Degree listing page. You shouldn''t need to add them through the "Add content" interface. After they have been created on-demand, customize individual degree pages by overriding parts of their content on the page''s edit tab.'
+help: ''
+new_revision: true
+preview_mode: 0
+display_submitted: false

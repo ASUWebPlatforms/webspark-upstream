@@ -1,0 +1,15 @@
+{#
+/**
+ * @file
+ * Default template for a field.
+ */
+#}
+
+{% for item in items %}
+  {% include '@renovation/links/link.twig' with {
+    uri: item.content['#url'],
+    label: item.content['#title'],
+    options: item.content['#options']
+  } %}
+{% endfor %}
+

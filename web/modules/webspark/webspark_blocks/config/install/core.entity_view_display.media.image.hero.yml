@@ -1,0 +1,37 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.media.hero
+    - field.field.media.image.field_caption
+    - field.field.media.image.field_image_caption
+    - field.field.media.image.field_media_image
+    - image.style.hero
+    - media.type.image
+  module:
+    - image
+    - layout_builder
+third_party_settings:
+  layout_builder:
+    allow_custom: false
+    enabled: false
+id: media.image.hero
+targetEntityType: media
+bundle: image
+mode: hero
+content:
+  field_media_image:
+    label: hidden
+    settings:
+      image_style: hero
+    third_party_settings: {  }
+    type: image_url
+    weight: 1
+    region: content
+hidden:
+  created: true
+  field_caption: true
+  field_image_caption: true
+  name: true
+  thumbnail: true
+  uid: true

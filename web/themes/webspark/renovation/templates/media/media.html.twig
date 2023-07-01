@@ -1,0 +1,8 @@
+{% set classes = [
+  elements['#embed'] == true ? 'embedded-media' ] %}
+
+  <div{{ attributes.addClass(classes) }}>
+    {{ title_suffix.contextual_links }}
+    {{ content }}
+  </div>
+

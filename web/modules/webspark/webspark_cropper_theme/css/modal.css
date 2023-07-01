@@ -1,0 +1,22 @@
+/* Buttons used on media modals */
+
+.ui-dialog .button.js-form-submit.form-submit.btn-maroon {
+  color: #fff;
+  border: 1px solid #8c1d40;
+  border-radius: 20em;
+  background-color: #8c1d40;
+  background-image: none;
+}
+
+.ui-dialog .button.js-form-submit.form-submit.btn-maroon:hover {
+   text-decoration: none;
+   color: #fff;
+   outline: none;
+   background-color: #8c1d40;
+   background-image: none;
+}
+
+.ui-dialog .media-library-add-form__media:first-child .media-library-add-form__remove-button[type="submit"] {
+  top: 5px;
+  padding: 2px 10px;
+}

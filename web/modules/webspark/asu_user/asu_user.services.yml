@@ -1,0 +1,5 @@
+services:
+  asu_user_user_pre_login:
+    class: '\Drupal\asu_user\EventSubscriber\UserPreLoginSubscriber'
+    tags:
+      - { name: 'event_subscriber' }

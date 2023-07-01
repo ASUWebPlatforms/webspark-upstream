@@ -1,0 +1,78 @@
+
+
+
+  {% if media_bundle == 'image' %}
+    <div class="uds-hero-{{ size }} {% if size == 'lg' %} hide-content{% endif %}{% if has_button_row %} has-btn-row{% endif %}">
+      <div class="hero-overlay"></div>
+      <img class="hero" src="{{ hero_background }}" alt="{{ hero_alt }}" />
+  {% endif %}
+
+
+{% if media_bundle == 'video' %}
+  <div class="uds-video-hero {% if has_button_row %} has-btn-row{% endif %}">
+    {% include '@renovation/heroes/video.twig'  with {
+      source: video_url,
+      video_class: 'fixed-background',
+      poster: poster,
+    } %}
+    <div class="container">
+{% endif %}
+
+
+  <div role="doc-subtitle"><span class="{{ sub_heading_background }}">{{ sub_heading }}</span></div>
+  {% include '@renovation/headings/heading-highlighted.twig' with {
+    html_tag : 'h1',
+    heading: heading,
+    highlight: heading_background,
+  } %}
+
+  {% if size != 'sm' %}
+  <div class="content">
+    <p class="text-white">{{ hero_body|raw }}</p>
+  </div>
+  {% endif %}
+
+  {# Print row of or single button. #}
+      {% if cta_btn %}
+        {% if has_button_row %}
+          <div class="btn-row">
+            {{ cta_btn }}
+          </div>
+        {% else %}
+          {{ cta_btn }}
+        {% endif %}
+      {% endif %}
+
+  {% if media_bundle == 'video' %}
+    <div class="buttons">
+      <button 
+        class="first play" 
+        type="button"
+        data-ga-event="link"
+        data-ga-action="click"
+        data-ga-name="onclick"
+        data-ga-type="internal link"
+        data-ga-section="{{ title }}"
+        data-ga-region="main content"
+        data-ga-text="play button">
+        <i class="fa fa-play"></i>
+      </button>
+      <button 
+        class="second pause" 
+        type="button"
+        aria-label="Pause"
+        data-ga-event="link"
+        data-ga-action="click"
+        data-ga-name="onclick"
+        data-ga-type="internal link"
+        data-ga-section="{{ title }}"
+        data-ga-region="main content"
+        data-ga-text="pause button">
+        <i class="fa fa-pause"></i>
+      </button>
+    </div>
+    {{ attach_library('renovation/heroes') }}
+  </div>
+  {% endif %}
+
+</div>

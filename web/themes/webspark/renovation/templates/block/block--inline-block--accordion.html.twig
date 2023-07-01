@@ -1,0 +1,29 @@
+{#
+/**
+ * @file
+ * Template for a accordion block.
+ */
+#}
+{% set classes = [
+  'block',
+  'block-' ~ configuration.provider|clean_class,
+  'block-' ~ plugin_id|clean_class,
+] %}
+
+<div{{ attributes.addClass(classes) }}>
+  {{ title_prefix }}
+  {% if label %}
+    {% block label %}
+      <h2{{ title_attributes }}>{{ label }}</h2>
+    {% endblock %}
+  {% endif %}
+  {{ title_suffix }}
+  {{ content.field_anchor_menu_settings }}
+  {{ content.field_tooltip }}
+  {% set unique_id = block.id.value %}
+
+  <div class="accordion" id="accordion-{{ unique_id }}">
+    {{ content|without('field_color', 'field_anchor_menu_settings', 'field_tooltip', 'field_anchor_menu_settings') }}
+  </div>
+
+</div>

@@ -1,0 +1,175 @@
+<?php
+
+/**
+ * @file
+ * Contains Webspark Advanced Image module.
+ */
+
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\editor\Entity\Editor;
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ *
+ * Note: the editor_file module declares that its
+ * Drupal\editor\Form\EditorImageDialog form uses
+ *   'editor_image_dialog' as base_form_id. In this case, the function above is
+ *   going to be called as an implementation of hook_form_BASE_FORM_ID_alter().
+ */
+function webspark_ckeditor_plugins_form_editor_image_dialog_alter(&$form, FormStateInterface $form_state, $form_id) {
+  $argument = $form_state->getBuildInfo()['args'][0];
+  $settings = $argument->getSettings();
+
+  // In case the only argument we get is the Editor instead of the FilterFormat.
+  if ($argument instanceof Editor) {
+    $argument = $argument->getFilterFormat();
+  }
+  $restrictions = $argument->getHtmlRestrictions();
+  
+  if (isset($form_state->getUserInput()['editor_object'])) {
+    $input = $form_state->getUserInput()['editor_object'];
+    $form_state->set('image_element', $input);
+    $form_state->setCached(TRUE);
+  }
+  else {
+    // Retrieve the link element's attributes from form state.
+    $input = $form_state->get('image_element') ?: [];
+  }
+
+  /*
+   * Helper to retrieve form fields' default values.
+   *
+   * @param string $attribute_name
+   * @param string $fallback
+   *
+   * @return mixed
+   *   The existing value or the fallback.
+   */
+  $get_default_value = function ($attribute_name, $fallback = '') use ($input) {
+    return !empty($input[$attribute_name]) ? $input[$attribute_name] : $fallback;
+  };
+
+  /*
+   * Helper to set the status of a form field according to the status of the
+   * filter about the attribute it is defining.
+   *
+   * @param string $attribute_name
+   *
+   * @return bool
+   *   TRUE if the filter is disabled or if the entire "img" tag is allowed
+   *   or if the given attribute is allowed for the "img" tag.
+   */
+  $is_accessible = function ($attribute_name) use ($restrictions) {
+    return $restrictions === FALSE
+    || $restrictions['allowed']['img'] === TRUE
+    || !empty($restrictions['allowed']['img'][$attribute_name]);
+  };
+
+  $default_class = NULL;
+
+  // Add spacing options
+  $form['attributes']['spacing_top'] = [
+    '#type' => 'select',
+    '#title' => t('Spacing top'),
+    '#description' => 'Spacing top',
+    '#default_value' => $get_default_value('spacing_top') ? $get_default_value('spacing_top') : 'spacing-top-16',
+    '#options' => [
+      'none' => 'none',
+      'spacing-top-8' => '8px',
+      'spacing-top-16' => '16px',
+      'spacing-top-24' => '24px',
+    ],
+    '#access' => $is_accessible('class'),
+    '#weight' => 1,
+  ];
+  $form['attributes']['spacing_bottom'] = [
+    '#type' => 'select',
+    '#title' => t('Spacing bottom'),
+    '#description' => 'Spacing bottom',
+    '#default_value' => $get_default_value('spacing_bottom') ? $get_default_value('spacing_bottom') : 'spacing-bottom-16',
+    '#options' => [
+      'none' => 'none',
+      'spacing-bottom-8' => '8px',
+      'spacing-bottom-16' => '16px',
+      'spacing-bottom-24' => '24px',
+    ],
+    '#access' => $is_accessible('class'),
+    '#weight' => 1,
+  ];
+  $form['attributes']['spacing_left'] = [
+    '#type' => 'select',
+    '#title' => t('Spacing left'),
+    '#description' => 'Spacing left',
+    '#default_value' => $get_default_value('spacing_left') ? $get_default_value('spacing_left') : 'spacing-left-16',
+    '#options' => [
+      'none' => 'none',
+      'spacing-left-8' => '8px',
+      'spacing-left-16' => '16px',
+      'spacing-left-24' => '24px',
+    ],
+    '#access' => $is_accessible('class'),
+    '#weight' => 1,
+  ];
+  $form['attributes']['spacing_right'] = [
+    '#type' => 'select',
+    '#title' => t('Spacing right'),
+    '#description' => 'Spacing right',
+    '#default_value' => $get_default_value('spacing_right') ? $get_default_value('spacing_right') : 'spacing-right-16',
+    '#options' => [
+      'none' => 'none',
+      'spacing-right-8' => '8px',
+      'spacing-right-16' => '16px',
+      'spacing-right-24' => '24px',
+    ],
+    '#access' => $is_accessible('class'),
+    '#weight' => 1,
+  ];
+  
+  $form['advanced'] = [
+    '#type' => 'details',
+    '#title' => t('Extra'),
+    '#access' => TRUE,
+    '#weight' => 2,
+  ];
+  
+  // Add extra options
+  $form['attributes']['round'] = [
+    '#type' => 'checkbox',
+    '#title' => t('Round image.'),
+    '#description' => 'Round the image corners.',
+    '#default_value' => $get_default_value('round') ? $get_default_value('round') : 0,
+    '#access' => $is_accessible('class'),
+    '#group'         => 'advanced',
+    '#weight' => 4,
+  ];
+  
+  // Add #validate callback that handles empty attributes.
+  array_unshift($form['#validate'], '_webspark_ckeditor_plugins_attributes_validate');
+}
+
+/**
+ * Filter empty attributes to avoid empty HTML output.
+ */
+function _webspark_ckeditor_plugins_attributes_validate(array &$form, FormStateInterface $form_state) {
+  $values = $form_state->getValue('attributes');
+  $image_element = $form_state->get('image_element');
+  foreach ($values as $key => $value) {
+    if (empty($value)) {
+      $form_state->setValue(['attributes', $key], '');
+      // Special case on content creation.
+      if (empty($image_element)) {
+        $form_state->unsetValue(['attributes', $key]);
+      }
+    }
+  }
+}
+
+/**
+ * Load the css library for all pages
+ */
+function webspark_ckeditor_plugins_page_attachments(array &$page) {
+  if (!\Drupal::currentUser()->hasPermission('access contextual links')) {
+    return;
+  }
+  $page['#attached']['library'][] = 'webspark_ckeditor_plugins/webspark.ckeditor.plugins';
+}

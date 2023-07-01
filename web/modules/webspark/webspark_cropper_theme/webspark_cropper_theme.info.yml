@@ -1,0 +1,9 @@
+name: WebSpark Image Cropper
+description: Adds cropping capabilities to media images.
+package: WebSpark
+
+type: module
+core: 8.x
+core_version_requirement: ^8 || ^9
+dependencies:
+  - image_widget_crop

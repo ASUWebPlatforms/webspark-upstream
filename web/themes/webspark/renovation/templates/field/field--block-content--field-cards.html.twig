@@ -1,0 +1,16 @@
+{#
+/**
+ * @file
+ * Default template for a field.
+ */
+#}
+
+{% for item in items %}
+  {{ item.content }}
+{#{% include '@renovation/cards/card-arrangement.twig' with {
+    html_tag: 'div',
+    content: item.content,
+    view_mode: view_mode,
+  } %}#}
+{% endfor %}
+

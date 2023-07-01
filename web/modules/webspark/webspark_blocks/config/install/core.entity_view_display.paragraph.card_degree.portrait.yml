@@ -1,0 +1,119 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.portrait
+    - field.field.paragraph.card_degree.field_body
+    - field.field.paragraph.card_degree.field_card_link
+    - field.field.paragraph.card_degree.field_clickable
+    - field.field.paragraph.card_degree.field_cta
+    - field.field.paragraph.card_degree.field_cta_secondary
+    - field.field.paragraph.card_degree.field_heading
+    - field.field.paragraph.card_degree.field_link
+    - field.field.paragraph.card_degree.field_media
+    - field.field.paragraph.card_degree.field_show_borders
+    - field.field.paragraph.card_degree.field_tags
+    - paragraphs.paragraphs_type.card_degree
+  module:
+    - entity_reference_revisions
+    - layout_builder
+    - link
+    - text
+  enforced:
+    module:
+      - webspark_blocks
+third_party_settings:
+  layout_builder:
+    enabled: false
+    allow_custom: false
+id: paragraph.card_degree.portrait
+targetEntityType: paragraph
+bundle: card_degree
+mode: portrait
+content:
+  field_body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_card_link:
+    type: link
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 8
+    region: content
+  field_clickable:
+    type: boolean
+    label: hidden
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    weight: 7
+    region: content
+  field_cta:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  field_cta_secondary:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: small
+      link: ''
+    third_party_settings: {  }
+    weight: 5
+    region: content
+  field_heading:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_link:
+    type: link
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_media:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: true
+    third_party_settings: {  }
+    weight: 6
+    region: content
+  field_tags:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 2
+    region: content
+hidden:
+  field_show_borders: true

@@ -1,0 +1,122 @@
+<?php
+
+use Drupal\block_content\Entity\BlockContent;
+
+/**
+ * Implements hook_preprocess_HOOK()
+ */
+function webspark_webdir_preprocess_block__web_directory(&$variables)
+{
+  if (empty($variables['block'])) {
+    return;
+  }
+
+  $blockContent = $variables['block'];
+  if (!($blockContent instanceof BlockContent)) {
+    return;
+  }
+
+  $config = \Drupal::config('webspark_webdir.settings');
+
+  $searchType = '';
+  if ($blockContent->hasField('field_component_type')) {
+    $searchType = $blockContent->field_component_type->value;
+  }
+
+  $peopleSearch = '';
+  if ($blockContent->hasField('field_people_search')) {
+    $peopleSearch = $blockContent->field_people_search->value;
+  }
+
+  $asuriteIds = '';
+  if ($blockContent->hasField('field_asurite_ids')) {
+    $asuriteIds = $blockContent->field_asurite_ids->value;
+  }
+
+  $deptIds = '';
+  if ($blockContent->hasField('field_department_ids')) {
+    $deptIds = $blockContent->field_department_ids->value;
+  }
+
+  $filterEmployee = '';
+  if ($blockContent->hasField('field_filter_employee')) {
+    $filterEmployee = $blockContent->field_filter_employee->value;
+  }
+
+  $filterCampus = '';
+  if ($blockContent->hasField('field_filter_campus')) {
+    $filterCampus = $blockContent->field_filter_campus->value;
+  }
+
+  $filterExpertise = '';
+  if ($blockContent->hasField('field_filter_expertise')) {
+    $filterExpertise = $blockContent->field_filter_expertise->value;
+  }
+
+  $filterTitle = '';
+  if ($blockContent->hasField('field_filter_title')) {
+    // Because some titles have commas and ampersands in them, we need to
+    // split the data and encode it before we use a comma as a separator in JS.
+    $value = $blockContent->field_filter_title->value;
+    $array = preg_split('/\r?\n|\r/', $value);
+    $array = array_map(function($value) {
+      return rawurlencode($value);
+    }, $array);
+    $filterTitle = implode(',', $array);
+  }
+
+  $usePager = TRUE;
+  if ($blockContent->hasField('field_webdir_use_pager')) {
+    $usePager = $blockContent->field_webdir_use_pager->value;
+  }
+
+  $profilesPerPage = 20;
+  if ($blockContent->hasField('field_webdir_items_to_display')) {
+    $profilesPerPage = $blockContent->field_webdir_items_to_display->value;
+  }
+
+  $defaultSort = '';
+  if ($blockContent->hasField('field_default_sort')) {
+    if ($searchType === 'faculty_rank') {
+      $defaultSort = 'faculty_rank';
+    }
+    else {
+      $defaultSort = $blockContent->field_default_sort->value;
+    }
+  }
+
+  $dontDisplayProfiles = '';
+  if ($blockContent->hasField('field_webdir_exclude_profiles')) {
+    $dontDisplayProfiles = $blockContent->field_webdir_exclude_profiles->value;
+  }
+
+  $appPathFolder = \Drupal::service('webspark_webdir.helper_functions')->getAppPathFolder('app-webdir-ui');
+
+  $markup = <<<HTML
+<div
+  class="webdir-container"
+  id="webdir-container-{$blockContent->id()}"
+  data-search-type="{$searchType}"
+  data-search-url="{$config->get('api')}"
+  data-search-api-version="{$config->get('api_version')}"
+  data-people-search="{$peopleSearch}"
+  data-asurite-ids="{$asuriteIds}"
+  data-dept-ids="{$deptIds}"
+  data-filter-employee="{$filterEmployee}"
+  data-filter-expertise="{$filterExpertise}"
+  data-filter-title="{$filterTitle}"
+  data-filter-campuses="{$filterCampus}"
+  data-use-pager="{$usePager}"
+  data-profiles-per-page="{$profilesPerPage}"
+  data-default-sort="{$defaultSort}"
+  data-do-not-display-profiles="{$dontDisplayProfiles}"
+  data-app-path-folder="{$appPathFolder}"
+></div>
+HTML;
+
+  $variables['content']['placeholder'] = [
+    '#markup' => $markup,
+  ];
+
+  $variables['#attached']['library'][] = 'webspark_webdir/search-ui';
+}

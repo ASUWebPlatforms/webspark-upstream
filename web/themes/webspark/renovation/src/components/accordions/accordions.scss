@@ -1,0 +1,23 @@
+@import '../../../node_modules/@asu/bootstrap4-theme/src/scss/extends/cards';
+
+// Set content width to 75 characters.
+.accordion {
+  p {
+    max-width: 700px;
+
+    &:first-child {
+      margin-top: $uds-size-spacing-2;
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  .card-foldable .card-header h3 {
+    font-size: 1.25rem;
+    line-height: 1.625rem;
+    letter-spacing: -0.01875rem;
+    max-width: none;
+  }
+}

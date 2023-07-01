@@ -1,0 +1,21 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_degree_list_apply_now_url
+    - node.type.degree_listing_page
+  enforced:
+    module:
+      - asu_degree_rfi
+id: node.degree_listing_page.field_degree_list_apply_now_url
+field_name: field_degree_list_apply_now_url
+entity_type: node
+bundle: degree_listing_page
+label: 'Apply now URL'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

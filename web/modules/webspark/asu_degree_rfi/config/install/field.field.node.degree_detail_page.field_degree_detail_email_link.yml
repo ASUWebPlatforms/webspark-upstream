@@ -1,0 +1,21 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_degree_detail_email_link
+    - node.type.degree_detail_page
+  enforced:
+    module:
+      - asu_degree_rfi
+id: node.degree_detail_page.field_degree_detail_email_link
+field_name: field_degree_detail_email_link
+entity_type: node
+bundle: degree_detail_page
+label: 'Program department email link'
+description: 'Supply a degree detail email link. For example: mailto:sparky@example.com'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -1,0 +1,12 @@
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - webspark_blocks
+id: card_story
+label: 'Card Story'
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

@@ -1,0 +1,7 @@
+{# Passes the extracted icon value to icon template. #}
+
+{% for item in items %}
+  {% include '@renovation/icons/single-icon.twig' with {
+    item: item.content,
+  } %}
+{% endfor %}

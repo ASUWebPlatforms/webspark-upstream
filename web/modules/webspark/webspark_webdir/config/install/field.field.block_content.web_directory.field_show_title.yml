@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.web_directory
+    - field.storage.block_content.field_show_title
+id: block_content.web_directory.field_show_title
+field_name: field_show_title
+entity_type: block_content
+bundle: web_directory
+label: 'Use pager'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

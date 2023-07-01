@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.events
+    - field.storage.block_content.field_feed_taxonomy_term
+id: block_content.events.field_feed_taxonomy_term
+field_name: field_feed_taxonomy_term
+entity_type: block_content
+bundle: events
+label: 'Feed taxonomy term'
+description: 'Optional. Provide a taxonomy term to use when calling the Events feed. Consult the <a href="https://asuevents.asu.edu/reports/taxonomy-terms" target="_blank">Events feed reference to identify a term value.</a>'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

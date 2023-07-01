@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.web_directory
+    - field.storage.block_content.field_default_sort
+  module:
+    - options
+id: block_content.web_directory.field_default_sort
+field_name: field_default_sort
+entity_type: block_content
+bundle: web_directory
+label: 'Default sort'
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    value: last_name
+default_value_callback: ''
+settings: {  }
+field_type: list_string

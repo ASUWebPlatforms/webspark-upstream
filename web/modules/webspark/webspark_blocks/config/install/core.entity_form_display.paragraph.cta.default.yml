@@ -1,0 +1,26 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.cta.field_cta_link
+    - field.field.paragraph.cta.field_icon
+    - paragraphs.paragraphs_type.cta
+  module:
+    - link
+id: paragraph.cta.default
+targetEntityType: paragraph
+bundle: cta
+mode: default
+content:
+  field_cta_link:
+    weight: 0
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+    type: link_default
+    region: content
+hidden:
+  created: true
+  field_icon: true
+  status: true

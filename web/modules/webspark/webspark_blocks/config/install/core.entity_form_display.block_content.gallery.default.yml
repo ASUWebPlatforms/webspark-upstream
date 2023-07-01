@@ -1,0 +1,112 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.gallery
+    - field.field.block_content.gallery.field_anchor_menu_settings
+    - field.field.block_content.gallery.field_carousel_card
+    - field.field.block_content.gallery.field_spacing_bottom
+    - field.field.block_content.gallery.field_spacing_top
+    - field.field.block_content.gallery.field_tooltip
+  module:
+    - field_group
+    - paragraphs
+third_party_settings:
+  field_group:
+    group_appearance_settings:
+      children:
+        - field_anchor_menu_settings
+        - field_spacing_top
+        - field_spacing_bottom
+      parent_name: ''
+      weight: 5
+      format_type: tab
+      region: content
+      format_settings:
+        id: ''
+        classes: ''
+        description: ''
+        formatter: closed
+        required_fields: true
+      label: 'Appearance Settings'
+    group_help_text:
+      children:
+        - field_carousel_card
+      parent_name: ''
+      weight: 3
+      format_type: html_element
+      region: content
+      format_settings:
+        element: H3
+        show_label: true
+        label_element: 'Note: All carousel images have to be the same aspect ratio.'
+        label_element_classes: ''
+        required_fields: true
+        attributes: ''
+        effect: none
+        speed: fast
+        id: ''
+        classes: ''
+      label: 'Note: All carousel images have to be the same aspect ratio.'
+id: block_content.gallery.default
+targetEntityType: block_content
+bundle: gallery
+mode: default
+content:
+  field_anchor_menu_settings:
+    weight: 26
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: ''
+    third_party_settings: {  }
+    type: entity_reference_paragraphs
+    region: content
+  field_carousel_card:
+    weight: 2
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: ''
+    third_party_settings: {  }
+    type: entity_reference_paragraphs
+    region: content
+  field_spacing_bottom:
+    weight: 28
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  field_spacing_top:
+    weight: 27
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  field_tooltip:
+    weight: 4
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: _none
+    third_party_settings: {  }
+    type: entity_reference_paragraphs
+    region: content
+  info:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden: {  }

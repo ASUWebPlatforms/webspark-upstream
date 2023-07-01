@@ -1,0 +1,23 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.card_group_default.field_cards
+    - paragraphs.paragraphs_type.card_group_default
+  module:
+    - entity_reference_revisions
+id: paragraph.card_group_default.default
+targetEntityType: paragraph
+bundle: card_group_default
+mode: default
+content:
+  field_cards:
+    type: entity_reference_revisions_entity_view
+    weight: 0
+    label: hidden
+    settings:
+      view_mode: portrait
+      link: ''
+    third_party_settings: {  }
+    region: content
+hidden: {  }

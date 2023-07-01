@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.web_directory
+    - field.storage.block_content.field_webdir_exclude_profiles
+id: block_content.web_directory.field_webdir_exclude_profiles
+field_name: field_webdir_exclude_profiles
+entity_type: block_content
+bundle: web_directory
+label: 'Don''t display profiles'
+description: 'Comma separated list of ASURITE IDs'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

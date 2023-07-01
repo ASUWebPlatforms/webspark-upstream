@@ -1,0 +1,11 @@
+<div class="justify-content-center">
+  <div class="uds-charts-and-graphs-container" data-number="{{ number }}">
+    <div class="uds-charts-and-graphs-overlay {{ text_color }}">
+      <h4>{{ number }}%</h4>
+      <span>{{ text }}</span>
+    </div>
+    <canvas id="uds-donut"></canvas>
+  </div>
+</div>
+{{ attach_library('renovation/renovation.chartjs') }}
+{{ attach_library('renovation/charts_graphs') }}

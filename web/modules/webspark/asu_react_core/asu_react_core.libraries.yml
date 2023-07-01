@@ -1,0 +1,64 @@
+react-core:
+  version: 0.0.1
+  dependencies:
+    - core/jquery
+    - core/drupal
+    - core/drupalSettings
+    - asu_react_integration/reactjs
+  js:
+    node_modules/@asu/components-core/dist/libCore.umd.js: {}
+react-carousel:
+  version: 0.0.1
+  dependencies:
+    - asu_react_core/react-core
+  js:
+    node_modules/@asu/component-carousel/dist/vendor.umd.js: { }
+    node_modules/@asu/component-carousel/dist/asuCarousel.umd.js: {}
+testimonial-carousel:
+  version: 0.0.1
+  dependencies:
+    - asu_react_core/react-carousel
+  js:
+    js/component-carousel-testimonial.js: {}
+image-carousel:
+  version: 0.0.1
+  dependencies:
+    - asu_react_core/react-carousel
+  js:
+    js/component-carousel-image.js: {}
+image_gallery_carousel:
+  version: 0.0.1
+  dependencies:
+    - asu_react_core/react-carousel
+  js:
+    js/component-carousel-image-gallery.js: { }
+card_carousel:
+  version: 0.0.1
+  dependencies:
+    - asu_react_core/react-carousel
+  js:
+    js/component-carousel-card.js: { }
+card-arrangement:
+  version: 0.0.1
+  dependencies:
+    - asu_react_core/react-core
+  js:
+    js/component-card-arrangement.js: { }
+testimonial:
+  version: 0.0.1
+  dependencies:
+    - asu_react_core/react-core
+  js:
+    js/component-testimonial.js: {}
+card:
+  version: 0.0.1
+  dependencies:
+    - asu_react_core/react-core
+  js:
+    js/component-card.js: { }
+testimonial-on-image-background:
+  version: 0.0.1
+  dependencies:
+    - asu_react_core/react-core
+  js:
+    js/testimonial-on-image-background.js: { }

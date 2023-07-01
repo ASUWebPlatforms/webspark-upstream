@@ -1,0 +1,34 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.card_group_ranking.field_cards
+    - paragraphs.paragraphs_type.card_group_ranking
+  module:
+    - field_states_ui
+    - paragraphs
+id: paragraph.card_group_ranking.default
+targetEntityType: paragraph
+bundle: card_group_ranking
+mode: default
+content:
+  field_cards:
+    type: entity_reference_paragraphs
+    weight: 0
+    region: content
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: card_ranking
+    third_party_settings:
+      field_states_ui:
+        form:
+          type: ''
+          list: ''
+          add: Add
+hidden:
+  created: true
+  status: true

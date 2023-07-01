@@ -1,0 +1,99 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.blockquote.field_accent_color
+    - field.field.paragraph.blockquote.field_citation_author
+    - field.field.paragraph.blockquote.field_citation_style
+    - field.field.paragraph.blockquote.field_citation_title
+    - field.field.paragraph.blockquote.field_formatted_text
+    - field.field.paragraph.blockquote.field_heading
+    - field.field.paragraph.blockquote.field_heading_highlight
+    - field.field.paragraph.blockquote.field_image_position
+    - field.field.paragraph.blockquote.field_media
+    - field.field.paragraph.blockquote.field_text_color
+    - paragraphs.paragraphs_type.blockquote
+  module:
+    - options
+    - text
+id: paragraph.blockquote.default
+targetEntityType: paragraph
+bundle: blockquote
+mode: default
+content:
+  field_accent_color:
+    weight: 8
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: list_key
+    region: content
+  field_citation_author:
+    weight: 1
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_citation_style:
+    weight: 7
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: list_key
+    region: content
+  field_citation_title:
+    weight: 2
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_formatted_text:
+    weight: 3
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  field_heading:
+    weight: 10
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_heading_highlight:
+    weight: 11
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: list_key
+    region: content
+  field_image_position:
+    weight: 5
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: list_key
+    region: content
+  field_media:
+    weight: 4
+    label: hidden
+    settings:
+      link: true
+      view_mode: default
+    third_party_settings: {  }
+    type: entity_reference_entity_view
+    region: content
+  field_text_color:
+    weight: 12
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: list_key
+    region: content
+hidden: {  }

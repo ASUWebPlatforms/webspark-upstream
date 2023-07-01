@@ -1,0 +1,17 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - crop
+third_party_settings:
+  crop:
+    image_field: _none
+id: image_block_images
+label: 'Cropped image (4:3)'
+description: 'Used for Image Block in layout builder.'
+source: image
+queue_thumbnail_downloads: false
+new_revision: false
+source_configuration:
+  source_field: field_media_image
+field_map: {  }

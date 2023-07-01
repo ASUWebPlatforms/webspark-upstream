@@ -1,0 +1,23 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_degree_list_program
+    - node.type.degree_listing_page
+  enforced:
+    module:
+      - asu_degree_rfi
+  module:
+    - options
+id: node.degree_listing_page.field_degree_list_program
+field_name: field_degree_list_program
+entity_type: node
+bundle: degree_listing_page
+label: Program
+description: 'Degree listing pages must be configured to list undergraduate or graduate programs.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

@@ -1,0 +1,478 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.web_directory
+    - field.field.block_content.web_directory.field_asurite_ids
+    - field.field.block_content.web_directory.field_component_type
+    - field.field.block_content.web_directory.field_default_sort
+    - field.field.block_content.web_directory.field_department_ids
+    - field.field.block_content.web_directory.field_filter_campus
+    - field.field.block_content.web_directory.field_filter_employee
+    - field.field.block_content.web_directory.field_filter_expertise
+    - field.field.block_content.web_directory.field_filter_title
+    - field.field.block_content.web_directory.field_ids
+    - field.field.block_content.web_directory.field_news_items_to_display
+    - field.field.block_content.web_directory.field_people_add
+    - field.field.block_content.web_directory.field_people_add_department
+    - field.field.block_content.web_directory.field_people_list
+    - field.field.block_content.web_directory.field_people_search
+    - field.field.block_content.web_directory.field_show_title
+    - field.field.block_content.web_directory.field_webdir_exclude_profiles
+    - field.field.block_content.web_directory.field_webdir_items_to_display
+    - field.field.block_content.web_directory.field_webdir_use_pager
+  module:
+    - field_group
+    - field_states_ui
+    - webspark_webdir
+third_party_settings:
+  field_group:
+    group_display_settings:
+      children:
+        - field_default_sort
+        - field_show_title
+        - field_webdir_use_pager
+        - field_news_items_to_display
+        - field_webdir_items_to_display
+        - field_ids
+        - field_webdir_exclude_profiles
+      label: 'Display settings'
+      region: content
+      parent_name: ''
+      weight: 13
+      format_type: fieldset
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        description: ''
+        required_fields: true
+    group_filter_by_title:
+      children:
+        - field_filter_title
+      label: 'Filter by title'
+      region: content
+      parent_name: ''
+      weight: 3
+      format_type: details
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        open: false
+        description: ''
+        required_fields: true
+id: block_content.web_directory.default
+targetEntityType: block_content
+bundle: web_directory
+mode: default
+content:
+  field_asurite_ids:
+    type: field_webdir_asurite_widget
+    weight: 11
+    region: content
+    settings: {  }
+    third_party_settings:
+      field_states_ui:
+        form:
+          type: ''
+          list:
+            4a7c4162-4331-4a62-8a8a-fd197e3d87f3:
+              operations:
+                edit: Edit
+                delete: Delete
+            87d7fdbc-8bf3-4000-a93d-daf88404367f:
+              operations:
+                edit: Edit
+                delete: Delete
+          add: Add
+        field_states:
+          4a7c4162-4331-4a62-8a8a-fd197e3d87f3:
+            uuid: 4a7c4162-4331-4a62-8a8a-fd197e3d87f3
+            id: invisible
+            data:
+              target: field_component_type
+              comparison: value
+              value: departments
+              submit: 'Add Cancel'
+          87d7fdbc-8bf3-4000-a93d-daf88404367f:
+            uuid: 87d7fdbc-8bf3-4000-a93d-daf88404367f
+            id: invisible
+            data:
+              target: field_component_type
+              comparison: value
+              value: faculty_rank
+              submit: 'Add Cancel'
+  field_component_type:
+    type: options_select
+    weight: 1
+    region: content
+    settings: {  }
+    third_party_settings:
+      field_states_ui:
+        form:
+          type: ''
+          list: ''
+          add: Add
+  field_default_sort:
+    type: options_select
+    weight: 16
+    region: content
+    settings: {  }
+    third_party_settings:
+      field_states_ui:
+        form:
+          type: ''
+          list:
+            609b54e8-8d57-4fb1-9ad8-93aa698814d4:
+              operations:
+                edit: Edit
+                delete: Delete
+          add: Add
+        field_states:
+          609b54e8-8d57-4fb1-9ad8-93aa698814d4:
+            uuid: 609b54e8-8d57-4fb1-9ad8-93aa698814d4
+            id: invisible
+            data:
+              target: field_component_type
+              comparison: value
+              value: faculty_rank
+              submit: 'Add Cancel'
+  field_department_ids:
+    type: field_webdir_departments_widget
+    weight: 2
+    region: content
+    settings: {  }
+    third_party_settings:
+      field_states_ui:
+        form:
+          type: ''
+          list:
+            f6cf414b-c618-478b-be6a-5d7a2d6eb267:
+              operations:
+                edit: Edit
+                delete: Delete
+            354cfe82-e987-4313-8956-389814c1375e:
+              operations:
+                edit: Edit
+                delete: Delete
+            5efac40b-5535-403c-ae5d-8154a0ec262f:
+              operations:
+                edit: Edit
+                delete: Delete
+          add: Add
+        field_states:
+          f6cf414b-c618-478b-be6a-5d7a2d6eb267:
+            uuid: f6cf414b-c618-478b-be6a-5d7a2d6eb267
+            id: visible
+            data:
+              target: field_component_type
+              comparison: value
+              value: departments
+              submit: 'Add Cancel'
+          354cfe82-e987-4313-8956-389814c1375e:
+            uuid: 354cfe82-e987-4313-8956-389814c1375e
+            id: visible
+            data:
+              target: field_component_type
+              comparison: value
+              value: people_departments
+              submit: 'Add Cancel'
+          5efac40b-5535-403c-ae5d-8154a0ec262f:
+            uuid: 5efac40b-5535-403c-ae5d-8154a0ec262f
+            id: visible
+            data:
+              target: field_component_type
+              comparison: value
+              value: faculty_rank
+              submit: 'Add Cancel'
+  field_filter_campus:
+    type: field_webdir_campus_widget
+    weight: 5
+    region: content
+    settings: {  }
+    third_party_settings:
+      field_states_ui:
+        form:
+          type: ''
+          list:
+            70686110-766e-4765-baaf-f37e731ba56a:
+              operations:
+                edit: Edit
+                delete: Delete
+            176f016c-3281-4082-b475-6576e1f71617:
+              operations:
+                edit: Edit
+                delete: Delete
+          add: Add
+        field_states:
+          70686110-766e-4765-baaf-f37e731ba56a:
+            uuid: 70686110-766e-4765-baaf-f37e731ba56a
+            id: visible
+            data:
+              target: field_component_type
+              comparison: value
+              value: departments
+              submit: 'Add Cancel'
+          176f016c-3281-4082-b475-6576e1f71617:
+            uuid: 176f016c-3281-4082-b475-6576e1f71617
+            id: visible
+            data:
+              target: field_component_type
+              comparison: value
+              value: faculty_rank
+              submit: 'Add Cancel'
+  field_filter_employee:
+    type: field_webdir_employee_type_widget
+    weight: 7
+    region: content
+    settings: {  }
+    third_party_settings:
+      field_states_ui:
+        form:
+          type: ''
+          list:
+            f6d99ae3-6941-4c59-94cd-8f4ef83c8774:
+              operations:
+                edit: Edit
+                delete: Delete
+          add: Add
+        field_states:
+          f6d99ae3-6941-4c59-94cd-8f4ef83c8774:
+            uuid: f6d99ae3-6941-4c59-94cd-8f4ef83c8774
+            id: visible
+            data:
+              target: field_component_type
+              comparison: value
+              value: departments
+              submit: 'Add Cancel'
+  field_filter_expertise:
+    type: field_webdir_expertise_widget
+    weight: 6
+    region: content
+    settings: {  }
+    third_party_settings:
+      field_states_ui:
+        form:
+          type: ''
+          list:
+            3bd58a03-67f5-472e-b6d2-5dd5cbb98fe1:
+              operations:
+                edit: Edit
+                delete: Delete
+            9a39db6b-edbe-443a-b4a1-9a1ffa5d0cbb:
+              operations:
+                edit: Edit
+                delete: Delete
+          add: Add
+        field_states:
+          3bd58a03-67f5-472e-b6d2-5dd5cbb98fe1:
+            uuid: 3bd58a03-67f5-472e-b6d2-5dd5cbb98fe1
+            id: visible
+            data:
+              target: field_component_type
+              comparison: value
+              value: departments
+              submit: 'Add Cancel'
+          9a39db6b-edbe-443a-b4a1-9a1ffa5d0cbb:
+            uuid: 9a39db6b-edbe-443a-b4a1-9a1ffa5d0cbb
+            id: visible
+            data:
+              target: field_component_type
+              comparison: value
+              value: faculty_rank
+              submit: 'Add Cancel'
+  field_filter_title:
+    type: string_textarea
+    weight: 4
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings:
+      field_states_ui:
+        form:
+          type: ''
+          list:
+            ab794cdb-6d4a-4dc4-8db6-eb3ff30bede4:
+              operations:
+                edit: Edit
+                delete: Delete
+            b342a715-ce2c-4832-a99b-5628ded6654f:
+              operations:
+                edit: Edit
+                delete: Delete
+          add: Add
+        field_states:
+          ab794cdb-6d4a-4dc4-8db6-eb3ff30bede4:
+            uuid: ab794cdb-6d4a-4dc4-8db6-eb3ff30bede4
+            id: visible
+            data:
+              target: field_component_type
+              comparison: value
+              value: departments
+              submit: 'Add Cancel'
+          b342a715-ce2c-4832-a99b-5628ded6654f:
+            uuid: b342a715-ce2c-4832-a99b-5628ded6654f
+            id: visible
+            data:
+              target: field_component_type
+              comparison: value
+              value: faculty_rank
+              submit: 'Add Cancel'
+      maxlength:
+        maxlength_js: null
+        maxlength_js_label: 'Content limited to @limit characters, remaining: <strong>@remaining</strong>'
+        maxlength_js_enforce: false
+        maxlength_js_truncate_html: false
+  field_ids:
+    type: string_textfield
+    weight: 21
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_news_items_to_display:
+    type: number
+    weight: 19
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+  field_people_add:
+    type: field_webdir_add_widget
+    weight: 10
+    region: content
+    settings: {  }
+    third_party_settings:
+      field_states_ui:
+        form:
+          type: ''
+          list:
+            271c34ba-1261-479f-98ff-cfb08a38fe3c:
+              operations: {  }
+        field_states:
+          271c34ba-1261-479f-98ff-cfb08a38fe3c:
+            uuid: 271c34ba-1261-479f-98ff-cfb08a38fe3c
+            id: visible
+            data:
+              target: field_component_type
+              comparison: value
+              value: people_departments
+              submit: 'Update State Cancel'
+  field_people_add_department:
+    type: field_webdir_add_people_widget
+    weight: 9
+    region: content
+    settings: {  }
+    third_party_settings:
+      field_states_ui:
+        form:
+          type: ''
+          list:
+            17c1b9d9-b53b-488b-9b7c-cdc1b5a3b90e:
+              operations:
+                edit: Edit
+                delete: Delete
+          add: Add
+        field_states:
+          17c1b9d9-b53b-488b-9b7c-cdc1b5a3b90e:
+            uuid: 17c1b9d9-b53b-488b-9b7c-cdc1b5a3b90e
+            id: visible
+            data:
+              target: field_component_type
+              comparison: value
+              value: people
+              submit: 'Update State Cancel'
+  field_people_list:
+    type: field_webdir_list_widget
+    weight: 12
+    region: content
+    settings: {  }
+    third_party_settings:
+      field_states_ui:
+        form:
+          type: ''
+          list:
+            82ee69d2-dc53-4e9c-89cc-3e52a2fb570d:
+              operations:
+                edit: Edit
+                delete: Delete
+          add: Add
+        field_states:
+          82ee69d2-dc53-4e9c-89cc-3e52a2fb570d:
+            uuid: 82ee69d2-dc53-4e9c-89cc-3e52a2fb570d
+            id: visible
+            data:
+              target: field_component_type
+              comparison: value
+              value: departments
+              submit: 'Add Cancel'
+  field_people_search:
+    type: string_textfield
+    weight: 8
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings:
+      field_states_ui:
+        form:
+          type: ''
+          list:
+            53646ebe-8e30-4a8c-8ed1-d83404b3133a:
+              operations:
+                edit: Edit
+                delete: Delete
+          add: Add
+        field_states:
+          53646ebe-8e30-4a8c-8ed1-d83404b3133a:
+            uuid: 53646ebe-8e30-4a8c-8ed1-d83404b3133a
+            id: visible
+            data:
+              target: field_component_type
+              comparison: value
+              value: people
+              submit: 'Add Cancel'
+      maxlength:
+        maxlength_js: null
+        maxlength_js_label: 'Content limited to @limit characters, remaining: <strong>@remaining</strong>'
+  field_show_title:
+    type: boolean_checkbox
+    weight: 17
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  field_webdir_exclude_profiles:
+    type: string_textfield
+    weight: 22
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_webdir_items_to_display:
+    type: number
+    weight: 20
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+  field_webdir_use_pager:
+    type: boolean_checkbox
+    weight: 18
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  info:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden: {  }

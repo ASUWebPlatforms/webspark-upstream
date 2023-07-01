@@ -1,0 +1,21 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_degree_detail_acadplancode
+    - node.type.degree_detail_page
+  enforced:
+    module:
+      - asu_degree_rfi
+id: node.degree_detail_page.field_degree_detail_acadplancode
+field_name: field_degree_detail_acadplancode
+entity_type: node
+bundle: degree_detail_page
+label: 'Academic plan code'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string
