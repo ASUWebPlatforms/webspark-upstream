@@ -51,6 +51,13 @@ function webspark_blocks_update_9005(&$sandbox) {
 }
 
 /**
+ * WS2-1704 - Add back blocks revert call
+ */
+function webspark_blocks_update_9012(&$sandbox) {
+  _webspark_blocks_revert_module_config();
+}
+
+/**
  * Update 'Show borders' field on cards paragraphs to ensure it has a default value.
  */
 function webspark_blocks_update_9017() {
