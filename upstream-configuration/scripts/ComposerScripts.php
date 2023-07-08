@@ -233,12 +233,19 @@ class ComposerScripts {
     return '';
   }
 
+  /**
+   * Merge the upstream and custom patches into a single file.
+   *
+   * @param PreCommandRunEvent $event
+   *
+   * @return void
+   */
   public static function writeComposerPatchFile(PreCommandRunEvent $event) {
     $websparkPath = 'upstream-configuration/patches.webspark.json';
     $customPath = 'custom-dependencies/patches.custom.json';
     $websparkArray = json_decode(file_get_contents($websparkPath), true);
     $customArray = json_decode(file_get_contents($customPath), true);
-    $combinedArray['patches'] = $websparkArray + $customArray;
+    $combinedArray['patches'] = array_merge_recursive($websparkArray, $customArray);
     $combinedJson = json_encode($combinedArray);
 
     file_put_contents("composer.patches.json", $combinedJson . PHP_EOL);
