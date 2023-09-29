@@ -241,7 +241,7 @@ class AsuDegreeRfiDegreeListingBlock extends BlockBase {
     }
 
     if ($node->field_degree_degrees_per_page->value) {
-      $props['degreesPerPage'] = (int)$node->field_degree_degrees_per_page->value;
+      $props['degreesPerPage'] = (int) $node->field_degree_degrees_per_page->value;
     }
     $props['programList'] = $programList;
 

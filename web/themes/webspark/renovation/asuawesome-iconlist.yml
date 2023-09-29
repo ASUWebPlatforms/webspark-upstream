@@ -1,0 +1,502 @@
+'1_cube':
+  label: '1_cube'
+  search:
+    terms:
+      - Cube
+      - ASUAwesome
+      - Shapes
+  styles:
+    - solid
+  unicode: 'e001'
+  voted: false
+'2_pyramid':
+  label: '2_pyramid'
+  search:
+    terms:
+      - Pyramid
+      - ASUAwesome
+      - Shapes
+  styles:
+    - solid
+  unicode: 'e002'
+  voted: false
+'3_dodecahedron':
+  label: '3_dodecahedron'
+  search:
+    terms:
+      - Dodecahedron
+      - ASUAwesome
+      - Shapes
+  styles:
+    - solid
+  unicode: 'e003'
+  voted: false
+'4_polyhedron':
+  label: '4_polyhedron'
+  search:
+    terms:
+      - Polyhedron
+      - ASUAwesome
+      - Shapes
+  styles:
+    - solid
+  unicode: 'e004'
+  voted: false
+'5_icosahedron':
+  label: '5_icosahedron'
+  search:
+    terms:
+      - Icosahedron
+      - ASUAwesome
+      - Shapes
+  styles:
+    - solid
+  unicode: 'e005'
+  voted: false
+'6_hexagon_beehive':
+  label: '6_hexagon_beehive'
+  search:
+    terms:
+      - Hexagon
+      - Beehive
+      - ASUAwesome
+      - Shapes
+  styles:
+    - solid
+  unicode: 'e006'
+  voted: false
+'7_bee_with_hexagon_beehive':
+  label: '7_bee_with_hexagon_beehive'
+  search:
+    terms:
+      - Bee
+      - Beehive
+      - Hexagon
+      - ASUAwesome
+  styles:
+    - solid
+  unicode: 'e007'
+  voted: false
+'8_bee':
+  label: '8_bee'
+  search:
+    terms:
+      - Bee
+      - ASUAwesome
+  styles:
+    - solid
+  unicode: 'e008'
+  voted: false
+'A_a_mountain':
+  label: 'A_a_mountain'
+  search:
+    terms:
+      - 'A Mountain'
+      - Mountain
+      - ASUAwesome
+  styles:
+    - solid
+  unicode: 'e009'
+  voted: false
+'B_old_main':
+  label: 'B_old_main'
+  search:
+    terms:
+      - 'Old Main'
+      - ASUAwesome
+      - Building
+  styles:
+    - solid
+  unicode: 'e010'
+  voted: false
+'C_arizona_heart':
+  label: 'C_arizona_heart'
+  search:
+    terms:
+      - Arizona
+      - Heart
+      - ASUAwesome
+  styles:
+    - solid
+  unicode: 'e011'
+  voted: false
+'D_arizona':
+  label: 'D_arizona'
+  search:
+    terms:
+      - Arizona
+      - ASUAwesome
+  styles:
+    - solid
+  unicode: 'e012'
+  voted: false
+'E_hand_pitchfork_solid':
+  label: 'E_hand_pitchfork_solid'
+  search:
+    terms:
+      - Pitchfork
+      - Hand
+      - ASUAwesome
+  styles:
+    - solid
+  unicode: 'e013'
+  voted: false
+'F_hand_pitchfork_outline':
+  label: 'F_hand_pitchfork_outline'
+  search:
+    terms:
+      - Pitchfork
+      - Hand
+      - Outline
+      - ASUAwesome
+  styles:
+    - solid
+  unicode: 'e014'
+  voted: false
+'G_sun_card':
+  label: 'G_sun_card'
+  search:
+    terms:
+      - Sun
+      - Card
+      - ASUAwesome
+  styles:
+    - solid
+  unicode: 'e015'
+  voted: false
+'H_safety_goggles':
+  label: 'H_safety_goggles'
+  search:
+    terms:
+      - Safety
+      - Goggles
+      - ASUAwesome
+  styles:
+    - solid
+  unicode: 'e016'
+  voted: false
+'I_virtual_reality_headset':
+  label: 'I_virtual_reality_headset'
+  search:
+    terms:
+      - Virtual
+      - Reality
+      - VR
+      - Headset
+      - ASUAwesome
+  styles:
+    - solid
+  unicode: 'e017'
+  voted: false
+'J_graduation_cap_tassel_left':
+  label: 'J_graduation_cap_tassel_left'
+  search:
+    terms:
+      - Graduation
+      - Cap
+      - Tassel
+      - Left
+      - ASUAwesome
+  styles:
+    - solid
+  unicode: 'e018'
+  voted: false
+'K_graduation_cap_tassel_right':
+  label: 'K_graduation_cap_tassel_right'
+  search:
+    terms:
+      - Graduation
+      - Cap
+      - Tassel
+      - Right
+      - ASUAwesome
+  styles:
+    - solid
+  unicode: 'e019'
+  voted: false
+'L_graduation_silhouette_hand_pitchfork':
+  label: 'L_graduation_silhouette_hand_pitchfork'
+  search:
+    terms:
+      - Graduation
+      - Silhouette
+      - Hand
+      - Pitchfork
+      - ASUAwesome
+  styles:
+    - solid
+  unicode: 'e020'
+  voted: false
+'M_graduation_silhouette_number_one':
+  label: 'M_graduation_silhouette_number_one'
+  search:
+    terms:
+      - Graduation
+      - Silhouette
+      - Hand
+      - Number
+      - One
+      - Male
+      - ASUAwesome
+  styles:
+    - solid
+  unicode: 'e021'
+  voted: false
+'N_silhouette_hand_pitchfork':
+  label: 'N_silhouette_hand_pitchfork'
+  search:
+    terms:
+      - Silhouette
+      - Hand
+      - Pitchfork
+      - Female
+      - ASUAwesome
+  styles:
+    - solid
+  unicode: 'e022'
+  voted: false
+'O_silhouette_number_one':
+  label: 'O_silhouette_number_one'
+  search:
+    terms:
+      - Silhouette
+      - Hand
+      - Number
+      - One
+      - Male
+      - ASUAwesome
+  styles:
+    - solid
+  unicode: 'e023'
+  voted: false
+'P_silhouette_hand_pitchfork':
+  label: 'P_silhouette_hand_pitchfork'
+  search:
+    terms:
+      - Silhouette
+      - Hand
+      - Pitchfork
+      - Afro
+      - ASUAwesome
+  styles:
+    - solid
+  unicode: 'e024'
+  voted: false
+'Q_silhouette_on_mountain_hand_pitchfork':
+  label: 'Q_silhouette_on_mountain_hand_pitchfork'
+  search:
+    terms:
+      - Silhouette
+      - Mountain
+      - Hand
+      - Pitchfork
+      - ASUAwesome
+  styles:
+    - solid
+  unicode: 'e025'
+  voted: false
+'R_two_silhouettes_on_mountain_hand_pitchfork':
+  label: 'R_two_silhouettes_on_mountain_hand_pitchfork'
+  search:
+    terms:
+      - Two
+      - Silhouettes
+      - Mountain
+      - Hand
+      - Pitchfork
+      - ASUAwesome
+  styles:
+    - solid
+  unicode: 'e026'
+  voted: false
+'S_silhouette_salute_cap':
+  label: 'S_silhouette_salute_cap'
+  search:
+    terms:
+      - Silhouette
+      - Salute
+      - Cap
+      - ASUAwesome
+  styles:
+    - solid
+  unicode: 'e027'
+  voted: false
+'T_silhouette_salute_beret':
+  label: 'T_silhouette_salute_beret'
+  search:
+    terms:
+      - Silhouette
+      - Salute
+      - Beret
+      - ASUAwesome
+  styles:
+    - solid
+  unicode: 'e028'
+  voted: false
+'a_palm_tree':
+  label: 'a_palm_tree'
+  search:
+    terms:
+      - 'Palm Tree'
+      - ASUAwesome
+  styles:
+    - solid
+  unicode: 'e029'
+  voted: false
+'b_palm_trees':
+  label: 'b_palm_trees'
+  search:
+    terms:
+      - 'Palm Trees'
+      - ASUAwesome
+  styles:
+    - solid
+  unicode: 'e030'
+  voted: false
+'c_saguaro_cactus':
+  label: 'c_saguaro_cactus'
+  search:
+    terms:
+      - Saguaro
+      - Cactus
+      - ASUAwesome
+  styles:
+    - solid
+  unicode: 'e031'
+  voted: false
+'d_prickly_pear_cactus_potted':
+  label: 'd_prickly_pear_cactus_potted'
+  search:
+    terms:
+      - 'Prickly Pear'
+      - Cactus
+      - Potted
+      - ASUAwesome
+  styles:
+    - solid
+  unicode: 'e032'
+  voted: false
+'e_agave_potted':
+  label: 'e_agave_potted'
+  search:
+    terms:
+      - Agave
+      - Cactus
+      - Potted
+      - ASUAwesome
+  styles:
+    - solid
+  unicode: 'e033'
+  voted: false
+'f_cactus_potted':
+  label: 'f_cactus_potted'
+  search:
+    terms:
+      - Cactus
+      - Potted
+      - ASUAwesome
+  styles:
+    - solid
+  unicode: 'e034'
+  voted: false
+'g_barrel_cactus_potted':
+  label: 'g_barrel_cactus_potted'
+  search:
+    terms:
+      - Barrel
+      - Cactus
+      - Potted
+      - ASUAwesome
+  styles:
+    - solid
+  unicode: 'e035'
+  voted: false
+'h_candelabra_cactus_potted':
+  label: 'h_candelabra_cactus_potted'
+  search:
+    terms:
+      - Candelabra
+      - Cactus
+      - Potted
+      - ASUAwesome
+  styles:
+    - solid
+  unicode: 'e036'
+  voted: false
+'i_succulent_potted':
+  label: 'i_succulent_potted'
+  search:
+    terms:
+      - Succulent
+      - Cactus
+      - Potted
+      - ASUAwesome
+  styles:
+    - solid
+  unicode: 'e037'
+  voted: false
+'j_prickly_pear_cactus':
+  label: 'j_prickly_pear_cactus'
+  search:
+    terms:
+      - 'Prickly Pear'
+      - Cactus
+      - ASUAwesome
+  styles:
+    - solid
+  unicode: 'e038'
+  voted: false
+'k_agave':
+  label: 'k_agave'
+  search:
+    terms:
+      - Agave
+      - Cactus
+      - ASUAwesome
+  styles:
+    - solid
+  unicode: 'e039'
+  voted: false
+'l_cactus':
+  label: 'l_cactus'
+  search:
+    terms:
+      - Cactus
+      - ASUAwesome
+  styles:
+    - solid
+  unicode: 'e040'
+  voted: false
+'m_barrel_cactus':
+  label: 'm_barrel_cactus'
+  search:
+    terms:
+      - Barrel
+      - Cactus
+      - ASUAwesome
+  styles:
+    - solid
+  unicode: 'e042'
+  voted: false
+'n_candelabra_cactus':
+  label: 'n_candelabra_cactus'
+  search:
+    terms:
+      - Candelabra
+      - Cactus
+      - ASUAwesome
+  styles:
+    - solid
+  unicode: 'e043'
+  voted: false
+'o_succulent_cactus':
+  label: 'o_succulent_cactus'
+  search:
+    terms:
+      - Succulent
+      - Cactus
+      - ASUAwesome
+  styles:
+    - solid
+  unicode: 'e044'
+  voted: false

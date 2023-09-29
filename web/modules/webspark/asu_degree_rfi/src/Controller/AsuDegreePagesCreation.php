@@ -9,7 +9,6 @@ use Drupal\Core\Url;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Drupal\asu_degree_rfi\AsuDegreeRfiDegreeSearchClient;
 use Drupal\asu_degree_rfi\AsuDegreeRfiInterface;
-use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Controller for the RFI component proxy to the Submit Handler Lambda.
@@ -45,7 +44,11 @@ class AsuDegreePagesCreation extends ControllerBase {
 
     if (preg_match($pattern_url, $path)) {
       // Check if the Degree listing page exists.
-      if (!isset($split_path[6]) || $node_storage->loadByProperties(['nid' => $split_path[6], 'type' => 'degree_listing_page']) == NULL) {
+      $degree_listing_page = $node_storage->loadByProperties([
+        'nid' => $split_path[6],
+        'type' => 'degree_listing_page',
+      ]);
+      if (!isset($split_path[6]) || $degree_listing_page == NULL) {
         $message = $this->t('The Degree listing page with nid: @nid could not be found', ['@nid' => $split_path[6]]);
         \Drupal::logger('asu_degree_rfi')->warning($message);
         return ['#markup' => $message];

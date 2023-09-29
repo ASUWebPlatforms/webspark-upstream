@@ -1,1 +1,27 @@
-@import '../../../node_modules/@asu/bootstrap4-theme/src/scss/extends/card-image-and-content';
+// @see https://asudev.jira.com/browse/WS2-1769
+.uds-card-image-and-content {
+  position: relative;
+
+  div.uds-card-image-and-content-content-container {
+    .card-wrapper {
+      margin: calc(-1 * 12.5rem - 1px) rfs-value(60px) 0;
+      grid-area: card;
+      height: unset;
+
+      @media only screen and (max-width: $uds-breakpoint-lg) {
+        width: auto;
+        margin: 0 $uds-size-spacing-4;
+      }
+    }
+
+    .card {
+      margin: unset;
+      grid-area: unset;
+
+      @media only screen and (max-width: $uds-breakpoint-lg) {
+        width: unset;
+        margin: unset;
+      }
+    }
+  }
+}

@@ -20,9 +20,9 @@ function renovation_preprocess_paragraph(&$variables) {
       $variables['has_icon'] = TRUE;
     }
   }
+
   // CTAs paragraph.
   if ($bundle == 'cta') {
     $variables['button_action'] = TRUE;
   }
-
 }

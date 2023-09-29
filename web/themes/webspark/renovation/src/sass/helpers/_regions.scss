@@ -1,0 +1,35 @@
+.topo-black,
+.gray-7-bg,
+.morse-code-black,
+.network-black {
+  // When you display the title of a block
+  .block > h2 {
+    color: white;
+  }
+
+  .layout-builder-block__content-preview-placeholder-label {
+    color: white;
+  }
+
+  h1 {
+    &.article {
+      color: white;
+    }
+  }
+
+  // NOTE: This can be removed once iSearch is officially removed
+  .block-inline-blockisearch {
+    .profile {
+      color: white;
+
+      a {
+        color: white;
+      }
+    }
+  }
+}
+
+// TODO: Move to UDS
+.white-bg {
+  border: 0px solid #ffffff !important;
+}

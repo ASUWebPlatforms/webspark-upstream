@@ -1,16 +1,14 @@
-@import '../../../node_modules/@asu/bootstrap4-theme/src/scss/extends/blockquotes';
-
-@include media-breakpoint-down(lg) {
-  .uds-blockquote {
-    grid-template-columns: auto auto;
+// @see https://asudev.jira.com/browse/WS2-1731
+.uds-blockquote {
+  p {
+    max-width: none;
   }
-}
 
-@include media-breakpoint-up(md) {
-  .uds-blockquote.with-image  {
-    img {
-      width: 180px;
-      height: 180px;
+  &.with-image {
+    grid-template-columns: auto auto;
+
+    h3 {
+      margin-top: 0;
     }
   }
 }

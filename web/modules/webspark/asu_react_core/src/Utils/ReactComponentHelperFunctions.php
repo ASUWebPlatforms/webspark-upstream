@@ -116,7 +116,7 @@ class ReactComponentHelperFunctions {
       $card->linkUrl = $link->toString();
     }
 
-    // WS2-1674 - Card ranking image size 
+    // WS2-1674 - Card ranking image size.
     if (isset($paragraph->field_card_ranking_image_size->value)) {
       if ($paragraph->field_card_ranking_image_size->value === 'small') {
         $card->imageSize = 'small';
@@ -125,7 +125,7 @@ class ReactComponentHelperFunctions {
         $card->imageSize = 'large';
       }
     }
-    
+
     // WS2-1674 - Card ranking link URL, no link title
     if (isset($paragraph->field_card_ranking_image_size->value) && isset($paragraph->field_link->uri)) {
       $link = Url::fromUri($paragraph->field_link->uri);
@@ -144,7 +144,8 @@ class ReactComponentHelperFunctions {
       }
     }*/
 
-    if (isset($paragraph->field_icon)) {
+    // WS2-1643 - Adding validating to set icon setting only when it exists.
+    if (isset($paragraph->field_icon->icon_name)) {
       $icon_name = $paragraph->field_icon->icon_name;
       $icon_style = $paragraph->field_icon->style;
       if (isset($paragraph->field_icon->settings)) {

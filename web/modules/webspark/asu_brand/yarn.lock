@@ -2,10 +2,10 @@
 # yarn lockfile v1
 
 
-"@asu/component-cookie-consent@1.0.2":
-  version "1.0.2"
-  resolved "https://npm.pkg.github.com/download/@asu/component-cookie-consent/1.0.2/99020b23c09f091b9b8dfe49e01c58f625f6d48f#99020b23c09f091b9b8dfe49e01c58f625f6d48f"
-  integrity sha512-Hmy2UTiC0eovJkNmNh5UcRWQR/jBNeQ0ioLOGXdBPLRSi07qvA2qtfUOWXYkaufMGhEbNjFDLjmLN5+L0z3XIw==
+"@asu/component-cookie-consent@2.0.1":
+  version "2.0.1"
+  resolved "https://npm.pkg.github.com/download/@asu/component-cookie-consent/2.0.1/08da01278ef355df2feaf48547ab36b48ed6a9c8#08da01278ef355df2feaf48547ab36b48ed6a9c8"
+  integrity sha512-wLjKAEPPD9Du4+SH1R7D1s6J0NMReoc7nKUTo0emuZHVWtcpzJ3d4GdNaJCB8YKPMcYZLCsqAh8GQ/mt6tyBjg==
   dependencies:
     "@babel/plugin-transform-react-jsx" "^7.13.12"
     "@fortawesome/free-solid-svg-icons" "^5.15.3"
@@ -15,10 +15,10 @@
     react-dom ">= 16.14.0 < 18"
     styled-components "^5.3.0"
 
-"@asu/component-header@1.2.2":
-  version "1.2.2"
-  resolved "https://npm.pkg.github.com/download/@asu/component-header/1.2.2/45ea4807d80f7a73b3ef331e633b490797fce7c7#45ea4807d80f7a73b3ef331e633b490797fce7c7"
-  integrity sha512-Kse6fIDYAL8+9UnjM5aWL2iAcT3f4JnKpYN4ZXjoAPghSNljXBnKOQEauXRkLxstXYSKHtRUPnrlABIREqhO/A==
+"@asu/component-header@2.0.7":
+  version "2.0.7"
+  resolved "https://npm.pkg.github.com/download/@asu/component-header/2.0.7/be739b995232028a07acfc4a387abbb767c932ef#be739b995232028a07acfc4a387abbb767c932ef"
+  integrity sha512-bbmp95UkSbu852C/R5klOQo517QqQHUj73YIJZDepag3fDSbMEoc0JVykkPFeFYbV8j/1+gtc0Jb96kG1KluAQ==
 
 "@babel/code-frame@^7.16.0":
   version "7.16.0"

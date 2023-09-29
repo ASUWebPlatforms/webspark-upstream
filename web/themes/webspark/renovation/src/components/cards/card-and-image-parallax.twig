@@ -1,12 +1,16 @@
+{{ attach_library('renovation/card-and-image-parallax') }}
+
+{#
+TODO: This markup is not correct, but it is not a component we can just copy from Storybook.
+For now, we will use CSS to bring it inline, but we will want to re-work this markup soon.
+#}
 <section class="parallax-container">
-  <img src="{{ image_background }}"/>
+  <img src="{{ image_background }}" loading="lazy" decoding="async" fetchpriority="high" />
   <div class="parallax-container-content uds-card-and-image {{ class_position }}">
-    <div class="uds-content-align card-and-image-align">
+    <div class="uds-content-align">
       <div class="uds-card-and-image-container">
         {{ card }}
       </div>
     </div>
   </div>
 </section>
-
-{{ attach_library('renovation/card-and-image-parallax') }}

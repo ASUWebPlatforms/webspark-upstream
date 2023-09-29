@@ -13,6 +13,7 @@
   bundle ? 'block--' ~ bundle|clean_class,
   id ? 'block--' ~ id|replace({"_": "-"})|clean_class,
 ]|merge(utility_classes ? utility_classes : []) %}
+
 {% if html_tag %}
   <{{ html_tag }}{{ attributes|without('id').addClass(classes) }}>
 {% endif %}

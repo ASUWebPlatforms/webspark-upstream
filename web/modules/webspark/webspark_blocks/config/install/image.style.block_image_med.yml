@@ -8,18 +8,18 @@ dependencies:
 name: block_image_med
 label: 'Block Image 4:3 MED'
 effects:
-  bf180d68-8396-414f-940a-054d3303936f:
-    uuid: bf180d68-8396-414f-940a-054d3303936f
-    id: image_scale
-    weight: -9
-    data:
-      width: 600
-      height: null
-      upscale: false
   0a882e9e-e146-4547-a484-49afc6b66d30:
     uuid: 0a882e9e-e146-4547-a484-49afc6b66d30
     id: crop_crop
-    weight: -10
+    weight: 1
     data:
       crop_type: images_block
       automatic_crop_provider: null
+  869ce27f-f47e-42ed-87b4-5f4c4181e47d:
+    uuid: 869ce27f-f47e-42ed-87b4-5f4c4181e47d
+    id: image_scale_and_crop
+    weight: 2
+    data:
+      width: 600
+      height: 450
+      anchor: center-center

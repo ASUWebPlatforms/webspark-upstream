@@ -1,48 +1,8 @@
-@import '../../../node_modules/@asu/bootstrap4-theme/src/scss/extends/list';
-
-ul ul {
-  list-style: none;
-}
-
-ol ol {
-  list-style: none;
-}
-
-ol.uds-list ol {
-  counter-reset: listcounter;
-}
-
+// TODO: Move this to UDS, like the maroon
 ul.uds-list {
   &.fa-ul {
-    // Maroon icon bullets
-    &.maroon li svg {
-      color: $uds-component-list-icon-list-li-maroon-icon;
-    }
     &.gold li svg {
-      color: $uds-component-list-darkmode-gold-color;
-    }
-    li svg{
-      position: absolute;
-      text-align: center;
-      width: 2em;
-      line-height: inherit;
-      left: $uds-component-list-icon-list-icon-left;
-    }
-  }
-}
-
-ol.uds-list, ul.uds-list {
-  max-width: 700px;
-  li {
-    max-width: 700px;
-  }
-}
-
-.block-inline-blocktext-content {
-  .formatted-text {
-    ul.uds-list,
-    ol.uds-list {
-      max-width: 700px;
+      color: $uds-color-base-gold;
     }
   }
 }

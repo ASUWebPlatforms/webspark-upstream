@@ -23,6 +23,9 @@ settings:
       value: spacing-top-32
       label: 32px
     -
+      value: spacing-top-40
+      label: 40px
+    -
       value: spacing-top-48
       label: 48px
     -
@@ -43,6 +46,9 @@ settings:
     -
       value: spacing-top-minus-32
       label: '-32px'
+    -
+      value: spacing-top-minus-40
+      label: '-40px'
     -
       value: spacing-top-minus-48
       label: '-48px'

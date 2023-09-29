@@ -1,7 +1,5 @@
-@import '../../sass/renovation-extends/tabs';
-
-.nav-tabs {
-  .nav-link {
-    margin: .2em .2em 0 .2em
-  }
+// TODO: Move this to UDS
+.scroll-control-prev:hover span.carousel-control-prev-icon,
+.scroll-control-next:hover span.carousel-control-next-icon {
+  opacity: 1;
 }

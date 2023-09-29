@@ -1,0 +1,245 @@
+// @see https://asudev.jira.com/browse/WS2-1730
+@import "node_modules/@asu/unity-bootstrap-theme/src/scss/custom-asu-variables";
+@import "base/mixins";
+
+#drupal-off-canvas {
+  .form-text,
+  .form-tel,
+  .form-email,
+  .form-url,
+  .form-search,
+  .form-number,
+  .form-color,
+  .form-file,
+  .form-textarea,
+  .form-date,
+  .form-time {
+    &.description {
+      background-color: transparent;
+      border-color: transparent;
+      box-shadow: none;
+      color: #ddd !important;
+      font-size: 10px !important;
+      margin-top: 0 !important;
+      padding-left: 0;
+    }
+  }
+
+  form {
+    &.uds-form {
+      &.layout-builder-configure-block {
+        .media-library-widget {
+          .fieldset-legend::after {
+            background-image: none;
+          }
+
+          .media-library-item--grid {
+            background: none;
+
+            &::before {
+              border: none;
+            }
+
+            .media-library-item__name {
+              color: inherit;
+            }
+
+            .media-library-item__attributes {
+              background: none;
+              bottom: 0.5rem;
+            }
+          }
+        }
+      }
+
+      // Update the color of the required field indicator
+      label {
+        svg {
+          &.uds-field-required {
+            color: $uds-color-background-error;
+          }
+        }
+      }
+
+      .form-required {
+        &::after {
+          color: $uds-color-background-error;
+        }
+      }
+    }
+
+    button.tabledrag-toggle-weight {
+      color: $uds-color-background-info;
+
+      &:hover {
+        color: $uds-color-background-info;
+        font-weight: $uds-font-weight-bold;
+      }
+
+      &:focus {
+        color: $uds-color-background-info;
+        box-shadow: none;
+      }
+    }
+
+    .alert-danger {
+      a {
+        color: $uds-color-base-gray-7;
+        text-decoration: underline;
+      }
+    }
+  }
+
+  .layout-selection {
+    li {
+      div {
+        color: $uds-color-background-info;
+      }
+    }
+  }
+
+  a {
+    background: inherit;
+    color: $uds-color-background-info;
+  }
+
+  input[type="search"]:not(.js-off-canvas-computed-ignore) {
+    color: $uds-color-base-gray-7;
+
+    &::placeholder {
+      color: $uds-color-base-gray-7;
+    }
+  }
+
+  .description {
+    &.text-muted {
+      color: inherit !important;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: underline;
+    }
+  }
+
+  .banner-green,
+  .banner-orange,
+  .banner-blue,
+  .banner-gray {
+    outline: black 5px solid;
+  }
+
+  .banner-black {
+    outline: $uds-color-base-gray-2 5px solid;
+  }
+
+  input {
+    padding: 4px 20px !important;
+  }
+
+  th {
+    color: #fff;
+  }
+
+  .form-wrapper + .form-wrapper {
+    margin-top: 0.5rem;
+  }
+
+  .form-wrapper .form-wrapper {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .icons-selector.fip-grey .fip-box:hover,
+  .icons-selector .selected-icon {
+    color: var(--bs-table-color-state, var(--bs-table-color-type, var(--bs-table-color)));
+  }
+
+  fieldset {
+    background: inherit;
+    color: #ddd;
+  }
+
+  .card-header:not(summary) {
+    padding: 0;
+  }
+
+  .js-form-type-checkbox {
+    .description {
+      margin-left: 1rem;
+    }
+  }
+
+  .js-filter-guidelines {
+    font-size: 12px;
+  }
+
+  .webform-element-more .cm-s-default *{
+    color: #ddd;
+  }
+
+  // Fix broken sort handler introduced by "a.tabledrag-handle .handle"
+  // @see https://www.drupal.org/project/thunder_admin/issues/3345482
+  .draggable a.tabledrag-handle .handle {
+    height: 18px;
+    mask: inherit;
+  }
+}
+
+.layout-builder-form {
+  .form-actions {
+    display: flex;
+    justify-content: space-between;
+    background: #efefef;
+    padding: 10px;
+    position: fixed;
+    bottom: 0;
+    left: calc(50% - 400px);
+    z-index: 10;
+    align-items: baseline;
+    border-radius: 20px 20px 0 0;
+    width: 800px;
+  }
+}
+
+.layout-builder__link--add {
+  color: $uds-color-base-gray-6;
+}
+
+.layout-builder__link--remove {
+  @include contrast-icon('ex');
+}
+
+.layout-builder-block {
+  background: none;
+  @include contrast-button('pencil');
+}
+
+.contextual-region {
+  @include contrast-button('pencil');
+}
+
+.layout-builder-discard-changes.confirmation,
+.layout-builder-revert-overrides.confirmation {
+  padding-top: 2.5rem;
+
+  .form-actions {
+    margin-top: 2.5rem;
+  }
+}
+
+form.uds-form.layout-builder-configure-block .form-check {
+  &.js-form-type-radio {
+    padding: 0;
+  }
+
+  input[type="radio"] {
+    opacity: 1;
+    margin-right: 4px !important;
+
+    & + label:before,
+    & + label:after {
+      content: none;
+    }
+  }
+}

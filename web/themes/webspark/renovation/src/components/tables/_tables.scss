@@ -1,4 +1,5 @@
-/* Override for the CKEditor table */
+// TODO: Verify if this is needed after CKEditor is updated
+// Override for the CKEditor table
 .uds-table:not(.uds-table-fixed) {
   table {
     tr {
@@ -9,4 +10,3 @@
     }
   }
 }
-

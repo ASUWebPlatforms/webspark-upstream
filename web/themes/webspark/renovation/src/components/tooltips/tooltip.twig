@@ -1,4 +1,7 @@
 {% set tooltip_color = 'uds-tooltip-bg-' ~ background %}
+
+{{ attach_library('renovation/tooltips') }}
+
 <div class="{{ tooltip_color }}">
   <div class="uds-tooltip-container">
     <button tabindex="0" class="uds-tooltip uds-tooltip-{{ background }}" aria-describedby="tooltip-desc-{{ paragraph_id }}">
@@ -15,4 +18,3 @@
     </div>
   </div>
 </div>
-{{ attach_library('renovation/tooltips') }}

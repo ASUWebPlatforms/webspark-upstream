@@ -157,12 +157,13 @@ function _webspark_blocks_preprocess_page_404(&$variables) {
  * @return array
  */
 function webspark_blocks_config_readonly_whitelist_patterns() {
-  
   // Get all the module configuration files.
   $module = \Drupal::service('module_handler')
       ->getModule(basename(__FILE__, '.module'))
       ->getName();
   $configs = \Drupal::service('webspark.config_manager')->getModuleConfigFiles($module);
+  // Make fontawesome settings locked.
+  $configs[] = 'fontawesome.settings';
   // Lock all the configurations from this module.
   if (\Drupal::state()->get('configuration_locked', TRUE)) {
     return array_map(function ($item) { return '~' . $item; }, $configs);

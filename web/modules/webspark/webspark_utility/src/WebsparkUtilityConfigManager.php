@@ -8,6 +8,7 @@ use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Extension\ModuleHandlerInterface;
 use Drupal\Core\Extension\ExtensionDiscovery;
 use Drupal\Core\Entity\Exception\FieldStorageDefinitionUpdateForbiddenException;
+use Drupal\Core\Config\ConfigFactoryInterface;
 
 /**
  * Description of WebsparkUtilityConfigManager
@@ -36,7 +37,7 @@ class WebsparkUtilityConfigManager {
    * @var \Drupal\Core\Config\StorageInterface
    */
   protected $extensionConfigStorage;
-  
+
   /**
    * The configuration reverter.
    *
@@ -44,14 +45,21 @@ class WebsparkUtilityConfigManager {
    */
   protected $configReverter;
 
-  
+
   /**
    * The module handler.
    *
    * @var \Drupal\Core\Extension\ModuleHandlerInterface
    */
   protected $moduleHandler;
-  
+
+  /**
+   * The config factory interface.
+   *
+   * @var \Drupal\Core\Config\ConfigFactoryInterface
+   */
+  protected $configFactory;
+
   /**
    * Constructs a WebsparkUtilityConfigManager.
    *
@@ -65,13 +73,16 @@ class WebsparkUtilityConfigManager {
    *   The Configuration reverter.
    * @param \Drupal\Core\Extension\ModuleHandlerInterface $module_handler
    *   The module handler.
+   * @param \Drupal\Core\Config\ConfigFactoryInterface $config_factory
+   *   The config factory.
    */
-  public function __construct(EntityTypeManagerInterface $entity_manager, StorageInterface $active_config_storage, StorageInterface $extension_config_storage, ConfigReverter $config_reverter, ModuleHandlerInterface $module_handler) {
+  public function __construct(EntityTypeManagerInterface $entity_manager, StorageInterface $active_config_storage, StorageInterface $extension_config_storage, ConfigReverter $config_reverter, ModuleHandlerInterface $module_handler, ConfigFactoryInterface $config_factory) {
     $this->entityManager = $entity_manager;
     $this->activeConfigStorage = $active_config_storage;
     $this->extensionConfigStorage = $extension_config_storage;
     $this->configReverter = $config_reverter;
     $this->moduleHandler = $module_handler;
+    $this->configFactory = $config_factory;
   }
 
   /**
@@ -102,7 +113,7 @@ class WebsparkUtilityConfigManager {
       }
     }
   }
-  
+
   /**
    * Revert a single configuration file.
    * This deals with dependencies.
@@ -111,10 +122,10 @@ class WebsparkUtilityConfigManager {
    */
   public function updateConfigFile($filename) {
     list($type, $name) = $this->getSplitName($filename);
-    
+
     $this->updateConfig($type, $name);
   }
-  
+
   /**
    * Import a single configuration file.
    * This deals with dependencies.
@@ -123,10 +134,10 @@ class WebsparkUtilityConfigManager {
    */
   public function importConfigFile($filename) {
     list($type, $name) = $this->getSplitName($filename);
-    
+
     $this->importConfig($type, $name);
   }
-  
+
   /**
    * Revert a new configuration by $type and $name.
    * @param type $type
@@ -134,24 +145,32 @@ class WebsparkUtilityConfigManager {
    * @throws Exception
    */
   protected function updateConfig($type, $name) {
-    
+
     // Recreate the filename
     $filename = $this->getFullName($type, $name);
     if (empty($filename)) {
       throw new \Exception('The config entity of type: ' . $type . ' does not exist');
     }
-    
+
     // Check for dependencies.
     $this->importDependencies($filename);
-    
-    // Import the current file.
-    if (!$this->configReverter->revert($type, $name)) {
-      // At this point it means that the file does not exist in either 
-      // install or optional folders.
-      throw new \Exception('Could not revert the configuration file: ' . $filename);
+
+    // Check if the configuration exists in code but not in the database.
+    $config_not_in_db = $this->configFactory->getEditable($filename)->isNew();
+    if ($config_not_in_db) {
+      if (!$this->configReverter->import($type, $name)) {
+        // At this point it means that the file does not exist in either
+        // install or optional folders.
+        throw new \Exception('Could not import the configuration file: ' . $filename);
+      }
+    }
+    else {
+      if (!$this->configReverter->revert($type, $name)) {
+        throw new \Exception('Could not revert the configuration file: ' . $filename);
+      }
     }
   }
-  
+
   /**
    * Import a new configuration by $type and $name.
    * @param string $type
@@ -176,7 +195,7 @@ class WebsparkUtilityConfigManager {
 
     // Import the current file.
     if (!$this->configReverter->import($type, $name)) {
-      // At this point it means that the file does not exist in either 
+      // At this point it means that the file does not exist in either
       // install or optional folders.
       throw new \Exception('Could not find the configuration file: ' . $filename);
     }
@@ -185,7 +204,7 @@ class WebsparkUtilityConfigManager {
   /**
    * Get a formated list of configuration files from a module
    * that can be used by the configuration update module.
-   * 
+   *
    * @param string $module
    * @return array
    */
@@ -197,7 +216,7 @@ class WebsparkUtilityConfigManager {
       'new' => [],
       'update' => [],
     ];
-    // Arrange the entity configs in a [$type => $name] array 
+    // Arrange the entity configs in a [$type => $name] array
     // to be used with config update module
     foreach ($this->getConfigEntitesInfo() as $prefix => $entityName) {
       foreach ($configs as $id => $name) {
@@ -231,7 +250,7 @@ class WebsparkUtilityConfigManager {
     // Get all the config files.
     $listing = new ExtensionDiscovery(\Drupal::root());
     return array_keys(array_filter(
-      $this->extensionConfigStorage->getComponentNames($listing->scan('module')), 
+      $this->extensionConfigStorage->getComponentNames($listing->scan('module')),
       function ($item) use ($path) {
         return strpos($item, $path) === 0;
       }
@@ -258,7 +277,7 @@ class WebsparkUtilityConfigManager {
   /**
    * Get the $type, $name pair for a configuration file.
    * that can be used by the configuration update module.
-   * 
+   *
    * @param string $filename
    *  The configuration file name (without the file extension)
    * @return array
@@ -266,7 +285,7 @@ class WebsparkUtilityConfigManager {
    */
   protected function getSplitName(string $filename): array {
 
-    // Arrange the entity config in a [$type => $name] array 
+    // Arrange the entity config in a [$type => $name] array
     // to be used with config update module
     foreach ($this->getConfigEntitesInfo() as $prefix => $entity_name) {
       if (strpos($filename, $prefix) === 0) {
@@ -302,10 +321,12 @@ class WebsparkUtilityConfigManager {
       return FALSE;
     }
   }
-  
+
   /**
    * Import the dependencies from a config file.
-   * @param type $filename
+   *
+   * @param string $filename
+   *   The config file name without the file extension.
    */
   protected function importDependencies($filename) {
     // Check for dependencies.

@@ -63,7 +63,25 @@ class ComposerScripts {
    *   The Event object passed in from Composer
    */
   public static function postUpdate(Event $event) {
-    // for future use
+    $io = $event->getIO();
+
+    // Check for FontAwesome library's existence
+    $fa_install = is_dir('web/libraries/fontawesome');
+    if ($fa_install) {
+      // Get ASUAwesome icons icon list.
+      $asuawesome_icon_list = file_get_contents('web/themes/webspark/renovation/asuawesome-iconlist.yml');
+      // Custom Renovation ASUAwesome icon list.
+      $renovation_icon_list = 'web/themes/webspark/renovation/renovation.fontawesome.iconlist.yml';
+      // Write ASUAwesome icons to the ASUAwesome custom icon list.
+      file_put_contents($renovation_icon_list, $asuawesome_icon_list);
+      // Get Font Awesome icon list.
+      $font_awesome_icons = file_get_contents('web/libraries/fontawesome/metadata/icons.yml');
+      // Append FontAwesome icons to the ASUAwesome custom icon list.
+      file_put_contents($renovation_icon_list, $font_awesome_icons, FILE_APPEND);
+
+      // Write out success message to console.
+      $io->writeError("<info>Successfully combined ASUAwesome and Font Awesome icons</info>");
+    }
   }
 
   /**

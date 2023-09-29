@@ -1,0 +1,15 @@
+@mixin contrast-icon($icon) {
+  border-color: $uds-color-base-gray-6;
+  background-image: url('../img/ui-icons/000000/#{$icon}.svg');
+
+  &:hover {
+    background-image: url('../img/ui-icons/000000/#{$icon}.svg');
+    border-width: 2px;
+  }
+}
+
+@mixin contrast-button($icon) {
+  button.trigger {
+    @include contrast-icon($icon)
+  }
+}

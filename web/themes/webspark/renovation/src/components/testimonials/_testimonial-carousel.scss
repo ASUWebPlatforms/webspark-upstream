@@ -1,0 +1,14 @@
+// NOTE: Move this CSS to UDS
+// Ensure the Testimonial width is consistent
+.testimonial-carousel-container {
+  display: flex;
+  justify-content: center;
+
+  .glide {
+    max-width: $testimonial-width !important;
+
+    .glide__slide .slider {
+      width: $testimonial-width !important;
+    }
+  }
+}

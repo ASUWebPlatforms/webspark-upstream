@@ -6,24 +6,23 @@
 #}
 
 {# Variables come from preprocess field function #}
-
-    {% for button in buttons %}
-      {% if button.icon == '' %}
-        {% include '@renovation/buttons/button-action.twig' with {
-          url : button.link,
-          title: button.title,
-          button_color: button.color == '' ? 'btn-gold' : button.color,
-          target: button.target,
-          heading: button.heading,
-        } %}
-      {% else %}
-        {% include '@renovation/buttons/button-icon.twig' with {
-          url : button.link,
-          title: button.title,
-          button_color: button.color,
-          icon: button.icon,
-          target: button.target,
-          heading: button.heading,
-        } %}
-      {% endif %}
-    {% endfor %}
+{% for button in buttons %}
+  {% if button.icon == '' %}
+    {% include '@renovation/buttons/button-action.twig' with {
+      url : button.link,
+      title: button.title,
+      button_color: button.color == '' ? 'btn-gold' : button.color,
+      target: button.target,
+      heading: button.heading,
+    } %}
+  {% else %}
+    {% include '@renovation/buttons/button-icon.twig' with {
+      url : button.link,
+      title: button.title,
+      button_color: button.color,
+      icon: button.icon,
+      target: button.target,
+      heading: button.heading,
+    } %}
+  {% endif %}
+{% endfor %}

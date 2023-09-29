@@ -32,10 +32,15 @@
     <title>{{ head_title|safe_join(' | ') }}</title>
     <css-placeholder token="{{ placeholder_token }}">
     <js-placeholder token="{{ placeholder_token }}">
+      {# Load FontAwesome 6 free icons. Also, load ASU Awesome.
+    Loading it this way resolves clashes that previously occurred with ASU Awesome. #}
+      <script defer src="/libraries/fontawesome/js/all.min.js"></script>
+      <script defer src="/themes/webspark/renovation/js/asuawesome.js"></script>
+  </head>
   </head>
   <body{{attributes}}>
     {% if logged_in and user.hasPermission('Use the toolbar') %}
-      <a href="#skip-to-content" class="sr-only sr-only-focusable">
+      <a href="#skip-to-content" class="visually-hidden visually-hidden-focusable">
         {{ 'Skip to main content'|t }}
       </a>
     {% endif %}

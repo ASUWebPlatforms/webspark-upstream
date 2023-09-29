@@ -1,0 +1,23 @@
+.accordion-item {
+  // This can replace the mt-3 class in the markup, and expand this to be a sibling selector
+  &:first-of-type {
+    margin-top: 0 !important;
+  }
+
+  p {
+    max-width: 700px;
+
+    &:first-child {
+      margin-top: $uds-size-spacing-2;
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+// TODO: Move this to UDS
+.accordion-header h3 {
+  max-width: none;
+}

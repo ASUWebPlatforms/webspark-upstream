@@ -1,11 +1,4 @@
-@import '../../../node_modules/@asu/bootstrap4-theme/src/scss/extends/card-and-image';
-
-.block-inline-blockcard-arrangement {
-  .container {
-    padding: 0;
-  }
-}
-
+// TODO: Move this to UDS
 .uds-card-and-image-container .card .card-icon-top {
   margin: $uds-size-spacing-3 auto $uds-size-spacing-1 $uds-size-spacing-4 !important;
 }
