@@ -15,11 +15,11 @@ effects:
     data:
       crop_type: mobile_video_poster
       automatic_crop_provider: null
-  675ebd1f-0b5c-4040-8b98-11268d137f67:
-    uuid: 675ebd1f-0b5c-4040-8b98-11268d137f67
-    id: image_scale
-    weight: 2
+  ee5e36ac-f211-4a32-8161-20671aac2c6d:
+    uuid: ee5e36ac-f211-4a32-8161-20671aac2c6d
+    id: image_scale_and_crop
+    weight: 3
     data:
       width: 375
-      height: null
-      upscale: false
+      height: 513
+      anchor: center-center

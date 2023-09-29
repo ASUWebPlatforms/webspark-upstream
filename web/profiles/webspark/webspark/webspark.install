@@ -6,6 +6,7 @@
  */
 
 use Drupal\user\Entity\User;
+use Drupal\user\Entity\Role;
 use Drupal\menu_link_content\Entity\MenuLinkContent;
 use Drupal\pathauto\PathautoGeneratorInterface;
 
@@ -85,7 +86,7 @@ function webspark_update_9002(&$sandbox) {
  */
 function webspark_update_9003(&$sandbox) {
   $module_installer = \Drupal::service("module_installer");
-  
+
   $module_installer->install(["captcha"]);
   $module_installer->install(["schema_metatag"]);
   $module_installer->install(["editoria11y"]);
@@ -96,7 +97,7 @@ function webspark_update_9003(&$sandbox) {
  */
 function webspark_update_9004(&$sandbox) {
   $module_installer = \Drupal::service("module_installer");
-  
+
   $module_installer->install(["decorative_image_widget"]);
 }
 
@@ -146,11 +147,11 @@ function webspark_update_9008(&$sandbox) {
  * Uninstall webspark_isearch module.
  */
 function webspark_update_9009(&$sandbox) {
-  
+
   // NOTE: The uninstall of the webspark_isearch module has been deferred
   // to a future release due to dependencies on some of its fields, used
   // by the webspark_webdir module. See WS2-1586 and WS2-1587 for more details.
-  
+
   //$module_installer = \Drupal::service("module_installer");
   //$module_installer->uninstall(["webspark_isearch"]);
 }
@@ -327,4 +328,18 @@ function webspark_update_9015(&$sandbox) {
   \Drupal::state()->set('configuration_locked', FALSE);
   \Drupal::service('webspark.config_manager')->updateConfigFile('filter.format.basic_html');
   \Drupal::state()->set('configuration_locked', TRUE);
+}
+
+/**
+ * Update the settings of the FontAwesome module to work with ASUAwesome better.
+ */
+function webspark_update_9017(&$sandbox) {
+  \Drupal::state()->set('configuration_locked', FALSE);
+  \Drupal::service('webspark.config_manager')->updateConfigFile('fontawesome.settings');
+  \Drupal::state()->set('configuration_locked', TRUE);
+
+  // Revoke additional fontawesome settings permissions for authenticated role.
+  $role = Role::load('authenticated');
+  $role->revokePermission('access fontawesome additional settings');
+  $role->trustData()->save();
 }

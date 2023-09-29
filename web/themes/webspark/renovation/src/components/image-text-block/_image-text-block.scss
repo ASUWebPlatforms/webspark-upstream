@@ -1,16 +1,10 @@
 .block-inline-blockimage-and-text-block {
-  .uds-image-text-block-text-container {
-    padding: $uds-size-spacing-6;
-    // Recommended by Debbie Flitner.
-    :is(h2, h3, h4, h5, h6):first-of-type {
-      margin-top: 0;
-    }
-  }
+  // @see https://asudev.jira.com/browse/WS2-1698
   .uds-image-text-block-image-container {
-    // WS2-1698 - override the media--image--default.html.twig div block display
     div {
       display: flex;
       flex-direction: column;
+
       img {
         display: flex;
         flex-direction: column;

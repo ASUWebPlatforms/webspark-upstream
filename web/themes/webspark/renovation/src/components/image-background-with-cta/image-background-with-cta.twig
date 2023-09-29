@@ -1,7 +1,24 @@
-<section class="uds-image-background-with-cta" style="background-image: linear-gradient(180deg, #19191900 0%, #191919c9 100%), url('{{ image }}');">
+{#
+/**
+ * @file
+ * Image Background with CTA
+ *
+ * Storybook: https://unity.web.asu.edu/@asu/unity-bootstrap-theme/index.html?path=/story/molecules-content-sections-image-background-with-call-to-action-templates--default
+ *
+ * XD: https://xd.adobe.com/view/56f6cb78-9af5-4b12-b4ce-ef319f71113f-03a5/screen/674ebe9d-bcfd-48c9-a3eb-37efe95f4f4a/
+ *
+ * Available variables:
+ * - image: the image url
+ * - heading: the heading text
+ * - cta_btn: the cta button
+ */
+#}
+
+<section
+  class="uds-image-background-with-cta"
+  style="background-image: linear-gradient(rgba(25, 25, 25, 0) 0%, rgba(25, 25, 25, 0.79) 100%), url('{{ image }}');">
   <div class="uds-image-background-with-cta-container uds-content-align">
     <span>{{ heading }}</span>
     {{ cta_btn }}
   </div>
 </section>
-

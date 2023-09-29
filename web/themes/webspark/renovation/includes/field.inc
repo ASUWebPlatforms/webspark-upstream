@@ -10,7 +10,6 @@
 use Drupal\Core\Url;
 
 function renovation_preprocess_field(&$variables) {
-
   $field_name = $variables['element']['#field_name'];
   $container = $variables['element']['#object'];
   $block_type = $container->bundle();
@@ -55,7 +54,6 @@ function renovation_preprocess_field(&$variables) {
 
   // Cards.
   if ($field_name == 'field_cards') {
-
     if (isset($variables['element']['#view_mode'])) {
       $variables['view_mode'] = $variables['element']['#view_mode'];
     }
@@ -63,7 +61,6 @@ function renovation_preprocess_field(&$variables) {
 }
 
 /**
-
  * @param \Drupal\paragraphs\Entity\Paragraph $paragraph_values
  *
  * @return mixed|null
@@ -103,4 +100,3 @@ function renovation_theme_suggestions_field_alter(&$suggestions, $variables) {
     $variables['element']['#field_name'] . '__' .
     $variables['element']['#view_mode'];
 }
-

@@ -1,11 +1,14 @@
-<nav aria-label="breadcrumbs" class="container px-0 {{ spacing_top }} {{ spacing_bottom }}">
-  {% if links is not empty %}
-    <ol class="breadcrumb {{ bg_color }}">
-      {% for link in links %}
-        <li class="breadcrumb-item">
-          <a href="{{ link.url }}">{{ link.text }}</a>
-        </li>
-      {% endfor %}
-    </ol>
-  {% endif %}
-</nav>
+{# NOTE: UDS has two sets of markup for Breadcrumbs, this is the full-width variation #}
+<section class="{{ bg_color }} {{ spacing_top }} {{ spacing_bottom }}">
+  <nav class="uds-content-align" aria-label="breadcrumbs">
+    {% if links is not empty %}
+      <ol class="breadcrumb">
+        {% for link in links %}
+          <li class="breadcrumb-item">
+            <a href="{{ link.url }}">{{ link.text }}</a>
+          </li>
+        {% endfor %}
+      </ol>
+    {% endif %}
+  </nav>
+</section>

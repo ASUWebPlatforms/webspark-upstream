@@ -1,4 +1,11 @@
 {% set classes = [] %}
-{% if ( bundle == 'article' ) %}{% set classes = classes|merge(['type--article']) %}{% endif %}
-{% if heading|length > 14 %}{% set classes = classes|merge(['article']) %}{% endif %}
-<{{ html_tag }}{% if classes|length > 0 %}{{ attributes.addClass(classes) }}{% endif %}>{{ heading }}</{{ html_tag }}>
+{% if ( bundle == 'article' ) %}
+  {% set classes = classes|merge(['type--article']) %}
+{% endif %}
+{% if heading|length > 14 %}
+  {% set classes = classes|merge(['article']) %}
+{% endif %}
+
+<{{ html_tag }}{{ classes|length > 0 ? attributes.addClass(classes) }}>
+  {{ heading }}
+</{{ html_tag }}>

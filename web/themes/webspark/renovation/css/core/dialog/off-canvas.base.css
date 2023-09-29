@@ -64,7 +64,7 @@
   #drupal-off-canvas b,
   #drupal-off-canvas u,
   #drupal-off-canvas i:not(.jstree-icon),
-  #drupal-off-canvas center,  
+  #drupal-off-canvas center,
   #drupal-off-canvas dl,
   #drupal-off-canvas dt,
   #drupal-off-canvas dd,
@@ -109,15 +109,13 @@
   #drupal-off-canvas input,
   #drupal-off-canvas select,
   #drupal-off-canvas textarea {
-    color: inherit;
-    background: inherit;
     font-family: "Lucida Grande", "Lucida Sans Unicode", "liberation sans", sans-serif;
   }
 
   #drupal-off-canvas i{
-    
+
   }
-  
+
 /* Generic elements. */
 
 #drupal-off-canvas a,

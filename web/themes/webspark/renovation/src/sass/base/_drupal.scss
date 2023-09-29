@@ -1,0 +1,445 @@
+// --------------------------------------------------------
+// This file is a place to put CSS overrides for default Drupal styles.
+// If you need to add an override to a UDS component, please do so in the
+// component's Sass file. As UDS components are designed to be used as
+// stand-alone components, they should not require any overrides unless in
+// the context of when a default Drupal style has an adverse effect on the
+// component.
+// TODO: As these are for admin only styles, move these so they are not also loaded in the front end.
+// --------------------------------------------------------
+
+// Admin
+// --------------------------------------------------------
+.toolbar-oriented .toolbar-bar {
+  z-index: 1200;
+}
+
+// Pages
+// --------------------------------------------------------
+html,
+body,
+.dialog-off-canvas-main-canvas {
+  height: 100%;
+}
+
+.page-wrapper-webspark {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.page-wrapper-webspark main {
+  @include media-breakpoint-down(md) {
+    margin-top: 4px;
+  }
+
+  @include media-breakpoint-only(lg) {
+    margin-top: -28px;
+  }
+
+  @include media-breakpoint-only(xl) {
+    margin-top: -6px;
+  }
+}
+
+// Accessibility
+// --------------------------------------------------------
+.visually-hidden-focusable:active,
+.visually-hidden-focusable:focus {
+  position: relative;
+  z-index: 1050;
+}
+
+// The .PXYlt class is coming from the ASU Header
+// May be suitable to just change the CSS there, but would still need
+// to target the .sr-focusable class here anyway
+.PXYlt .header-top .nav .links-container .nav-link:focus,
+.PXYlt .header-top .nav .links-container .nav-link:active,
+.visually-hidden-focusable:active,
+.visually-hidden-focusable:focus {
+  padding: 0.25rem 0.5rem !important;
+}
+
+// Pagination
+// --------------------------------------------------------
+.pagination .page-link:hover {
+  color: inherit;
+}
+
+// Embeded Media
+// --------------------------------------------------------
+.align-center {
+  width: max-content;
+
+  img {
+    max-width: initial;
+  }
+}
+
+// Normalize Drupal figures with UDS
+// TODO: Replace the hard values with UDS variables
+// TODO: Target both Drupal and UDS embeds
+figure.caption.caption-drupal-media.align-left {
+  padding-right: 5px;
+}
+
+figure.caption.caption-drupal-media.align-left {
+  padding-left: 5px;
+}
+
+figure.caption-drupal-media {
+  .embedded-media {
+    img {
+      border: 1px solid #d0d0d0;
+    }
+  }
+
+  figcaption {
+    border: 1px solid #d0d0d0;
+    border-top: none;
+    opacity: 1;
+    background: #fff 0% 0% no-repeat padding-box;
+    padding: 0.75rem;
+    font-size: 0.75rem;
+    text-align: left;
+
+    span {
+      color: $uds-color-base-gray-5;
+      max-width: 75ch;
+    }
+  }
+}
+
+// Apply border to embedded image
+.embedded-media {
+  max-width: 100% !important;
+
+  img {
+    border: 1px solid $uds-color-base-gray-3;
+    max-width: 100% !important;
+    height: auto;
+  }
+}
+
+// Figcaption Overrides CKeditor
+.caption-drupal-media {
+  img {
+    border: 1px solid $uds-color-base-gray-3;
+  }
+
+  figcaption {
+    span {
+      max-width: 700px !important;
+    }
+  }
+}
+
+figure.caption-img {
+  caption-side: bottom;
+
+  img {
+    border: 1px solid $uds-color-base-gray-3;
+    margin: 0 !important;
+  }
+
+  figcaption {
+    display: flex;
+    border: 1px solid #d0d0d0;
+    border-top: none;
+    opacity: 1;
+    background: #fff 0 0 no-repeat padding-box;
+    padding: 0.75rem;
+    font-size: 0.75rem;
+    text-align: left;
+
+    span {
+      flex-grow: 1;
+      max-width: 75ch;
+      width: 0;
+      color: $uds-color-base-gray-5;
+    }
+  }
+}
+
+.rounded-circle img {
+  border-radius: 50px !important;
+}
+
+@include media-breakpoint-down(sm) {
+  figure.align-center {
+    width: 100%;
+  }
+}
+
+// Dialogs
+// --------------------------------------------------------
+.ui-widget-overlay.ui-front {
+  background-color: $black;
+  opacity: 0.8;
+}
+
+.ui-dialog,
+.ui-dialog.media-library-widget-modal,
+.ui-dialog.popup-dialog-class {
+  background-color: $white;
+  opacity: 1;
+  border: none;
+  max-width: 1200px;
+
+  .ui-dialog-titlebar {
+    .ui-dialog-title {
+      font-size: $heading-three-font-size;
+      letter-spacing: $heading-three-letter-spacing;
+    }
+  }
+
+  .ui-dialog .ui-dialog-content {
+    position: relative;
+    border: 0;
+    padding: 1em 1em;
+    background: none;
+    overflow: auto;
+  }
+
+  .ui-dialog-titlebar-close {
+    top: -40px;
+    height: 32px;
+    width: 32px;
+    border-radius: 16px;
+    background-color: $gray-4;
+
+    &:hover {
+      background-color: $gray-3;
+    }
+
+    .ui-icon.ui-icon-closethick {
+      background-image: url(../../img/ui-icons/times.svg);
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+  }
+
+  .ui-button:active {
+    border: 2px solid $white;
+  }
+}
+
+// @see https://asudev.jira.com/browse/WS2-1782
+.ui-dialog.media-library-widget-modal .ui-dialog-titlebar-close {
+  padding: 0;
+
+  &::after {
+    content: '';
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    background-image: url(../../img/ui-icons/times.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    margin-top: 4px;
+  }
+}
+
+.ui-widget.ui-widget-content {
+  border: none;
+  border-radius: 0;
+
+  &:focus {
+    box-shadow: 0 0 8px $uds-modal-overlay-background-color !important;
+  }
+}
+
+.ui-widget-header {
+  border: none;
+  background-color: $white;
+}
+
+// Media Library
+// --------------------------------------------------------
+.media-library-widget-modal .media-library-content {
+  border-left: none;
+}
+
+.media-library-widget-modal .media-library-item__click-to-select-checkbox {
+  left: initial;
+  right: 38px;
+}
+
+.media-library-widget-modal .media-library-item__preview {
+  padding-bottom: 20px;
+
+  img {
+    width: calc(100% - 2px);
+  }
+}
+
+.media-library-widget-modal .media-library-item__attributes {
+  max-width: calc(100% - 6px);
+  max-height: calc(100% - 40px);
+  bottom: 4px;
+}
+
+.media-library-widget-modal .media-library-menu {
+  margin-top: 14px;
+
+  .nav-item {
+    margin-top: 4px;
+  }
+}
+
+.media-library-add-form {
+  .container {
+    .alert {
+      .alert-close {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+
+        button {
+          background: white;
+          padding: 0;
+          width: 34px;
+          height: 34px;
+          border-radius: 100%;
+          border: 1px solid $uds-color-base-gray-4;
+          font-size: 2.5em;
+        }
+
+        .fa-circle {
+          width: 1em;
+        }
+
+        .fa-times {
+          left: 0px;
+        }
+
+        .fa-fw {
+          text-align: center;
+        }
+
+        .fa-2x {
+          font-size: 2.5em;
+        }
+
+        .fa-layers {
+          display: inline-block;
+          position: relative;
+          vertical-align: -0.125em;
+        }
+      }
+    }
+  }
+}
+
+.media-library-widget-modal .media-library-add-form__added-media:focus {
+  box-shadow: 0 0 4px $uds-color-base-gray-6 !important;
+}
+
+.media-library-widget-modal
+  .media-library-add-form__remove-button[type="submit"] {
+  background-image: none;
+  background-color: $maroon;
+  font-weight: 700;
+  -webkit-font-smoothing: antialiased;
+  text-transform: none;
+  color: $white;
+  text-align: center;
+  padding: 4px 1.5em;
+  cursor: pointer;
+  text-decoration: none;
+  border: 1px solid $maroon;
+  border-radius: 20em;
+
+  &:hover {
+    color: $white;
+    box-shadow: 0 1px 2px rgb(23 26 28 / 25%);
+    transform: scale(1.05);
+    border: 1px solid $black;
+    border-radius: 20em;
+  }
+}
+
+.crop-preview-wrapper__preview-image.img-thumbnail.cropper-hidden {
+  padding: 0;
+  border: none;
+  border-radius: initial;
+}
+
+// Nav Tabs
+// --------------------------------------------------------
+.nav-tabs .nav-link {
+  color: #000;
+  padding: 0.25em 1em;
+  border-right: 0;
+  border-left: 0;
+  border-top: 0;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 24px;
+  margin: 0.2em 0.2em 0 0.2em;
+
+  &.active {
+    border-bottom: 8px solid $uds-color-base-maroon;
+  }
+}
+
+.darkmode {
+  &.mobile-tabs .nav-tabs .nav-link:hover,
+  &.mobile-tabs .nav-tabs .nav-link:focus {
+    color: #ffc627;
+  }
+
+  .nav-tabs .nav-link {
+    color: #fafafa;
+    background-color: transparent;
+
+    &.active {
+      color: #ffc627;
+      background-color: transparent;
+      border-bottom: 8px solid #ffc627;
+    }
+  }
+}
+
+.smokemode .nav-tabs .nav-link {
+  background-color: transparent;
+
+  &.active {
+    background-color: transparent;
+  }
+}
+
+.background-darkmode {
+  background-color: #191919;
+}
+
+.background-smokemode {
+  background-color: #e8e8e8;
+}
+
+.mobile-tabs {
+  flex-wrap: inherit;
+  white-space: nowrap;
+  -webkit-overflow-scrolling: touch;
+  box-shadow: inset 0px -2px 0px 0px #cdcdcd;
+  position: relative;
+
+  .nav-tabs {
+    flex-wrap: inherit;
+    position: relative;
+    white-space: nowrap;
+    display: inline-flex;
+    transition: all 0.25s ease 0s;
+    left: 0px;
+
+    .nav-link:hover,
+    .nav-link:focus {
+      color: $uds-color-base-maroon;
+    }
+  }
+
+  .scroll::-webkit-scrollbar {
+    display: none;
+  }
+}

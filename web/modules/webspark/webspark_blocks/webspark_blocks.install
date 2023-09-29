@@ -51,10 +51,54 @@ function webspark_blocks_update_9005(&$sandbox) {
 }
 
 /**
- * WS2-1704 - Add back blocks revert call
+ * WS2-1704 - Add back blocks revert call.
+ *
+ * Note: Removed due to problems solved by update_9019.
  */
 function webspark_blocks_update_9012(&$sandbox) {
+  /* Originally...
   _webspark_blocks_revert_module_config();
+   */
+
+  /*
+  Avoid errors with "future" ymls, only bring in what is needed for next
+  step. All configs related to show borders. In 9019, later, all other
+  configs for this module will be read in.
+   */
+  $yml_list = [
+    'core.entity_form_display.paragraph.card_degree.carousel_card',
+    'core.entity_form_display.paragraph.card_degree.default',
+    'core.entity_form_display.paragraph.card_story.carousel_card',
+    'core.entity_form_display.paragraph.card_story.default',
+    'core.entity_form_display.paragraph.card_with_icon.card_and_image',
+    'core.entity_form_display.paragraph.card_with_icon.default',
+    'core.entity_form_display.paragraph.card.carousel_card',
+    'core.entity_form_display.paragraph.card.default',
+    'core.entity_view_display.paragraph.card_degree.default',
+    'core.entity_view_display.paragraph.card_degree.landscape',
+    'core.entity_view_display.paragraph.card_degree.portrait',
+    'core.entity_view_display.paragraph.card_story.default',
+    'core.entity_view_display.paragraph.card_story.landscape',
+    'core.entity_view_display.paragraph.card_story.portrait',
+    'core.entity_view_display.paragraph.card_with_icon.default',
+    'core.entity_view_display.paragraph.card_with_icon.landscape',
+    'field.storage.paragraph.field_show_borders',
+    'field.field.paragraph.card.field_show_borders',
+    'field.field.paragraph.card_with_icon.field_show_borders',
+    'field.field.paragraph.card_story.field_show_borders',
+    'field.field.paragraph.card_degree.field_show_borders',
+    'core.entity_view_display.paragraph.card.portrait',
+    'core.entity_view_display.paragraph.card.landscape',
+    'core.entity_view_display.paragraph.card.default',
+    'core.entity_view_display.paragraph.card_with_icon.portrait',
+  ];
+
+  \Drupal::state()->set('configuration_locked', FALSE);
+  foreach ($yml_list as $yml) {
+    \Drupal::service('webspark.config_manager')->updateConfigFile($yml);
+  }
+  \Drupal::state()->set('configuration_locked', TRUE);
+
 }
 
 /**
@@ -71,19 +115,97 @@ function webspark_blocks_update_9017() {
   $cards = $paragraph_storage->loadMultiple($result);
 
   foreach ($cards as $card) {
-    if ($card->get('field_show_borders')->value == NULL) {
+    if ($card->hasField('field_show_borders')) {
+      if ($card->get('field_show_borders')->value == NULL) {
         $card->set('field_show_borders', '1');
         $card->save();
+      }
     }
   }
 }
 
 /**
- * WS2-1674 - Add Ranking Card to Card Arrangement
- * Note: Deleted webspark_blocks_update_9006 - webspark_blocks_update_9016, in favor of webspark_blocks_update_9018
+ * WS2-1674 - Add Ranking Card to Card Arrangement.
+ *
+ * Note: Deleted webspark_blocks_update_9006 - webspark_blocks_update_9016.
+ *
+ * Removed due to problems solved by update_9019.
  */
-function webspark_blocks_update_9018(&$sandbox) {
+/*function webspark_blocks_update_9018(&$sandbox) {
+_webspark_blocks_revert_module_config();
+}*/
+
+/**
+ * WS2-1677 - Replace bootstrap4-theme with unity-bootstrap-theme
+ * in Renovation theme.
+ * Note :  To prevent encountering the error message 'error  Forbidden values in the configuration file: ',
+ * I first store the current values of the field colors configuration before making any updates.
+ * Afterwards, once DB updates ran, I restore them to the original values.
+ */
+function webspark_blocks_update_9019(&$sandbox) {
+  $paragraph_storage = \Drupal::entityTypeManager()->getStorage('paragraph');
+  $query = $paragraph_storage->getQuery();
+
+  $query->condition('type', 'accordion_panel', 'IN');
+  $result = $query->execute();
+
+  $accordions = $paragraph_storage->loadMultiple($result);
+  $accordions_to_update = [];
+  foreach ($accordions as $accordion) {
+    if (!empty($accordion->get('field_color_options')->value) && $accordion->get('field_color_options')->value != 'default') {
+      $accordions_to_update[] = [
+       'id' => $accordion->get('id')->value,
+       'field_color_options' => $accordion->get('field_color_options')->value,
+      ];
+
+      $accordion->set('field_color_options', 'default');
+      $accordion->save();
+    }
+  }
+
   _webspark_blocks_revert_module_config();
+
+  if (!empty($accordions_to_update)) {
+    $accordions_colors = [
+      'card-maroon' => 'accordion-item-maroon',
+      'card-gray' => 'accordion-item-gray',
+      'card-dark' => 'accordion-item-dark',
+    ];
+
+    foreach ($accordions_to_update as $accordion_to_update) {
+      $accordion = $paragraph_storage->load($accordion_to_update['id']);
+      $accordion->set('field_color_options', $accordions_colors[$accordion_to_update['field_color_options']]);
+      $accordion->save();
+    }
+  }
+}
+
+/**
+ * WS2-1658 - Add new option to Spacing Top and Spacing Bottom fields.
+ */
+function webspark_blocks_update_9020(&$sandbox) {
+  \Drupal::state()->set('configuration_locked', FALSE);
+  \Drupal::service('webspark.config_manager')->updateConfigFile('field.storage.block_content.field_spacing_bottom');
+  \Drupal::service('webspark.config_manager')->updateConfigFile('field.storage.block_content.field_spacing_top');
+  \Drupal::state()->set('configuration_locked', TRUE);
+}
+
+/**
+ * WS2-1688: Update cropping image styles
+ */
+function webspark_blocks_update_9021(&$sandbox) {
+  \Drupal::state()->set('configuration_locked', FALSE);
+  \Drupal::service('webspark.config_manager')->updateConfigFile('image.style.block_image_1_1_lge');
+  \Drupal::service('webspark.config_manager')->updateConfigFile('image.style.block_image_1_1_med');
+  \Drupal::service('webspark.config_manager')->updateConfigFile('image.style.block_image_1_1_sml');
+  \Drupal::service('webspark.config_manager')->updateConfigFile('image.style.block_image_16_9_lge');
+  \Drupal::service('webspark.config_manager')->updateConfigFile('image.style.block_image_16_9_med');
+  \Drupal::service('webspark.config_manager')->updateConfigFile('image.style.block_image_16_9_sml');
+  \Drupal::service('webspark.config_manager')->updateConfigFile('image.style.block_image_lge');
+  \Drupal::service('webspark.config_manager')->updateConfigFile('image.style.block_image_med');
+  \Drupal::service('webspark.config_manager')->updateConfigFile('image.style.block_image_sml');
+  \Drupal::service('webspark.config_manager')->updateConfigFile('image.style.video_poster_image');
+  \Drupal::state()->set('configuration_locked', TRUE);
 }
 
 /**

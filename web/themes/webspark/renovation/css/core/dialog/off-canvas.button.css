@@ -5,7 +5,9 @@
  * @see seven/css/components/buttons.css
  */
 
+/* Radix removed the ".button" class from the form inputs. Added ".btn" targeting here.*/
 #drupal-off-canvas button:not(.close),
+#drupal-off-canvas .btn,
 #drupal-off-canvas .button {
   margin: 0 0 10px;
   padding: 0;
@@ -31,6 +33,7 @@
   text-decoration: none;
   color: #46a0f5;
 }
+#drupal-off-canvas input[type="submit"].btn,
 #drupal-off-canvas input[type="submit"].button {
   position: relative;
   display: inline-block;
@@ -49,7 +52,10 @@
 }
 #drupal-off-canvas input[type="submit"].button:hover,
 #drupal-off-canvas input[type="submit"].button:focus,
-#drupal-off-canvas input[type="submit"].button:active {
+#drupal-off-canvas input[type="submit"].button:active,
+  #drupal-off-canvas input[type="submit"].btn:hover,
+#drupal-off-canvas input[type="submit"].btn:focus,
+#drupal-off-canvas input[type="submit"].btn:active {
   z-index: 10;
   text-decoration: none;
   color: #333;
@@ -57,7 +63,9 @@
   outline: none;
 }
 #drupal-off-canvas input[type="submit"].button:focus,
-#drupal-off-canvas input[type="submit"].button:active {
+#drupal-off-canvas input[type="submit"].button:active,
+  #drupal-off-canvas input[type="submit"].btn:focus,
+#drupal-off-canvas input[type="submit"].btn:active {
   box-shadow: 0 3px 3px 2px rgba(0, 0, 0, 0.1);
 }
 #drupal-off-canvas input[type="submit"].button--primary {
@@ -91,7 +99,11 @@
 #drupal-off-canvas .button:disabled,
 #drupal-off-canvas .button:disabled:active,
 #drupal-off-canvas .button.is-disabled,
-#drupal-off-canvas .button.is-disabled:active {
+#drupal-off-canvas .button.is-disabled:active,
+#drupal-off-canvas .btn:disabled,
+#drupal-off-canvas .btn:disabled:active,
+#drupal-off-canvas .btn.is-disabled,
+#drupal-off-canvas .btn.is-disabled:active {
   cursor: default;
   color: #5c5c5c;
   border: 0;

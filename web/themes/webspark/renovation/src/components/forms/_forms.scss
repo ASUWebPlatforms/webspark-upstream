@@ -1,0 +1,15 @@
+//  Move to UDS
+form.uds-form {
+  .form-check {
+    .tableselect.form-check-input {
+      opacity: 1;
+    }
+  }
+}
+
+//  Move to UDS
+form.uds-form {
+  input {
+    padding-left: $uds-size-spacing-4 !important;
+  }
+}

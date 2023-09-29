@@ -31,6 +31,9 @@ libraries-override:
         misc/dialog/off-canvas.table.css: css/core/dialog/off-canvas.table.css
         misc/dialog/off-canvas.button.css: css/core/dialog/off-canvas.button.css
 
+libraries-extend:
+  core/drupal.dialog.off_canvas:
+    - renovation/layout_builder
 
 ckeditor_stylesheets:
   - assets/css/renovation.style.css

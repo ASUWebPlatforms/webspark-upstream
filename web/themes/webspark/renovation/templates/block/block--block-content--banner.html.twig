@@ -19,7 +19,7 @@
   {% endif %}
   {{ title_suffix }}
   {% include '@renovation/banners/banners.twig' with {
-    background_color: content.field_banner_background_color,
+    background_color: content.field_banner_background_color.0['#markup'],
     icon: content.field_icon,
     heading: content.field_heading,
     banner_text: content.field_banner_text,

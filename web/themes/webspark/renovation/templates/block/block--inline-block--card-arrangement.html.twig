@@ -28,7 +28,7 @@
       cards: content.field_card_group,
       class_layout: class_layout,
       text_color: content['#block_content'].field_text_color.value,
-      columns:	content.field_card_arrangement_display,
+      columns: content.field_card_arrangement_display[0]['#markup'],
     } %}
   {% endblock %}
   {{ content|without('field_heading', 'field_cta', 'field_formatted_text', 'field_card_group', 'field_card_arrangement_display', 'field_anchor_menu_settings') }}

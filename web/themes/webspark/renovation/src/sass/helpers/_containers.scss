@@ -1,0 +1,25 @@
+.center-container {
+  margin: 0 auto;
+}
+
+// The following is copied out of UDS _global-header.scss
+.uds-full-width {
+  .uds-content-align {
+    max-width: 1920px;
+    width: calc(100% - #{$uds-size-spacing-2} * 2);
+    margin: 0 $uds-size-spacing-2;
+
+    @include media-breakpoint-up(md) {
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    @include media-breakpoint-up(lg) {
+      max-width: 940px;
+    }
+
+    @include media-breakpoint-up(xl) {
+      max-width: 1200px;
+    }
+  }
+}

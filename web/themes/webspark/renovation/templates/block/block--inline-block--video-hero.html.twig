@@ -22,7 +22,7 @@
     {% endblock %}
   {% endif %}
   {{ title_suffix }}
-  {% include '@renovation/heroes/heroes.twig' with {
+  {% include '@renovation/heroes/video-hero.twig' with {
     video_url: file_url(content.field_media[0]['#media'].field_media_video_file.entity.uri.value),
     poster: poster,
     heading_background: heading_background_color,
@@ -31,7 +31,6 @@
     hero_body: content.field_hero_unformatted_text[0]['#context']['value'],
     heading: content.field_heading[0]['#context']['value'],
     cta_btn: content.field_two_cta,
-    has_button_row: buttons | length > 1 ? true : null,
-    media_bundle: 'video',
+    has_button_row: buttons | length > 1 ? true : null
   } %}
 </div>

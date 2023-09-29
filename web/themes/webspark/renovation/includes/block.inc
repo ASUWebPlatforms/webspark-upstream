@@ -17,7 +17,6 @@ use Drupal\image\Entity\ImageStyle;
  * Implements hook_preprocess_HOOK().
  */
 function renovation_preprocess_block(&$variables) {
-
   $block_id = $variables['derivative_plugin_id'];
 
   // Per WS2-1215 - Add video hero heading bg color
@@ -56,7 +55,6 @@ function renovation_preprocess_block(&$variables) {
     }
     $variables['tabs'] = $tabs;
   }
-
 }
 
 /**
@@ -121,5 +119,5 @@ function getPosterImage(array $variables): string {
  * Implements hook_preprocess_HOOK().
  */
 function renovation_preprocess_block__inline_block__video_hero(&$variables) {
-    $variables['poster'] = getPosterImage($variables);
+  $variables['poster'] = getPosterImage($variables);
 }

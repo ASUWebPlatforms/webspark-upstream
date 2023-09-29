@@ -1,14 +1,15 @@
+{# TODO: Verify if this is needed, does not appear to be used anywhere #}
 <nav class="nav-tabs-scrolling">
   <div class="nav nav-tabs" id="nav-tab" role="tablist">
     {% for tab in tabs %}
       {% if loop.first %}
-        <a 
-          class="nav-item nav-link active" 
-          id="{{ tab.heading|replace({' ' : '-'})|lower }}" 
-          data-toggle="tab" 
-          href="#nav-{{ tab.heading|replace({' ' : '-'})|lower }}" 
-          role="tab" 
-          aria-controls="nav-{{ tab.heading|replace({' ' : '-'})|lower }}" 
+        <a
+          class="nav-item nav-link active"
+          id="{{ tab.heading|replace({' ' : '-'})|lower }}"
+          data-bs-toggle="tab"
+          href="#nav-{{ tab.heading|replace({' ' : '-'})|lower }}"
+          role="tab"
+          aria-controls="nav-{{ tab.heading|replace({' ' : '-'})|lower }}"
           aria-selected="true"
           data-ga-event="collapse"
           data-ga-action="open"
@@ -18,13 +19,13 @@
           data-ga-region="main content"
           data-ga-text="{{ tab.heading }}">{{ tab.heading }}</a>
       {% else %}
-        <a 
-          class="nav-item nav-link" 
-          id="{{ tab.heading|replace({' ' : '-'})|lower }}" 
-          data-toggle="tab" 
-          href="#nav-{{ tab.heading|replace({' ' : '-'})|lower }}" 
-          role="tab" 
-          aria-controls="nav-{{ tab.heading|replace({' ' : '-'})|lower }}" 
+        <a
+          class="nav-item nav-link"
+          id="{{ tab.heading|replace({' ' : '-'})|lower }}"
+          data-bs-toggle="tab"
+          href="#nav-{{ tab.heading|replace({' ' : '-'})|lower }}"
+          role="tab"
+          aria-controls="nav-{{ tab.heading|replace({' ' : '-'})|lower }}"
           aria-selected="false"
           data-ga-event="collapse"
           data-ga-action="close"

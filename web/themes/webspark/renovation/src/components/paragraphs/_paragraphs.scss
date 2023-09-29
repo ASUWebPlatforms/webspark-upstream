@@ -1,6 +1,6 @@
-@import '../../../node_modules/@asu/bootstrap4-theme/src/scss/extends/paragraphs';
-// Set content width to default to override the 75ch that bleeds into every component.
-p, li {
+// TODO: Move to UDS
+p,
+li {
   max-width: 700px;
   overflow-wrap: break-word;
 }

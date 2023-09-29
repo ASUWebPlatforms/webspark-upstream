@@ -1,12 +1,13 @@
-(function () {
+// Allow Accordion items to be opened from the URL
+(function() {
   const toggler = (url, state) => {
     if (url.indexOf("#") !== -1) {
       const sectionName = url.split("#").at(-1);
       const link = document.getElementById(sectionName);
 
       if (link) {
-        const section = link.closest(".card");
-        const content = section.querySelector(".card-body");
+        const section = link.closest(".accordion-item");
+        const content = section.querySelector(".accordion-body");
 
         link.setAttribute("aria-expanded", state);
 

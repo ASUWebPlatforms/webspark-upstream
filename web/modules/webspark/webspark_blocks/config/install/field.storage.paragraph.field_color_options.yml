@@ -14,13 +14,13 @@ settings:
       value: default
       label: Gold
     -
-      value: card-maroon
+      value: accordion-item-maroon
       label: Maroon
     -
-      value: card-gray
+      value: accordion-item-gray
       label: 'Gray 2'
     -
-      value: card-dark
+      value: accordion-item-dark
       label: 'Gray 7'
   allowed_values_function: ''
 module: options

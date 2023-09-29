@@ -4,12 +4,10 @@
  * Theme and preprocess functions for nodes.
  */
 
-
 /**
  * Implements hook_preprocess_HOOK().
  */
 function renovation_preprocess_onecol_article_hero_section(&$variables) {
-
   // Removes the header style field from the render array and adds a variable for the size.
   /** @var \Drupal\node\Entity\Node $node */
   $content_items = $variables['content']['first'];

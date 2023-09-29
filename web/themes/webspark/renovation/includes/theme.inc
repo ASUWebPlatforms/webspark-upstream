@@ -104,7 +104,7 @@ function renovation_page_attachments_alter(array &$page) {
   array_pop($fragments);
   // Build the composer path.
   $composer_path = implode('/', $fragments) . '/upstream-configuration/composer.json';
-  
+
   // Get the version number.
   $version = '1.0';
   if (file_exists($composer_path)) {
@@ -112,7 +112,7 @@ function renovation_page_attachments_alter(array &$page) {
     $composer_contents = \Drupal\Component\Serialization\Json::decode($composerJSON);
     $version = $composer_contents['version'] ?? '1.0';
   }
-  
+
   $tag = array(
     '#tag' => 'meta',
     '#attributes' => array(
@@ -121,7 +121,7 @@ function renovation_page_attachments_alter(array &$page) {
       'content' => 'Webspark2:' . $version,
     ),
   );
-  
+
   $page['#attached']['html_head'][] = [$tag, 'tagname'];
 }
 
@@ -154,28 +154,24 @@ function renovation_preprocess_media(array &$variables) {
  */
 
 function renovation_preprocess_maintenance_page(&$variables) {
-
   $block_manager = \Drupal::service('plugin.manager.block');
-  
-  // Building header block and props, no navtree
 
+  // Building header block and props, no navtree
   $header_block = \Drupal\block\Entity\Block::load('asubrandheader');
 
   // AsuBrandHeaderBlock
-
   if ($header_block) {
     $settings = $header_block->get('settings');
     $header_built = $block_manager->createInstance('asubrandheader', $settings);
     // Some blocks might implement access check.
     $header_render =  $header_built->build();
     // Add the cache tags/contexts.
-    \Drupal::service('renderer')->addCacheableDependency($header_render, $header_built);  
+    \Drupal::service('renderer')->addCacheableDependency($header_render, $header_built);
 
     $header_config = $header_block->get('settings');
 
     //  @todo Create a service to return props for a block based on block settings.
     //   For now recreating the props object for the header block here in a semi-hardcoded way.
-
     $props = [];
     $props['baseUrl'] = $header_config['asu_brand_header_block_base_url'] ?? 'https://asu.edu';
     $props['title'] = $header_config['asu_brand_header_block_title'];
@@ -197,7 +193,6 @@ function renovation_preprocess_maintenance_page(&$variables) {
   }
 
   // Building footer block
-
   // Hard-coding footer block default configuration to avoid hitting database on maintenance page
   $config = [
     "label" => 'ASU footer',
@@ -227,11 +222,14 @@ function renovation_preprocess_maintenance_page(&$variables) {
     "asu_footer_block_sixth_title" => '',
     "asu_footer_block_menu_sixth_column_name" => '_none'
   ];
+
   $plugin_block = $block_manager->createInstance('asu_footer', $config);
+
   // Some blocks might implement access check.
   $render = $plugin_block->build();
+
   // Add the cache tags/contexts.
   \Drupal::service('renderer')->addCacheableDependency($render, $plugin_block);
-  // return $render;
-  $variables['footer'] =   $render;
+
+  $variables['footer'] = $render;
 }

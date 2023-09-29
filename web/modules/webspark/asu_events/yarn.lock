@@ -2,22 +2,22 @@
 # yarn lockfile v1
 
 
-"@asu/component-events@1.1.2":
-  version "1.1.2"
-  resolved "https://npm.pkg.github.com/download/@asu/component-events/1.1.2/8d94613d62cc2c01cf899e82132588d95f4d9cb1#8d94613d62cc2c01cf899e82132588d95f4d9cb1"
-  integrity sha512-MnzvKyr1OvKISu05fXT3O662JNLQeCjX9ZiX0bN86RReeMz7v/Wb2iudcUoS/k+awcRNt0TuSHzq+zTDqG+UYw==
+"@asu/component-events@2.0.3":
+  version "2.0.3"
+  resolved "https://npm.pkg.github.com/download/@asu/component-events/2.0.3/8f20e46f82e1675255790bc2e472a02c3e81f170#8f20e46f82e1675255790bc2e472a02c3e81f170"
+  integrity sha512-CJfpj5UYmpuPwPxVHOxCO6eGZnG5so63YFcoFvTmA9RvB1G+GLGxl5XhWB94pPwXuziEGNl/oQ0LOtmPl4sqCA==
   dependencies:
-    "@asu/components-core" "^1.0.0"
+    "@asu/components-core" "^2.1.0"
     "@babel/plugin-transform-react-jsx" "^7.13.12"
     prop-types "^15.7.2"
     react ">= 16.14.0 < 18"
     react-dom ">= 16.14.0 < 18"
     styled-components "^5.3.0"
 
-"@asu/components-core@^1.0.0":
-  version "1.5.0"
-  resolved "https://npm.pkg.github.com/download/@asu/components-core/1.5.0/2b005b159145bc1f4e79751942bea24e7fe71c4e#2b005b159145bc1f4e79751942bea24e7fe71c4e"
-  integrity sha512-b9CLwQeHQ78BrtYlKkIXzuwimbRmNmvC0XmUTh7TuywGIgQ6wbU2O1buh3nxVKYZBPYXJGLiP6CSBGjCgKy+GQ==
+"@asu/components-core@^2.1.0":
+  version "2.2.2"
+  resolved "https://npm.pkg.github.com/download/@asu/components-core/2.2.2/9c2feb05aee4330d7e39386f71c1749cdd5b3adf#9c2feb05aee4330d7e39386f71c1749cdd5b3adf"
+  integrity sha512-eo5evxlRtNrCjVKnAXonx5jVENxPWAWeeqkyO747BsGwnBBXBfUn/UYSoyJYwme3126sTAmdd3yv1coqCsOi1g==
   dependencies:
     "@storybook/addon-knobs" "^6.2.9"
     classnames "^2.2.6"

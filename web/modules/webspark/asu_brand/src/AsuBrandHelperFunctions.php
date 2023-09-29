@@ -15,8 +15,8 @@ class AsuBrandHelperFunctions {
     $search_config = \Drupal::config('asu_brand.settings');
     $asu_search_url = $search_config->get('asu_brand.asu_brand_search_url') ?? '';
     // Domain-specific results host
-    $local_search_url = $search_config->get('asu_brand.asu_brand_local_search_url') ?? \Drupal::request()->getHost();
-    // "opt-out"
+    $local_search_url = !empty($search_config->get('asu_brand.asu_brand_local_search_url')) ? $search_config->get('asu_brand.asu_brand_local_search_url') : \Drupal::request()->getHost();
+    // Check for "opt-out" override.
     $url_host = ($local_search_url === 'opt-out') ? '' : $local_search_url;
     return ['asu_search_url' => $asu_search_url, 'url_host' => $url_host];
   }

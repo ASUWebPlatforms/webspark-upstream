@@ -4,6 +4,7 @@
  * Template for a Node component.
  */
 #}
+
 {%
   set classes = [
   'node',
@@ -14,10 +15,10 @@
   node.bundle|clean_class ~ '--' ~ view_mode|clean_class,
 ]
 %}
+
 <article{{ attributes.addClass(classes) }}>
   {{ title_prefix }}
   {{ title_suffix }}
-
   {% block content %}
     {{ content }}
   {% endblock %}

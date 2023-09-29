@@ -1,16 +1,10 @@
 <div class="uds-card-arrangement {{ class_layout }}">
   <div class="uds-card-arrangement-content-container {{ text_color }}">
     <h2>{{ heading }}</h2>
-    <p>{{ text }}</p>
+    {{ text }}
     {{ cta }}
   </div>
-  {% if class_layout %}
-    <div class="uds-card-arrangement-card-container">
-      {{ cards }}
-    </div>
-  {% else %}
-    <div class="uds-card-arrangement-card-container  auto-arrangement {{ columns }}">
-      {{ cards }}
-    </div>
-  {% endif %}
+  <div class="uds-card-arrangement-card-container {{ not class_layout ? 'auto-arrangement' }} {{ not class_layout ? columns }}">
+    {{ cards }}
+  </div>
 </div>

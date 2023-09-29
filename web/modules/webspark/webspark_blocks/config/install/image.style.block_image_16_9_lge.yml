@@ -15,11 +15,11 @@ effects:
     data:
       crop_type: '16_9'
       automatic_crop_provider: null
-  176d45d2-41a1-47d5-92f8-6f92eeaf7f7f:
-    uuid: 176d45d2-41a1-47d5-92f8-6f92eeaf7f7f
-    id: image_scale
+  869ce27f-f47e-42ed-87b4-5f4c4181e47d:
+    uuid: 869ce27f-f47e-42ed-87b4-5f4c4181e47d
+    id: image_scale_and_crop
     weight: 2
     data:
       width: 1200
-      height: null
-      upscale: false
+      height: 675
+      anchor: center-center
