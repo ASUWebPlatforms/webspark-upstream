@@ -8,7 +8,7 @@
         }
     ],
     "require": {
-        "bower-asset/fontawesome": "6.4.2",
+        "npm-asset/fontawesome": "6.4.2",
         "ckeditor/fakeobjects": "4.16.0",
         "ckeditor/link": "4.16.1",
         "composer/installers": "v1.11.0",
