@@ -7,5 +7,8 @@ webspark_blocks:
 anchor_menu:
   dependencies:
     - asu_brand/components-library
+    - core/drupal
+    - core/drupalSettings
+    - core/once
   js:
     js/anchor-menu.js: { weight: -1 }

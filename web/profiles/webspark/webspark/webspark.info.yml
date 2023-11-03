@@ -2,7 +2,7 @@ name: Webspark
 type: profile
 core_version_requirement: ^9.0
 description: 'ASU custom profile.'
-version: 2.11.0
+version: 2.11.1
 distribution:
   name: 'Webspark'
 install:

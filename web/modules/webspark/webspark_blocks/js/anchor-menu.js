@@ -1,4 +1,4 @@
-(function ($, Drupal, drupalSettings) {
+(function ($, Drupal, drupalSettings, once) {
 
   Drupal.behaviors.anchorMenu = {
     attach: function (context, settings) {
@@ -10,7 +10,7 @@
 
         let section = $('.uds-anchor-menu-wrapper h4').text().toLowerCase().trim();
 
-        links.each(function(i, item) {
+        $(once('append-anchor-menu-items', links, context)).each(function(i, item) {
           let icon = $(item).siblings('.anchor-link-icon').html();
           let title = $(item).data('title');
           let href = $(item).attr('id');
@@ -47,7 +47,7 @@
           navbar.style.top = getAnchorMenuTop() + 'px';
         });
 
-      } 
+      }
     }
   };
 
@@ -79,7 +79,7 @@
           if (window.innerWidth > 610) { globalHeader.style.top = -(headerHeight - navbarY) + 'px' };
         } else if (navbarY <= offset) {
           if (window.innerWidth > 610) { globalHeader.style.top = -globalHeader.offsetHeight + 'px' };
-          navbar.classList.add('uds-anchor-menu-sticky');  
+          navbar.classList.add('uds-anchor-menu-sticky');
           navbar.style.top = getAnchorMenuTop() + 'px';
         }
       }
@@ -145,7 +145,7 @@
   }
 
   /**
-   * This functions has the ability to calculate 
+   * This functions has the ability to calculate
    * the position where the Anchor menu must be renderized.
    */
   function getAnchorMenuTop() {
@@ -156,19 +156,19 @@
     // On mobile devices the Anchor Menu must be rendered after the global header.
     if (window.innerWidth < 610) return $globalHeader.height();
     // If the Administration toolbar is not rendered
-    // the Anchor menu must be rendered at the top of the page. 
+    // the Anchor menu must be rendered at the top of the page.
     if (!$toolbarBar.length) return 0;
 
-    let $navbar = $('#uds-anchor-menu');       
+    let $navbar = $('#uds-anchor-menu');
     if ($navbar.length && $navbar.hasClass('uds-anchor-menu-sticky')
       && $toolbarItemAdministrationTray.hasClass('is-active')
       && !$toolbarItemAdministrationTray.hasClass('toolbar-tray-vertical')) {
-      // If the Administration toolbar and the Secondary Administration toolbar are rendered 
+      // If the Administration toolbar and the Secondary Administration toolbar are rendered
       // the Anchor menu must be rendered after the Secondary Administration toolbar.
       return $toolbarItemAdministrationTray.height() + $toolbarBar.height();
     }
     else {
-      // If the Administration toolbar is rendered and the Secondary Administration toolbar is not rendered 
+      // If the Administration toolbar is rendered and the Secondary Administration toolbar is not rendered
       // or when the Secondary toolbar is a sidebar the Anchor menu must be rendered after the Administration toolbar.
       return $toolbarBar.height();
     }
@@ -185,4 +185,4 @@
 
     return $toolbarBar.height();
   }
-})(jQuery, Drupal, drupalSettings);
+})(jQuery, Drupal, drupalSettings, once);
