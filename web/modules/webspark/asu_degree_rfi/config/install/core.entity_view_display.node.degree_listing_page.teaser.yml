@@ -24,6 +24,7 @@ dependencies:
     - field.field.node.degree_listing_page.field_degree_list_show_filters
     - field.field.node.degree_listing_page.field_degree_list_show_search
     - field.field.node.degree_listing_page.field_degree_listing_intro_media
+    - field.field.node.degree_listing_page.field_exclude_from_display
     - field.field.node.degree_listing_page.layout_builder__layout
     - node.type.degree_listing_page
   module:
@@ -63,4 +64,5 @@ hidden:
   field_degree_list_show_filters: true
   field_degree_list_show_search: true
   field_degree_listing_intro_media: true
+  field_exclude_from_display: true
   layout_builder__layout: true

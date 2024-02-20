@@ -1,0 +1,53 @@
+.ck-editor__editable_inline,.ck-source-editing-area,
+div.ck.ck-content.ck-editor__editable {
+  min-height: 350px !important;
+}
+
+.ck-editor__top {
+  position: sticky !important;
+  top: -4px !important;
+  width: 100% !important;
+  z-index: 99 !important;
+}
+/* Node edit forms need to avoid admin toolbar overlappig wysiwyg */
+/* When admin toolbar horizontal */
+body.toolbar-fixed.toolbar-horizontal form.node-page-edit-form .ck-editor__top {
+  top: 36px !important;
+}
+body.toolbar-fixed.toolbar-horizontal.toolbar-tray-open form.node-page-edit-form .ck-editor__top {
+  top: 76px !important;
+}
+/* When admin toolbar vertical */
+body.toolbar-fixed.toolbar-vertical form.node-page-edit-form .ck-editor__top {
+  top: 36px !important;
+}
+
+.ck-sticky-panel__placeholder {
+  display: none !important;
+}
+
+.ck-sticky-panel__content {
+  position: sticky !important;
+  top: 0 !important;
+  width: 100% !important;
+}
+
+.ck-content {
+  color: rgb(0, 0, 0);
+}
+
+li > span.ck-list-bogus-paragraph {
+  display: inline !important;
+}
+
+li::marker {
+  content: '';
+}
+
+span.highlight-black.ck-editor__nested-editable_focused {
+  color: rgb(0, 0, 0);
+}
+
+.drupal-off-canvas-reset .uds-blockquote {
+  display: grid !important;
+}

@@ -242,9 +242,9 @@ content:
     third_party_settings: {  }
   simple_sitemap:
     weight: 10
+    region: content
     settings: {  }
     third_party_settings: {  }
-    region: content
   status:
     type: boolean_checkbox
     weight: 6

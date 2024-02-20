@@ -2,6 +2,7 @@
 
 namespace Drupal\webspark_utility;
 
+use Drupal\Core\Config\Entity\ConfigEntityType;
 use Drupal\Core\Config\StorageInterface;
 use Drupal\config_update\ConfigReverter;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
@@ -266,7 +267,7 @@ class WebsparkUtilityConfigManager {
     // Create a list of config entity types.
     $list = [];
     foreach ($this->entityManager->getDefinitions() as $name => $definition) {
-      if ($definition instanceof \Drupal\Core\Config\Entity\ConfigEntityType) {
+      if ($definition instanceof ConfigEntityType) {
         $list[$definition->getConfigPrefix()] = $name;
       }
     }

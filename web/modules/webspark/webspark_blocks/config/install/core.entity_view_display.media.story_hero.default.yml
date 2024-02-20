@@ -13,15 +13,15 @@ bundle: story_hero
 mode: default
 content:
   field_media_image:
+    type: image
     label: visually_hidden
-    weight: 0
     settings:
-      image_style: story_hero
       image_link: ''
+      image_style: story_hero
       image_loading:
         attribute: lazy
     third_party_settings: {  }
-    type: image
+    weight: 0
     region: content
 hidden:
   created: true

@@ -1,14 +1,12 @@
-(function ($, Drupal) {
+(function ($, Drupal, once) {
   Drupal.behaviors.asugtm = {
     attach: function (context, settings) {
-      $('.page__content')
-      .once('page')
-      .each(function () {
+      $(once('page', '.page__content', context)).each(function () {
         const pushGAEvent = (event) => {
           const { dataLayer } = window;
           if (dataLayer) dataLayer.push(event);
         };
-            
+
         // Clicks events
         const elements = document.querySelectorAll('[data-ga-text]');
         elements.forEach((element) =>
@@ -26,7 +24,7 @@
             const region = element.getAttribute('data-ga-region');
             const text = element.getAttribute('data-ga-text');
             const component = element.getAttribute('data-ga-component');
-            
+
             pushGAEvent({
               name: name ? name.toLowerCase() : '',
               event: event ? event.toLowerCase() : '',
@@ -39,31 +37,31 @@
             });
           })
         );
-        
-        /* 
+
+        /*
          * WS2-1317 - Send “close” event for the previously open accordion panel to DL
          */
 
         // Find all accordion divs
         const targetAccordion = document.querySelectorAll('.accordion');
-        
+
         // Loop through each .accordion div and watch for mutation changes
         targetAccordion.forEach((element) => {
 
           const targetA = element;
 
           // Observer config
-          const config = { 
+          const config = {
             attributes: true,
-            attributeOldValue : true, 
-            childList: true, 
+            attributeOldValue : true,
+            childList: true,
             subtree: true };
 
           // Callback function to execute when mutations are observed
-          // All mutations in .accordion divs are observed, so 
+          // All mutations in .accordion divs are observed, so
           const callback = (mutationList, observer) => {
             for (const mutation of mutationList) {
-              
+
               // the closing div
               if (mutation.oldValue === 'card-body collapse show') {
                 var closeDiv = mutation.target;
@@ -87,7 +85,7 @@
                   });
                 }
               }
-            } 
+            }
           };
 
           // Create an observer instance linked to the callback function
@@ -113,11 +111,11 @@
               type === 'checkbox' || type === 'radio button'
                 ? e.target.labels[0].textContent.toLowerCase()
                 : type === 'blur'
-                ? e.target.value.toLowerCase()
-                : [...e.target.selectedOptions].map((option) =>
+                  ? e.target.value.toLowerCase()
+                  : [...e.target.selectedOptions].map((option) =>
                     option.value.toLowerCase()
                   );
-            
+
             pushGAEvent({
               name: name ? name.toLowerCase() : '',
               event: event ? event.toLowerCase() : '',
@@ -132,4 +130,4 @@
       });
     }
   }
-}(jQuery, Drupal));              
+}(jQuery, Drupal, once));

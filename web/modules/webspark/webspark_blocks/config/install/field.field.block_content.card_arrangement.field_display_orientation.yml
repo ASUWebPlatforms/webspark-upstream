@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.card_arrangement
+    - field.storage.block_content.field_display_orientation
+  module:
+    - options
+id: block_content.card_arrangement.field_display_orientation
+field_name: field_display_orientation
+entity_type: block_content
+bundle: card_arrangement
+label: 'Card orientation'
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    value: vertical
+default_value_callback: ''
+settings: {  }
+field_type: list_string

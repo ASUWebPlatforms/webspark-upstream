@@ -8,6 +8,7 @@ seckit_xss:
     default-src: ''
     script-src: ''
     object-src: ''
+    style-src: ''
     img-src: ''
     media-src: ''
     frame-src: ''
@@ -18,7 +19,6 @@ seckit_xss:
     report-uri: /report-csp-violation
     upgrade-req: true
     policy-uri: ''
-    style-src: ''
   x_xss:
     seckit_x_xss_option_disable: Disabled
     seckit_x_xss_option_0: '0'

@@ -1,5 +1,6 @@
 <?php
 
+use Drupal\Core\Form\FormStateInterface;
 /**
  * @file
  * Change the appearance of blocks depending of field values.
@@ -34,7 +35,7 @@ function asu_components_appearance_field_widget_entity_reference_paragraphs_form
 /**
  * Implements hook_form_FORM_ID_alter().
  */
-function asu_components_appearance_form_menu_edit_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state) {
+function asu_components_appearance_form_menu_edit_form_alter(&$form, FormStateInterface $form_state) {
   if (isset($form['id']['#default_value']) && $form['id']['#default_value'] == 'main') {
     // Add information text in the main menu on edit.
     $form['indicatior'] = [

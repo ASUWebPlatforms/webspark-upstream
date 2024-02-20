@@ -1,7 +1,7 @@
 name: ASU Components Appearance
 description: Provides dynamic appearance changes for the ASU components
 type: module
-core_version_requirement: ^8 || ^9
+core_version_requirement: ^8 || ^9 || ^10
 package: ASU
 dependencies:
   - field_group

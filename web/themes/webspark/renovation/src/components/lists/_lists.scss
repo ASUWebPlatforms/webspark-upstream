@@ -6,3 +6,11 @@ ul.uds-list {
     }
   }
 }
+
+ul.uds-list {
+  &.fa-ul {
+    &.maroon li svg {
+      color: $uds-color-base-maroon;
+    }
+  }
+}

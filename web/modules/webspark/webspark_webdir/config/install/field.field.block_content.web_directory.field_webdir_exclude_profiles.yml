@@ -8,7 +8,7 @@ id: block_content.web_directory.field_webdir_exclude_profiles
 field_name: field_webdir_exclude_profiles
 entity_type: block_content
 bundle: web_directory
-label: 'Don''t display profiles'
+label: "Don't display profiles"
 description: 'Comma separated list of ASURITE IDs'
 required: false
 translatable: true

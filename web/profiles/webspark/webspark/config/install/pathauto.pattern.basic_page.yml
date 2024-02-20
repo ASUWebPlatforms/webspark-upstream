@@ -8,14 +8,14 @@ label: 'Basic Page'
 type: 'canonical_entities:node'
 pattern: '[node:menu-link:parents:join-path]/[node:title]'
 selection_criteria:
-  d1642e7f-74b6-4b95-af08-c3ac769274c3:
-    id: node_type
-    bundles:
-      page: page
+  24e2ef1e-b842-4326-9666-87eef4bfd3c9:
+    id: 'entity_bundle:node'
     negate: false
+    uuid: 24e2ef1e-b842-4326-9666-87eef4bfd3c9
     context_mapping:
       node: node
-    uuid: d1642e7f-74b6-4b95-af08-c3ac769274c3
+    bundles:
+      page: page
 selection_logic: and
 weight: -5
 relationships: {  }

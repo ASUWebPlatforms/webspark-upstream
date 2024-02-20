@@ -14,11 +14,11 @@ bundle: menu_sidebar
 mode: default
 content:
   field_menu:
-    weight: 0
+    type: field_menu_tree_formatter
     label: hidden
     settings: {  }
     third_party_settings: {  }
-    type: field_menu_tree_formatter
+    weight: 0
     region: content
 hidden:
   field_spacing_bottom: true

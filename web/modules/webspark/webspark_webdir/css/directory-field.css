@@ -52,3 +52,18 @@
 #profiles-control-options-list .right-control:hover {
   border-bottom: 1px solid rgb(221, 221, 221);
 }
+#asurite-tree-options .jstree-node a.jstree-anchor {
+  cursor: move;
+  display: flex;
+}
+
+#asurite-tree-options .jstree-node {
+  border-radius: 5px;
+  padding: 2px;
+  margin-bottom: 6px;
+  border: 1px solid #ccc;
+}
+
+#asurite-tree-options .jstree-node i {
+  display: none;
+}

@@ -1,8 +1,8 @@
 langcode: en
 status: true
 dependencies: {  }
-id: mobile_video_poster
 label: 'Mobile Video Poster'
+id: mobile_video_poster
 description: 'Used for video poster images in mobile devices.'
 aspect_ratio: '73:100'
 soft_limit_width: null

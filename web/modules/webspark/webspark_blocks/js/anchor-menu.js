@@ -26,12 +26,8 @@
         let navbar = document.getElementById('uds-anchor-menu');
 
         setTimeout(function() {
-          let globalHeader = document.getElementById('global-header');
 
-          // Compensate for a fixed admin toolbar.
-          let offset = getAnchorMenuTop();
-
-          initializeAnchorMenu(globalHeader, navbar, offset);
+          initializeAnchorMenu();
         }, 100);
 
         $('.uds-anchor-menu').show();
@@ -52,63 +48,73 @@
   };
 
 
-  function initializeAnchorMenu(globalHeader, navbar, offset) {
+  function initializeAnchorMenu () {
+    const HEADER_IDS = ['asu-header', 'asuHeader'];
+
+    const globalHeaderId = HEADER_IDS.find((id) => document.getElementById(id));
+    const globalHeader = document.getElementById(globalHeaderId);
+    const navbar = document.getElementById('uds-anchor-menu');
+    const navbarOriginalParent = navbar.parentNode;
+    const navbarOriginalNextSibling = navbar.nextSibling;
     const anchors = navbar.getElementsByClassName('nav-link');
-    const navbarInitialPosition = navbar.getBoundingClientRect().top + window.scrollY;
+    const navbarInitialPosition = navbar.getBoundingClientRect().bottom;
     const anchorTargets = new Map();
     let previousScrollPosition = window.scrollY;
+    let isNavbarAttached = false;  // Flag to track if navbar is attached to header
+    const body = document.body;
 
-    // Cache the anchor target elements by mapping them as a key/pair so don't have to
-    // parse the dom on every scroll event
-    for (anchor of anchors) {
+    let toolbarBar = document.getElementById('toolbar-bar');
+    let toolbarItemAdministrationTray = document.getElementById('toolbar-item-administration-tray');
+
+    let toolbarBarHeight = toolbarBar ? toolbarBar.offsetHeight : 0;
+    let toolbarItemAdministrationTrayHeight = toolbarItemAdministrationTray ? toolbarItemAdministrationTray.offsetHeight : 0;
+
+    let combinedToolbarHeightOffset = toolbarBarHeight + toolbarItemAdministrationTrayHeight;
+
+    // Cache the anchor target elements
+    for (let anchor of anchors) {
       const targetId = anchor.getAttribute('href').replace('#', '');
       const target = document.getElementById(targetId);
       anchorTargets.set(anchor, target);
     }
 
+    const scrollSpy = new bootstrap.ScrollSpy(body, {
+      target: '#uds-anchor-menu nav',
+      rootMargin: '20%'
+    });
+
     window.addEventListener("scroll", function () {
       const navbarY = navbar.getBoundingClientRect().top;
-      const headerHeight = globalHeader.offsetHeight;
+      const headerHeight = globalHeader.classList.contains("scrolled") ?  globalHeader.offsetHeight - 32 : globalHeader.offsetHeight;
 
-      // If scrolling DOWN
+      // If scrolling DOWN and navbar touches the globalHeader
       if (
         window.scrollY > previousScrollPosition &&
-        !navbar.classList.contains('uds-anchor-menu-sticky')
-      ) {
-        if (navbarY > offset && navbarY < headerHeight + offset) {
-          if (window.innerWidth > 610) { globalHeader.style.top = -(headerHeight - navbarY) + 'px' };
-        } else if (navbarY <= offset) {
-          if (window.innerWidth > 610) { globalHeader.style.top = -globalHeader.offsetHeight + 'px' };
-          navbar.classList.add('uds-anchor-menu-sticky');
-          navbar.style.top = getAnchorMenuTop() + 'px';
+        navbarY > 0 && navbarY < headerHeight
+        ) {
+          if (!isNavbarAttached) {
+            // Attach navbar to globalHeader
+            globalHeader.appendChild(navbar);
+            isNavbarAttached = true;
+            navbar.classList.add('uds-anchor-menu-attached');
+          }
+          previousScrollPosition = window.scrollY;
         }
-      }
-      // If scrolling UP
+
+      // If scrolling UP and past the initial navbar position
       if (
         window.scrollY < previousScrollPosition &&
-        window.scrollY < (navbarInitialPosition)
+        (window.scrollY - navbarInitialPosition < (navbarInitialPosition - combinedToolbarHeightOffset) || window.scrollY === 0) && isNavbarAttached
       ) {
-        navbar.classList.remove('uds-anchor-menu-sticky');
-        if (globalHeader.getBoundingClientRect().top < offset) {
-          globalHeader.style.top = getGlobalHeaderTop() + 'px';
-        }
-      }
-
-      for (let [anchor, target] of anchorTargets) {
-        const offsets = navbar.offsetHeight;
-
-        if (
-          target.getBoundingClientRect().top < offsets &&
-          target.getBoundingClientRect().top + target.offsetHeight > offsets
-        ) {
-          anchor.classList.add('active');
-        } else {
-          anchor.classList.remove('active');
-        }
+          // Detach navbar and return to original position
+          navbarOriginalParent.insertBefore(navbar, navbarOriginalNextSibling);
+          isNavbarAttached = false;
+          navbar.classList.remove('uds-anchor-menu-attached');
+          previousScrollPosition = window.scrollY;
       }
 
       previousScrollPosition = window.scrollY;
-    });
+    }, { passive: true });
 
     // Set click event of anchors
     for (let [anchor, anchorTarget] of anchorTargets) {
@@ -117,7 +123,7 @@
 
         // Compensate for height of navbar so content appears below it
         let scrollBy =
-          anchorTarget.getBoundingClientRect().top - navbar.offsetHeight - offset;
+          anchorTarget.getBoundingClientRect().top - navbar.offsetHeight;
 
         // If window hasn't been scrolled, compensate for header shrinking.
         const approximateHeaderSize = 65;
@@ -142,7 +148,7 @@
         e.target.classList.add('active');
       });
     }
-  }
+  };
 
   /**
    * This functions has the ability to calculate
@@ -151,13 +157,10 @@
   function getAnchorMenuTop() {
     let $toolbarBar = $('#toolbar-bar');
     let $toolbarItemAdministrationTray = $('#toolbar-item-administration-tray');
-    let $globalHeader = $('#global-header');
+    let $globalHeader = $('#asuHeader');
 
     // On mobile devices the Anchor Menu must be rendered after the global header.
-    if (window.innerWidth < 610) return $globalHeader.height();
-    // If the Administration toolbar is not rendered
-    // the Anchor menu must be rendered at the top of the page.
-    if (!$toolbarBar.length) return 0;
+    if (window.innerWidth < 610 || !$toolbarBar.length) return $globalHeader.height();
 
     let $navbar = $('#uds-anchor-menu');
     if ($navbar.length && $navbar.hasClass('uds-anchor-menu-sticky')
@@ -165,7 +168,7 @@
       && !$toolbarItemAdministrationTray.hasClass('toolbar-tray-vertical')) {
       // If the Administration toolbar and the Secondary Administration toolbar are rendered
       // the Anchor menu must be rendered after the Secondary Administration toolbar.
-      return $toolbarItemAdministrationTray.height() + $toolbarBar.height();
+      return $toolbarItemAdministrationTray.height() + $toolbarBar.height() + $globalHeader.height();
     }
     else {
       // If the Administration toolbar is rendered and the Secondary Administration toolbar is not rendered

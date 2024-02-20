@@ -6,6 +6,7 @@ namespace Drupal\webspark_webdir;
  * Prepares URLs for API calls to the Web Directory REST API.
  */
 class WebdirApiUrl {
+  protected $settings;
 
   public function __construct()
   {

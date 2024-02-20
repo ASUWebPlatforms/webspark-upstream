@@ -10,45 +10,44 @@ dependencies:
     - field.field.block_content.gallery.field_tooltip
   module:
     - entity_reference_revisions
-    - options
 id: block_content.gallery.default
 targetEntityType: block_content
 bundle: gallery
 mode: default
 content:
   field_anchor_menu_settings:
-    weight: 0
+    type: entity_reference_revisions_entity_view
     label: above
     settings:
       view_mode: default
       link: ''
     third_party_settings: {  }
-    type: entity_reference_revisions_entity_view
+    weight: 0
     region: content
   field_carousel_card:
-    weight: 1
+    type: entity_reference_revisions_entity_view
     label: above
     settings:
       view_mode: default
       link: ''
     third_party_settings: {  }
-    type: entity_reference_revisions_entity_view
+    weight: 1
     region: content
   field_tooltip:
-    weight: 3
+    type: entity_reference_revisions_entity_view
     label: above
     settings:
       view_mode: default
       link: ''
     third_party_settings: {  }
-    type: entity_reference_revisions_entity_view
+    weight: 3
     region: content
   field_type:
-    weight: 2
+    type: list_default
     label: above
     settings: {  }
     third_party_settings: {  }
-    type: list_default
+    weight: 2
     region: content
 hidden:
   field_spacing_bottom: true

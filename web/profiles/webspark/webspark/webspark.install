@@ -189,7 +189,7 @@ function webspark_update_9010(&$sandbox) {
     \Drupal::state()->set('configuration_locked', TRUE);
 
     $entities = [];
-    $entities['user'] = \Drupal::entityQuery('user')->execute();
+    $entities['user'] = \Drupal::entityQuery('user')->accessCheck(FALSE)->execute();
     $result = [];
     foreach ($entities as $type => $entity_list) {
       foreach ($entity_list as $entity_id) {
@@ -330,6 +330,8 @@ function webspark_update_9015(&$sandbox) {
   \Drupal::state()->set('configuration_locked', TRUE);
 }
 
+
+
 /**
  * Update the settings of the FontAwesome module to work with ASUAwesome better.
  */
@@ -342,4 +344,45 @@ function webspark_update_9017(&$sandbox) {
   $role = Role::load('authenticated');
   $role->revokePermission('access fontawesome additional settings');
   $role->trustData()->save();
+}
+/**
+ * WS2-1452 : Install CKeditor 5 module.
+ */
+function webspark_update_9018(&$sandbox) {
+  $module_installer = \Drupal::service("module_installer");
+
+  $module_installer->install(["ckeditor5"]);
+}
+/**
+ * WS2-1452, 1871 & 1915: Update layouts and text formats; install editor_advanced_link; uninstall CKEditor4 and Fakeobjects.
+ */
+function webspark_update_10000(&$sandbox) {
+  if (Drupal::moduleHandler()->moduleExists('fakeobjects')) {
+    Drupal::service('module_installer')->uninstall(['fakeobjects']);
+  }
+  if (Drupal::moduleHandler()->moduleExists('ckeditor')) {
+    Drupal::service('module_installer')->uninstall(['ckeditor']);
+  }
+  if (!Drupal::moduleHandler()->moduleExists('editor_advanced_link')) {
+    Drupal::service('module_installer')->install(['editor_advanced_link']);
+  }
+
+  \Drupal::state()->set('configuration_locked', FALSE);
+  \Drupal::service('webspark.config_manager')->updateConfigFile('editor.editor.basic_html');
+  \Drupal::service('webspark.config_manager')->updateConfigFile('editor.editor.full_html');
+  \Drupal::service('webspark.config_manager')->updateConfigFile('editor.editor.minimal_format');
+  \Drupal::service('webspark.config_manager')->updateConfigFile('filter.format.basic_html');
+  \Drupal::service('webspark.config_manager')->updateConfigFile('filter.format.full_html');
+  \Drupal::service('webspark.config_manager')->updateConfigFile('filter.format.minimal_format');
+  \Drupal::service('webspark.config_manager')->updateConfigFile('core.entity_view_display.node.page.default');
+  \Drupal::state()->set('configuration_locked', TRUE);
+}
+
+/**
+ * Install Layout builder report module
+ */
+function webspark_update_10001(&$sandbox) {
+  if (!Drupal::moduleHandler()->moduleExists('layout_builder_usage_reports')) {
+    Drupal::service('module_installer')->install(['layout_builder_usage_reports']);
+  }
 }

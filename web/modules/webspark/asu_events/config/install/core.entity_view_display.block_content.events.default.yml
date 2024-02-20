@@ -24,16 +24,16 @@ bundle: events
 mode: default
 content:
   field_anchor_menu_settings:
-    weight: 0
+    type: entity_reference_revisions_entity_view
     label: hidden
     settings:
       view_mode: default
       link: ''
     third_party_settings: {  }
-    type: entity_reference_revisions_entity_view
+    weight: 0
     region: content
   field_events_cta:
-    weight: 6
+    type: link
     label: above
     settings:
       trim_length: 80
@@ -42,53 +42,53 @@ content:
       rel: ''
       target: ''
     third_party_settings: {  }
-    type: link
+    weight: 6
     region: content
   field_events_cta_color:
-    weight: 7
+    type: list_default
     label: above
     settings: {  }
     third_party_settings: {  }
-    type: list_default
+    weight: 7
     region: content
   field_events_feed_filter:
     type: string
-    weight: 1
-    region: content
     label: hidden
     settings:
       link_to_entity: false
     third_party_settings: {  }
+    weight: 1
+    region: content
   field_events_header_text_color:
-    weight: 5
+    type: list_default
     label: above
     settings: {  }
     third_party_settings: {  }
-    type: list_default
+    weight: 5
     region: content
   field_events_heading:
-    weight: 4
+    type: string
     label: above
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    type: string
+    weight: 4
     region: content
   field_events_items_to_display:
     type: list_key
-    weight: 2
-    region: content
     label: hidden
     settings: {  }
     third_party_settings: {  }
+    weight: 2
+    region: content
   field_tooltip:
-    weight: 3
+    type: entity_reference_revisions_entity_view
     label: hidden
     settings:
       view_mode: default
       link: ''
     third_party_settings: {  }
-    type: entity_reference_revisions_entity_view
+    weight: 3
     region: content
 hidden:
   field_feed_taxonomy_term: true

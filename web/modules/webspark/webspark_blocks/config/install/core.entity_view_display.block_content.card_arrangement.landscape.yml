@@ -8,6 +8,7 @@ dependencies:
     - field.field.block_content.card_arrangement.field_card_arrangement_display
     - field.field.block_content.card_arrangement.field_card_group
     - field.field.block_content.card_arrangement.field_cta
+    - field.field.block_content.card_arrangement.field_display_orientation
     - field.field.block_content.card_arrangement.field_formatted_text
     - field.field.block_content.card_arrangement.field_heading
     - field.field.block_content.card_arrangement.field_spacing_bottom
@@ -20,8 +21,8 @@ dependencies:
     - text
 third_party_settings:
   layout_builder:
-    allow_custom: false
     enabled: false
+    allow_custom: false
 id: block_content.card_arrangement.landscape
 targetEntityType: block_content
 bundle: card_arrangement
@@ -29,49 +30,50 @@ mode: landscape
 content:
   field_card_group:
     type: entity_reference_revisions_entity_view
-    weight: 1
-    region: content
     label: above
     settings:
       view_mode: landscape
       link: ''
     third_party_settings: {  }
+    weight: 1
+    region: content
   field_cta:
     type: entity_reference_revisions_entity_view
-    weight: 2
-    region: content
     label: above
     settings:
       view_mode: default
       link: ''
     third_party_settings: {  }
+    weight: 2
+    region: content
   field_formatted_text:
     type: text_default
-    weight: 4
-    region: content
     label: above
     settings: {  }
     third_party_settings: {  }
+    weight: 4
+    region: content
   field_heading:
     type: string
-    weight: 3
-    region: content
     label: above
     settings:
       link_to_entity: false
     third_party_settings: {  }
+    weight: 3
+    region: content
   field_tooltip:
     type: entity_reference_revisions_entity_view
-    weight: 0
-    region: content
     label: hidden
     settings:
       view_mode: default
       link: ''
     third_party_settings: {  }
+    weight: 0
+    region: content
 hidden:
   field_anchor_menu_settings: true
   field_card_arrangement_display: true
+  field_display_orientation: true
   field_spacing_bottom: true
   field_spacing_top: true
   field_text_color: true

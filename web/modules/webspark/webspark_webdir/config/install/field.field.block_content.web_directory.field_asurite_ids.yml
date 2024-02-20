@@ -9,7 +9,7 @@ field_name: field_asurite_ids
 entity_type: block_content
 bundle: web_directory
 label: Profiles
-description: '<span class="description form-text text-muted">*Click on a profile to remove it from the list.</span>'
+description: '<span class="description form-text text-muted">*Click on a profile to remove it from the list. Click and drag to reorder list items.</span>'
 required: false
 translatable: false
 default_value: {  }

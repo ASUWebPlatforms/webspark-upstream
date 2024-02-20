@@ -43,6 +43,15 @@ content:
       placeholder: ''
     third_party_settings:
       field_states_ui:
+        field_states:
+          3bc4b8de-cb91-4746-86c1-923bcb267ddc:
+            id: visible
+            data:
+              target: field_card_ranking_image_size
+              comparison: value
+              value: small
+              submit: 'Add Cancel'
+            uuid: 3bc4b8de-cb91-4746-86c1-923bcb267ddc
         form:
           type: ''
           list:
@@ -51,15 +60,6 @@ content:
                 edit: Edit
                 delete: Delete
           add: Add
-        field_states:
-          3bc4b8de-cb91-4746-86c1-923bcb267ddc:
-            uuid: 3bc4b8de-cb91-4746-86c1-923bcb267ddc
-            id: visible
-            data:
-              target: field_card_ranking_image_size
-              comparison: value
-              value: small
-              submit: 'Add Cancel'
       maxlength:
         maxlength_js: 150
         maxlength_js_label: 'Content limited to @limit characters, remaining: <strong>@remaining</strong>'

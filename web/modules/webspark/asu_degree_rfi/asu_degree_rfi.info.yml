@@ -1,7 +1,7 @@
 name: ASU Degrees and RFI
 description: ASU Web Standards 2 Degree listing page, degree details page and RFI form component module.
 type: module
-core_version_requirement: ^8 || ^9
+core_version_requirement: ^8 || ^9 || ^10
 package: ASU
 configure: asu_degree_rfi.asu_degree_rfi_settings
 dependencies:

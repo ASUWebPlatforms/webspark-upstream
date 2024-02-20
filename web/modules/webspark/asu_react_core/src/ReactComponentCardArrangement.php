@@ -19,6 +19,7 @@ class ReactComponentCardArrangement implements ReactComponent {
 
     $settings = [];
     $settings['components'][$block->bundle()][$rand_id] = $card_arrangement;
+    $settings['horizontal'] = $block->field_display_orientation->value == 'horizontal';
     $variables['content']['#attached']['drupalSettings']['asu'] = $settings;
     $variables['content']['#attached']['library'][] = 'asu_react_core/card-arrangement';
   }

@@ -20,9 +20,9 @@ default_value_callback: ''
 settings:
   handler: 'default:paragraph'
   handler_settings:
-    negate: 0
     target_bundles:
       gallery_image: gallery_image
+    negate: 0
     target_bundles_drag_drop:
       card:
         weight: 6
@@ -37,6 +37,6 @@ settings:
         weight: 9
         enabled: false
       gallery_image:
-        enabled: true
         weight: 10
+        enabled: true
 field_type: entity_reference_revisions

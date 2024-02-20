@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_clickable
+    - paragraphs.paragraphs_type.card_with_icon
+id: paragraph.card_with_icon.field_clickable
+field_name: field_clickable
+entity_type: paragraph
+bundle: card_with_icon
+label: Clickable
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

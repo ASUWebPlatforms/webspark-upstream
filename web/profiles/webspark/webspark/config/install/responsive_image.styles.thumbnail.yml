@@ -9,29 +9,29 @@ id: thumbnail
 label: 'Thumbnail (100 x 100)'
 image_style_mappings:
   -
+    image_mapping_type: image_style
+    image_mapping: thumbnail
     breakpoint_id: default.xl
     multiplier: 1x
+  -
     image_mapping_type: image_style
     image_mapping: thumbnail
-  -
     breakpoint_id: default.lg
     multiplier: 1x
+  -
     image_mapping_type: image_style
     image_mapping: thumbnail
-  -
     breakpoint_id: default.md
     multiplier: 1x
+  -
     image_mapping_type: image_style
     image_mapping: thumbnail
-  -
     breakpoint_id: default.sm
     multiplier: 1x
+  -
     image_mapping_type: image_style
     image_mapping: thumbnail
-  -
     breakpoint_id: default.xs
     multiplier: 1x
-    image_mapping_type: image_style
-    image_mapping: thumbnail
 breakpoint_group: renovation
 fallback_image_style: thumbnail

@@ -10,20 +10,20 @@ dependencies:
     - layout_builder
 third_party_settings:
   layout_builder:
-    allow_custom: false
     enabled: false
+    allow_custom: false
 id: paragraph.card_group_degree.landscape
 targetEntityType: paragraph
 bundle: card_group_degree
 mode: landscape
 content:
   field_cards:
-    weight: 0
+    type: entity_reference_revisions_entity_view
     label: hidden
     settings:
       view_mode: landscape
       link: ''
     third_party_settings: {  }
-    type: entity_reference_revisions_entity_view
+    weight: 0
     region: content
 hidden: {  }

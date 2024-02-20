@@ -3,6 +3,8 @@ webspark_blocks:
   css:
     component:
       css/webspark-blocks.css: {}
+  js:
+    js/card-arrangement.js: {}
 
 anchor_menu:
   dependencies:

@@ -18,43 +18,45 @@ third_party_settings:
         - field_anchor_menu_settings
         - field_spacing_top
         - field_spacing_bottom
+      label: 'Appearance Settings'
+      region: content
       parent_name: ''
       weight: 5
       format_type: tab
-      region: content
       format_settings:
-        id: ''
         classes: ''
-        description: ''
+        id: ''
         formatter: closed
+        description: ''
         required_fields: true
-      label: 'Appearance Settings'
     group_help_text:
       children:
         - field_carousel_card
+      label: 'Note: All carousel images have to be the same aspect ratio.'
+      region: content
       parent_name: ''
       weight: 3
       format_type: html_element
-      region: content
       format_settings:
+        classes: ''
+        id: ''
         element: H3
         show_label: true
         label_element: 'Note: All carousel images have to be the same aspect ratio.'
         label_element_classes: ''
-        required_fields: true
         attributes: ''
         effect: none
         speed: fast
-        id: ''
-        classes: ''
-      label: 'Note: All carousel images have to be the same aspect ratio.'
+        required_fields: true
 id: block_content.gallery.default
 targetEntityType: block_content
 bundle: gallery
 mode: default
 content:
   field_anchor_menu_settings:
+    type: entity_reference_paragraphs
     weight: 26
+    region: content
     settings:
       title: Paragraph
       title_plural: Paragraphs
@@ -63,10 +65,10 @@ content:
       form_display_mode: default
       default_paragraph_type: ''
     third_party_settings: {  }
-    type: entity_reference_paragraphs
-    region: content
   field_carousel_card:
+    type: entity_reference_paragraphs
     weight: 2
+    region: content
     settings:
       title: Paragraph
       title_plural: Paragraphs
@@ -75,22 +77,22 @@ content:
       form_display_mode: default
       default_paragraph_type: ''
     third_party_settings: {  }
-    type: entity_reference_paragraphs
-    region: content
   field_spacing_bottom:
+    type: options_select
     weight: 28
+    region: content
     settings: {  }
     third_party_settings: {  }
-    type: options_select
-    region: content
   field_spacing_top:
+    type: options_select
     weight: 27
+    region: content
     settings: {  }
     third_party_settings: {  }
-    type: options_select
-    region: content
   field_tooltip:
+    type: entity_reference_paragraphs
     weight: 4
+    region: content
     settings:
       title: Paragraph
       title_plural: Paragraphs
@@ -99,8 +101,6 @@ content:
       form_display_mode: default
       default_paragraph_type: _none
     third_party_settings: {  }
-    type: entity_reference_paragraphs
-    region: content
   info:
     type: string_textfield
     weight: 0

@@ -4,12 +4,12 @@ dependencies:
   config:
     - field.storage.node.field_degree_list_intro_content
     - node.type.degree_listing_page
-  enforced:
-    module:
-      - asu_degree_rfi
   module:
     - allowed_formats
     - text
+  enforced:
+    module:
+      - asu_degree_rfi
 third_party_settings:
   allowed_formats:
     basic_html: basic_html
@@ -26,5 +26,6 @@ required: true
 translatable: false
 default_value: {  }
 default_value_callback: ''
-settings: {  }
+settings:
+  allowed_formats: {  }
 field_type: text_long

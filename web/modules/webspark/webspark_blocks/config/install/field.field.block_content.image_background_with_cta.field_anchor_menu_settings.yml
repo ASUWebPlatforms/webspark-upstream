@@ -20,16 +20,16 @@ default_value_callback: ''
 settings:
   handler: 'default:paragraph'
   handler_settings:
-    negate: 0
     target_bundles:
       anchor_menu_settings: anchor_menu_settings
+    negate: 0
     target_bundles_drag_drop:
       accordion_panel:
         weight: 20
         enabled: false
       anchor_menu_settings:
-        enabled: true
         weight: 21
+        enabled: true
       blockquote:
         weight: 22
         enabled: false

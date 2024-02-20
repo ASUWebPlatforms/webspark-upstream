@@ -4,7 +4,8 @@
  * @file
  * Contains asu_degree_rfi.module.
  */
-
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Render\Element;
 use Drupal\Core\Routing\RouteMatchInterface;
 use Drupal\Core\Entity\ContentEntityInterface;
 use Drupal\field\Entity\FieldStorageConfig;
@@ -49,7 +50,7 @@ function asu_degree_rfi_mail($key, &$message, $params) {
 /**
  * Implements hook_form_alter().
  */
-function asu_degree_rfi_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
+function asu_degree_rfi_form_alter(&$form, FormStateInterface $form_state, $form_id) {
 
   $intro_markup = 'Configure your @type page with this form.
     Non-required fields represent optional overrides or additional
@@ -114,12 +115,12 @@ function asu_degree_rfi_form_alter(&$form, \Drupal\Core\Form\FormStateInterface 
 /**
  * Implements hook_field_widget_multivalue_form_alter().
  */
-function asu_degree_rfi_field_widget_multivalue_form_alter(array &$elements, \Drupal\Core\Form\FormStateInterface $form_state, array $context) {
+function asu_degree_rfi_field_widget_multivalue_form_alter(array &$elements, FormStateInterface $form_state, array $context) {
   // Additional anchor field help text needs some help for a better UX.
   if (isset($elements['#field_name']) && $elements['#field_name'] == 'field_deg_dtl_anchor_addl_anchor') {
     // If this is a multivalue field, we want to modify every instance of the
     // field on the form, so we iterate.
-    foreach (\Drupal\Core\Render\Element::children($elements) as $key => $child) {
+    foreach (Element::children($elements) as $key => $child) {
       // Only act on children from numeric key. I.e. skip add_more.
       if (is_numeric($child)) {
         $elements[$key]['uri']['#title'] = t('Anchor target');

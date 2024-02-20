@@ -1,8 +1,7 @@
-(function ($, Drupal) {
+(function ($, Drupal, once) {
   Drupal.behaviors.asuFooter = {
     attach: function (context, settings) {
-      $('#asu-footer')
-        .once('asu-footer')
+      $(once('asu-footer', '#asu-footer', context))
         .each(function () {
           const pushGAEvent = (args) => {
             const { dataLayer } = window;
@@ -32,4 +31,4 @@
       );
     }
   }
-}(jQuery, Drupal));
+}(jQuery, Drupal, once));

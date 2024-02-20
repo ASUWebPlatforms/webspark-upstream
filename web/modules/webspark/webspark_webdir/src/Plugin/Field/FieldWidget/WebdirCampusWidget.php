@@ -29,9 +29,9 @@ class WebdirCampusWidget extends WidgetBase {
       '#type' => 'hidden',
       '#default_value' => $value,
       '#attributes' => array('class' => array('campus-tree')),
-      '#prefix' => '<div id="campus-tree-options" style="width: 100%"></div>',
+      '#prefix' => '<div id="campus-tree-options" style="width: 100%" class="ck-reset"></div>',
     ];
-    
+
     // Add the required libraries.
     $element['#attached']['library'][] = 'webspark_webdir/jstree';
     $element['#attached']['library'][] = 'webspark_webdir/campus_field';

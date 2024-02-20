@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.web_directory
+    - field.storage.block_content.field_webdir_disable_alpha
+id: block_content.web_directory.field_webdir_disable_alpha
+field_name: field_webdir_disable_alpha
+entity_type: block_content
+bundle: web_directory
+label: 'Disable alphabetical filter'
+description: 'Displaying the alphabetical filter is recommended to enhance the usability of large listings. For small listings it may be disabled.'
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean
