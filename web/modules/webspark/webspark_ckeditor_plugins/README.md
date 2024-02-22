@@ -1,7 +1,3 @@
-
-
-
-
 # Webspark ckeditor plugins module
 
 ## Description
@@ -10,7 +6,22 @@ Webspark ckeditor plugins module comes with a number of plugins for the ckeditor
 add or alter the functionalities of the rich text editor when creating new
 content.
 
-## Plugins
+TODO: Currently the Webspark CKEditor Plugins module supports CKEditor 4 and 5 versions
+of plugins. When we move to Drupal 10, the CKEditor 4 plugins can be removed, and this
+README can be updated to be version 5 specific. The document linked in the section
+below will be helpful in distinguishing between the 4 versions of plugins when it is
+time to clean up.
+
+## CKEditor 5 Plugins
+
+Architecture of CKEditor 4 and 5 plugins are described in the
+https://docs.google.com/document/d/1gRWqWQ4xy_V_GUUIX2zs903IG7Ku0pP6A4YAf17BXkU/edit
+document from the WS2-1452 effort.
+
+The purpose of each of our version 5 plugins is identical to the verion 4 instances,
+though the details below may vary some.
+
+## CKEditor 4 Plugins
 
 ### 1. WebsparkAdvancedImage
 #### 1.1 Description

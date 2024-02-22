@@ -2,6 +2,8 @@
 
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\views\ViewExecutable;
+use Drupal\media\MediaForm;
+use Drupal\views\Form\ViewsForm;
 
 /**
  * Implements hook_theme_suggestions_HOOK_alter().
@@ -25,7 +27,7 @@ function webspark_cropper_theme_form_media_form_alter(&$form, FormStateInterface
     // introduces a footer region to these forms which will allow for us to
     // display a top border over the published checkbox by defining a
     // media-edit-form.html.twig template the same way node does.
-    $form['#attached']['library'][] = 'seven/media-form';
+    $form['#attached']['library'][] = 'claro/media-form';
   }
 }
 
@@ -33,7 +35,7 @@ function webspark_cropper_theme_form_media_form_alter(&$form, FormStateInterface
  * Implements hook_form_FORM_ID_alter() for language_content_settings_form().
  */
 function webspark_cropper_theme_form_language_content_settings_form_alter(array &$form, FormStateInterface $form_state) {
-  $form['#attached']['library'][] = 'seven/layout_builder_content_translation_admin';
+  $form['#attached']['library'][] = 'content_translation/drupal.content_translation.admin';
 }
 
 /**
@@ -61,17 +63,7 @@ function webspark_cropper_theme_form_alter(array &$form, FormStateInterface $for
       $form['header']['media_bulk_form']['#attributes']['class'][] = 'media-library-views-form__bulk_form';
     }
     $form['actions']['submit']['#attributes']['class'] = ['media-library-select'];
-
-    // This conditional exists because the media-library-views-form class is
-    // currently added by Classy, but Seven will eventually not use Classy as a
-    // base theme.
-    // @todo remove conditional, keep class addition in
-    //   https://drupal.org/node/3110137
-    // @see https://www.drupal.org/node/3109287
-    // @see classy_form_alter()
-    if (!isset($form['#attributes']['class']) || !in_array('media-library-views-form', $form['#attributes']['class'])) {
-      $form['#attributes']['class'][] = 'media-library-views-form';
-    }
+    $form['#attributes']['class'][] = 'media-library-views-form';
   }
   // Add after build to add a CSS class to the form actions.
   if ($form_id === 'views_exposed_form' && strpos($form['#id'], 'views-exposed-form-media-library-widget') === 0) {
@@ -96,7 +88,7 @@ function webspark_cropper_theme_form_alter(array &$form, FormStateInterface $for
  */
 function webspark_cropper_theme_form_media_library_add_form_alter(array &$form, FormStateInterface $form_state) {
   $form['#attributes']['class'][] = 'media-library-add-form';
-  $form['#attached']['library'][] = 'seven/media_library';
+  $form['#attached']['library'][] = 'claro/media_library.theme';
 
   // If there are unsaved media items, apply styling classes to various parts
   // of the form.
@@ -215,7 +207,7 @@ function webspark_cropper_theme_preprocess_fieldset__media_library_widget(array 
 function webspark_cropper_theme_theme_registry_alter(&$theme_registry) {
     $media_library_theme_reset_path = \Drupal::service('extension.list.module')->getPath('webspark_cropper_theme') . '/templates';
 
-  // Add media-library templates directly copied from Classy/Seven.
+  // Add media-library templates directly copied from Claro.
   $theme_registry['views_view__media_library__widget'] = $theme_registry['views_view'];
   $theme_registry['views_view__media_library__widget']['template'] = 'views-view--media-library';
   $theme_registry['views_view__media_library__widget']['path'] = $media_library_theme_reset_path;
@@ -232,36 +224,24 @@ function webspark_cropper_theme_theme_registry_alter(&$theme_registry) {
   $theme_registry['details__media_library_add_form_selected_media']['template'] = 'details--media-library-add-form-selected-media';
   $theme_registry['details__media_library_add_form_selected_media']['path'] = $media_library_theme_reset_path;
 
-  $theme_registry['fieldset__media_library_widget'] = $theme_registry['fieldset__media_library_widget'];
   $theme_registry['fieldset__media_library_widget']['template'] = 'fieldset--media-library-widget';
   $theme_registry['fieldset__media_library_widget']['path'] = $media_library_theme_reset_path;
 
-  $theme_registry['fieldset__media_library_widget'] = $theme_registry['fieldset__media_library_widget'];
-  $theme_registry['fieldset__media_library_widget']['template'] = 'fieldset--media-library-widget';
-  $theme_registry['fieldset__media_library_widget']['path'] = $media_library_theme_reset_path;
-
-  $theme_registry['media_library_item__widget'] = $theme_registry['media_library_item__widget'];
   $theme_registry['media_library_item__widget']['template'] = 'media-library-item';
   $theme_registry['media_library_item__widget']['path'] = $media_library_theme_reset_path;
 
-  $theme_registry['media_library_item__small'] = $theme_registry['media_library_item__small'];
   $theme_registry['media_library_item__small']['template'] = 'media-library-item--small';
   $theme_registry['media_library_item__small']['path'] = $media_library_theme_reset_path;
 
+  $theme_registry['links__media_library_menuclassy_']['template'] = 'links__media_library_menuclassy_';
+  $theme_registry['links__media_library_menuclassy_']['path'] = $media_library_theme_reset_path;
 
-    $theme_registry['links__media_library_menuclassy_'] = $theme_registry['links__media_library_menuclassy_'];
-    $theme_registry['links__media_library_menuclassy_']['template'] = 'links__media_library_menuclassy_';
-    $theme_registry['links__media_library_menuclassy_']['path'] = $media_library_theme_reset_path;
-
-  $theme_registry['item_list__media_library_add_form_media_list'] = $theme_registry['item_list__media_library_add_form_media_list'];
   $theme_registry['item_list__media_library_add_form_media_list']['template'] = 'item-list--media-library-add-form-media-list';
   $theme_registry['item_list__media_library_add_form_media_list']['path'] = $media_library_theme_reset_path;
 
-  $theme_registry['media_library_wrapper'] = $theme_registry['media_library_wrapper'];
   $theme_registry['media_library_wrapper']['template'] = 'media-library-wrapper';
   $theme_registry['media_library_wrapper']['path'] = $media_library_theme_reset_path;
 
-  $theme_registry['media_library_item'] = $theme_registry['media_library_item'];
   $theme_registry['media_library_item']['template'] = 'media-library-item';
   $theme_registry['media_library_item']['path'] = $media_library_theme_reset_path;
 
@@ -273,7 +253,6 @@ function webspark_cropper_theme_theme_registry_alter(&$theme_registry) {
   $theme_registry['container__media_library_widget_selection']['template'] = 'container--media-library-widget-selection';
   $theme_registry['container__media_library_widget_selection']['path'] = $media_library_theme_reset_path;
 
-  $theme_registry['media__media_library'] = $theme_registry['media__media_library'];
   $theme_registry['media__media_library']['template'] = 'media--media-library';
   $theme_registry['media__media_library']['path'] = $media_library_theme_reset_path;
 
@@ -331,20 +310,6 @@ function webspark_cropper_theme_views_pre_render(ViewExecutable $view) {
         $add_classes($view->display_handler->options['css_class'], ['media-library-view--widget']);
       }
     }
-  }
-}
-
-/**
- * Implements hook_library_info_alter().
- */
-function webspark_cropper_theme_library_info_alter(&$libraries) {
-
-  if (isset($libraries['seven.drupal.dialog'])) {
-    // We have a need to override the modal css in Drupal. Here we are altering
-    // the path to the css and replacing it in this module with a new version.
-    $updated_css_path = '/' . \Drupal::service('extension.list.module')->getPath('webspark_cropper_theme');
-    unset($libraries['seven.drupal.dialog']['css']);
-    $libraries['seven.drupal.dialog']['css']['theme'] = [$updated_css_path . '/css/dialog-overrides.css' => []];
   }
 }
 

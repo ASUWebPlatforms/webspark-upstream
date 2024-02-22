@@ -10,10 +10,12 @@ body {
 }
 
 /* If #toolbar_administration our js adds asu_brand-toolbar-*-compat classes */
-#ws2HeaderContainer.asu-brand-toolbar-header-tray-open-compat header {
+#ws2HeaderContainer.asu-brand-toolbar-header-tray-open-compat header,
+#ws2HeaderContainer.asu-brand-toolbar-header-tray-open-compat div#asuHeader {
   top:79px;
 }
-#ws2HeaderContainer.asu-brand-toolbar-header-tray-closed-compat header {
+#ws2HeaderContainer.asu-brand-toolbar-header-tray-closed-compat header,
+#ws2HeaderContainer.asu-brand-toolbar-header-tray-closed-compat div#asuHeader {
   top:39px;
 }
 body.toolbar-horizontal.toolbar-tray-open {
@@ -24,7 +26,9 @@ body.toolbar-horizontal {
 }
 /* vertical variations */
 #ws2HeaderContainer.asu-brand-toolbar-header-tray-open-compat-vertical header,
-#ws2HeaderContainer.asu-brand-toolbar-header-tray-closed-compat-vertical header {
+#ws2HeaderContainer.asu-brand-toolbar-header-tray-closed-compat-vertical header,
+#ws2HeaderContainer.asu-brand-toolbar-header-tray-open-compat-vertical div#asuHeader,
+#ws2HeaderContainer.asu-brand-toolbar-header-tray-closed-compat-vertical div#asuHeader {
   top:39px;
   z-index: 1200 !important;
 }
@@ -47,24 +51,6 @@ body.toolbar-vertical.toolbar-tray-open {
   padding-top:158px;
 }
 
-/* Layout Builder dialogs for content editing UI need to be adjusted. */
-.ui-dialog.ui-widget.ui-widget-content.ui-dialog-position-side {
-  top: 233px !important;
-  padding-bottom: 158px; /* So we don't have dialog content clipped off */
-}
-/* And adjust internal padding impacted by tweak above */
-.ui-dialog.ui-widget.ui-widget-content.ui-dialog-position-side
-.ui-front.ui-dialog-content.ui-widget-content {
-  padding-top: 4px !important;
-}
-
-/* Media modal uses code that adapts where it is within the page based on
-  viewport size and it can end up under the header. Solve it simply using
-  z-index. */
-body .ui-dialog.ui-widget.ui-widget-content.media-library-widget-modal {
-  z-index: 1500 !important;
-}
-
 /* Body adjustments for mobile 992px breakpoint */
 @media only screen and (max-width: 992px) {
   /* Default padding for header for anonymous users. Overridden by rules below
@@ -84,7 +70,8 @@ body .ui-dialog.ui-widget.ui-widget-content.media-library-widget-modal {
   }
 
   /* Guard against css bleeding in from CMS */
-  #ws2HeaderContainer header .navbar-container ul.navlist li {
+  #ws2HeaderContainer header .navbar-container ul.navlist li,
+  #ws2HeaderContainer div .navbar-container ul.navlist li {
     max-width: 100% !important;
   }
 

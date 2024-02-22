@@ -22,66 +22,66 @@ bundle: hero
 mode: default
 content:
   field_heading:
-    weight: 5
+    type: string
     label: hidden
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    type: string
+    weight: 5
     region: content
   field_hero_background_color:
-    weight: 6
+    type: list_default
     label: hidden
     settings: {  }
     third_party_settings: {  }
-    type: list_default
+    weight: 6
     region: content
   field_hero_size:
-    weight: 1
+    type: list_key
     label: hidden
     settings: {  }
     third_party_settings: {  }
-    type: list_key
+    weight: 1
     region: content
   field_hero_unformatted_text:
-    weight: 2
+    type: basic_string
     label: hidden
     settings: {  }
     third_party_settings: {  }
-    type: basic_string
+    weight: 2
     region: content
   field_media:
     type: entity_reference_entity_view
-    weight: 0
     label: hidden
     settings:
       view_mode: hero
       link: false
     third_party_settings: {  }
+    weight: 0
     region: content
   field_sub_heading:
-    weight: 7
+    type: string
     label: hidden
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    type: string
+    weight: 7
     region: content
   field_sub_heading_background:
-    weight: 8
+    type: list_key
     label: hidden
     settings: {  }
     third_party_settings: {  }
-    type: list_key
+    weight: 8
     region: content
   field_two_cta:
     type: entity_reference_revisions_entity_view
-    weight: 4
     label: above
     settings:
       view_mode: default
       link: ''
     third_party_settings: {  }
+    weight: 4
     region: content
 hidden:
   field_spacing_bottom: true

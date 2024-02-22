@@ -1,14 +1,14 @@
 langcode: en
 status: true
 dependencies:
-  enforced:
-    module:
-      - asu_degree_rfi
   config:
     - field.storage.paragraph.field_degree_nxtsteps_btn_color
     - paragraphs.paragraphs_type.degree_details_next_steps
   module:
     - options
+  enforced:
+    module:
+      - asu_degree_rfi
 id: paragraph.degree_details_next_steps.field_degree_nxtsteps_btn_color
 field_name: field_degree_nxtsteps_btn_color
 entity_type: paragraph

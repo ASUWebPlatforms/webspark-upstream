@@ -4,6 +4,8 @@
 
 namespace Drupal\asu_brand\Plugin\Block;
 
+use Drupal\system\Entity\Menu;
+use Drupal\menu_link_content\Plugin\Menu\MenuLinkContent;
 use Drupal\Core\Block\BlockBase;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Menu\MenuTreeParameters;
@@ -164,7 +166,7 @@ class AsuBrandHeaderBlock extends BlockBase {
     $form = parent::blockForm($form, $form_state);
 
     // Get system menu options.
-    $menu_options = array_map(function ($menu) { return $menu->label(); }, \Drupal\system\Entity\Menu::loadMultiple());
+    $menu_options = array_map(function ($menu) { return $menu->label(); }, Menu::loadMultiple());
     asort($menu_options);
 
     // Currently unimplemented config items for props:
@@ -600,7 +602,7 @@ class AsuBrandHeaderBlock extends BlockBase {
     $link_type = null;
     $is_button = null;
     $button_color = null;
-    if ($link instanceof \Drupal\menu_link_content\Plugin\Menu\MenuLinkContent) {
+    if ($link instanceof MenuLinkContent) {
       $link_uuid = $link->getDerivativeId();
       $link_entity = \Drupal::service('entity.repository')
         ->loadEntityByUuid('menu_link_content', $link_uuid);
@@ -624,6 +626,11 @@ class AsuBrandHeaderBlock extends BlockBase {
       if ($tripwire && ($v['type'] === "heading" || $v['type'] === "column break")) {
         $col++;
       }
+
+      // "stackable heading" is a concept on the module side only. Converting
+      // to "heading" now for use in props. See WS2-1486
+      $v['type'] = ($v['type'] === "stackable heading") ? "heading" : $v['type'];
+
       $childItemCols[$col][] = $v;
       // We want first heading/column to stay in 0, so trigger here.
       // All subsequent passes will use new columns.

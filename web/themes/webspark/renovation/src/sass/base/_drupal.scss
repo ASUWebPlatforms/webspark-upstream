@@ -29,7 +29,7 @@ body,
   height: 100%;
 }
 
-.page-wrapper-webspark main {
+.page-wrapper-webspark:first-child {
   @include media-breakpoint-down(md) {
     margin-top: 4px;
   }

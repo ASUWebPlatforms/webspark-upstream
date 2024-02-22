@@ -54,6 +54,12 @@
             // Recreate tree with the default values.
             update_tree(values);
           });
+
+          $("#asurite-tree-options").on('move_node.jstree', () => {
+              const sortableList = $('#asurite-tree-options li');
+              const idString = Array.from(sortableList).map(node => node.id).toString();
+              $('.asurite-tree').val(idString);
+          });
         });
       }
     }
@@ -82,18 +88,19 @@
       $('#asurite-tree-options').jstree({
         'core' : {
           'data' : converted_json,
-          'themes' : { dots: false }
+          'themes' : { dots: false },
+          'check_callback' : true
         },
         types: {
           "person": {
-            "icon" : "fa fa-user"
+            "icon" : "fa fa-user",
+            "valid_children" : [],
           },
           "default" : {
           }
         },
-        "plugins" : [ "types" ]
+        "plugins" : [ "types", "dnd" ],
       });
-
     }, "json");
 
   }

@@ -2,6 +2,7 @@
 
 namespace Drupal\asu_degree_rfi\Plugin\Block;
 
+use Drupal\node\NodeInterface;
 use Drupal\Core\Block\BlockBase;
 use Drupal\Core\Cache\Cache;
 use Drupal\Core\Url;
@@ -45,7 +46,7 @@ class AsuDegreeRfiDegreeDetailsBlock extends BlockBase {
     $config = $this->getConfiguration();
 
     $node = \Drupal::routeMatch()->getParameter('node');
-    if ($node && !($node instanceof \Drupal\node\NodeInterface || $node->bundle() == 'degree_detail_page')) {
+    if ($node && !($node instanceof NodeInterface || $node->bundle() == 'degree_detail_page')) {
       return;
     }
     if (empty($node)) {

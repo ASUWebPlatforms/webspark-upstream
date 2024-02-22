@@ -24,67 +24,67 @@ mode: default
 content:
   field_anchor_menu_settings:
     type: entity_reference_revisions_entity_view
-    weight: 0
-    region: content
     label: above
     settings:
       view_mode: default
       link: ''
     third_party_settings: {  }
+    weight: 0
+    region: content
   field_bg_color_content_sections:
-    weight: 7
+    type: list_key
     label: hidden
     settings: {  }
     third_party_settings: {  }
-    type: list_key
+    weight: 7
     region: content
   field_content_position:
-    weight: 5
+    type: list_key
     label: hidden
     settings: {  }
     third_party_settings: {  }
-    type: list_key
+    weight: 5
     region: content
   field_formatted_text:
-    weight: 4
+    type: text_default
     label: hidden
     settings: {  }
     third_party_settings: {  }
-    type: text_default
+    weight: 4
     region: content
   field_heading:
-    weight: 2
+    type: string
     label: hidden
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    type: string
+    weight: 2
     region: content
   field_media:
-    weight: 1
+    type: entity_reference_entity_view
     label: hidden
     settings:
-      link: true
       view_mode: default
+      link: true
     third_party_settings: {  }
-    type: entity_reference_entity_view
+    weight: 1
     region: content
   field_sub_heading:
-    weight: 3
+    type: string
     label: hidden
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    type: string
+    weight: 3
     region: content
   field_two_cta:
-    weight: 6
+    type: entity_reference_revisions_entity_view
     label: hidden
     settings:
       view_mode: default
       link: ''
     third_party_settings: {  }
-    type: entity_reference_revisions_entity_view
+    weight: 6
     region: content
 hidden:
   field_spacing_bottom: true

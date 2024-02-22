@@ -11,23 +11,23 @@ dependencies:
     - layout_builder
 third_party_settings:
   layout_builder:
-    allow_custom: false
     enabled: false
+    allow_custom: false
 id: media.cropped_image_sqare.small
 targetEntityType: media
 bundle: cropped_image_sqare
 mode: small
 content:
   field_media_image:
+    type: image
     label: visually_hidden
-    weight: 0
     settings:
-      image_style: block_image_1_1_sml
       image_link: ''
+      image_style: block_image_1_1_sml
       image_loading:
         attribute: lazy
     third_party_settings: {  }
-    type: image
+    weight: 0
     region: content
 hidden:
   created: true

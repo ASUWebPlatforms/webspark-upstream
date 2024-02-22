@@ -1,7 +1,4 @@
 {
-    "drupal/fakeobjects": {
-        "3002953: Fix js plugin seems to be missing": "https://www.drupal.org/files/issues/2020-06-22/fakeobjects-missing_plugin-3002953-5.patch"
-    },
     "drupal/core": {
         "#2951547: Fix issue with layout overflow": "https://www.drupal.org/files/issues/2022-07-13/f245f21ea664f22c81d8d28c6f0f4a42fb9a5890.patch",
         "3109650: Refactor Xss::attributes() to allow filtering of style attribute values": "https://www.drupal.org/files/issues/2021-09-22/core-9.2-xss-refactor_filter_attributes-3109650-43.patch"
@@ -14,6 +11,11 @@
     },
     "drupal/linkit": {
         "2877535: Fix issue with path alias": "https://www.drupal.org/files/issues/2022-06-07/2877535-39.patch"
+    },
+    "drupal/fontawesome": {
+        "#3274028: Fixing CKEditor 5 compatibility": "https://www.drupal.org/files/issues/2024-01-17/ckeditor_compatibility_issue_0.patch",
+        "#3274028: Fixing CKEditor 5 inline Icons": "https://www.drupal.org/files/issues/2024-01-16/fix_inline_icons_0.patch",
+        "3417901: Breaking change introduced in a38b572": "https://www.drupal.org/files/issues/2024-01-29/fontawesome-prefixbug-3417901-1.patch"
     },
     "drupal/cas": {
         "3318382: TypeError: in_array(): Argument #2 ($haystack) must be of type array": "https://www.drupal.org/files/issues/2022-10-31/cas-null-in_array-3318382-0.patch"

@@ -1,0 +1,23 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_caption
+    - filter.format.basic_html
+    - paragraphs.paragraphs_type.image_based_card
+  module:
+    - text
+id: paragraph.image_based_card.field_caption
+field_name: field_caption
+entity_type: paragraph
+bundle: image_based_card
+label: Caption
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats:
+    - basic_html
+field_type: text_long

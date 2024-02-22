@@ -3,6 +3,7 @@ status: true
 dependencies:
   config:
     - block_content.type.web_directory
+    - field.field.block_content.web_directory.field_anchor_menu_settings
     - field.field.block_content.web_directory.field_asurite_ids
     - field.field.block_content.web_directory.field_component_type
     - field.field.block_content.web_directory.field_default_sort
@@ -11,13 +12,13 @@ dependencies:
     - field.field.block_content.web_directory.field_filter_employee
     - field.field.block_content.web_directory.field_filter_expertise
     - field.field.block_content.web_directory.field_filter_title
-    - field.field.block_content.web_directory.field_ids
-    - field.field.block_content.web_directory.field_news_items_to_display
     - field.field.block_content.web_directory.field_people_add
     - field.field.block_content.web_directory.field_people_add_department
     - field.field.block_content.web_directory.field_people_list
     - field.field.block_content.web_directory.field_people_search
-    - field.field.block_content.web_directory.field_show_title
+    - field.field.block_content.web_directory.field_spacing_bottom
+    - field.field.block_content.web_directory.field_spacing_top
+    - field.field.block_content.web_directory.field_webdir_disable_alpha
     - field.field.block_content.web_directory.field_webdir_exclude_profiles
     - field.field.block_content.web_directory.field_webdir_items_to_display
     - field.field.block_content.web_directory.field_webdir_use_pager
@@ -27,6 +28,7 @@ bundle: web_directory
 mode: default
 content: {  }
 hidden:
+  field_anchor_menu_settings: true
   field_asurite_ids: true
   field_component_type: true
   field_default_sort: true
@@ -35,13 +37,13 @@ hidden:
   field_filter_employee: true
   field_filter_expertise: true
   field_filter_title: true
-  field_ids: true
-  field_news_items_to_display: true
   field_people_add: true
   field_people_add_department: true
   field_people_list: true
   field_people_search: true
-  field_show_title: true
+  field_spacing_bottom: true
+  field_spacing_top: true
+  field_webdir_disable_alpha: true
   field_webdir_exclude_profiles: true
   field_webdir_items_to_display: true
   field_webdir_use_pager: true

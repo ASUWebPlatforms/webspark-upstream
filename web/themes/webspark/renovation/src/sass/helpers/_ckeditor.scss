@@ -68,3 +68,22 @@ drupal-media {
 .media-library-item__edit {
   z-index: 1;
 }
+
+// This property was added because .ck-content hr was overriden current webspark divider.
+hr.copy-divider {
+  height: 0.5rem !important;
+  background-color: #ffc627 !important;
+  max-width: 16rem !important;
+}
+
+a.btn-gold, a.btn-gray {
+  span{
+    color: $uds-color-font-dark-base !important;
+  }
+}
+
+a.btn-maroon, a.btn-dark {
+  span{
+    color: $uds-color-font-light-base !important;
+  }
+}

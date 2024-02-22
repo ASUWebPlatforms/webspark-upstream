@@ -1,12 +1,12 @@
 langcode: en
 status: true
 dependencies:
-  enforced:
-    module:
-      - asu_degree_rfi
   config:
     - field.storage.paragraph.field_degree_nxtstep_card_contnt
     - paragraphs.paragraphs_type.degree_details_next_steps
+  enforced:
+    module:
+      - asu_degree_rfi
 id: paragraph.degree_details_next_steps.field_degree_nxtstep_card_contnt
 field_name: field_degree_nxtstep_card_contnt
 entity_type: paragraph

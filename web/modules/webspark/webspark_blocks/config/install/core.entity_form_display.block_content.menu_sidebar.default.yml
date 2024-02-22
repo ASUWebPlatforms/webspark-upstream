@@ -15,44 +15,44 @@ third_party_settings:
       children:
         - field_spacing_top
         - field_spacing_bottom
+      label: 'Appearance Settings'
+      region: content
       parent_name: ''
       weight: 2
       format_type: tab
-      region: content
       format_settings:
-        id: ''
         classes: ''
-        description: ''
+        id: ''
         formatter: closed
+        description: ''
         required_fields: true
-      label: 'Appearance Settings'
 id: block_content.menu_sidebar.default
 targetEntityType: block_content
 bundle: menu_sidebar
 mode: default
 content:
   field_menu:
+    type: field_menu_tree_widget
     weight: 1
+    region: content
     settings:
       max_depth: 0
       menu_item_key: ''
       include_root: false
       menu_title: ''
     third_party_settings: {  }
-    type: field_menu_tree_widget
-    region: content
   field_spacing_bottom:
+    type: options_select
     weight: 4
+    region: content
     settings: {  }
     third_party_settings: {  }
-    type: options_select
-    region: content
   field_spacing_top:
+    type: options_select
     weight: 3
+    region: content
     settings: {  }
     third_party_settings: {  }
-    type: options_select
-    region: content
   info:
     type: string_textfield
     weight: 0

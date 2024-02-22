@@ -12,19 +12,19 @@ id: image_blocks
 label: 'Image Blocks'
 image_style_mappings:
   -
-    breakpoint_id: default.lg
-    multiplier: 1x
     image_mapping_type: image_style
     image_mapping: block_image_lge
-  -
-    breakpoint_id: default.md
+    breakpoint_id: default.lg
     multiplier: 1x
+  -
     image_mapping_type: image_style
     image_mapping: block_image_med
-  -
-    breakpoint_id: default.sm
+    breakpoint_id: default.md
     multiplier: 1x
+  -
     image_mapping_type: image_style
     image_mapping: block_image_sml
+    breakpoint_id: default.sm
+    multiplier: 1x
 breakpoint_group: renovation
 fallback_image_style: image_block

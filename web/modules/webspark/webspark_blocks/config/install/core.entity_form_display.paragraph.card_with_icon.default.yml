@@ -3,6 +3,8 @@ status: true
 dependencies:
   config:
     - field.field.paragraph.card_with_icon.field_body
+    - field.field.paragraph.card_with_icon.field_card_link
+    - field.field.paragraph.card_with_icon.field_clickable
     - field.field.paragraph.card_with_icon.field_cta
     - field.field.paragraph.card_with_icon.field_heading
     - field.field.paragraph.card_with_icon.field_icon
@@ -70,4 +72,6 @@ content:
     third_party_settings: {  }
 hidden:
   created: true
+  field_card_link: true
+  field_clickable: true
   status: true

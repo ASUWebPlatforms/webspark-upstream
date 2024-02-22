@@ -1,0 +1,125 @@
+# If using yml to configure plugins, rename this to {module_name}.ckeditor5.yml.
+# If using annotations, this file can be removed.
+# @see https://www.drupal.org/docs/drupal-apis/plugin-api/annotations-based-plugins
+#   For information on using annotations to define plugins.
+# @see the CKEditor 5 module's README.md for more details regarding plugin
+#   configuration options.
+# cSpell:ignore simplebox demobox
+
+webspark_ckeditor_plugins_plugins:
+  # Use the provider: property for this plugin to depend on another module.
+
+  # Configuration that will be sent to CKEditor 5 JavaScript plugins.
+  ckeditor5:
+    plugins:
+      - websparkPlugin.WebsparkButton
+      - websparkPlugin.WebsparkDivider
+      - websparkPlugin.WebsparkLead
+      - websparkPlugin.WebsparkHighlightedHeading
+      - websparkPlugin.WebsparkBlockquote
+      - websparkPlugin.WebsparkTable
+      - websparkPlugin.WebsparkMediaAlter
+      - websparkPlugin.WebsparkListStyle
+
+    # *Additional configuration properties*
+    # config: data sent to the constructor of any CKEditor 5 plugin
+    #   editorPluginName:
+    #     editorPluginProperty: editorPluginValue
+    config:
+      table:
+        contentToolbar:
+          - tableColumn
+          - tableRow
+          - mergeTableCells
+          - tableProperties
+          - tableCellWsProperties
+          - toggleTableCaption
+          - tableCellBorderStyle
+          - tableCellBorderColor
+          - tableCellBorderWidth
+          - tableCellHeight
+          - tableCellPadding
+          - tableCellBackgroundColor
+          - tableCellHorizontalAlignment
+          - tableCellVerticalAlignment
+          - tableCellWidth
+          - tableBackgroundColor
+          - tableBorderColor
+          - tableBorderWidth
+          - tableHeight
+          - tableWidth
+          - tableAlignment
+          - tableBorderStyle
+
+  # Configuration that will be used directly by Drupal.
+  drupal:
+    label: Webspark CKEditor 5 Plugins
+    # The library loaded while using the editor.
+    library: webspark_ckeditor_plugins/websparkplugin
+    # The library loaded when configuring the text format using this plugin.
+    admin_library: webspark_ckeditor_plugins/admin.websparkplugin
+    toolbar_items:
+      # This should match the name of the corresponding plugin exported in the
+      # plugin's index.js.
+      websparkButton:
+        label: Webspark Button
+      websparkDivider:
+        label: Webspark Divider
+      websparkLead:
+        label: Lead
+      websparkHighlightedHeading:
+        label: Highlighted Heading
+      websparkBlockquote:
+        label: Blockquote
+      websparkTable:
+        label: Table
+      websparkListStyle:
+        label: List Properties
+    # If the plugin does not provide elements, set this as
+    # `elements: false`
+    elements:
+      # Note that it necessary for elements to separately provide both the tag
+      # (f.e. `<h2>`) and the attribute being added to the tag
+      # (f.e. `<h2 class="simple-box-title">`).
+      - <h2>
+      - <div>
+      - <div class="simple-box-description">
+      - <section>
+      - <section class="simple-box">
+      - <a>
+      - <a class="webspark-button">
+      - <span>
+      - <span class>
+      - <i>
+      - <i class>
+      - <hr class="copy-divider">
+      - <p class="lead">
+      - <div class="uds-table">
+      - <div class="uds-table uds-table-fixed">
+      - <div class>
+      - <table>
+      - <tr>
+      - <td>
+      - <td rowspan colspan>
+      - <th>
+      - <th rowspan colspan>
+      - <thead>
+      - <tbody>
+      - <tfoot>
+      - <caption>
+      - <th rowspan colspan class="normal indent">
+      - <tr rowspan colspan>
+      - <a class target role name hreflang>
+webspark_ckeditor_plugins_advancedImage:
+  ckeditor5:
+    plugins:
+      - websparkPlugin.WebsparkAdvancedImage
+    config:
+      image:
+        toolbar: [WebsparkAdvancedImage]
+  drupal:
+    label: Webspark advanced image
+    elements:
+      - <img>
+    conditions:
+      plugins: [ckeditor5_image]

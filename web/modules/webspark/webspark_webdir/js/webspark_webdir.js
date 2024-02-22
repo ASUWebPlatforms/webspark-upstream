@@ -35,6 +35,7 @@
             profilesPerPage: value.dataset.profilesPerPage,
             doNotDisplayProfiles: value.dataset.doNotDisplayProfiles,
           },
+          alphaFilter: value.dataset.alphaFilter,
           appPathFolder: value.dataset.appPathFolder,
         };
 

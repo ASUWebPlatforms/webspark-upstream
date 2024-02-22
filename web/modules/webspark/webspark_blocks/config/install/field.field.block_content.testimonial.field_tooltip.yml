@@ -20,9 +20,9 @@ default_value_callback: ''
 settings:
   handler: 'default:paragraph'
   handler_settings:
-    negate: 0
     target_bundles:
       tooltip: tooltip
+    negate: 0
     target_bundles_drag_drop:
       accordion_panel:
         weight: 19
@@ -76,6 +76,6 @@ settings:
         weight: 35
         enabled: false
       tooltip:
-        enabled: true
         weight: 36
+        enabled: true
 field_type: entity_reference_revisions

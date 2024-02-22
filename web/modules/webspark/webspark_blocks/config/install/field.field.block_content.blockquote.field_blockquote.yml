@@ -20,9 +20,9 @@ default_value_callback: ''
 settings:
   handler: 'default:paragraph'
   handler_settings:
-    negate: 0
     target_bundles:
       blockquote: blockquote
+    negate: 0
     target_bundles_drag_drop:
       accordion_panel:
         weight: 40
@@ -31,8 +31,8 @@ settings:
         weight: 41
         enabled: false
       blockquote:
-        enabled: true
         weight: 42
+        enabled: true
       card:
         weight: 43
         enabled: false

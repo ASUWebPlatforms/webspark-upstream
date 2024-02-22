@@ -25,69 +25,69 @@ bundle: news
 mode: default
 content:
   field_anchor_menu_settings:
-    weight: 2
+    type: entity_reference_revisions_entity_view
     label: hidden
     settings:
       view_mode: default
       link: ''
     third_party_settings: {  }
-    type: entity_reference_revisions_entity_view
+    weight: 2
     region: content
   field_card_cta_color:
-    weight: 7
+    type: list_key
     label: hidden
     settings: {  }
     third_party_settings: {  }
-    type: list_key
+    weight: 7
     region: content
   field_display:
-    weight: 1
+    type: list_key
     label: hidden
     settings: {  }
     third_party_settings: {  }
-    type: list_key
+    weight: 1
     region: content
   field_header_cta_color:
-    weight: 6
+    type: list_key
     label: hidden
     settings: {  }
     third_party_settings: {  }
-    type: list_key
+    weight: 6
     region: content
   field_heading:
-    weight: 4
+    type: string
     label: hidden
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    type: string
+    weight: 4
     region: content
   field_heading_text_color:
-    weight: 8
+    type: list_key
     label: hidden
     settings: {  }
     third_party_settings: {  }
-    type: list_key
+    weight: 8
     region: content
   field_news_feed_filter:
     type: string
-    weight: 0
-    region: content
     label: hidden
     settings:
       link_to_entity: false
     third_party_settings: {  }
+    weight: 0
+    region: content
   field_news_items_to_display:
-    weight: 3
+    type: number_integer
     label: hidden
     settings:
       thousand_separator: ''
       prefix_suffix: true
     third_party_settings: {  }
-    type: number_integer
+    weight: 3
     region: content
   field_news_link:
-    weight: 5
+    type: link
     label: hidden
     settings:
       trim_length: 80
@@ -96,7 +96,7 @@ content:
       rel: ''
       target: ''
     third_party_settings: {  }
-    type: link
+    weight: 5
     region: content
 hidden:
   field_feed_taxonomy_term: true

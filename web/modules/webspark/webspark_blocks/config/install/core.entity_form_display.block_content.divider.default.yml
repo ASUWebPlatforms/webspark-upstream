@@ -10,11 +10,11 @@ bundle: divider
 mode: default
 content:
   field_divider_type:
+    type: options_select
     weight: 0
+    region: content
     settings: {  }
     third_party_settings: {  }
-    type: options_select
-    region: content
   info:
     type: string_textfield
     weight: 1

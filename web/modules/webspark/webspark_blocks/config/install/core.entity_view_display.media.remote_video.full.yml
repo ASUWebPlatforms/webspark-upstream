@@ -10,21 +10,23 @@ dependencies:
     - media
 third_party_settings:
   layout_builder:
-    allow_custom: false
     enabled: false
+    allow_custom: false
 id: media.remote_video.full
 targetEntityType: media
 bundle: remote_video
 mode: full
 content:
   field_media_oembed_video:
-    weight: 0
+    type: oembed
     label: hidden
     settings:
       max_width: 640
       max_height: 360
+      loading:
+        attribute: eager
     third_party_settings: {  }
-    type: oembed
+    weight: 0
     region: content
 hidden:
   created: true

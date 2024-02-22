@@ -20,9 +20,9 @@ default_value_callback: ''
 settings:
   handler: 'default:paragraph'
   handler_settings:
-    negate: 0
     target_bundles:
       cta: cta
+    negate: 0
     target_bundles_drag_drop:
       accordion_panel:
         weight: 20
@@ -64,8 +64,8 @@ settings:
         weight: 32
         enabled: false
       cta:
-        enabled: true
         weight: 33
+        enabled: true
       gallery_image:
         weight: 34
         enabled: false

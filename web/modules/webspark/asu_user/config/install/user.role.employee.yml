@@ -1,8 +1,11 @@
 langcode: en
 status: true
-dependencies: {  }
+dependencies:
+  module:
+    - file
 id: employee
 label: Employee
 weight: 3
 is_admin: null
-permissions: {  }
+permissions:
+  - 'delete own files'

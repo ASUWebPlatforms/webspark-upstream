@@ -1,8 +1,9 @@
 name: ASU User
 description: Contains drupal customisations for the asurite users.
 type: module
-core_version_requirement: ^8 || ^9
+core_version_requirement: ^8 || ^9 || ^10
 package: ASU
 dependencies:
   - cas
+  - file
 

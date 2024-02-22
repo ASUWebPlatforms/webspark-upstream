@@ -16,5 +16,7 @@ required: false
 translatable: false
 default_value: {  }
 default_value_callback: ''
-settings: {  }
+settings:
+  menu_type_checkbox: {  }
+  menu_type_checkbox_negate: false
 field_type: field_menu

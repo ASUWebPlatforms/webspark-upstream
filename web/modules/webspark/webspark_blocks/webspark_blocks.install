@@ -1,5 +1,6 @@
 <?php
 
+use Drupal\block_content\Entity\BlockContent;
 use Drupal\Core\Config\FileStorage;
 
 /**
@@ -8,8 +9,8 @@ use Drupal\Core\Config\FileStorage;
  */
 function webspark_blocks_update_9002(&$sandbox) {
   // Remove all the blocks of type basic.
-  $bids = \Drupal::entityQuery('block_content')->condition('type','basic')->execute();
-  $blocks = \Drupal\block_content\Entity\BlockContent::loadMultiple($bids);
+  $bids = \Drupal::entityQuery('block_content')->condition('type','basic')->accessCheck(FALSE)->execute();
+  $blocks = BlockContent::loadMultiple($bids);
   foreach ($blocks as $block) {
     $block->delete();
   }
@@ -27,11 +28,12 @@ function webspark_blocks_update_9002(&$sandbox) {
 function webspark_blocks_update_9005(&$sandbox) {
   // Queries for relevant nodes already using that field.
   $bids = \Drupal::entityQuery('block_content')
+    ->accessCheck(FALSE)
     ->condition('type', 'tabbed_content')
     ->condition('field_background_color', 'default')
     ->execute();
 
-  $blocks = Drupal\block_content\Entity\BlockContent::loadMultiple($bids);
+  $blocks = BlockContent::loadMultiple($bids);
   // Updates field_background_color values.
   $updated_value_map = [
     'default' => 'bg-white',
@@ -110,6 +112,7 @@ function webspark_blocks_update_9017() {
 
   $query->condition('type', ['card', 'card_degree', 'card_story', 'card_with_icon'], 'IN');
   $query->condition('status', 1);
+  $query->accessCheck(FALSE);
   $result = $query->execute();
 
   $cards = $paragraph_storage->loadMultiple($result);
@@ -147,7 +150,7 @@ function webspark_blocks_update_9019(&$sandbox) {
   $query = $paragraph_storage->getQuery();
 
   $query->condition('type', 'accordion_panel', 'IN');
-  $result = $query->execute();
+  $result = $query->accessCheck(FALSE)->execute();
 
   $accordions = $paragraph_storage->loadMultiple($result);
   $accordions_to_update = [];
@@ -209,6 +212,92 @@ function webspark_blocks_update_9021(&$sandbox) {
 }
 
 /**
+ * WS2-1452 - Add modifying editor and filter minimal format to allow ckeditor5.
+ */
+function webspark_blocks_update_9022(&$sandbox) {
+  // In WS2 2.12.0 release this will run again in 9024, so duplicate run not needed here.
+  // _webspark_blocks_revert_module_config();
+}
+
+/**
+ * WS2-1839 - The default value was added to the field_hero_background_color in blocks with type=video_hero.
+ */
+function webspark_blocks_update_9023() {
+  $entityTypeManager = \Drupal::entityTypeManager();
+  $blockType = 'video_hero';
+  $blockStorage = $entityTypeManager->getStorage('block_content');
+  $blockContents = $blockStorage->loadByProperties([
+    'type' => $blockType,
+  ]);
+
+  foreach ($blockContents as $blockContent) {
+    if (!isset($blockContent->field_hero_background_color->value) || empty($blockContent->field_hero_background_color->value)) {
+      $blockContent->set('field_hero_background_color', 'default');
+      $blockContent->save();
+    }
+  }
+}
+
+/**
+ * WS2-1839 - Add required and default value to field_hero_background_color.
+ */
+function webspark_blocks_update_9024(&$sandbox) {
+  _webspark_blocks_revert_module_config();
+}
+
+/**
+ * WS2-1533 - Changed description text for field_media.
+ *
+ * Updates field_media in Card, Card Degree, Card Story.
+ */
+function webspark_blocks_update_9025(&$sandbox) {
+  $configs = [
+    'field.field.paragraph.card.field_media',
+    'field.field.paragraph.card_degree.field_media',
+    'field.field.paragraph.card_story.field_media',
+  ];
+  _webspark_blocks_update_module_config_list($configs);
+}
+
+/**
+ * WS2-1800 - Ranking card "read more" "Link" field now optional.
+ */
+function webspark_blocks_update_9026(&$sandbox) {
+  $configs = [
+    'field.field.paragraph.card_ranking.field_link',
+  ];
+  _webspark_blocks_update_module_config_list($configs);
+}
+
+/**
+ * WS2-1711 - Add new paragraph type for Image based card component.
+ */
+function webspark_blocks_update_9027(&$sandbox) {
+  // Was already run for WS2 2.12.0 release in 9024. This update was needed for iterative pre-release dev workflow.
+  // _webspark_blocks_revert_module_config();
+}
+
+/**
+ * WS2-1847 - Add display orientation option for Card Arrangament.
+ */
+function webspark_blocks_update_9028(&$sandbox) {
+  $configs = [
+    'field.storage.block_content.field_display_orientation',
+    'field.field.block_content.card_arrangement.field_display_orientation',
+    'core.entity_view_display.block_content.card_arrangement.card_arrangement_horizontal',
+    'core.entity_view_display.block_content.card_arrangement.card_arrangement_vertical',
+    'core.entity_view_display.block_content.card_arrangement.default',
+    'core.entity_view_display.block_content.card_arrangement.degree_card',
+    'core.entity_view_display.block_content.card_arrangement.event_card',
+    'core.entity_view_display.block_content.card_arrangement.landscape',
+    'core.entity_view_display.block_content.card_arrangement.media_card',
+    'core.entity_view_display.block_content.card_arrangement.story_card',
+    'core.entity_form_display.block_content.card_arrangement.default'
+  ];
+  _webspark_blocks_update_module_config_list($configs);
+}
+
+/**
  * Reverts the module related configuration.
  */
 function _webspark_blocks_revert_module_config() {
@@ -223,4 +312,31 @@ function _webspark_blocks_revert_module_config() {
   \Drupal::service('webspark.config_manager')->revertAll($module);
   // Lock the configuration storage.
   \Drupal::state()->set('configuration_locked', TRUE);
+}
+
+/**
+ * Update specific configuration files.
+ */
+function _webspark_blocks_update_module_config_list($config_list = []) {
+  \Drupal::state()->set('configuration_locked', FALSE);
+  foreach ($config_list as $config) {
+    \Drupal::service('webspark.config_manager')->updateConfigFile($config);
+  }
+  \Drupal::state()->set('configuration_locked', TRUE);
+}
+
+/**
+ * Ensure required updates happen before they are needed here.
+ */
+function webspark_blocks_update_dependencies() {
+
+  // Indicate that the webspark_blocks_update_9024() function provided by this module
+  // must run after the webspark_update_9018() function provided by the
+  // 'webspark' profile. Otherwise we might try and import ckeditor5 related configs
+  // before it has been installed, and generate errors.
+  $dependencies['webspark_blocks'][9024] = [
+    'webspark' => 9018,
+  ];
+
+  return $dependencies;
 }

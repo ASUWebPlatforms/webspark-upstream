@@ -17,12 +17,12 @@ content:
     type: image
     label: hidden
     settings:
-      image_style: crop_thumbnail
       image_link: ''
+      image_style: crop_thumbnail
       image_loading:
         attribute: lazy
-    weight: 0
     third_party_settings: {  }
+    weight: 0
     region: content
 hidden:
   created: true

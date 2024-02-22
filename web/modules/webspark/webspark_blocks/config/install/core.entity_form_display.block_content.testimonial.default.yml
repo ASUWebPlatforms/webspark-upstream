@@ -21,30 +21,32 @@ third_party_settings:
         - field_spacing_top
         - field_spacing_bottom
         - field_anchor_menu_settings
+      label: 'Appearance Settings'
+      region: content
       parent_name: ''
       weight: 6
       format_type: tab
-      region: content
       format_settings:
-        id: ''
         classes: ''
-        description: ''
+        id: ''
         formatter: closed
+        description: ''
         required_fields: true
-      label: 'Appearance Settings'
 id: block_content.testimonial.default
 targetEntityType: block_content
 bundle: testimonial
 mode: default
 content:
   field_accent_color:
+    type: options_select
     weight: 1
+    region: content
     settings: {  }
     third_party_settings: {  }
-    type: options_select
-    region: content
   field_anchor_menu_settings:
+    type: entity_reference_paragraphs
     weight: 4
+    region: content
     settings:
       title: Paragraph
       title_plural: Paragraphs
@@ -53,29 +55,28 @@ content:
       form_display_mode: default
       default_paragraph_type: anchor_menu_settings
     third_party_settings: {  }
-    type: entity_reference_paragraphs
-    region: content
   field_heading_highlight:
+    type: options_select
     weight: 3
+    region: content
     settings: {  }
     third_party_settings: {  }
-    type: options_select
-    region: content
   field_spacing_bottom:
+    type: options_select
     weight: 3
+    region: content
     settings: {  }
     third_party_settings: {  }
-    type: options_select
-    region: content
   field_spacing_top:
+    type: options_select
     weight: 2
+    region: content
     settings: {  }
     third_party_settings: {  }
-    type: options_select
-    region: content
   field_testimonial_component:
     type: entity_reference_paragraphs
     weight: 4
+    region: content
     settings:
       title: Paragraph
       title_plural: Paragraphs
@@ -84,15 +85,16 @@ content:
       form_display_mode: default
       default_paragraph_type: testimonial
     third_party_settings: {  }
-    region: content
   field_text_color:
+    type: options_select
     weight: 2
+    region: content
     settings: {  }
     third_party_settings: {  }
-    type: options_select
-    region: content
   field_tooltip:
+    type: entity_reference_paragraphs
     weight: 5
+    region: content
     settings:
       title: Paragraph
       title_plural: Paragraphs
@@ -101,8 +103,6 @@ content:
       form_display_mode: default
       default_paragraph_type: _none
     third_party_settings: {  }
-    type: entity_reference_paragraphs
-    region: content
   info:
     type: string_textfield
     weight: 0

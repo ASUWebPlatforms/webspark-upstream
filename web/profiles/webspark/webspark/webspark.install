@@ -189,7 +189,7 @@ function webspark_update_9010(&$sandbox) {
     \Drupal::state()->set('configuration_locked', TRUE);
 
     $entities = [];
-    $entities['user'] = \Drupal::entityQuery('user')->execute();
+    $entities['user'] = \Drupal::entityQuery('user')->accessCheck(FALSE)->execute();
     $result = [];
     foreach ($entities as $type => $entity_list) {
       foreach ($entity_list as $entity_id) {
@@ -342,4 +342,108 @@ function webspark_update_9017(&$sandbox) {
   $role = Role::load('authenticated');
   $role->revokePermission('access fontawesome additional settings');
   $role->trustData()->save();
+}
+/**
+ * WS2-1452 : Install CKeditor 5 module.
+ */
+function webspark_update_9018(&$sandbox) {
+  $module_installer = \Drupal::service("module_installer");
+
+  $module_installer->install(["ckeditor5"]);
+}
+
+/**
+ * Convert 'node_type' to 'entity_bundle:node' in configurations
+ */
+function webspark_update_9019(&$sandbox) {
+  $db = \Drupal::database();
+  $query = $db->select('config', 'c')->fields('c', ['name', 'data'])->condition('data', '%' . $db->escapeLike('node_type') . '%', "LIKE");
+  $results = $query->execute()->fetchAll();
+  $new_results = [];
+  // Convert node_type to entity_bundle:node and add result to $new_results.
+  foreach ($results as $result) {
+    $fixUp = _fix_serialized(str_replace('node_type', 'entity_bundle:node', $result->data));
+    $new_results[$result->name] = ['name'=> $result->name, 'data' => $fixUp];
+  }
+  foreach ($new_results as $nr) {
+    $decoded = unserialize($nr['data'], ['allowed_classes' => TRUE]);
+    try {
+      /** @var \Drupal\Core\Config\ConfigFactoryInterface $configFactory */
+      $configFactory = \Drupal::service('config.factory');
+      $config = $configFactory->getEditable($nr['name']);
+      $config->setData($decoded)->save();
+    } catch (\Exception $e) {
+      \Drupal::logger('webspark')->error($e->getMessage());
+    }
+  }
+}
+
+/**
+ * Fixes the length of the given string and returns the fixed length string representation.
+ *
+ * Borrowed from https://gist.github.com/chlp/8dac656c562941308d4621fd61856e22
+ *
+ * @param array $matches The array of matches from the regular expression
+ * @return string The fixed length string representation
+ */
+function _fix_str_length($matches): string {
+  $string = $matches[2];
+  $right_length = strlen($string); // yes, strlen even for UTF-8 characters, PHP wants the mem size, not the char count
+  return 's:' . $right_length . ':"' . $string . '";';
+}
+/**
+ * Fix serialized data for security and compatibility.
+ *
+ * Borrowed from https://gist.github.com/chlp/8dac656c562941308d4621fd61856e22
+ *
+ * @param string $string The serialized data to be fixed.
+ * @return string The fixed serialized data.
+ */
+function _fix_serialized($string): string {
+  // securities
+  if ( !preg_match('/^[aOs]:/', $string) ) return $string;
+  if ( unserialize($string, ['allowed_classes' => true]) !== false ) return $string;
+  $string = preg_replace("%\n%", "", $string);
+  // doublequote exploding
+  $data = preg_replace('%";%', "µµµ", $string);
+  $tab = explode("µµµ", $data);
+  $new_data = '';
+  foreach ($tab as $line) {
+    $new_data .= preg_replace_callback('%\bs:(\d+):"(.*)%', '_fix_str_length', $line);
+  }
+  return $new_data;
+}
+
+/**
+ * WS2-1452, 1871 & 1915: Update layouts and text formats; install editor_advanced_link; uninstall CKEditor4 and Fakeobjects.
+ */
+function webspark_update_10000(&$sandbox) {
+  if (Drupal::moduleHandler()->moduleExists('fakeobjects')) {
+    Drupal::service('module_installer')->uninstall(['fakeobjects']);
+  }
+  if (Drupal::moduleHandler()->moduleExists('ckeditor')) {
+    Drupal::service('module_installer')->uninstall(['ckeditor']);
+  }
+  if (!Drupal::moduleHandler()->moduleExists('editor_advanced_link')) {
+    Drupal::service('module_installer')->install(['editor_advanced_link']);
+  }
+
+  \Drupal::state()->set('configuration_locked', FALSE);
+  \Drupal::service('webspark.config_manager')->updateConfigFile('editor.editor.basic_html');
+  \Drupal::service('webspark.config_manager')->updateConfigFile('editor.editor.full_html');
+  \Drupal::service('webspark.config_manager')->updateConfigFile('editor.editor.minimal_format');
+  \Drupal::service('webspark.config_manager')->updateConfigFile('filter.format.basic_html');
+  \Drupal::service('webspark.config_manager')->updateConfigFile('filter.format.full_html');
+  \Drupal::service('webspark.config_manager')->updateConfigFile('filter.format.minimal_format');
+  \Drupal::service('webspark.config_manager')->updateConfigFile('core.entity_view_display.node.page.default');
+  \Drupal::state()->set('configuration_locked', TRUE);
+}
+
+/**
+ * Install Layout builder report module
+ */
+function webspark_update_10001(&$sandbox) {
+  if (!Drupal::moduleHandler()->moduleExists('layout_builder_usage_reports')) {
+    Drupal::service('module_installer')->install(['layout_builder_usage_reports']);
+  }
 }

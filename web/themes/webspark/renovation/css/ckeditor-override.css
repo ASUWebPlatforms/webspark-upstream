@@ -228,3 +228,12 @@ button.media-library-item__edit {
     margin-left: 205px;
   }
 }
+
+.ck.ck-toolbar > .ck-toolbar__items > :not(.ck-toolbar__line-break),
+#drupal-off-canvas [data-drupal-ck-style-fence] .ck.ck-toolbar > .ck-toolbar__items > :not(.ck-toolbar__line-break) {
+  margin-right: 0 !important;
+}
+
+[dir="ltr"] .ck.ck-dropdown .ck-dropdown__arrow, [dir="ltr"] #drupal-off-canvas [data-drupal-ck-style-fence] .ck.ck-dropdown .ck-dropdown__arrow {
+  margin-left: 5px !important;
+}

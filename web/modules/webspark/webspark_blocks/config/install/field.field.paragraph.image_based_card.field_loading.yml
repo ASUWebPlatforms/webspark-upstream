@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_loading
+    - paragraphs.paragraphs_type.image_based_card
+  module:
+    - options
+id: paragraph.image_based_card.field_loading
+field_name: field_loading
+entity_type: paragraph
+bundle: image_based_card
+label: Loading
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    value: lazy
+default_value_callback: ''
+settings: {  }
+field_type: list_string
