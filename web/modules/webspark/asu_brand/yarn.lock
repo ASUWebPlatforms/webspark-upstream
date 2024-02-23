@@ -15,10 +15,10 @@
     react-dom ">= 16.14.0 < 18"
     styled-components "^5.3.0"
 
-"@asu/component-header@2.0.7":
-  version "2.0.7"
-  resolved "https://npm.pkg.github.com/download/@asu/component-header/2.0.7/be739b995232028a07acfc4a387abbb767c932ef#be739b995232028a07acfc4a387abbb767c932ef"
-  integrity sha512-bbmp95UkSbu852C/R5klOQo517QqQHUj73YIJZDepag3fDSbMEoc0JVykkPFeFYbV8j/1+gtc0Jb96kG1KluAQ==
+"@asu/component-header@2.2.3":
+  version "2.2.3"
+  resolved "https://npm.pkg.github.com/download/@asu/component-header/2.2.3/e76d95e9902a57adc3704f0c40573c3f6ed0f903#e76d95e9902a57adc3704f0c40573c3f6ed0f903"
+  integrity sha512-6bk0j37HrLlaTYqbnIZvS66UEFcwfAsd5GJRdKLVTF1Zsc3hyRAOBP99/j6L2wBTgA0WK4Zm1JsfX4o74AHpug==
 
 "@babel/code-frame@^7.16.0":
   version "7.16.0"

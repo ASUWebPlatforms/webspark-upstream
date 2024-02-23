@@ -12,7 +12,9 @@ bundle: card_group_story
 mode: default
 content:
   field_cards:
+    type: entity_reference_paragraphs
     weight: 0
+    region: content
     settings:
       title: Paragraph
       title_plural: Paragraphs
@@ -21,8 +23,6 @@ content:
       form_display_mode: carousel_card
       default_paragraph_type: card_story
     third_party_settings: {  }
-    type: entity_reference_paragraphs
-    region: content
 hidden:
   created: true
   status: true

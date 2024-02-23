@@ -3,6 +3,8 @@ status: true
 dependencies:
   config:
     - field.field.paragraph.card.field_body
+    - field.field.paragraph.card.field_card_link
+    - field.field.paragraph.card.field_clickable
     - field.field.paragraph.card.field_cta
     - field.field.paragraph.card.field_cta_secondary
     - field.field.paragraph.card.field_heading
@@ -98,5 +100,7 @@ content:
     third_party_settings: {  }
 hidden:
   created: true
+  field_card_link: true
+  field_clickable: true
   field_tags: true
   status: true

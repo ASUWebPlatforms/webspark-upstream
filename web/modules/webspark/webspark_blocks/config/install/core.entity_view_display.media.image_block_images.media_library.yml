@@ -17,12 +17,12 @@ content:
     type: image
     label: hidden
     settings:
-      image_style: block_image_sml
       image_link: ''
+      image_style: block_image_sml
       image_loading:
         attribute: lazy
-    weight: 0
     third_party_settings: {  }
+    weight: 0
     region: content
 hidden:
   created: true

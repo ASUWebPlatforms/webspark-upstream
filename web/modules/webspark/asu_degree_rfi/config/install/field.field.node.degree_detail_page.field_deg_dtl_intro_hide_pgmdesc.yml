@@ -1,12 +1,12 @@
 langcode: en
 status: true
 dependencies:
-  enforced:
-    module:
-      - asu_degree_rfi
   config:
     - field.storage.node.field_deg_dtl_intro_hide_pgmdesc
     - node.type.degree_detail_page
+  enforced:
+    module:
+      - asu_degree_rfi
 id: node.degree_detail_page.field_deg_dtl_intro_hide_pgmdesc
 field_name: field_deg_dtl_intro_hide_pgmdesc
 entity_type: node

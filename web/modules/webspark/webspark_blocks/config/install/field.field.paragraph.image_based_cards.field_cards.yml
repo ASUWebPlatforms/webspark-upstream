@@ -1,0 +1,99 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_cards
+    - paragraphs.paragraphs_type.image_based_card
+    - paragraphs.paragraphs_type.image_based_cards
+  module:
+    - entity_reference_revisions
+id: paragraph.image_based_cards.field_cards
+field_name: field_cards
+entity_type: paragraph
+bundle: image_based_cards
+label: Cards
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      image_based_card: image_based_card
+    negate: 0
+    target_bundles_drag_drop:
+      accordion_panel:
+        weight: 25
+        enabled: false
+      anchor_menu_settings:
+        weight: 26
+        enabled: false
+      blockquote:
+        weight: 27
+        enabled: false
+      card:
+        weight: 28
+        enabled: false
+      card_degree:
+        weight: 29
+        enabled: false
+      card_event:
+        weight: 30
+        enabled: false
+      card_group_default:
+        weight: 31
+        enabled: false
+      card_group_degree:
+        weight: 32
+        enabled: false
+      card_group_ranking:
+        weight: 33
+        enabled: false
+      card_group_story:
+        weight: 34
+        enabled: false
+      card_group_with_icon:
+        weight: 35
+        enabled: false
+      card_media:
+        weight: 36
+        enabled: false
+      card_ranking:
+        weight: 37
+        enabled: false
+      card_story:
+        weight: 38
+        enabled: false
+      card_with_icon:
+        weight: 39
+        enabled: false
+      cta:
+        weight: 40
+        enabled: false
+      degree_details_next_steps:
+        weight: 41
+        enabled: false
+      degree_details_why_choose:
+        weight: 42
+        enabled: false
+      gallery_image:
+        weight: 43
+        enabled: false
+      image_based_card:
+        weight: 44
+        enabled: true
+      image_based_cards:
+        weight: 45
+        enabled: false
+      tab_content:
+        weight: 46
+        enabled: false
+      testimonial:
+        weight: 47
+        enabled: false
+      tooltip:
+        weight: 48
+        enabled: false
+field_type: entity_reference_revisions

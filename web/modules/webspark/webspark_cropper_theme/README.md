@@ -1,7 +1,7 @@
 # webspark_cropper_theme
 
 
-Due to Layout Builder failing to load the  backend theme, the crop and media library fail to work correctly. The module, Media Library Theme Reset, fixes issues with the media library but causes issues further down the line with the cropper. It should not be used. This module makes use  of some functionality provided by the media library theme reset module but not all. Most functionality comes from the core Media modules themselves, although they may have been altered to add libraries. LIbraries added are direct copies of core seven/theme.
+Due to Layout Builder failing to load the  backend theme, the crop and media library fail to work correctly. The module, Media Library Theme Reset, fixes issues with the media library but causes issues further down the line with the cropper. It should not be used. This module makes use  of some functionality provided by the media library theme reset module but not all. Most functionality comes from the core Media modules themselves, although they may have been altered to add libraries. Libraries added are direct copies of core Claro theme.
 
 ### Functions/Hooks
 
@@ -11,7 +11,7 @@ A template suggestion is provided for the the cropper details tab - details--cro
 
 #### Media Form Alter
 
-Adds back the seven media library libraries.
+Adds back the Claro media library libraries.
 
 #### Preprocess views view fields media library
 
@@ -55,5 +55,5 @@ Adds classes
 
 #### Theme library info alter
 
-Requirements for ASU involve modifying the core seven theme dialog.css. These are minor modifications to display the close button differently, for example. The css, dialog-overrides.css,
+Requirements for ASU involve modifying the core Claro theme dialog.css. These are minor modifications to display the close button differently, for example. The css, dialog-overrides.css,
  is stored in the css folder of the module. If alterations are required to the dialog.css they should be made here for the backend theme.

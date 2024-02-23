@@ -1,12 +1,12 @@
 langcode: en
 status: true
 dependencies:
-  enforced:
-    module:
-      - asu_degree_rfi
   module:
     - media
     - node
+  enforced:
+    module:
+      - asu_degree_rfi
 id: node.field_deg_dtl_attend_online_img
 field_name: field_deg_dtl_attend_online_img
 entity_type: node

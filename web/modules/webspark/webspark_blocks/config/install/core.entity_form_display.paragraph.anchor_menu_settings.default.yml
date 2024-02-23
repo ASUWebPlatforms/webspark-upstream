@@ -13,19 +13,19 @@ bundle: anchor_menu_settings
 mode: default
 content:
   field_icon:
+    type: fontawesome_iconpicker_widget
     weight: 1
+    region: content
     settings: {  }
     third_party_settings: {  }
-    type: fontawesome_iconpicker_widget
-    region: content
   field_title:
+    type: string_textfield
     weight: 0
+    region: content
     settings:
       size: 60
       placeholder: ''
     third_party_settings: {  }
-    type: string_textfield
-    region: content
 hidden:
   created: true
   status: true

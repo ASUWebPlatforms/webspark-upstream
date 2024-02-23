@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_drop_shadow
+    - paragraphs.paragraphs_type.image_based_card
+id: paragraph.image_based_card.field_drop_shadow
+field_name: field_drop_shadow
+entity_type: paragraph
+bundle: image_based_card
+label: 'Drop Shadow'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

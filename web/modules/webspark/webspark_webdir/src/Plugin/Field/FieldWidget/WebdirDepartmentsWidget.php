@@ -29,7 +29,7 @@ class WebdirDepartmentsWidget extends WidgetBase {
       '#type' => 'hidden',
       '#default_value' => $value,
       '#attributes' => array('class' => array('directory-tree')),
-      '#prefix' => '<div id="directory-tree-options" style="width: 100%"></div>',
+      '#prefix' => '<div id="directory-tree-options" style="width: 100%" class="ck-reset"></div>',
     ];
 
     // Add the required libraries.

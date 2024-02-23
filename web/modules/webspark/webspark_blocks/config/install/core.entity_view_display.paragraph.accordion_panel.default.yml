@@ -17,33 +17,33 @@ bundle: accordion_panel
 mode: default
 content:
   field_color_options:
-    weight: 3
+    type: list_key
     label: above
     settings: {  }
     third_party_settings: {  }
-    type: list_key
+    weight: 3
     region: content
   field_formatted_text:
-    weight: 1
+    type: text_default
     label: above
     settings: {  }
     third_party_settings: {  }
-    type: text_default
+    weight: 1
     region: content
   field_heading:
-    weight: 0
+    type: string
     label: above
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    type: string
+    weight: 0
     region: content
   field_icon:
-    weight: 2
+    type: fontawesome_icon_formatter
     label: above
     settings:
       layers: false
     third_party_settings: {  }
-    type: fontawesome_icon_formatter
+    weight: 2
     region: content
 hidden: {  }

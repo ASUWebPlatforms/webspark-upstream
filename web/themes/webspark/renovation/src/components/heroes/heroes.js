@@ -1,10 +1,9 @@
-(function ($, Drupal) {
+(function ($, Drupal, once) {
   "use strict";
 
   Drupal.behaviors.controlVideo = {
     attach: function (context) {
-      $(".uds-video-hero button", context)
-        .once("videoButtonClickBehaviour")
+      $(once("videoButtonClickBehaviour", ".uds-video-hero button", context))
         .each(function () {
           $(this).click(function () {
             var $video = $(this)
@@ -32,4 +31,4 @@
         });
     },
   };
-})(jQuery, Drupal);
+})(jQuery, Drupal, once);

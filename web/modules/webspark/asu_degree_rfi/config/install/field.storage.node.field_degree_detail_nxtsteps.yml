@@ -1,13 +1,13 @@
 langcode: en
 status: true
 dependencies:
-  enforced:
-    module:
-      - asu_degree_rfi
   module:
     - entity_reference_revisions
     - node
     - paragraphs
+  enforced:
+    module:
+      - asu_degree_rfi
 id: node.field_degree_detail_nxtsteps
 field_name: field_degree_detail_nxtsteps
 entity_type: node

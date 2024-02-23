@@ -14,7 +14,7 @@ plugin: asu_footer
 settings:
   id: asu_footer
   label: 'ASU footer'
-  label_display: '0'
+  label_display: ''
   provider: asu_footer
   asu_footer_block_unit_logo: null
   asu_footer_block_unit_name: ''

@@ -54,6 +54,9 @@ class ReactComponentHelperFunctions {
       case 'card_ranking':
         $card->cardType = 'ranking';
         break;
+      case 'image_based_card':
+        $card->cardType = 'image';
+        break;
     }
 
     if ($paragraph->field_media && $paragraph->field_media->target_id && $paragraph->field_media->entity->field_media_image->target_id) {
@@ -75,10 +78,10 @@ class ReactComponentHelperFunctions {
       $card->imageSource = $image_source;
       $card->imageAltText = $paragraph->field_media->entity->field_media_image->alt;
     }
-    if ($paragraph->field_heading->value) {
+    if ($paragraph->hasField('field_heading') && $paragraph->field_heading->value) {
       $card->title = $paragraph->field_heading->value;
     }
-    if ($paragraph->field_body->value) {
+    if ($paragraph->hasField('field_body') && $paragraph->field_body->value) {
       $card->content = $paragraph->field_body->value;
     }
     if ($paragraph->field_cta && $paragraph->field_cta->entity) {
@@ -168,6 +171,20 @@ class ReactComponentHelperFunctions {
     $card->showBorders = false;
     if ($paragraph->field_show_borders && $paragraph->field_show_borders->value) {
       $card->showBorders = true;
+    }
+
+    // WS2-1711 - Image based card
+    if (isset($paragraph->field_loading->value)) {
+      $card->loading = $paragraph->field_loading->value;
+    }
+    if (isset($paragraph->field_caption->value)) {
+      $card->caption = $paragraph->field_caption->value;
+    }
+    if (isset($paragraph->field_caption_title->value)) {
+      $card->captionTitle = $paragraph->field_caption_title->value;
+    }
+    if (isset($paragraph->field_drop_shadow->value) && $paragraph->field_drop_shadow->value) {
+      $card->dropShadow = true;
     }
 
     $settings = [];

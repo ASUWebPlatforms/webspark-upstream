@@ -1,16 +1,18 @@
 <?php
 
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Entity\EntityTypeInterface;
 /**
  * Implements hook_form_alter().
  */
-function webspark_utility_form_media_library_add_form_upload_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
+function webspark_utility_form_media_library_add_form_upload_alter(&$form, FormStateInterface $form_state, $form_id) {
   $form['#attached']['library'][] = 'webspark_utility/medialibrary';
 }
 
 /**
  * Implements hook_entity_bundle_field_info_alter().
  */
-function webspark_utility_entity_bundle_field_info_alter(&$fields, \Drupal\Core\Entity\EntityTypeInterface $entity_type, $bundle) {
+function webspark_utility_entity_bundle_field_info_alter(&$fields, EntityTypeInterface $entity_type, $bundle) {
   if ($bundle === 'hero') {
     if (isset($fields['field_hero_unformatted_text'])) {
       // Use the ID as defined in the annotation of the constraint definition
@@ -23,7 +25,7 @@ function webspark_utility_entity_bundle_field_info_alter(&$fields, \Drupal\Core\
 /**
  * Implements hook_form_FORM_ID_alter()
  */
-function webspark_utility_form_node_type_add_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
+function webspark_utility_form_node_type_add_form_alter(&$form, FormStateInterface $form_state, $form_id) {
   $form['actions']['submit']['#submit'][] = '_webspark_utility_form_node_type_add_form_submit';
   // If the form is already processed.
   if (isset($form['actions']['save_continue']['#submit'])) {
@@ -34,7 +36,7 @@ function webspark_utility_form_node_type_add_form_alter(&$form, \Drupal\Core\For
 /**
  * Submit function for the node_type_add_form to set some defaults to display view.
  */
-function _webspark_utility_form_node_type_add_form_submit(array $form, \Drupal\Core\Form\FormStateInterface $form_state) {
+function _webspark_utility_form_node_type_add_form_submit(array $form, FormStateInterface $form_state) {
 
   if (!\Drupal::moduleHandler()->moduleExists('layout_builder')) {
     return TRUE;
@@ -59,7 +61,7 @@ function _webspark_utility_form_node_type_add_form_submit(array $form, \Drupal\C
 /**
  * Implements hook_field_widget_WIDGET_TYPE_form_alter()
  */
-function webspark_utility_field_widget_field_menu_tree_widget_form_alter(&$element, \Drupal\Core\Form\FormStateInterface $form_state, $context) {
+function webspark_utility_field_widget_field_menu_tree_widget_form_alter(&$element, FormStateInterface $form_state, $context) {
   // Remove the default menus. If you need more in depth solution, check the
   // locked parameter; parentSelectElement() method doesnt have an option for this.
   $default_menus = ['account', 'admin', 'devel', 'footer', 'tools'];
@@ -75,7 +77,7 @@ function webspark_utility_field_widget_field_menu_tree_widget_form_alter(&$eleme
 /**
  * Implements hook_form_alter().
  */
-function webspark_utility_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
+function webspark_utility_form_alter(&$form, FormStateInterface $form_state, $form_id) {
   if (isset($form['#entity_type']) && $form['#entity_type'] == 'block_content') {
     if (isset($form['field_icon'])) {
       // Remove the browser validation on the icon picker widget.

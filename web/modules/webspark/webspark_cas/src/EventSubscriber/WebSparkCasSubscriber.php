@@ -2,24 +2,24 @@
 
 namespace Drupal\webspark_cas\EventSubscriber;
 
-use Symfony\Component\HttpKernel\Event\RequestEvent;
-use Drupal\cas\Subscriber\CasRouteSubscriber;
+use Drupal\cas\Subscriber\CasGatewayAuthSubscriber;
 use Drupal\Core\Site\Settings;
+use Symfony\Component\HttpKernel\Event\RequestEvent;
 
 /**
  * WebSpark CAS event subscriber.
  */
-class WebSparkCasSubscriber extends CasRouteSubscriber {
+class WebSparkCasSubscriber extends CasGatewayAuthSubscriber {
 
   /**
    * {@inheritdoc}
    */
-  public function handle(RequestEvent $event) {
-    if ($this->isElasticCrawlerRequest() && !$this->isForcedPath()) {
+  public function onRequest(RequestEvent $event) {
+    if ($this->isElasticCrawlerRequest()) {
       return;
     }
 
-    return parent::handle($event);
+    return parent::onRequest($event);
   }
 
   /**
@@ -29,7 +29,8 @@ class WebSparkCasSubscriber extends CasRouteSubscriber {
    *   The check result.
    */
   protected function isElasticCrawlerRequest(): bool {
-    $current_request = $this->requestStack->getCurrentRequest();
+    $requestStack = \Drupal::service('request_stack');
+    $current_request = $requestStack->getCurrentRequest();
 
     $defaultPattern = '/^Elastic-Crawler .*$/';
 
@@ -47,20 +48,6 @@ class WebSparkCasSubscriber extends CasRouteSubscriber {
     }
 
     return FALSE;
-  }
-
-  /**
-   * Checks if the path is a forced login one.
-   *
-   * @see https://stackoverflow.com/a/61921662
-   *
-   * @return bool
-   *   The check result.
-   */
-  protected function isForcedPath() {
-    $r = new \ReflectionMethod(parent::class, 'handleForcedPath');
-    $r->setAccessible(TRUE);
-    return $r->invoke($this);
   }
 
 }

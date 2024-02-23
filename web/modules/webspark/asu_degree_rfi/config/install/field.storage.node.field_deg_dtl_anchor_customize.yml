@@ -1,11 +1,11 @@
 langcode: en
 status: true
 dependencies:
+  module:
+    - node
   enforced:
     module:
       - asu_degree_rfi
-  module:
-    - node
 id: node.field_deg_dtl_anchor_customize
 field_name: field_deg_dtl_anchor_customize
 entity_type: node

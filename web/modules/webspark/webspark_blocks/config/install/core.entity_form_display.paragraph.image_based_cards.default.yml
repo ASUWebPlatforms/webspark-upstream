@@ -1,0 +1,28 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.image_based_cards.field_cards
+    - paragraphs.paragraphs_type.image_based_cards
+  module:
+    - paragraphs
+id: paragraph.image_based_cards.default
+targetEntityType: paragraph
+bundle: image_based_cards
+mode: default
+content:
+  field_cards:
+    type: entity_reference_paragraphs
+    weight: 0
+    region: content
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

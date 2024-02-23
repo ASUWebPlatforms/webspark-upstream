@@ -127,6 +127,9 @@
   var mutationObserver = new MutationObserver(mutationCallback);
   mutationObserver.observe( document.body, { attributes: true } );
 
+  //WS2-1291
+  props.renderDiv = 'true';
+
   // Initialize the asu_brand component-header header.
   AsuHeader.initGlobalHeader({
     targetSelector: '#ws2HeaderContainer',

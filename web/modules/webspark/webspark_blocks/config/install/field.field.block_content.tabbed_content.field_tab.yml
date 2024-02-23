@@ -20,9 +20,9 @@ default_value_callback: ''
 settings:
   handler: 'default:paragraph'
   handler_settings:
-    negate: 0
     target_bundles:
       tab_content: tab_content
+    negate: 0
     target_bundles_drag_drop:
       accordion_panel:
         weight: 10
@@ -49,6 +49,6 @@ settings:
         weight: 17
         enabled: false
       tab_content:
-        enabled: true
         weight: 12
+        enabled: true
 field_type: entity_reference_revisions

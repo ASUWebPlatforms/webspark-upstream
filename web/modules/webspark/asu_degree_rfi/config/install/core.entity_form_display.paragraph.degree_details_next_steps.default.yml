@@ -8,53 +8,53 @@ dependencies:
     - field.field.paragraph.degree_details_next_steps.field_degree_nxtsteps_card_icon
     - field.field.paragraph.degree_details_next_steps.field_degree_nxtsteps_card_title
     - paragraphs.paragraphs_type.degree_details_next_steps
-  enforced:
-    module:
-      - asu_degree_rfi
   module:
     - fontawesome
     - link
+  enforced:
+    module:
+      - asu_degree_rfi
 id: paragraph.degree_details_next_steps.default
 targetEntityType: paragraph
 bundle: degree_details_next_steps
 mode: default
 content:
   field_degree_nxtstep_card_contnt:
+    type: string_textarea
     weight: 2
+    region: content
     settings:
       rows: 5
       placeholder: ''
     third_party_settings: {  }
-    type: string_textarea
-    region: content
   field_degree_nxtsteps_btn_color:
+    type: options_select
     weight: 4
+    region: content
     settings: {  }
     third_party_settings: {  }
-    type: options_select
-    region: content
   field_degree_nxtsteps_card_btn:
+    type: link_default
     weight: 3
+    region: content
     settings:
       placeholder_url: ''
       placeholder_title: ''
     third_party_settings: {  }
-    type: link_default
-    region: content
   field_degree_nxtsteps_card_icon:
+    type: fontawesome_icon_widget
     weight: 0
+    region: content
     settings: {  }
     third_party_settings: {  }
-    type: fontawesome_icon_widget
-    region: content
   field_degree_nxtsteps_card_title:
+    type: string_textfield
     weight: 1
+    region: content
     settings:
       size: 60
       placeholder: ''
     third_party_settings: {  }
-    type: string_textfield
-    region: content
 hidden:
   created: true
   status: true

@@ -13,15 +13,15 @@ bundle: cropped_image_sqare
 mode: default
 content:
   field_media_image:
+    type: image
     label: visually_hidden
-    weight: 0
     settings:
-      image_style: block_image_1_1_med
       image_link: ''
+      image_style: block_image_1_1_med
       image_loading:
         attribute: lazy
     third_party_settings: {  }
-    type: image
+    weight: 0
     region: content
 hidden:
   created: true

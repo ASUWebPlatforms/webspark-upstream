@@ -1,11 +1,11 @@
 langcode: en
 status: true
 dependencies:
+  module:
+    - node
   enforced:
     module:
       - asu_degree_rfi
-  module:
-    - node
 id: node.field_deg_dtl_hide_attend_online
 field_name: field_deg_dtl_hide_attend_online
 entity_type: node

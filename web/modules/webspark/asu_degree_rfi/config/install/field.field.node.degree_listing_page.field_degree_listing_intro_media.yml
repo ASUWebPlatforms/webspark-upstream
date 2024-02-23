@@ -1,14 +1,14 @@
 langcode: en
 status: true
 dependencies:
-  enforced:
-    module:
-      - asu_degree_rfi
   config:
     - field.storage.node.field_degree_listing_intro_media
     - media.type.image
     - media.type.video
     - node.type.degree_listing_page
+  enforced:
+    module:
+      - asu_degree_rfi
 id: node.degree_listing_page.field_degree_listing_intro_media
 field_name: field_degree_listing_intro_media
 entity_type: node

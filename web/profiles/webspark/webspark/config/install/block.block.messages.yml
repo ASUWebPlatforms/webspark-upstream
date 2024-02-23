@@ -18,11 +18,11 @@ settings:
   label_display: '0'
   provider: system
 visibility:
-  node_type:
-    id: node_type
-    bundles:
-      article: article
-      page: page
+  'entity_bundle:node':
+    id: 'entity_bundle:node'
     negate: false
     context_mapping:
       node: '@node.node_route_context:node'
+    bundles:
+      article: article
+      page: page

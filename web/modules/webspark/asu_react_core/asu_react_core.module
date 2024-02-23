@@ -125,3 +125,9 @@ function asu_react_core_process_component_card_ranking(&$variables) {
   $settings = \Drupal::service('asu_react_core.helper_functions')->getCardContent($paragraph);
   $variables['content']['#attached']['drupalSettings']['asu'] = $settings;
 }
+
+function asu_react_core_process_component_image_based_card(&$variables) {
+  $paragraph = $variables['paragraph'];
+  $settings = \Drupal::service('asu_react_core.helper_functions')->getCardContent($paragraph);
+  $variables['content']['#attached']['drupalSettings']['asu'] = $settings;
+}

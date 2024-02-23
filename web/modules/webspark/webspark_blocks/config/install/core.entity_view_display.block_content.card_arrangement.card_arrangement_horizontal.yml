@@ -8,6 +8,7 @@ dependencies:
     - field.field.block_content.card_arrangement.field_card_arrangement_display
     - field.field.block_content.card_arrangement.field_card_group
     - field.field.block_content.card_arrangement.field_cta
+    - field.field.block_content.card_arrangement.field_display_orientation
     - field.field.block_content.card_arrangement.field_formatted_text
     - field.field.block_content.card_arrangement.field_heading
     - field.field.block_content.card_arrangement.field_spacing_bottom
@@ -18,8 +19,8 @@ dependencies:
     - layout_builder
 third_party_settings:
   layout_builder:
-    allow_custom: false
     enabled: false
+    allow_custom: false
 id: block_content.card_arrangement.card_arrangement_horizontal
 targetEntityType: block_content
 bundle: card_arrangement
@@ -30,6 +31,7 @@ hidden:
   field_card_arrangement_display: true
   field_card_group: true
   field_cta: true
+  field_display_orientation: true
   field_formatted_text: true
   field_heading: true
   field_spacing_bottom: true

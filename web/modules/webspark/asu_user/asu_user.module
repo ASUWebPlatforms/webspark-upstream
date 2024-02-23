@@ -1,5 +1,9 @@
 <?php
 
+use Drupal\Component\Utility\Html;
+use Drupal\Component\Serialization\Json;
+use Drupal\Component\Utility\DeprecationHelper;
+use Drupal\Core\Utility\Error;
 /**
  * @file
  * asu_user.module - ASU User code.
@@ -11,7 +15,6 @@
  * asu_userpicker made by Michael Samuelson.
  *
  */
-
 /**
  * API function to get a person/profile record from Elastic.
  *
@@ -29,14 +32,14 @@ function _asu_user_get_elastic_profile_record($asurite) {
   // Do Elastic query ala https://search.asu.edu/api/v1/webdir-profiles/faculty-staff/filtered?asurite_ids=myasurite
   // And populate $record.
   $elastic_base_url = \Drupal::config('asu_user.settings')->get('asu_user_elastic_query_url');
-  $elastic_query_url = $elastic_base_url . '?asurite_ids=' . \Drupal\Component\Utility\Html::escape($asurite);
+  $elastic_query_url = $elastic_base_url . '?asurite_ids=' . Html::escape($asurite);
 
   $client = \Drupal::httpClient();
   try {
     $response = $client->get($elastic_query_url);
     $data = $response->getBody()->getContents();
 
-    $elastic_data = \Drupal\Component\Serialization\Json::decode($data);
+    $elastic_data = Json::decode($data);
 
     // Check here that the asurite ID is a 100% match with the record, as
     // Elastic does a "contains" match.
@@ -52,9 +55,7 @@ function _asu_user_get_elastic_profile_record($asurite) {
     return $record; // Should only be one.
   }
   catch (Exception $e) {
-    watchdog_exception('asu_user', $e);
-    return [];
+    Error::logException(\Drupal::logger('asu_user'), $e);
   }
   return [];
 }
-

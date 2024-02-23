@@ -1,8 +1,8 @@
 name: Webspark
 type: profile
-core_version_requirement: ^9.0
+core_version_requirement: ^9.0 || ^10
 description: 'ASU custom profile.'
-version: 2.11.1
+version: 2.12.0
 distribution:
   name: 'Webspark'
 install:
@@ -11,8 +11,7 @@ install:
   - history
   - block
   - breakpoint
-  - ckeditor
-  - color
+  - ckeditor5
   - config
   - comment
   - contextual
@@ -20,7 +19,6 @@ install:
   - menu_link_content
   - datetime
   - block_content
-  - quickedit
   - editor
   - help
   - image
@@ -37,7 +35,6 @@ install:
   - toolbar
   - field_ui
   - file
-  - rdf
   - views
   - views_ui
   - automated_cron
@@ -99,8 +96,9 @@ install:
   - file_mdm
   - sophron
   - imagemagick
+  - layout_builder_usage_reports
+  - editor_advanced_link
 themes:
-  - bartik
-  - seven
   - renovation
+  - claro
 project: 'asu_webspark_profile'

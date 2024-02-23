@@ -7,7 +7,9 @@
       </h3>
     {% endif %}
 
-    <p>{{ body_text['#text']|spaceless|replace({'</p><p>': '<br>'})|striptags('<a><br>')|raw }}</p>
+    {% apply spaceless %}
+    <p>{{ body_text['#text']|replace({'</p><p>': '<br>'})|striptags('<a><br>')|raw }}</p>
+    {% endapply %}
 
     {% if citation_author is not empty or citation_description is not empty %}
       <div class="citation">

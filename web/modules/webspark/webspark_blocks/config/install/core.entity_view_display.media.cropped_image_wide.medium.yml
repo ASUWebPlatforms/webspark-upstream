@@ -11,23 +11,23 @@ dependencies:
     - layout_builder
 third_party_settings:
   layout_builder:
-    allow_custom: false
     enabled: false
+    allow_custom: false
 id: media.cropped_image_wide.medium
 targetEntityType: media
 bundle: cropped_image_wide
 mode: medium
 content:
   field_media_image:
+    type: image
     label: visually_hidden
-    weight: 0
     settings:
-      image_style: block_image_16_9_med
       image_link: ''
+      image_style: block_image_16_9_med
       image_loading:
         attribute: lazy
     third_party_settings: {  }
-    type: image
+    weight: 0
     region: content
 hidden:
   created: true

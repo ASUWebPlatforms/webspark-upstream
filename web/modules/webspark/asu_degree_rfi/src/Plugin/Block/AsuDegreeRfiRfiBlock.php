@@ -2,6 +2,8 @@
 
 namespace Drupal\asu_degree_rfi\Plugin\Block;
 
+use Drupal\node\Entity\Node;
+use Drupal\node\NodeInterface;
 use Drupal\Core\Block\BlockBase;
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
 use Drupal\Core\Form\FormStateInterface;
@@ -224,8 +226,8 @@ class AsuDegreeRfiRfiBlock extends BlockBase implements ContainerFactoryPluginIn
     $route_pgm_of_interest = '';
     if ($path_args[0] === 'layout_builder') {
       $nid_part = explode('.', $path_args[4])[1];
-      $lb_node = \Drupal\node\Entity\Node::load($nid_part);
-      if ($lb_node instanceof \Drupal\node\NodeInterface && $lb_node->bundle() === 'degree_detail_page') {
+      $lb_node = Node::load($nid_part);
+      if ($lb_node instanceof NodeInterface && $lb_node->bundle() === 'degree_detail_page') {
         $route_pgm_of_interest = $lb_node->get('field_degree_detail_acadplancode')->getvalue()[0]['value'];
       }
     }

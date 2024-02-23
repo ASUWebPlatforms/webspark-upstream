@@ -5,11 +5,11 @@ dependencies:
     - field.storage.node.field_degree_detail_nxtsteps
     - node.type.degree_detail_page
     - paragraphs.paragraphs_type.degree_details_next_steps
+  module:
+    - entity_reference_revisions
   enforced:
     module:
       - asu_degree_rfi
-  module:
-    - entity_reference_revisions
 id: node.degree_detail_page.field_degree_detail_nxtsteps
 field_name: field_degree_detail_nxtsteps
 entity_type: node
@@ -23,9 +23,9 @@ default_value_callback: ''
 settings:
   handler: 'default:paragraph'
   handler_settings:
-    negate: 0
     target_bundles:
       degree_details_next_steps: degree_details_next_steps
+    negate: 0
     target_bundles_drag_drop:
       accordion_panel:
         weight: 21
@@ -70,8 +70,8 @@ settings:
         weight: 34
         enabled: false
       degree_details_next_steps:
-        enabled: true
         weight: 20
+        enabled: true
       gallery_image:
         weight: 35
         enabled: false

@@ -6,7 +6,7 @@
 /**
  * Implements hook_preprocess_HOOK().
  */
-
+use Drupal\paragraphs\Entity\Paragraph;
 use Drupal\Core\Url;
 
 function renovation_preprocess_field(&$variables) {
@@ -65,7 +65,7 @@ function renovation_preprocess_field(&$variables) {
  *
  * @return mixed|null
  */
-function get_icon(\Drupal\paragraphs\Entity\Paragraph $paragraph_values) {
+function get_icon(Paragraph $paragraph_values) {
   if ($paragraph_values->hasField('field_icon') && !$paragraph_values->get('field_icon')->isEmpty()) {
     return $paragraph_values->get('field_icon')->getValue()[0]['icon_name'];
   }
