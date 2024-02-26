@@ -20,9 +20,9 @@ default_value_callback: ''
 settings:
   handler: 'default:paragraph'
   handler_settings:
-    negate: 0
     target_bundles:
       testimonial: testimonial
+    negate: 0
     target_bundles_drag_drop:
       accordion_panel:
         weight: 20
@@ -76,8 +76,8 @@ settings:
         weight: 36
         enabled: false
       testimonial:
-        enabled: true
         weight: 37
+        enabled: true
       tooltip:
         weight: 38
         enabled: false

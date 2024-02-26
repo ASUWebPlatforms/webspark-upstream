@@ -12,15 +12,15 @@ dependencies:
     - link
 third_party_settings:
   layout_builder:
-    allow_custom: false
     enabled: false
+    allow_custom: false
 id: paragraph.cta.small
 targetEntityType: paragraph
 bundle: cta
 mode: small
 content:
   field_cta_link:
-    weight: 2
+    type: link
     label: above
     settings:
       trim_length: 80
@@ -29,14 +29,14 @@ content:
       rel: ''
       target: ''
     third_party_settings: {  }
-    type: link
+    weight: 2
     region: content
   field_icon:
-    weight: 1
+    type: fontawesome_icon_formatter
     label: hidden
     settings:
       layers: false
     third_party_settings: {  }
-    type: fontawesome_icon_formatter
+    weight: 1
     region: content
 hidden: {  }

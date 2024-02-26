@@ -1,11 +1,11 @@
 langcode: en
 status: true
 dependencies:
+  module:
+    - paragraphs
   enforced:
     module:
       - asu_degree_rfi
-  module:
-    - paragraphs
 id: paragraph.field_degree_nxtstep_card_contnt
 field_name: field_degree_nxtstep_card_contnt
 entity_type: paragraph

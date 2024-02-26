@@ -1,10 +1,9 @@
-(function ($, Drupal) {
+(function ($, Drupal, once) {
   "use strict";
 
   Drupal.behaviors.donutChart = {
     attach: function (context) {
-      $(".uds-charts-and-graphs-container", context)
-        .once("chartsGraphs")
+      $(once("chartsGraphs", ".uds-charts-and-graphs-container", context))
         .each(function () {
           var $percentage = $(this).attr("data-number");
           var ctx = $(this).find("canvas", context);
@@ -28,4 +27,4 @@
         });
     },
   };
-})(jQuery, Drupal);
+})(jQuery, Drupal, once);

@@ -1,0 +1,31 @@
+.ckeditor5-toolbar-button-websparkButton {
+  background-image: url(../icons/websparkButton.svg);
+}
+
+.ckeditor5-toolbar-button-websparkDivider {
+  background-image: url(../icons/websparkDivider.svg);
+}
+
+.ckeditor5-toolbar-button-websparkLead {
+  background-image: url(../icons/websparklead.svg);
+}
+
+.ckeditor5-toolbar-button-websparkHighlightedHeading {
+  background-image: url(../icons/websparkHighlightedHeading.svg);
+}
+
+.ckeditor5-toolbar-button-websparkBlockquote {
+  background-image: url(../icons/websparkblockquote.svg);
+}
+
+.ckeditor5-toolbar-button-websparkTable {
+  background-image: url(../icons/websparktable.svg);
+}
+
+.ckeditor5-toolbar-button-websparkListStyle {
+  background-image: url(../icons/websparkListStyle.svg);
+}
+
+.cke_button__anchor_icon {
+  background-image: url('../img/websparkanchorlink.png') !important;
+}

@@ -139,11 +139,7 @@
   width: 100%;
 }
 
-/**
- * @todo Remove .button when styles are moved to the seven theme in
- *   https://www.drupal.org/project/drupal/issues/2980769
- */
-.button.media-library-add-form-oembed-submit {
+.media-library-add-form-oembed-submit {
   align-self: center;
 }
 
@@ -526,11 +522,7 @@
   position: relative;
 }
 
-/**
- * @todo Change to .media-library-open-button when styles are moved to the
- *   seven theme in https://www.drupal.org/project/drupal/issues/2980769
- */
-.button.media-library-open-button {
+.media-library-open-button {
   margin-bottom: 1em;
   margin-left: 0; /* LTR */
 }
@@ -678,11 +670,7 @@
   margin-left: 20px;
 }
 
-/**
- * @todo Remove [type="submit"] when styles are moved to the seven theme in
- *   https://www.drupal.org/project/drupal/issues/2980769
- */
-.media-library-add-form__remove-button[type="submit"] {
+.media-library-add-form__remove-button {
   position: absolute;
   top: 25px;
   right: 6px; /* LTR */

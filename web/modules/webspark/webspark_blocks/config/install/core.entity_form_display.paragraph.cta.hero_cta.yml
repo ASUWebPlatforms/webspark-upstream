@@ -14,7 +14,9 @@ bundle: cta
 mode: hero_cta
 content:
   field_cta_link:
+    type: styled_link
     weight: 0
+    region: content
     settings:
       placeholder_url: ''
       placeholder_title: ''
@@ -27,8 +29,6 @@ content:
       default_style: 'btn-default btn-gold btn'
       size: btn-default
     third_party_settings: {  }
-    type: styled_link
-    region: content
 hidden:
   created: true
   field_icon: true

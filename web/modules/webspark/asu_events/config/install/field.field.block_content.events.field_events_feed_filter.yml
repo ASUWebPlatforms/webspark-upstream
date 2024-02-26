@@ -9,7 +9,7 @@ field_name: field_events_feed_filter
 entity_type: block_content
 bundle: events
 label: 'Feed Filter'
-description: 'Filters are a string containing all desired filters separated by a comma '','''
+description: "Filters are a string containing all desired filters separated by a comma ','"
 required: false
 translatable: false
 default_value: {  }

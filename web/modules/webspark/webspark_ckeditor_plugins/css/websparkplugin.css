@@ -1,0 +1,49 @@
+.ck-webspark-form {
+  display: flex;
+  flex-direction: column;
+  padding: 8px !important;
+  row-gap: 6px;
+}
+
+.ck-webspark-form .ck-webspark-form-row {
+  display: flex;
+  column-gap: 6px;
+}
+
+.ck-webspark-form-row > div {
+  width: 100% !important;
+}
+
+.ck-webspark-form-row .ck-webspark-form-select {
+  background: var(--ck-color-input-background) !important;
+  border: 1px solid var(--ck-color-input-border) !important;
+  border-radius: var(--ck-border-radius) !important;
+  padding: var(--ck-spacing-extra-tiny) var(--ck-spacing-medium) !important;
+  width: 100% !important;
+}
+
+.ck-webspark-form .ck-webspark-form-buttons {
+  display: flex;
+  justify-content: center;
+  margin: 0 auto !important;
+  width: 100% !important;
+}
+
+form .webspark-heading-dialog,
+form .webspark-blockquote-dialog {
+  width: 700px !important;
+}
+
+textarea.ck-webspark-form-textarea {
+  width: 100% !important;
+  height: 80px !important;
+  padding-left: 0.5rem !important;
+}
+
+form .webspark-blockquote-dialog input.ck-input {
+  width: 80%;
+}
+
+form .webspark-liststyle-dialog {
+  width: 250px !important;
+}

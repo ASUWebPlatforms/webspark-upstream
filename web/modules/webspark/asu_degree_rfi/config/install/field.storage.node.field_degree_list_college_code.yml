@@ -1,12 +1,12 @@
 langcode: en
 status: true
 dependencies:
-  enforced:
-    module:
-      - asu_degree_rfi
   module:
     - node
     - options
+  enforced:
+    module:
+      - asu_degree_rfi
 id: node.field_degree_list_college_code
 field_name: field_degree_list_college_code
 entity_type: node

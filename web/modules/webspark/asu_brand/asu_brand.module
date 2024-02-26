@@ -1,5 +1,7 @@
 <?php
 
+use Drupal\Core\Entity\EntityTypeInterface;
+use Drupal\Core\Render\Element;
 use Drupal\Core\Field\BaseFieldDefinition;
 use Drupal\Component\Utility\Html;
 use Drupal\Core\Form\FormStateInterface;
@@ -16,7 +18,7 @@ use Drupal\Component\Serialization\Json;
  *
  * Add custom fields to content menu links for use by header.
  */
-function asu_brand_entity_base_field_info(\Drupal\Core\Entity\EntityTypeInterface $entity_type) {
+function asu_brand_entity_base_field_info(EntityTypeInterface $entity_type) {
   if ($entity_type->id() === 'menu_link_content') {
 
     // TODO Future improvement: Use form alter (below) to make these fields
@@ -32,6 +34,7 @@ function asu_brand_entity_base_field_info(\Drupal\Core\Entity\EntityTypeInterfac
         'allowed_values' => [
           //'icon' => 'Icon', // First link always becomes icon. Not allowing select for this.
           'heading' => 'Heading - starts a column',
+          'stackable heading' => 'Heading - stackable in a column',
           'column break' => 'Column break - starts a column without a heading',
           'button' => 'Button - within column',
         ],
@@ -64,14 +67,14 @@ function asu_brand_entity_base_field_info(\Drupal\Core\Entity\EntityTypeInterfac
 /**
  * Implements hook_form_alter().
  */
-function asu_brand_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
+function asu_brand_form_alter(&$form, FormStateInterface $form_state, $form_id) {
 
   $link_type = null;
   $is_button = null;
   // Menu overview tree form. Add column to show special Header configs in tree.
   if ($form_id == "menu_edit_form") {
     $form['links']['links']['#header'][] = t("Header settings");
-    foreach (\Drupal\Core\Render\Element::children($form['links']['links']) as $key => $child) {
+    foreach (Element::children($form['links']['links']) as $key => $child) {
       $link_parts = explode(':', $child);
       if ($link_parts[2] && Uuid::isValid($link_parts[2])) { // TODO Is there a better check we can do here?
         $link_uuid = $link_parts[2];
@@ -160,8 +163,8 @@ function asu_brand_form_menu_link_content_form_alter(array &$form, FormStateInte
         ASU Brand Headers.</li>
         <li>Create columns by configuring "Heading" or "Column break" menu
         items at the second level. These special menu items will not render as
-        links, but will instead start new columns. Use &lt;nolink&gt; as
-        their link value.</li>
+        links, but will instead start new columns unless they are labelled as
+        "stackable." Use &lt;nolink&gt; as their link value.</li>
         <li>When you configure a second level menu item as a button within a
         column, please ensure it is the last item in a column, otherwise it may
         render incorrectly in the mobile menu.</li>

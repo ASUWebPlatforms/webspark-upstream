@@ -1,8 +1,8 @@
 langcode: en
 status: true
 dependencies: {  }
-id: story_hero
 label: 'Story Hero'
+id: story_hero
 description: ''
 aspect_ratio: '15:4'
 soft_limit_width: null

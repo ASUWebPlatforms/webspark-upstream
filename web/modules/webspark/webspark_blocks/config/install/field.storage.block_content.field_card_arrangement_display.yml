@@ -11,7 +11,7 @@ type: list_string
 settings:
   allowed_values:
     -
-      value: ''''''
+      value: "''"
       label: 'Two Columns'
     -
       value: three-columns

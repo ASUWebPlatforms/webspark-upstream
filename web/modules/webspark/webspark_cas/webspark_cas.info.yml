@@ -3,6 +3,6 @@ type: module
 description: Webspark module with CAS overrides for ASU scenarios.
 package: WebSpark
 core: 8.x
-core_version_requirement: ^8 || ^9
+core_version_requirement: ^8 || ^9 || ^10
 dependencies:
   - cas:cas

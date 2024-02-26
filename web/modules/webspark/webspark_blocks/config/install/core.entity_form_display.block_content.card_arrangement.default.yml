@@ -7,6 +7,7 @@ dependencies:
     - field.field.block_content.card_arrangement.field_card_arrangement_display
     - field.field.block_content.card_arrangement.field_card_group
     - field.field.block_content.card_arrangement.field_cta
+    - field.field.block_content.card_arrangement.field_display_orientation
     - field.field.block_content.card_arrangement.field_formatted_text
     - field.field.block_content.card_arrangement.field_heading
     - field.field.block_content.card_arrangement.field_spacing_bottom
@@ -24,19 +25,19 @@ third_party_settings:
         - field_anchor_menu_settings
         - field_spacing_top
         - field_spacing_bottom
-      parent_name: ''
-      weight: 4
-      format_type: details
-      region: content
-      format_settings:
-        id: ''
-        classes: ''
-        description: ''
-        formatter: closed
-        required_fields: true
-        direction: vertical
-        open: false
       label: 'Appearance Settings'
+      region: content
+      parent_name: ''
+      weight: 3
+      format_type: details
+      format_settings:
+        classes: ''
+        id: ''
+        open: false
+        description: ''
+        required_fields: true
+        formatter: closed
+        direction: vertical
     group_main_content:
       children:
         - field_heading
@@ -44,39 +45,41 @@ third_party_settings:
         - field_cta
         - field_formatted_text
         - field_tooltip
-      parent_name: ''
-      weight: 2
-      format_type: details
-      region: content
-      format_settings:
-        id: ''
-        classes: ''
-        description: ''
-        formatter: closed
-        required_fields: true
-        open: false
       label: 'Main Content'
+      region: content
+      parent_name: ''
+      weight: 1
+      format_type: details
+      format_settings:
+        classes: ''
+        id: ''
+        open: false
+        description: ''
+        required_fields: true
+        formatter: closed
     group_cards:
       children:
         - field_card_group
-      parent_name: ''
-      weight: 3
-      format_type: details
-      region: content
-      format_settings:
-        id: ''
-        classes: ''
-        description: ''
-        open: false
-        required_fields: true
       label: Cards
+      region: content
+      parent_name: ''
+      weight: 2
+      format_type: details
+      format_settings:
+        classes: ''
+        id: ''
+        open: false
+        description: ''
+        required_fields: true
 id: block_content.card_arrangement.default
 targetEntityType: block_content
 bundle: card_arrangement
 mode: default
 content:
   field_anchor_menu_settings:
+    type: entity_reference_paragraphs
     weight: 26
+    region: content
     settings:
       title: Paragraph
       title_plural: Paragraphs
@@ -85,16 +88,16 @@ content:
       form_display_mode: default
       default_paragraph_type: ''
     third_party_settings: {  }
-    type: entity_reference_paragraphs
-    region: content
   field_card_arrangement_display:
-    weight: 29
+    type: options_select
+    weight: 5
+    region: content
     settings: {  }
     third_party_settings: {  }
-    type: options_select
-    region: content
   field_card_group:
+    type: entity_reference_paragraphs
     weight: 1
+    region: content
     settings:
       title: Paragraph
       title_plural: Paragraphs
@@ -103,8 +106,6 @@ content:
       form_display_mode: default
       default_paragraph_type: _none
     third_party_settings: {  }
-    type: entity_reference_paragraphs
-    region: content
   field_cta:
     type: entity_reference_paragraphs
     weight: 3
@@ -117,6 +118,36 @@ content:
       form_display_mode: styled
       default_paragraph_type: cta
     third_party_settings: {  }
+  field_display_orientation:
+    type: options_select
+    weight: 4
+    region: content
+    settings: {  }
+    third_party_settings:
+      field_states_ui:
+        field_states:
+          0:
+            uuid: ''
+          2:
+            data:
+              target: field_card_group
+          3:
+            data:
+              comparison: value
+          4:
+            data:
+              value: '0'
+          5:
+            data:
+              submit: 'Add Cancel'
+        form:
+          type: ''
+          list:
+            '':
+              operations:
+                edit: Edit
+                delete: Delete
+          add: Add
   field_formatted_text:
     type: text_textarea
     weight: 4
@@ -134,25 +165,27 @@ content:
       placeholder: ''
     third_party_settings: {  }
   field_spacing_bottom:
+    type: options_select
     weight: 28
+    region: content
     settings: {  }
     third_party_settings: {  }
-    type: options_select
-    region: content
   field_spacing_top:
+    type: options_select
     weight: 27
+    region: content
     settings: {  }
     third_party_settings: {  }
-    type: options_select
-    region: content
   field_text_color:
+    type: options_select
     weight: 2
+    region: content
     settings: {  }
     third_party_settings: {  }
-    type: options_select
-    region: content
   field_tooltip:
+    type: entity_reference_paragraphs
     weight: 5
+    region: content
     settings:
       title: Paragraph
       title_plural: Paragraphs
@@ -161,8 +194,6 @@ content:
       form_display_mode: default
       default_paragraph_type: _none
     third_party_settings: {  }
-    type: entity_reference_paragraphs
-    region: content
   info:
     type: string_textfield
     weight: 0

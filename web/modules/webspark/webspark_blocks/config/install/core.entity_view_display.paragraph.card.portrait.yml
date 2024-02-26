@@ -4,6 +4,8 @@ dependencies:
   config:
     - core.entity_view_mode.paragraph.portrait
     - field.field.paragraph.card.field_body
+    - field.field.paragraph.card.field_card_link
+    - field.field.paragraph.card.field_clickable
     - field.field.paragraph.card.field_cta
     - field.field.paragraph.card.field_cta_secondary
     - field.field.paragraph.card.field_heading
@@ -92,4 +94,6 @@ content:
     weight: 5
     region: content
 hidden:
+  field_card_link: true
+  field_clickable: true
   field_show_borders: true

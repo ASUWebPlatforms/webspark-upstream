@@ -12,10 +12,10 @@ bundle: divider
 mode: default
 content:
   field_divider_type:
-    weight: 0
+    type: list_key
     label: hidden
     settings: {  }
     third_party_settings: {  }
-    type: list_key
+    weight: 0
     region: content
 hidden: {  }

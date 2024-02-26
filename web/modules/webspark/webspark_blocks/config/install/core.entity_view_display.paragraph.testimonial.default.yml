@@ -8,8 +8,6 @@ dependencies:
     - field.field.paragraph.testimonial.field_heading
     - field.field.paragraph.testimonial.field_media
     - paragraphs.paragraphs_type.testimonial
-  module:
-    - options
 id: paragraph.testimonial.default
 targetEntityType: paragraph
 bundle: testimonial

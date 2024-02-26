@@ -1,19 +1,19 @@
 langcode: en
 status: true
 dependencies:
+  module:
+    - node
   enforced:
     module:
       - asu_degree_rfi
-  module:
-    - node
 id: node.field_degree_detail_acadplancode
 field_name: field_degree_detail_acadplancode
 entity_type: node
 type: string
 settings:
   max_length: 80
-  is_ascii: false
   case_sensitive: false
+  is_ascii: false
 module: core
 locked: false
 cardinality: 1

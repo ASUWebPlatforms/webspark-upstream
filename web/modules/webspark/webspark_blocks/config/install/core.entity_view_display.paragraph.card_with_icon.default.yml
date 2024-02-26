@@ -3,6 +3,8 @@ status: true
 dependencies:
   config:
     - field.field.paragraph.card_with_icon.field_body
+    - field.field.paragraph.card_with_icon.field_card_link
+    - field.field.paragraph.card_with_icon.field_clickable
     - field.field.paragraph.card_with_icon.field_cta
     - field.field.paragraph.card_with_icon.field_heading
     - field.field.paragraph.card_with_icon.field_icon
@@ -15,6 +17,8 @@ mode: default
 content: {  }
 hidden:
   field_body: true
+  field_card_link: true
+  field_clickable: true
   field_cta: true
   field_heading: true
   field_icon: true

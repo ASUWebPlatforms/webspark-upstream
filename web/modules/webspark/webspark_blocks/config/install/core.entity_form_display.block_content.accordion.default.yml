@@ -19,24 +19,26 @@ third_party_settings:
         - field_anchor_menu_settings
         - field_spacing_top
         - field_spacing_bottom
+      label: 'Appearance Settings'
+      region: content
       parent_name: ''
       weight: 5
       format_type: tab
-      region: content
       format_settings:
-        description: ''
-        formatter: closed
-        required_fields: true
-        id: ''
         classes: ''
-      label: 'Appearance Settings'
+        id: ''
+        formatter: closed
+        description: ''
+        required_fields: true
 id: block_content.accordion.default
 targetEntityType: block_content
 bundle: accordion
 mode: default
 content:
   field_anchor_menu_settings:
+    type: entity_reference_paragraphs
     weight: 8
+    region: content
     settings:
       title: Paragraph
       title_plural: Paragraphs
@@ -45,11 +47,10 @@ content:
       form_display_mode: default
       default_paragraph_type: ''
     third_party_settings: {  }
-    type: entity_reference_paragraphs
-    region: content
   field_paragraph:
     type: entity_reference_paragraphs
     weight: 4
+    region: content
     settings:
       title: Paragraph
       title_plural: Paragraphs
@@ -58,21 +59,22 @@ content:
       form_display_mode: default
       default_paragraph_type: ''
     third_party_settings: {  }
-    region: content
   field_spacing_bottom:
+    type: options_select
     weight: 10
+    region: content
     settings: {  }
     third_party_settings: {  }
-    type: options_select
-    region: content
   field_spacing_top:
+    type: options_select
     weight: 9
+    region: content
     settings: {  }
     third_party_settings: {  }
-    type: options_select
-    region: content
   field_tooltip:
+    type: entity_reference_paragraphs
     weight: 3
+    region: content
     settings:
       title: Paragraph
       title_plural: Paragraphs
@@ -81,8 +83,6 @@ content:
       form_display_mode: default
       default_paragraph_type: _none
     third_party_settings: {  }
-    type: entity_reference_paragraphs
-    region: content
   info:
     type: string_textfield
     weight: 0

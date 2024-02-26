@@ -4,18 +4,16 @@
 
 //   Drupal.behaviors.renovation = {
 //     attach: function (context, settings) {
-//       $(".el", context)
-//         .once("renovation")
+//       $(once("renovation", ".el", context))
 //         .each(function () {
 //           console.log("Renovation behavior attached.");
 //         });
 //     },
 //     detach: function (context, settings, trigger) {
-//       $(".el", context)
-//         .removeOnce("renovation")
+//       $(once.remove("renovation", ".el", context))
 //         .each(function () {
-//           console.log("Renovation behavior detacthed.");
+//           console.log("Renovation behavior detached.");
 //         });
 //     },
 //   };
-// })(jQuery, Drupal);
+// })(jQuery, Drupal, once);

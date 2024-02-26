@@ -1,6 +1,7 @@
 <?php
 
 use Drupal\block_content\Entity\BlockContent;
+use Drupal\paragraphs\Entity\Paragraph;
 
 /**
  * Implements hook_preprocess_HOOK()
@@ -58,7 +59,7 @@ function webspark_webdir_preprocess_block__web_directory(&$variables)
     // Because some titles have commas and ampersands in them, we need to
     // split the data and encode it before we use a comma as a separator in JS.
     $value = $blockContent->field_filter_title->value;
-    $array = preg_split('/\r?\n|\r/', $value);
+    $array = !empty($value) ? preg_split('/\r?\n|\r/', $value) : [];
     $array = array_map(function($value) {
       return rawurlencode($value);
     }, $array);
@@ -90,11 +91,40 @@ function webspark_webdir_preprocess_block__web_directory(&$variables)
     $dontDisplayProfiles = $blockContent->field_webdir_exclude_profiles->value;
   }
 
+  $alphaFilter = "true";
+  if ($blockContent->hasField('field_webdir_disable_alpha')) {
+    // Note, we negate here. Easier to roll out backwards compability like this.
+    $alphaFilter = !($blockContent->field_webdir_disable_alpha->value) ? 'true' : 'false';
+  }
+
   $appPathFolder = \Drupal::service('webspark_webdir.helper_functions')->getAppPathFolder('app-webdir-ui');
 
+  $customPadding = '';
+  if ($blockContent->hasField('field_spacing_top')) {
+    $customPadding .= $blockContent->field_spacing_top->value;
+  }
+  if ($blockContent->hasField('field_spacing_bottom')) {
+    $customPadding .= ' ' . $blockContent->field_spacing_bottom->value;
+  }
+
+  $renderFields = '';
+  if ($blockContent->hasField('field_anchor_menu_settings')) {
+    $renderer = \Drupal::service('renderer');
+    foreach ($blockContent->field_anchor_menu_settings as $item) {
+      $itemValue = $item->getValue();
+      if($itemValue['target_id']){
+        $targetParagraph = Paragraph::load($itemValue['target_id']);
+        $viewBuilder = \Drupal::entityTypeManager()->getViewBuilder($targetParagraph->getEntityTypeId());
+        $renderArray = $viewBuilder->view($targetParagraph, 'default');
+        $renderFields .= $renderer->render($renderArray);
+      }
+    }
+  }
+
   $markup = <<<HTML
+$renderFields
 <div
-  class="webdir-container"
+  class="webdir-container {$customPadding}"
   id="webdir-container-{$blockContent->id()}"
   data-search-type="{$searchType}"
   data-search-url="{$config->get('api')}"
@@ -110,6 +140,7 @@ function webspark_webdir_preprocess_block__web_directory(&$variables)
   data-profiles-per-page="{$profilesPerPage}"
   data-default-sort="{$defaultSort}"
   data-do-not-display-profiles="{$dontDisplayProfiles}"
+  data-alpha-filter="{$alphaFilter}"
   data-app-path-folder="{$appPathFolder}"
 ></div>
 HTML;

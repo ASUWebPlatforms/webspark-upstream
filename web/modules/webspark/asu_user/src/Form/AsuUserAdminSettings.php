@@ -33,7 +33,7 @@ class AsuUserAdminSettings extends ConfigFormBase {
   /**
    * {@inheritdoc}
    */
-  public function buildForm(array $form, \Drupal\Core\Form\FormStateInterface $form_state) {
+  public function buildForm(array $form, FormStateInterface $form_state) {
 
     // elastic server query URL to use.
     $form['asu_user_elastic_query_url'] = [

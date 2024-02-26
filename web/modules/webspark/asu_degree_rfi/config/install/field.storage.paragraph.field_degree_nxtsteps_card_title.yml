@@ -1,19 +1,19 @@
 langcode: en
 status: true
 dependencies:
+  module:
+    - paragraphs
   enforced:
     module:
       - asu_degree_rfi
-  module:
-    - paragraphs
 id: paragraph.field_degree_nxtsteps_card_title
 field_name: field_degree_nxtsteps_card_title
 entity_type: paragraph
 type: string
 settings:
   max_length: 50
-  is_ascii: false
   case_sensitive: false
+  is_ascii: false
 module: core
 locked: false
 cardinality: 1

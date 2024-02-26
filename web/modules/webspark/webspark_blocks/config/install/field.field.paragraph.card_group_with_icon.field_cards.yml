@@ -20,9 +20,9 @@ default_value_callback: ''
 settings:
   handler: 'default:paragraph'
   handler_settings:
-    negate: 0
     target_bundles:
       card_with_icon: card_with_icon
+    negate: 0
     target_bundles_drag_drop:
       accordion_panel:
         weight: 43
@@ -64,8 +64,8 @@ settings:
         weight: 55
         enabled: false
       card_with_icon:
-        enabled: true
         weight: 56
+        enabled: true
       cta:
         weight: 57
         enabled: false

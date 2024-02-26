@@ -1,8 +1,9 @@
 // @see https://asudev.jira.com/browse/WS2-1730
-@import "node_modules/@asu/unity-bootstrap-theme/src/scss/custom-asu-variables";
+@import "@asu/unity-bootstrap-theme/src/scss/custom-asu-variables";
 @import "base/mixins";
 
-#drupal-off-canvas {
+#drupal-off-canvas-wrapper  {
+  z-index: 1260;
   .form-text,
   .form-tel,
   .form-email,
@@ -23,6 +24,13 @@
       margin-top: 0 !important;
       padding-left: 0;
     }
+  }
+
+  .js-hide {
+    /* Temporarily hide the js-hide class.
+     * See https://www.drupal.org/project/drupal/issues/3121239.
+     */
+    display: none;
   }
 
   form {
@@ -122,15 +130,29 @@
     }
   }
 
-  .banner-green,
-  .banner-orange,
-  .banner-blue,
+  .banner-green {
+    outline: black 5px solid;
+    background: $uds-color-base-green;
+  }
+
+  .banner-orange {
+    outline: black 5px solid;
+    background: $uds-color-base-orange;
+  }
+
+  .banner-blue {
+    outline: black 5px solid;
+    background: $uds-color-base-blue;
+  }
+
   .banner-gray {
     outline: black 5px solid;
+    background: $uds-color-base-gray-2;
   }
 
   .banner-black {
     outline: $uds-color-base-gray-2 5px solid;
+    background: $uds-color-base-gray-7;
   }
 
   input {
@@ -150,9 +172,40 @@
     margin-bottom: 0.5rem;
   }
 
-  .icons-selector.fip-grey .fip-box:hover,
-  .icons-selector .selected-icon {
-    color: var(--bs-table-color-state, var(--bs-table-color-type, var(--bs-table-color)));
+  .icons-selector.fip-grey {
+    .fip-icon-block:before {
+      color: #f54848;
+    }
+
+    .selector-search {
+      i {
+        color: #999;
+        top: 3px;
+      }
+
+      .icons-search-input::placeholder {
+        color: #999 !important;
+      }
+    }
+
+    .fip-box {
+      color: #333;
+    }
+
+    .fip-box:hover {
+      color: #000;
+    }
+
+    .selector-pages, .selector-arrows i {
+      color: #999;
+    }
+
+    .selected-icon {
+      color: #000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
   }
 
   fieldset {
@@ -174,7 +227,7 @@
     font-size: 12px;
   }
 
-  .webform-element-more .cm-s-default *{
+  .webform-element-more .cm-s-default * {
     color: #ddd;
   }
 
@@ -184,6 +237,15 @@
     height: 18px;
     mask: inherit;
   }
+
+  details {
+    border-width: 2px !important;
+    border-color: $uds-color-base-gray-5 !important;
+  }
+}
+
+body .ui-dialog.ui-widget.ui-widget-content.media-library-widget-modal {
+  z-index: 1501 !important;
 }
 
 .layout-builder-form {

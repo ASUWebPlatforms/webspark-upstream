@@ -4,11 +4,11 @@ dependencies:
   config:
     - field.storage.node.field_deg_dtl_anchor_addl_anchor
     - node.type.degree_detail_page
+  module:
+    - link
   enforced:
     module:
       - asu_degree_rfi
-  module:
-    - link
 id: node.degree_detail_page.field_deg_dtl_anchor_addl_anchor
 field_name: field_deg_dtl_anchor_addl_anchor
 entity_type: node
@@ -20,6 +20,6 @@ translatable: false
 default_value: {  }
 default_value_callback: ''
 settings:
-  link_type: 1
   title: 2
+  link_type: 1
 field_type: link

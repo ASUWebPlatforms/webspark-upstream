@@ -4,32 +4,33 @@
  * Template for the main page.
  */
 #}
-<div class="page page-wrapper-webspark">
-  <main class="pt-5 pb-5">
-    {% if page.header %}
-      <div class="container">
-        {{ page.header }}
-      </div>
-    {% endif %}
+{% if page.header %}
+  <header>
+      {{ page.header }}
+  </header>
+{% endif %}
+<main>
+  <div class="page page-wrapper-webspark">
+    <div class="pt-5 pb-5">
 
-    {% if page.pre_content %}
-      <div class="page__pre-content center-container max-size-container">
-        <div class="container">
-          {{ page.pre_content }}
+      {% if page.pre_content %}
+        <div class="page__pre-content center-container max-size-container">
+          <div class="container">
+            {{ page.pre_content }}
+          </div>
         </div>
-      </div>
-    {% endif %}
+      {% endif %}
 
-    {% if page.content %}
-      <div id="skip-to-content" class="page__content center-container max-size-container">
-        {{ page.content }}
-      </div>
-    {% endif %}
-  </main>
-
-  {% if page.footer %}
-    <footer class="page__footer" id="asu-footer" role="contentinfo">
-      {{ page.footer }}
-    </footer>
-  {% endif %}
-</div>
+      {% if page.content %}
+        <div id="skip-to-content" class="page__content center-container max-size-container">
+          {{ page.content }}
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</main>
+{% if page.footer %}
+  <footer class="page__footer" id="asu-footer" role="contentinfo">
+    {{ page.footer }}
+  </footer>
+{% endif %}

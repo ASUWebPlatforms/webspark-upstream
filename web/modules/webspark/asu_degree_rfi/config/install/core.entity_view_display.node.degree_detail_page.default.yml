@@ -114,9 +114,9 @@ third_party_settings:
     allowed_block_categories: {  }
     entity_view_mode_restriction:
       allowed_layouts: {  }
+      denylisted_blocks: {  }
+      allowlisted_blocks: {  }
       restricted_categories: {  }
-      blacklisted_blocks: {  }
-      whitelisted_blocks: {  }
 id: node.degree_detail_page.default
 targetEntityType: node
 bundle: degree_detail_page

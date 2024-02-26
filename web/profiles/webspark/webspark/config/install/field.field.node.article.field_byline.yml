@@ -3,14 +3,10 @@ status: true
 dependencies:
   config:
     - field.storage.node.field_byline
+    - filter.format.basic_html
     - node.type.article
   module:
-    - allowed_formats
     - text
-third_party_settings:
-  allowed_formats:
-    allowed_formats:
-      - basic_html
 id: node.article.field_byline
 field_name: field_byline
 entity_type: node
@@ -24,5 +20,7 @@ default_value:
     value: "<p class=\"lead\">Replace or delete this \"lead paragraph\" text with your byline text.</p>\r\n"
     format: basic_html
 default_value_callback: ''
-settings: {  }
+settings:
+  allowed_formats:
+    - basic_html
 field_type: text_long

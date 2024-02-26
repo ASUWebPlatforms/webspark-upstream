@@ -7,8 +7,14 @@
   .glide {
     max-width: $testimonial-width !important;
 
-    .glide__slide .slider {
-      width: $testimonial-width !important;
+    &__slide {
+      .uds-blockquote {
+        padding: 2rem 0;
+      }
+
+      .slider {
+        width: $testimonial-width !important;
+      }
     }
   }
 }

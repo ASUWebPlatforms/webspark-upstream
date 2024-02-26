@@ -5,5 +5,6 @@ dependencies:
     - paragraphs
 id: paragraph.link
 label: Link
+description: ''
 targetEntityType: paragraph
 cache: true

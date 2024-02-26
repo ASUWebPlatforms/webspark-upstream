@@ -1,5 +1,23 @@
-# Custom module library for general purposes.
-webspark.ckeditor.plugins:
+# This adds the plugin JavaScript to the page.
+# cSpell:ignore simplebox demobox
+
+websparkplugin:
+  js:
+    js/build/websparkPlugin.js: { preprocess: false, minified: true }
+    /libraries/fontawesome/js/all.min.js: { preprocess: false, minified: true }
   css:
     theme:
-      css/webspark-ckeditor.css: {}
+      css/websparkplugin.css: { }
+      css/websparkglobal.css: { }
+      /themes/webspark/renovation/assets/css/renovation.style.css: { }
+      /themes/webspark/renovation/css/ckeditor-override.css: { }
+      
+  dependencies:
+    - core/ckeditor5
+
+# Loaded in the text format configuration form to provide styling for the icon
+# used in toolbar config.
+admin.websparkplugin:
+  css:
+    theme:
+      css/websparkplugin.admin.css: { }

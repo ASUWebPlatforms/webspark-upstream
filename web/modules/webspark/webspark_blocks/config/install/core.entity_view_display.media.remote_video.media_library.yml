@@ -11,8 +11,8 @@ dependencies:
     - layout_builder
 third_party_settings:
   layout_builder:
-    allow_custom: false
     enabled: false
+    allow_custom: false
 id: media.remote_video.media_library
 targetEntityType: media
 bundle: remote_video
@@ -20,23 +20,23 @@ mode: media_library
 content:
   name:
     type: string
-    weight: 0
-    region: content
     label: hidden
     settings:
       link_to_entity: false
     third_party_settings: {  }
+    weight: 0
+    region: content
   thumbnail:
     type: image
-    weight: 1
-    region: content
     label: hidden
     settings:
-      image_style: thumbnail
       image_link: ''
+      image_style: thumbnail
       image_loading:
         attribute: lazy
     third_party_settings: {  }
+    weight: 1
+    region: content
 hidden:
   created: true
   field_media_oembed_video: true

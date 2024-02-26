@@ -19,5 +19,5 @@ settings:
 visibility:
   request_path:
     id: request_path
-    pages: "/user/*\r\n/node/*/layout/discard-changes\r\n/node/*/layout/revert"
     negate: false
+    pages: "/user/*\r\n/node/*/layout/discard-changes\r\n/node/*/layout/revert"

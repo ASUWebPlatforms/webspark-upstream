@@ -1,15 +1,15 @@
 langcode: en
 status: true
 dependencies:
-  enforced:
-    module:
-      - asu_degree_rfi
   config:
     - field.storage.node.field_degree_dtl_intro_content
     - node.type.degree_detail_page
   module:
     - allowed_formats
     - text
+  enforced:
+    module:
+      - asu_degree_rfi
 third_party_settings:
   allowed_formats:
     basic_html: basic_html
@@ -26,5 +26,6 @@ required: false
 translatable: false
 default_value: {  }
 default_value_callback: ''
-settings: {  }
+settings:
+  allowed_formats: {  }
 field_type: text_long

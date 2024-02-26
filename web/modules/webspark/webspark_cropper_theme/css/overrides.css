@@ -33,10 +33,8 @@
 }
 
 .media-library-menu li {
-  background: #fff;
   display: block;
   margin: 0!important;
-  padding: 0 4px!important;
   list-style: none;
 }
 
@@ -45,6 +43,15 @@
   display: block;
   width: 100%;
   padding: 15px;
+}
+
+.media-library-menu li a:hover {
+  background-color: #d0d0d0;
+}
+
+.media-library-menu li a.active {
+  background-color: #fff;
+  font-weight: bold;
 }
 
 ul.media-library-menu.nav {
@@ -74,7 +81,7 @@ ul.media-library-menu.nav {
   margin-right: 5px;
 }
 
-.image-data__crop-wrapper .seven-details__summary {
+.image-data__crop-wrapper .claro-details__summary {
   padding: 10px 32px;
   font-weight: 700;
   color: #8c1d40;

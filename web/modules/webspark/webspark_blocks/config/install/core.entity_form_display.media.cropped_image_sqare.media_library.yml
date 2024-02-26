@@ -15,31 +15,31 @@ bundle: cropped_image_sqare
 mode: media_library
 content:
   field_media_image:
+    type: image_widget_crop
     weight: 5
+    region: content
     settings:
-      show_crop_area: true
-      show_default_crop: true
-      warn_multiple_usages: true
+      progress_indicator: throbber
       preview_image_style: thumbnail
       crop_preview_image_style: crop_thumbnail
-      progress_indicator: throbber
       crop_list:
         - '1_1'
       crop_types_required:
         - '1_1'
+      warn_multiple_usages: true
+      show_crop_area: true
+      show_default_crop: true
     third_party_settings:
       decorative_image_widget:
         use_decorative_checkbox: true
-    type: image_widget_crop
-    region: content
   name:
     type: string_textfield
+    weight: 0
+    region: content
     settings:
       size: 60
       placeholder: ''
-    weight: 0
     third_party_settings: {  }
-    region: content
 hidden:
   created: true
   path: true

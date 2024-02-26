@@ -2,6 +2,7 @@
 
 namespace Drupal\asu_degree_rfi;
 
+use Drupal\node\NodeInterface;
 use Drupal\Core\Url;
 
 /**
@@ -101,7 +102,7 @@ class AsuDegreeRfiHelperFunctions {
   public function getRouteProgramOfInterest() {
     $route_node = \Drupal::routeMatch()->getParameter('node');
     $route_pgm_of_interest = null;
-    if ($route_node instanceof \Drupal\node\NodeInterface && $route_node->bundle() === 'degree_detail_page') {
+    if ($route_node instanceof NodeInterface && $route_node->bundle() === 'degree_detail_page') {
       $route_pgm_of_interest = $route_node->get('field_degree_detail_acadplancode')->getvalue()[0]['value'];
     }
     return $route_pgm_of_interest;

@@ -10,7 +10,7 @@ style:
   dependencies:
     - core/jquery
     - core/drupal
-    - core/jquery.once
+    - core/once
 
 charts_graphs:
   js:
@@ -18,7 +18,7 @@ charts_graphs:
   dependencies:
     - core/jquery
     - core/drupal
-    - core/jquery.once
+    - core/once
 
 renovation.chartjs:
   remote: https://github.com/chartjs/Chart.js
