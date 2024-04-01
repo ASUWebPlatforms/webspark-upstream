@@ -26,5 +26,8 @@
     },
     "drupal/paragraphs": {
         "#3090200: Paragraphs do not render: access check for view fail when using layout builder": "https://www.drupal.org/files/issues/2022-10-26/3084934-13_combine_3090200-22.patch"
+    },
+    "drupal/ckeditor_responsive_plugin": {
+        "#3334636 : Add content after injecting the grid ": "https://www.drupal.org/files/issues/2023-08-22/ckeditor_responsive_plugin_2-1.patch"
     }
 }

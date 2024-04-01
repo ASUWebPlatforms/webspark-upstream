@@ -447,3 +447,37 @@ function webspark_update_10001(&$sandbox) {
     Drupal::service('module_installer')->install(['layout_builder_usage_reports']);
   }
 }
+
+/**
+ * Implements hook_update() on WS2-1983.
+ *
+ * People who execute 10000 will already have this, but people who updated to
+ * or installed 2.12.0 might not.
+ */
+function webspark_update_10002(&$sandbox) {
+  \Drupal::state()->set('configuration_locked', FALSE);
+  $config_factory = \Drupal::service('config.factory');
+  $editor_configs = $config_factory->listAll($prefix = 'editor.editor');
+  $editor_configs = [...$editor_configs, ...$config_factory->listAll($prefix = 'filter.format')];
+  foreach ($editor_configs as $value) {
+    $config = \Drupal::config($value);
+    if ($config) {
+      $data = $config->getRawData();
+      if ($data && isset($data['settings']['plugins']['ckeditor5_heading']['enabled_headings'])) {
+        $allowed_tags = $data['settings']['plugins']['ckeditor5_sourceEditing']['allowed_tags'];
+        if ($allowed_tags) {
+          $div_class = array_search('<div class>', $allowed_tags);
+          if ($div_class === false) {
+            array_push($allowed_tags, '<div class>');
+            $config_editable = $config_factory->getEditable($value);
+            $config_editable->set('settings.plugins.ckeditor5_sourceEditing.allowed_tags', $allowed_tags);
+            $config_editable->save();
+            \Drupal::service('messenger')
+              ->addMessage("CK Editor - Modified Source Editing for " . $config->getName());
+          }
+        }
+      }
+    }
+  }
+  \Drupal::state()->set('configuration_locked', TRUE);
+}
