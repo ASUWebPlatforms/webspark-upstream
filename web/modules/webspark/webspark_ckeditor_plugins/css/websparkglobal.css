@@ -48,6 +48,10 @@ span.highlight-black.ck-editor__nested-editable_focused {
   color: rgb(0, 0, 0);
 }
 
+span.text.ck-editor__nested-editable_focused {
+  color: rgb(0, 0, 0) !important;
+}
+
 .drupal-off-canvas-reset .uds-blockquote {
   display: grid !important;
 }

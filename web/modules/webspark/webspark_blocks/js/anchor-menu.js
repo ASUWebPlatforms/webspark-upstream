@@ -47,7 +47,8 @@
     }
   };
 
-
+  // The following function is a copy of the initializeAnchorMenu function from the javascript file
+  // in https://github.com/ASU/asu-unity-stack/pull/1252. More infor about future consolidation: https://asudev.jira.com/browse/WS2-1961?atlOrigin=eyJpIjoiNGYxZWJjNjA5ZmRlNGExNmEwM2JiZDkxZDYxMTdlNjIiLCJwIjoiaiJ9
   function initializeAnchorMenu () {
     const HEADER_IDS = ['asu-header', 'asuHeader'];
 
@@ -57,12 +58,13 @@
     const navbarOriginalParent = navbar.parentNode;
     const navbarOriginalNextSibling = navbar.nextSibling;
     const anchors = navbar.getElementsByClassName('nav-link');
-    const navbarInitialPosition = navbar.getBoundingClientRect().bottom;
     const anchorTargets = new Map();
     let previousScrollPosition = window.scrollY;
     let isNavbarAttached = false;  // Flag to track if navbar is attached to header
     const body = document.body;
 
+    // These values are for optionally present Drupal admin toolbars. They
+    // are not present in Storybook and not required in implementations.
     let toolbarBar = document.getElementById('toolbar-bar');
     let toolbarItemAdministrationTray = document.getElementById('toolbar-item-administration-tray');
 
@@ -70,6 +72,7 @@
     let toolbarItemAdministrationTrayHeight = toolbarItemAdministrationTray ? toolbarItemAdministrationTray.offsetHeight : 0;
 
     let combinedToolbarHeightOffset = toolbarBarHeight + toolbarItemAdministrationTrayHeight;
+    const navbarInitialTop = navbar.getBoundingClientRect().top + window.scrollY - combinedToolbarHeightOffset;
 
     // Cache the anchor target elements
     for (let anchor of anchors) {
@@ -78,14 +81,26 @@
       anchorTargets.set(anchor, target);
     }
 
+    /*
+      Bootstrap needs to be loaded as a variable in order for this to work.
+      An alternative is to remove this and add the data-bs-spy="scroll" data-bs-target="#uds-anchor-menu nav" attributes to the body tag
+      See https://getbootstrap.com/docs/5.3/components/scrollspy/ for more info
+    */
     const scrollSpy = new bootstrap.ScrollSpy(body, {
       target: '#uds-anchor-menu nav',
       rootMargin: '20%'
     });
 
+    const shouldAttachNavbarOnLoad = window.scrollY > navbarInitialTop;
+    if (shouldAttachNavbarOnLoad) {
+      globalHeader.appendChild(navbar);
+      isNavbarAttached = true;
+      navbar.classList.add("uds-anchor-menu-attached");
+    }
+
     window.addEventListener("scroll", function () {
       const navbarY = navbar.getBoundingClientRect().top;
-      const headerHeight = globalHeader.classList.contains("scrolled") ?  globalHeader.offsetHeight - 32 : globalHeader.offsetHeight;
+      const headerHeight = globalHeader.classList.contains("scrolled") ?  globalHeader.offsetHeight - 32 : globalHeader.offsetHeight; // 32 is the set height of the gray toolbar above the global header.
 
       // If scrolling DOWN and navbar touches the globalHeader
       if (
@@ -104,13 +119,12 @@
       // If scrolling UP and past the initial navbar position
       if (
         window.scrollY < previousScrollPosition &&
-        (window.scrollY - navbarInitialPosition < (navbarInitialPosition - combinedToolbarHeightOffset) || window.scrollY === 0) && isNavbarAttached
+        window.scrollY <= navbarInitialTop && isNavbarAttached
       ) {
-          // Detach navbar and return to original position
-          navbarOriginalParent.insertBefore(navbar, navbarOriginalNextSibling);
-          isNavbarAttached = false;
-          navbar.classList.remove('uds-anchor-menu-attached');
-          previousScrollPosition = window.scrollY;
+        // Detach navbar and return to original position
+        navbarOriginalParent.insertBefore(navbar, navbarOriginalNextSibling);
+        isNavbarAttached = false;
+        navbar.classList.remove('uds-anchor-menu-attached');
       }
 
       previousScrollPosition = window.scrollY;

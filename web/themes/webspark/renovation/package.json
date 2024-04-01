@@ -21,7 +21,7 @@
         "sass-loader": "^12.1.0"
     },
     "dependencies": {
-        "@asu/unity-bootstrap-theme": "1.9.1",
+        "@asu/unity-bootstrap-theme": "1.9.7",
         "@popperjs/core": "^2.11.8"
     }
 }
