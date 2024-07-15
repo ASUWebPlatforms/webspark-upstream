@@ -1,0 +1,25 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - crop.type.1_1_rounded
+  module:
+    - crop
+name: block_image_1_1_lge_rounded
+label: 'Block Image 1:1 LGE (Rounded)'
+effects:
+  0c554874-262a-4ed5-9263-a98a849c41f2:
+    uuid: 0c554874-262a-4ed5-9263-a98a849c41f2
+    id: image_scale_and_crop
+    weight: -9
+    data:
+      width: 1200
+      height: 1200
+      anchor: center-center
+  6196711a-6c4c-4442-8a0f-cac70d5a11a7:
+    uuid: 6196711a-6c4c-4442-8a0f-cac70d5a11a7
+    id: crop_crop
+    weight: -10
+    data:
+      crop_type: 1_1_rounded
+      automatic_crop_provider: null

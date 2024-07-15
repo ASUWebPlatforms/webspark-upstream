@@ -1,0 +1,25 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - crop.type.1_1_rounded
+  module:
+    - crop
+name: block_image_1_1_sml_rounded
+label: 'Block Image 1:1 SML (Rounded)'
+effects:
+  71d24b1b-f494-4fd8-af2f-ad9dcde27ac3:
+    uuid: 71d24b1b-f494-4fd8-af2f-ad9dcde27ac3
+    id: crop_crop
+    weight: 1
+    data:
+      crop_type: 1_1_rounded
+      automatic_crop_provider: null
+  499d8c4d-4d7c-4ecb-9241-58fe4aa524ac:
+    uuid: 499d8c4d-4d7c-4ecb-9241-58fe4aa524ac
+    id: image_scale_and_crop
+    weight: 2
+    data:
+      width: 300
+      height: 300
+      anchor: center-center

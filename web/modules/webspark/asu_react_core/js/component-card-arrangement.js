@@ -53,7 +53,7 @@
               targetSelector: '#card-' + card.id,
               props: {
                 type: card.cardType,
-                horizontal: settings.asu.horizontal,
+                horizontal: cardData.items_display[item] == 'horizontal',
                 clickable: card.clickable,
                 clickHref: card.clickHref,
                 image: card.imageSource,

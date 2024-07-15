@@ -1,0 +1,28 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.content_image
+    - field.storage.block_content.field_media
+    - media.type.image_block_images
+id: block_content.content_image.field_media
+field_name: field_media
+entity_type: block_content
+bundle: content_image
+label: Image
+description: 'Recommended image size (W x H): 1024 x 768px'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      image_block_images: image_block_images
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: image_block_images
+field_type: entity_reference

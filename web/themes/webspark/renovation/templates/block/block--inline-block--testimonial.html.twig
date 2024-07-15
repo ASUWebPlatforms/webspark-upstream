@@ -11,6 +11,7 @@
 ] %}
 
 <div{{ attributes.addClass(classes) }}>
+  {{ content.field_anchor_menu_settings }}
   {{ title_prefix }}
   {% if label %}
     {% block label %}
@@ -18,7 +19,6 @@
     {% endblock %}
   {% endif %}
   {{ title_suffix }}
-  {{ content.field_anchor_menu_settings }}
   {{ content.field_tooltip }}
   {% block content %}
     {{ content|without('field_tooltip', 'field_anchor_menu_settings', 'field_accent_color', 'field_heading_highlight') }}

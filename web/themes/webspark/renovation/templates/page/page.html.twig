@@ -9,8 +9,9 @@
       {{ page.header }}
   </header>
 {% endif %}
+{% set unpublished = is_published is same as '0' ? 'node--unpublished' : '' %}
 <main>
-  <div class="page page-wrapper-webspark">
+  <div class="page page-wrapper-webspark {{ unpublished }}">
     <div class="pt-5 pb-5">
 
       {% if page.pre_content %}

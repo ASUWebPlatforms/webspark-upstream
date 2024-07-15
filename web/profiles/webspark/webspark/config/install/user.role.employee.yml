@@ -1,0 +1,11 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - file
+id: employee
+label: Employee
+weight: 3
+is_admin: null
+permissions:
+  - 'delete own files'

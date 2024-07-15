@@ -6,8 +6,8 @@ type: module
 core: 8.x
 core_version_requirement: ^8 || ^9 || ^10
 dependencies:
-  - field_states_ui
-  - maxlength
-  - field_group
-  - options
-  - block_content
+  - drupal:field_states_ui
+  - drupal:maxlength
+  - drupal:field_group
+  - drupal:options
+  - drupal:block_content

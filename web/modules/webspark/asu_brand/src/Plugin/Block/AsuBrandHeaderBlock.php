@@ -146,7 +146,7 @@ class AsuBrandHeaderBlock extends BlockBase {
     // Get and pass cookie consent status, too.
     $global_config = \Drupal::config('asu_brand.settings');
     $block_output['#attached']['drupalSettings']['asu_brand']['cookie_consent'] = $global_config->get('asu_brand.asu_brand_cookie_consent_enabled');
-
+    $block_output['#attached']['drupalSettings']['is_admin'] = \Drupal::currentUser()->hasPermission('administer site configuration');
     return $block_output;
   }
 
@@ -208,20 +208,29 @@ class AsuBrandHeaderBlock extends BlockBase {
       '#title' => $this->t('Parent unit name'),
       '#description' => $this->t("(optional) Name of the ASU parent unit. Will appear above the site title. Leave blank if none."),
       '#default_value' => $config['asu_brand_header_block_parent_org'] ?? '',
-      '#states' => array(
-        'required' => array(
-          ':input[name="settings[titles][asu_brand_header_block_parent_org_url]"]' => array(
-            'filled' => TRUE,
-          ),
-        ),
-      ),
+      '#states' => [
+        'required' => [
+          ':input[name="settings[titles][asu_brand_header_block_parent_org_url]"]' => ['filled' => TRUE],
+        ],
+      ],
     ];
+
     $form['titles']['asu_brand_header_block_parent_org_url'] = [
       '#type' => 'textfield',
       '#title' => $this->t('Parent department URL'),
-      '#description' => $this->t('Absolute or relative URL of the parent unit. Leave blank if none.'),
+      '#description' => $this->t('Absolute or relative URL of the parent unit.'),
       '#default_value' => $config['asu_brand_header_block_parent_org_url'] ?? '',
+      '#states' => [
+        'visible' => [
+          ':input[name="settings[titles][asu_brand_header_block_parent_org]"]' => ['filled' => TRUE],
+        ],
+        'required' => [
+          ':input[name="settings[titles][asu_brand_header_block_parent_org]"]' => ['filled' => TRUE],
+        ],
+      ],
     ];
+
+
 
 
     $form['menus'] = array(

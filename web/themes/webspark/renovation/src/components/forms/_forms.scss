@@ -1,15 +1,74 @@
-//  Move to UDS
-form.uds-form {
+// Non-UDS Bootstrap Form style overrides
+form:not(.uds-form) {
   .form-check {
     .tableselect.form-check-input {
       opacity: 1;
     }
   }
-}
 
-//  Move to UDS
-form.uds-form {
-  input {
-    padding-left: $uds-size-spacing-4 !important;
+  input:not([type="checkbox"]):not([type="radio"]):not([type="submit"]), {
+    padding-left: 2rem;
+  }
+
+  @mixin invalid {
+    border-color: #b72a2a !important;
+    border-bottom: 8px solid #b72a2a !important;
+  }
+  @mixin valid {
+    border: 1px solid #446d12 !important;
+    border-bottom: 8px solid #446d12 !important;
+  }
+
+  &.was-validated {
+    .form-select:valid, .form-select.is-valid {
+      @include valid;
+    }
+    .form-select:invalid, .form-select.is-invalid {
+      @include invalid;
+    }
+    .form-control {
+      &:valid, &.is-valid {
+        @include valid;
+        + .ck-editor {
+          @include valid;
+        }
+      }
+      &:invalid, &.is-invalid {
+        @include invalid;
+        + .ck-editor {
+          @include invalid;
+        }
+      }
+    }
+    .icons-selector:has(+ .form-control:valid) {
+      @include valid;
+    }
+    .icons-selector:has(+ .form-control:invalid) {
+      @include invalid;
+    }
+    .form-check-input:valid ~ .form-check-label {
+        color: var(--bs-secondary-color);
+    }
+  }
+
+  svg.uds-field-required {
+    font-size: .5rem;
+    margin-right: .25rem;
+    margin-bottom: .125rem;
+    color: #8c1d40;
+  }
+
+  .invalid-feedback {
+    display: block;
+    margin-top: .25rem;
+    font-size: 0.875em;
+    color: #b72a2a;
+  }
+
+  &.layout-builder-update-block .invalid-feedback {
+    display: block !important;
+    margin-top: .25rem !important;
+    font-size: 0.875em !important;
+    color: rgb(227, 144, 144) !important;
   }
 }

@@ -1,4 +1,26 @@
 // Add margin to bottom of an image with a box shadow
-.uds-img.uds-img-drop-shadow {
-  margin-bottom: 1rem;
+
+.uds-img {
+  &.uds-img-drop-shadow {
+    margin-bottom: 1rem;
+  }
+  &.uds-img-drop-shadow.uds-img-rounded {
+    margin-bottom: 1rem;
+    box-shadow: unset;
+
+    .uds-img-rounded {
+      img {
+        box-shadow: 0 0.5rem 1rem rgba(25, 25, 25, 0.2);
+      }
+    }
+  }
+}
+
+.uds-img-rounded {
+  border-radius: 100%;
+
+  img {
+    border: 0;
+    border-radius: 100%;
+  }
 }

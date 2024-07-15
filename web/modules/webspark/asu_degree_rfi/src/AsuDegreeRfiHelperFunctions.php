@@ -107,4 +107,9 @@ class AsuDegreeRfiHelperFunctions {
     }
     return $route_pgm_of_interest;
   }
+
+  public function getRfiVariantOptions() {
+    return $options = ['rfiVariant2' => t('Two page form'), 'rfiVariant1' => t('One page form')];
+  }
+
 }

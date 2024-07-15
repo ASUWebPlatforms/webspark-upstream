@@ -1,0 +1,2 @@
+asu_data_potluck:
+  datasource_endpoint: 'https://api.myasuplat-dpl.asu.edu/api/'

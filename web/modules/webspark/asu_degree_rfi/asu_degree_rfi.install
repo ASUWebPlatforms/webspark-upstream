@@ -9,6 +9,7 @@ function asu_degree_rfi_module_preinstall($module) {
 
 function asu_degree_rfi_modules_installed($modules) {
   if (in_array('asu_degree_rfi', $modules)) {
+
     // Lock the configuration storage after install.
     \Drupal::state()->set('configuration_locked', TRUE);
   }
@@ -122,6 +123,30 @@ function asu_degree_rfi_update_9009(&$sandbox) {
  */
 function asu_degree_rfi_update_9010(&$sandbox) {
   _asu_degree_rfi_revert_all_module_config();
+}
+
+/**
+ * Install ASU Data Potluck module.
+ */
+function asu_degree_rfi_update_10000(&$sandbox) {
+  if (!Drupal::moduleHandler()->moduleExists('asu_data_potluck')) {
+    Drupal::service('module_installer')->install(['asu_data_potluck']);
+  }
+}
+
+/**
+ * Set new default global setting for RFI form variant to 2 pager.
+ */
+function asu_degree_rfi_update_10001(&$sandbox) {
+
+  $rfi_variant_global_default = 'rfiVariant2';
+  $config = \Drupal::configFactory()->getEditable('asu_degree_rfi.settings');
+  $config->set('asu_degree_rfi.rfi_variant_default', $rfi_variant_global_default);
+  $config->save();
+
+  \Drupal::state()->set('configuration_locked', FALSE);
+  \Drupal::service('webspark.config_manager')->updateConfigFile('core.entity_view_display.node.degree_detail_page.default');
+  \Drupal::state()->set('configuration_locked', TRUE);
 }
 
 function _asu_degree_rfi_revert_all_module_config() {

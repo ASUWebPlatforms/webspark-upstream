@@ -8,3 +8,14 @@
  * This file is no longer required in Drupal 8.
  * @see https://www.drupal.org/node/2217931
  */
+
+/**
+ * Add is_published template variable.
+ */
+function webspark_module_renovation_layouts_preprocess(&$variables) {
+  $node = \Drupal::routeMatch()->getParameter('node');
+  if ($node) {
+    $status = $node->get('status')->value;
+    $variables['is_published'] = $status;
+  }
+}

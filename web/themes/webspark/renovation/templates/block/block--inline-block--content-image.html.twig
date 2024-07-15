@@ -12,6 +12,7 @@
 {% set class_position = content.field_content_position[0]['#markup'] == 'left' ? 'content-left'%}
 
 <div{{ attributes.addClass(classes) }}>
+  {{ content.field_anchor_menu_settings }}
   {{ title_prefix }}
   {% if label %}
     {% block label %}
@@ -19,7 +20,6 @@
     {% endblock %}
   {% endif %}
   {{ title_suffix }}
-  {{ content.field_anchor_menu_settings }}
   {% block content %}
     {% include '@renovation/image-overlap/image-overlap.twig' with {
       image: content.field_media,

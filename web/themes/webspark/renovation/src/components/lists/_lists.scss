@@ -1,16 +1,136 @@
-// TODO: Move this to UDS, like the maroon
-ul.uds-list {
-  &.fa-ul {
-    &.gold li svg {
-      color: $uds-color-base-gold;
+@mixin ck-uds-list {
+  list-style-type: none;
+  // to be fixed in Unity:
+  //--list-padding-left: 3rem;
+  &.fa-ul.fa-li, &.fa-ul {
+    // to be fixed in Unity:
+    //--list-padding-left: 3rem;
+    left: 0;
+    position: relative;
+    text-align: left;
+    width: inherit;
+    padding-left: 2rem;
+    &.maroon {
+      svg {
+        color: $uds-color-base-maroon;
+      }
+    }
+    &.gold {
+      svg {
+        color: $uds-color-base-gold;
+      }
+    }
+
+    li {
+      & > .fontawesome-icon-inline {
+        position: absolute;
+        left: -2.25rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 1.5rem;
+        height: 1.5rem;
+        & > .svg-inline--fa {
+          position: unset;
+          left: unset;
+          height: 1em;
+          width: var(--fa-li-width, 2em);
+        }
+      }
+      .ck-widget {
+        position: absolute;
+        left: -2.25rem;
+        width: 1.5rem;
+        height: 1.5rem;
+        & > .fontawesome-icon-inline {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          & > .svg-inline--fa {
+            position: unset;
+            left: unset;
+            height: 1em;
+            width: var(--fa-li-width, 2em);
+          }
+        }
+      }
+    }
+  }
+}
+
+.ck.ck-content {
+  ul.uds-list,ol.uds-list {
+    margin-inline: unset;
+  }
+  ol.uds-list, ol.uds-list li {
+    list-style-type: none;
+  }
+  ul.uds-list {
+    @include ck-uds-list;
+  }
+  ul {
+    ul {
+      list-style-type: none;
     }
   }
 }
 
 ul.uds-list {
-  &.fa-ul {
-    &.maroon li svg {
-      color: $uds-color-base-maroon;
+  @include ck-uds-list;
+}
+
+#drupal-off-canvas [data-drupal-ck-style-fence] {
+  .ck.ck-content {
+    ul.uds-list {
+      @include ck-uds-list;
     }
+    ul {
+      ul {
+        list-style-type: none;
+      }
+    }
+    ol.uds-list,
+    .uds-list ol {
+      list-style-type: none;
+      &.uds-steplist {
+        li {
+          list-style-type: none;
+          span.ck-list-bogus-paragraph {
+            font-weight: bold;
+          }
+          span {
+            font-weight: normal;
+          }
+        }
+      }
+    }
+  }
+}
+
+ol.uds-list,
+.uds-list ol {
+  &.uds-steplist {
+    li {
+      span.ck-list-bogus-paragraph {
+        font-weight: bold;
+      }
+      span {
+        font-weight: normal;
+      }
+    }
+  }
+  // to be fixed in Unity:
+  //--list-padding-left: 3rem;
+}
+
+.uds-list {
+  li {
+    p {
+      display: inline !important;
+    }
+  }
+
+  p {
+    display: inline !important;
   }
 }

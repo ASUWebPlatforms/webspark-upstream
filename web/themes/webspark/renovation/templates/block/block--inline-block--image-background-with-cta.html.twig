@@ -11,6 +11,7 @@
 ] %}
 
 <div{{ attributes.addClass(classes) }}>
+  {{ content.field_anchor_menu_settings }}
   {{ title_prefix }}
   {% if label %}
     {% block label %}
@@ -18,7 +19,6 @@
     {% endblock %}
   {% endif %}
   {{ title_suffix }}
-  {{ content.field_anchor_menu_settings }}
   {% block content %}
     {% include '@renovation/image-background-with-cta/image-background-with-cta.twig' with {
       heading: content.field_heading[0]['#context']['value'],

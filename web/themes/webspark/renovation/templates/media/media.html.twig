@@ -1,5 +1,7 @@
 {% set classes = [
-  elements['#embed'] == true ? 'embedded-media' ] %}
+  elements['#embed'] == true ? 'embedded-media' ,
+  'rounded' in content.field_media_image['#bundle']  ? 'uds-img-rounded' : '',
+  ] %}
 
   <div{{ attributes.addClass(classes) }}>
     {{ title_suffix.contextual_links }}

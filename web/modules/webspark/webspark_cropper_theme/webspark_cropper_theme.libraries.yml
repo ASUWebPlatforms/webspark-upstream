@@ -17,3 +17,8 @@ dialog-overrides:
   css:
     theme:
       css/dialog-overrides.css: {}
+rounded:
+  version: 1.x
+  css:
+    theme:
+      css/rounded.css: {}

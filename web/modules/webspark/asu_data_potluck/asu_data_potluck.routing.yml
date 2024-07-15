@@ -1,0 +1,7 @@
+asu_data_potluck.settings:
+  path: '/admin/config/system/settings'
+  defaults:
+    _title: 'Settings'
+    _form: 'Drupal\asu_data_potluck\Form\SettingsForm'
+  requirements:
+    _permission: 'administer site configuration'

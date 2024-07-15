@@ -228,11 +228,6 @@ export class WebsparkHighlightedHeadingFormView extends View {
   _getHeadingOptions(t) {
     return [
       {
-        value: "h1",
-        title: t("H1"),
-      },
-
-      {
         value: "h2",
         title: t("H2"),
       },

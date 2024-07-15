@@ -1,7 +1,10 @@
 {% if content %}
+  {% set unpublished = is_published is same as '0' ? 'node--unpublished' : '' %}
+  {% set bg = settings['additional']['classes']['style'] %}
+  {% set bgcolor = bg|length > 0 ? bg|first is same as 'bg morse-code-white' ? 'bg-white' : bg|first : 'bg-white' %}
   <div class="layout__fixed-width">
     {% if content.first %}
-      <div {{ attributes.addClass('max-size-container','center-container') }}>
+      <div {{ attributes.addClass('max-size-container','center-container', bgcolor, unpublished) }}>
         <div class="container">
           <div class="row">
             <div class="col-12">

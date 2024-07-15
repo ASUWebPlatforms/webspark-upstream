@@ -37,6 +37,12 @@
     dom_id ? 'js-view-dom-id-' ~ dom_id,
   ]
 %}
+{% set bg = settings['additional']['classes']['style'] %}
+{% set bgcolor = bg|length > 0 ? bg|first is same as 'bg morse-code-white' ? 'bg-white' : bg|first : 'bg-white' %}
+{% set more_classes = [
+  bgcolor,
+] %}
+{% set classes = classes|merge(more_classes) %}
 <div{{ attributes.addClass(classes) }}>
   <div class="container">
     <div class="row">

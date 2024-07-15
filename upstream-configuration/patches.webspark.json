@@ -1,7 +1,7 @@
 {
     "drupal/core": {
         "#2951547: Fix issue with layout overflow": "https://www.drupal.org/files/issues/2022-07-13/f245f21ea664f22c81d8d28c6f0f4a42fb9a5890.patch",
-        "3109650: Refactor Xss::attributes() to allow filtering of style attribute values": "https://www.drupal.org/files/issues/2021-09-22/core-9.2-xss-refactor_filter_attributes-3109650-43.patch"
+        "3109650: Refactor Xss::attributes() to allow filtering of style attribute values": "https://www.drupal.org/files/issues/2024-05-16/core-10.2.3-xss-refactor_filter_attributes-3109650-74.patch"
     },
     "drupal/config_readonly": {
         "#3085001: Config blacklist to only block some configuration while in read only mode": "https://www.drupal.org/files/issues/2019-10-31/config_readonly-3085001-2.patch"
@@ -10,7 +10,7 @@
         "#3225009: Cant add custom block with field states ui using layout builder": "https://www.drupal.org/files/issues/2023-06-21/3225009-6.patch"
     },
     "drupal/linkit": {
-        "2877535: Fix issue with path alias": "https://www.drupal.org/files/issues/2022-06-07/2877535-39.patch"
+        "2877535: Fix issue with path alias": "https://www.drupal.org/files/issues/2023-10-05/linkit-2877535-64.patch"
     },
     "drupal/fontawesome": {
         "#3274028: Fixing CKEditor 5 compatibility": "https://www.drupal.org/files/issues/2024-01-17/ckeditor_compatibility_issue_0.patch",

@@ -10,7 +10,9 @@
   'block-' ~ plugin_id|clean_class,
 ] %}
 {% set class_layout = content['#view_mode'] == 'landscape' ? 'uds-card-arrangement-vertical'%}
+
 <div{{ attributes.addClass(classes) }}>
+  {{ content.field_anchor_menu_settings }}
   {{ title_prefix }}
   {% if label %}
     {% block label %}
@@ -18,7 +20,6 @@
     {% endblock %}
   {% endif %}
   {{ title_suffix }}
-  {{ content.field_anchor_menu_settings }}
   {{ content.field_tooltip }}
   {% block content %}
     {% include '@renovation/cards/card-arrangement.twig' with {

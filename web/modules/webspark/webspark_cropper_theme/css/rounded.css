@@ -1,0 +1,17 @@
+form[action*='media_library_selected_type=cropped_image_rounded_1_1'] .cropper-view-box,
+#media-cropped-image-rounded-1-1-edit-form .cropper-view-box,
+#media-cropped-image-rounded-1-1-add-form .cropper-view-box,
+form[action*='media_library_selected_type=cropped_image_rounded_1_1'] .cropper-face,
+#media-cropped-image-rounded-1-1-edit-form .cropper-face,
+#media-cropped-image-rounded-1-1-add-form .cropper-face {
+  border-radius: 50%;
+}
+
+.uds-img-rounded img {
+    border: 0;
+    border-radius: 100% !important;
+}
+
+.uds-img-rounded .field--name-thumbnail img {
+  max-width: max-content;
+}

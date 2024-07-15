@@ -11,8 +11,6 @@ $parallax-height-desktop: 466px;
   }
 
   img {
-    object-fit: cover;
-
     @media screen and (max-width: $uds-breakpoint-sm) {
       margin-top: 48px;
     }
@@ -21,12 +19,11 @@ $parallax-height-desktop: 466px;
   .parallax-container-content {
     top: unset;
     padding: 3rem 6rem;
-    position: relative;
     max-width: 100%;
     width: unset;
+    margin: unset;
 
     @media screen and (max-width: $uds-breakpoint-sm) {
-      display: flex;
       padding: rfs-value(24px);
     }
 
@@ -36,6 +33,7 @@ $parallax-height-desktop: 466px;
 
     &.uds-card-and-image-right {
       margin-left: auto;
+      margin-right: 0;
     }
 
     .card-body p:first-of-type {

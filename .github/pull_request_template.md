@@ -15,6 +15,7 @@
 - [ ] No new PHP or JS errors
 - [ ] No accessibility issues are introduced with this update
 - [ ] Added/updated README.md files, if relevant
+- [ ] Confirm that any yaml files included have a matching update hook
 
 ### Verified in browsers 
 

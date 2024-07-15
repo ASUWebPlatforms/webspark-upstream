@@ -1,0 +1,4 @@
+services:
+  asu_data_potluck.potluck_client:
+    class: Drupal\asu_data_potluck\PotluckClient
+    arguments: ['@config.factory', '@http_client_factory', '@logger.factory', '@messenger']
