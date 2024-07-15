@@ -147,7 +147,7 @@ function asu_degree_rfi_college_code_allowed_values(FieldStorageConfig $definiti
   $college_options = [];
 
   // Pull in service client for Data Potluck.
-  $college_options = $dataPotluckClient->colleges();
+  $college_options = $dataPotluckClient->getColleges();
 
   return $college_options;
 }
@@ -158,18 +158,14 @@ function asu_degree_rfi_college_code_allowed_values(FieldStorageConfig $definiti
  * Reference for implementing this
  * https://drupal.stackexchange.com/a/242011/104979
  *
- * Does service call with degreeSearchClient service.
+ * Does service call with dataPotluckClient service.
  */
 function asu_degree_rfi_dept_code_allowed_values(FieldStorageConfig $definition, ContentEntityInterface $entity = NULL, $cacheable) {
 
   $cache_time_to_live = AsuDegreeRfiInterface::ASU_DEGREE_RFI_CACHE_LIFE;
 
   // Pull in service client for Degree Search.
-  $degreeSearchClient = \Drupal::getContainer()->get('asu_degree_rfi_degree_search_client');
-
-  // TODO Would be better if we could get from dedicated service or DPL.
-  // TODO Improve: some duplication of code between
-  // AsuDegreeRfiRfiBlock blockForm() method and the code below.
+  $dataPotluckClient = \Drupal::getContainer()->get('asu_degree_rfi_data_potluck_client');
 
   // Get Department options. Get from, or set cache.
   $cid = 'asu_degree_rfi:dept_options';
@@ -179,12 +175,12 @@ function asu_degree_rfi_dept_code_allowed_values(FieldStorageConfig $definition,
     $dept_options = $cache->data;
   } else {
     // Call DS REST service to get all the Program of Interest permutations.
-    $dept_ugrad = $degreeSearchClient->departments('undergrad', 'false');
-    $dept_grad = $degreeSearchClient->departments('graduate', 'false');
-    $dept_ucert = $degreeSearchClient->departments('undergrad', 'true');
-    $dept_gcert = $degreeSearchClient->departments('graduate', 'true');
+    $dept_ugrad = $dataPotluckClient->getDepartments('UG');
+    $dept_grad = $dataPotluckClient->getDepartments('GR');
+    $dept_ucert = $dataPotluckClient->getDepartments('UGCM');
+    $dept_other = $dataPotluckClient->getDepartments('OTHR');
     // Merge with headings to break up a looong select list.
-    $dept_options = array_merge($dept_ugrad, $dept_grad, $dept_ucert, $dept_gcert);
+    $dept_options = array_merge($dept_ugrad, $dept_grad, $dept_ucert, $dept_other);
     asort($dept_options);
     // Set the cache.
     \Drupal::cache()
@@ -226,9 +222,15 @@ function asu_degree_rfi_config_readonly_whitelist_patterns() {
     ->getModule(basename(__FILE__, '.module'))
     ->getName();
   $configs = \Drupal::service('webspark.config_manager')->getModuleConfigFiles($module);
+  $filtered_configs = [];
+  $filtered_configs = array_filter($configs, function ($v) {
+    // We want to allow the global config form for the module to be exempted
+    // so we filter it out.
+    return $v !== 'asu_degree_rfi.settings';
+  });
   // Lock all the configurations from this module.
   if (\Drupal::state()->get('configuration_locked', TRUE)) {
-    return array_map(function ($item) { return '~' . $item; }, $configs);
+    return array_map(function ($item) { return '~' . $item; }, $filtered_configs);
   }
   else {
     return [];

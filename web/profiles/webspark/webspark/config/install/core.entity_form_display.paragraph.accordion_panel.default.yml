@@ -1,0 +1,56 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.accordion_panel.field_color_options
+    - field.field.paragraph.accordion_panel.field_expanded
+    - field.field.paragraph.accordion_panel.field_formatted_text
+    - field.field.paragraph.accordion_panel.field_heading
+    - field.field.paragraph.accordion_panel.field_icon
+    - paragraphs.paragraphs_type.accordion_panel
+  module:
+    - fontawesome_iconpicker_widget
+    - text
+id: paragraph.accordion_panel.default
+targetEntityType: paragraph
+bundle: accordion_panel
+mode: default
+content:
+  field_color_options:
+    type: options_select
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_expanded:
+    type: boolean_checkbox
+    weight: 4
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  field_formatted_text:
+    type: text_textarea
+    weight: 3
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_heading:
+    type: string_textfield
+    weight: 2
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_icon:
+    type: fontawesome_iconpicker_widget
+    weight: 1
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

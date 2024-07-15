@@ -220,7 +220,7 @@ export function _formatStyleBulletedClass(styleClass) {
 
   // If value starts with icn its a icon list.
   if (bulletedClass.startsWith("icn")) {
-    stclass += " uds-list fa-ul";
+    stclass += " uds-list fa-ul fa-li";
 
     switch (bulletedClass) {
       case "icn-maroon":

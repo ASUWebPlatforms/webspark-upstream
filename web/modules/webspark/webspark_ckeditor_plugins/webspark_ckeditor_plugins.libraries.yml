@@ -5,13 +5,14 @@ websparkplugin:
   js:
     js/build/websparkPlugin.js: { preprocess: false, minified: true }
     /libraries/fontawesome/js/all.min.js: { preprocess: false, minified: true }
+    /themes/webspark/renovation/js/asuawesome.js: { preprocess: false, minified: false }
   css:
     theme:
       css/websparkplugin.css: { }
       css/websparkglobal.css: { }
       /themes/webspark/renovation/assets/css/renovation.style.css: { }
       /themes/webspark/renovation/css/ckeditor-override.css: { }
-      
+
   dependencies:
     - core/ckeditor5
 

@@ -5,7 +5,8 @@ core_version_requirement: ^8 || ^9 || ^10
 package: ASU
 configure: asu_degree_rfi.asu_degree_rfi_settings
 dependencies:
-  - paragraphs:paragraphs
-  - field_group:field_group
-  - webspark_blocks
-  - pathauto
+  - drupal:paragraphs
+  - drupal:field_group
+  - webspark_utility:webspark_utility
+  - drupal:pathauto
+  - asu_data_potluck:asu_data_potluck

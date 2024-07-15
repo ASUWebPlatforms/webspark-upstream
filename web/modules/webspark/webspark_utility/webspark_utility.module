@@ -85,3 +85,23 @@ function webspark_utility_form_alter(&$form, FormStateInterface $form_state, $fo
     }
   }
 }
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function webspark_utility_form_node_page_form_alter(&$form, FormStateInterface $form_state, $form_id): void {
+  $form['title']['widget'][0]['value']['#after_build'][] = function($element, FormStateInterface $form_state) {
+    $element['#suffix'] = '<div><strong>For advanced layout options and to add ASU Web Standards-compliant components to this page, please use the Layout Builder after this page has been created.</strong></div>';
+    return $element;
+  };
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function webspark_utility_form_node_page_edit_form_alter(&$form, FormStateInterface $form_state, $form_id): void {
+  $form['title']['widget'][0]['value']['#after_build'][] = function($element, FormStateInterface $form_state) {
+    $element['#suffix'] = '<div><strong>For advanced layout options and to add ASU Web Standards-compliant components to this page, please select the Layout tab above.</strong></div>';
+    return $element;
+  };
+}

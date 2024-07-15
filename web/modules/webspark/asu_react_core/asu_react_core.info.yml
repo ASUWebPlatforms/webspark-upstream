@@ -5,6 +5,7 @@ package: ASU
 core: 8.x
 core_version_requirement: ^8 || ^9 || ^10
 dependencies:
-  - webspark_blocks
-  - block_content
-  - paragraphs
+  - webspark_utility:webspark_utility
+  - webspark_blocks:webspark_blocks
+  - drupal:block_content
+  - drupal:paragraphs

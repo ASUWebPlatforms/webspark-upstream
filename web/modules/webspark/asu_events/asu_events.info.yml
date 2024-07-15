@@ -5,4 +5,5 @@ core_version_requirement: ^8 || ^9 || ^10
 package: ASU
 dependencies:
   - asu_react_integration
+  - webspark_utility
   - webspark_blocks

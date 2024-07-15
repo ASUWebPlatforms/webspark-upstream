@@ -4,3 +4,11 @@ li {
   max-width: 700px;
   overflow-wrap: break-word;
 }
+
+.glide {
+  &__slides {
+    li {
+      max-width: 100%;
+    }
+  }
+}

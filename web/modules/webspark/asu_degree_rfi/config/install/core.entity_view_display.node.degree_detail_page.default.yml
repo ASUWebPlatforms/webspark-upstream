@@ -98,6 +98,7 @@ third_party_settings:
               asu_degree_rfi_campus: ''
               asu_degree_rfi_student_type: ''
               asu_degree_rfi_area_of_interest: ''
+              asu_degree_rfi_a_of_i_optional: 0
               asu_degree_rfi_program_of_interest: ''
               asu_degree_rfi_p_of_i_optional: 0
               asu_degree_rfi_is_cert_minor: 0

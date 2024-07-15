@@ -10,10 +10,12 @@
  * @ingroup themeable
  */
 #}
-
+{% set unpublished = is_published is same as '0' ? 'node--unpublished' : '' %}
+{% set bg = settings['additional']['classes']['style'] %}
+{% set bgcolor = bg|length > 0 ? bg|first is same as 'bg morse-code-white' ? 'bg-white' : bg|first : 'bg-white' %}
 {% if content.first is not empty or content.second is not empty %}
 {% set widths = settings.additional.classes.widths|split('-') %}
-<div {{ attributes }}>
+<div {{ attributes.addClass(bgcolor, unpublished) }}>
   <div class="container">
     <div class="row">
       {% if content.first %}

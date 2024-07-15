@@ -4,6 +4,12 @@
       setButtonsCompatibility(e);
     });
 
+    document.querySelectorAll(".nav-item").forEach( tabTitle => {
+      tabTitle.addEventListener("focus", (e) => {
+        tabTitle.scrollIntoView( {block: "nearest"} );
+      })
+    });
+
     document.querySelectorAll(".uds-tabbed-panels").forEach((item) => {
       const nav = item.querySelector(".nav-tabs");
 
@@ -19,15 +25,11 @@
     });
 
     $(".scroll-control-next").on("click", function (e) {
-      if (window.innerWidth > 992) {
-        slideNav(this, e, -1);
-      }
+      slideNav(this, e, -1);
     });
 
     $(".scroll-control-prev").on("click", function (e) {
-      if (window.innerWidth > 992) {
-        slideNav(this, e, 1);
-      }
+      slideNav(this, e, 1);
     });
 
     $(".uds-tabbed-panels").each(function () {
@@ -49,6 +51,10 @@
           panel.find(".scroll-control-next").show();
         }
       });
+      
+      if (nav.get(0).scrollWidth <= panel.width()) {
+        panel.find(".scroll-control-next").hide();
+      }
     });
 
     $(".uds-tabbed-panels .scroll-control-prev").hide();

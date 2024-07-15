@@ -14,12 +14,12 @@ class ReactComponentCardArrangement implements ReactComponent {
     if ($block->field_card_group && $block->field_card_group->entity) {
       foreach ($block->field_card_group->entity->field_cards as $paragraph_ref) {
         $card_arrangement->items[] = $paragraph_ref->entity->uuid();
+        $card_arrangement->items_display[$paragraph_ref->entity->uuid()] = $block->field_display_orientation->value;
       }
     }
 
     $settings = [];
     $settings['components'][$block->bundle()][$rand_id] = $card_arrangement;
-    $settings['horizontal'] = $block->field_display_orientation->value == 'horizontal';
     $variables['content']['#attached']['drupalSettings']['asu'] = $settings;
     $variables['content']['#attached']['library'][] = 'asu_react_core/card-arrangement';
   }

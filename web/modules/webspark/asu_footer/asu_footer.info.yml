@@ -5,4 +5,4 @@ core_version_requirement: ^8 || ^9 || ^10
 package: ASU
 configure: asu_footer.asu_footer_settings
 dependencies:
-  - media_library_form_element
+  - drupal:media_library_form_element

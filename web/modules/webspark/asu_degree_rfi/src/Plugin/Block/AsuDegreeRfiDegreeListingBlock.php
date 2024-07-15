@@ -187,20 +187,6 @@ class AsuDegreeRfiDegreeListingBlock extends BlockBase {
       $programList->dataSource->endpoint = $global_config->get('asu_degree_rfi.program_list_datasource_endpoint');
     }
 
-    if ($global_config->get('asu_degree_rfi.program_list_datasource_method')) {
-      if (empty($programList->dataSource)) {
-        $programList->dataSource = new \stdClass;
-      }
-      $programList->dataSource->method = $global_config->get('asu_degree_rfi.program_list_datasource_method');
-    }
-
-    if ($global_config->get('asu_degree_rfi.program_list_datasource_init')) {
-      if (empty($programList->dataSource)) {
-        $programList->dataSource = new \stdClass;
-      }
-      $programList->dataSource->init = $global_config->get('asu_degree_rfi.program_list_datasource_init');
-    }
-
     if ($node->field_degree_list_hide_colschl->value) {
       $programList->settings = new \stdClass;
       $programList->settings->hideCollegeSchool = (bool) $node->field_degree_list_hide_colschl->value;
@@ -228,10 +214,8 @@ class AsuDegreeRfiDegreeListingBlock extends BlockBase {
 
     $programList->dataSource->program = $program;
     $programList->dataSource->blacklistAcadPlans = $blacklist;
-    $programList->dataSource->cert = (bool) $certs_minors;
-    if ($certs_minors) {
-      $programList->dataSource->showInactivePrograms = 'true';
-    }
+    // Need to set "cert" prop value as a string, per WS2-1602.
+    $programList->dataSource->cert = $certs_minors_str;
 
     if ($node->field_degree_list_college_code->value) {
       $programList->dataSource->collegeAcadOrg = $node->field_degree_list_college_code->value;

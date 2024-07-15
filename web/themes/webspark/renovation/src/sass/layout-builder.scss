@@ -4,6 +4,11 @@
 
 #drupal-off-canvas-wrapper  {
   z-index: 1260;
+  // Override OffCanvas font styles within CKEditor.
+  .ck-reset {
+    font-family: Arial, Helvetica, 'Nimbus Sans L', 'Liberation Sans', FreeSans, sans-serif;
+  }
+
   .form-text,
   .form-tel,
   .form-email,
@@ -34,47 +39,53 @@
   }
 
   form {
-    &.uds-form {
-      &.layout-builder-configure-block {
-        .media-library-widget {
-          .fieldset-legend::after {
-            background-image: none;
+    &.layout-builder-configure-block {
+      .media-library-widget {
+        .fieldset-legend::after {
+          background-image: none;
+        }
+
+        .media-library-item--grid {
+          background: none;
+
+          &::before {
+            border: none;
           }
 
-          .media-library-item--grid {
+          .media-library-item__name {
+            color: inherit;
+          }
+
+          .media-library-item__attributes {
             background: none;
-
-            &::before {
-              border: none;
-            }
-
-            .media-library-item__name {
-              color: inherit;
-            }
-
-            .media-library-item__attributes {
-              background: none;
-              bottom: 0.5rem;
-            }
+            bottom: 0.5rem;
           }
         }
       }
+    }
 
       // Update the color of the required field indicator
       label {
         svg {
           &.uds-field-required {
-            color: $uds-color-background-error;
+            color: rgb(227, 144, 144);
           }
+          &.svg-inline--fa {
+            height: 8px;
+            margin-bottom: 0.125rem;
+            margin-right: 0.25rem;
+          }
+          font-size: .5rem;
         }
+        font-size: 1rem;
+        margin-bottom: 0;
       }
 
       .form-required {
         &::after {
-          color: $uds-color-background-error;
+          color: rgb(227, 144, 144);
         }
       }
-    }
 
     button.tabledrag-toggle-weight {
       color: $uds-color-background-info;
@@ -95,6 +106,11 @@
         color: $uds-color-base-gray-7;
         text-decoration: underline;
       }
+    }
+    select {
+      padding-left: 1rem;
+      padding-right: 1.5rem;
+      padding-inline-end: 1.25rem;
     }
   }
 
@@ -120,6 +136,7 @@
   }
 
   .description {
+    display: block;
     &.text-muted {
       color: inherit !important;
     }
@@ -157,6 +174,12 @@
 
   input {
     padding: 4px 20px !important;
+    &:focus {
+      border: 1px solid #191919 !important;
+      border-radius: 0;
+      box-shadow: 0 0 0 1px #191919!important;
+      outline: none !important;
+    }
   }
 
   th {
@@ -242,6 +265,97 @@
     border-width: 2px !important;
     border-color: $uds-color-base-gray-5 !important;
   }
+
+  // Add alert styles, since this theme doesn't have bootstrap styles available.
+
+  .alert {
+    color: $uds-color-font-dark-base;
+    display: flex;
+    border-radius: 0;
+    padding: 1rem !important;
+
+    .alert-icon {
+      flex: 0 0 $uds-size-spacing-8;
+      svg {
+        font-size: $uds-size-spacing-4;
+        //margin: 0.25rem 1rem;
+      }
+    }
+    .alert-content {
+      flex: 10;
+      padding: $uds-size-spacing-1 $uds-size-spacing-0;
+    }
+    .alert-close {
+      flex: 1;
+
+      // Edits close button content (i.e. "X" inside bubble)
+      .close
+      {
+        opacity: 1;
+        font-size: 1rem;
+
+        &:hover
+        {
+          opacity: 1;
+        }
+      }
+    }
+  }
+
+  .alert-warning {
+    background-color: $uds-color-background-warning; /* 33% opacity of official maroon */
+    border-color: $uds-color-alerts-warning;
+  }
+
+  .alert-success {
+    background-color: $uds-color-background-success;
+    border-color: $uds-color-alerts-success;
+  }
+  .alert-info {
+    background-color: $uds-color-background-info;
+    border-color: $uds-color-alerts-info;
+  }
+  .alert-danger {
+    background-color: $uds-color-background-error; /* 20% opacity of official maroon */
+    border-color: $uds-color-alerts-error;
+  }
+
+  .alert:not([class*='alert-']),
+  div[class='alert alert-block'] {
+    /* Catch-all for default alert class */
+    background-color: $uds-color-background-gray;
+    border-color: $uds-color-base-gray-3;
+  }
+
+  // Media Queries
+  .alert {
+    // Mobile tweaks below 576px.
+    @media screen and (max-width: $uds-breakpoint-sm) {
+      // Adjust padding and margins.
+      .alert-icon {
+        flex: 0 0 $uds-size-spacing-6;
+        svg {
+          font-size: $uds-size-spacing-4;
+          //margin: 0.25rem 1rem;
+          margin-top: $uds-size-spacing-2;
+        }
+      }
+      .alert-close {
+        margin-top: -$uds-size-spacing-1;
+        margin-right: -0.75rem; // Magic number.
+      }
+    }
+  }
+
+  .uds-img-rounded {
+    border-radius: 100%;
+
+    img {
+      border: 0;
+      border-radius: 100%;
+    }
+  }
+
 }
 
 body .ui-dialog.ui-widget.ui-widget-content.media-library-widget-modal {
@@ -290,7 +404,7 @@ body .ui-dialog.ui-widget.ui-widget-content.media-library-widget-modal {
   }
 }
 
-form.uds-form.layout-builder-configure-block .form-check {
+form.layout-builder-configure-block .form-check {
   &.js-form-type-radio {
     padding: 0;
   }

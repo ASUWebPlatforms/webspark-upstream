@@ -9,7 +9,9 @@
   'block-' ~ configuration.provider|clean_class,
   'block-' ~ plugin_id|clean_class,
 ] %}
+
 <div{{ attributes.addClass(classes) }}>
+  {{ content.field_anchor_menu_settings }}
   {{ title_prefix }}
   {% if label %}
     {% block label %}
@@ -17,7 +19,6 @@
     {% endblock %}
   {% endif %}
   {{ title_suffix }}
-  {{ content.field_anchor_menu_settings }}
   {% block content %}
     {% include '@renovation/inset-box/inset-box.twig' with {
       content: content.field_formatted_text[0],

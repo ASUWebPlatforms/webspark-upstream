@@ -1,0 +1,25 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - crop.type.1_1_rounded
+  module:
+    - crop
+name: block_image_1_1_med_rounded
+label: 'Block Image 1:1 MED (Rounded)'
+effects:
+  309e067e-58dc-4a06-9d93-b58b1247673a:
+    uuid: 309e067e-58dc-4a06-9d93-b58b1247673a
+    id: crop_crop
+    weight: 1
+    data:
+      crop_type: 1_1_rounded
+      automatic_crop_provider: null
+  cdcc89c0-dd71-494b-89eb-261e9aa39236:
+    uuid: cdcc89c0-dd71-494b-89eb-261e9aa39236
+    id: image_scale_and_crop
+    weight: 2
+    data:
+      width: 600
+      height: 600
+      anchor: center-center

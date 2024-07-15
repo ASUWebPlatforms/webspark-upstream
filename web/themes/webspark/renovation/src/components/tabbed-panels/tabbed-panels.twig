@@ -81,7 +81,8 @@
         class="tab-pane fade show active {{ is_dark ? 'text-white' }}"
         id="nav-{{ tab.heading|clean_id|lower }}"
         role="tabpanel"
-        aria-labelledby="nav-{{ tab.heading|clean_id|lower }}-tab">
+        aria-labelledby="nav-{{ tab.heading|clean_id|lower }}-tab"
+        tabindex="0">
         {{ tab.copy|raw }}
         {{ tab.blocks }}
       </div>
@@ -90,7 +91,8 @@
         class="tab-pane fade {{ is_dark ? 'text-white' }}"
         id="nav-{{ tab.heading|clean_id|lower }}"
         role="tabpanel"
-        aria-labelledby="nav-{{ tab.heading|clean_id|lower }}-tab">
+        aria-labelledby="nav-{{ tab.heading|clean_id|lower }}-tab"
+        tabindex="0">
         {{ tab.copy|raw }}
         {{ tab.blocks }}
       </div>

@@ -161,6 +161,10 @@ button.media-library-item__edit {
   margin: 0 !important;
 }
 
+.ck a, .ck a:hover {
+  color: rgba(var(--bs-link-color-rgb), var(--bs-link-opacity, 1));
+}
+
 @media screen and (max-width: 480px) {
   .details-wrapper th {
     display: none;

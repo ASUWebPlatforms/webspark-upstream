@@ -5,9 +5,20 @@
 <div class="accordion-item mt-3 {{ color != 'default' ? color }}">
   <div class="accordion-header {{ is_icon ? 'accordion-header-icon' }}">
     <h3>
-      <a id="accordion-header-{{ link_id|lower }}" class="collapsed"
-         href="#accordion-content-{{ link_id|lower }}" data-bs-toggle="collapse"
-         role="button" aria-expanded="false"
+      <a id="accordion-header-{{ link_id|lower }}"
+        {% if expanded is same as('On') %}
+          class=""
+        {% else %}
+          class="collapsed"
+        {% endif %}
+         href="#accordion-content-{{ link_id|lower }}"
+         data-bs-toggle="collapse"
+         role="button"
+         {% if expanded is same as('On') %}
+           aria-expanded="true"
+         {% else %}
+           aria-expanded="false"
+         {% endif %}
          aria-controls="accordion-content-{{ link_id|lower }}"
          data-ga-event="collapse"
          data-ga-action="open"
@@ -16,7 +27,6 @@
          data-ga-section="accordion block"
          data-ga-region="main content"
          data-ga-text="{{ heading }}">
-
         {# If there is an icon print it else print header only. #}
         {% if is_icon %}
           <span class="accordion-icon">
@@ -26,13 +36,20 @@
         {% else %}
           {{ heading }}
         {% endif %}
-
         <span class="fas fa-chevron-up"></span>
       </a>
     </h3>
   </div>
-
-  <div id="accordion-content-{{ link_id }}" class="collapse accordion-body" aria-labelledby="{{ heading }}" data-bs-parent="#accordion-{{ parent_id }}">
-    {{ body_text  }}
+  <div id="accordion-content-{{ link_id }}"
+    {% if expanded is same as('On') %}
+       class="collapse show"
+    {% else %}
+       class="collapse"
+    {% endif %}
+     aria-labelledby="{{ heading }}"
+     data-bs-parent="#accordion-{{ parent_id }}">
+    <div class="accordion-body">
+      {{ body_text  }}
+    </div>
   </div>
 </div>

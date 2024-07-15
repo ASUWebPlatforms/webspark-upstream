@@ -81,16 +81,6 @@
       anchorTargets.set(anchor, target);
     }
 
-    /*
-      Bootstrap needs to be loaded as a variable in order for this to work.
-      An alternative is to remove this and add the data-bs-spy="scroll" data-bs-target="#uds-anchor-menu nav" attributes to the body tag
-      See https://getbootstrap.com/docs/5.3/components/scrollspy/ for more info
-    */
-    const scrollSpy = new bootstrap.ScrollSpy(body, {
-      target: '#uds-anchor-menu nav',
-      rootMargin: '20%'
-    });
-
     const shouldAttachNavbarOnLoad = window.scrollY > navbarInitialTop;
     if (shouldAttachNavbarOnLoad) {
       globalHeader.appendChild(navbar);
@@ -98,7 +88,49 @@
       navbar.classList.add("uds-anchor-menu-attached");
     }
 
+    /**
+     * Calculates the percentage of an element that is visible in the viewport.
+     *
+     * @param {Element} el The element to calculate the visible percentage for.
+     * @return {number} The percentage of the element that is visible in the viewport.
+     */
+    function calculateVisiblePercentage(el) {
+      const rect = el.getBoundingClientRect();
+      const windowHeight = window.innerHeight || document.documentElement.clientHeight;
+      const windowWidth = window.innerWidth || document.documentElement.clientWidth;
+
+      // Get the dimensions of the element
+      const elHeight = rect.bottom - rect.top;
+      const elWidth = rect.right - rect.left;
+
+      // Calculate the area of the element
+      const elArea = elHeight * elWidth;
+
+      // Calculate the visible area of the element in the viewport
+      const visibleHeight = Math.min(windowHeight, rect.bottom) - Math.max(0, rect.top);
+      const visibleWidth = Math.min(windowWidth, rect.right) - Math.max(0, rect.left);
+      const visibleArea = visibleHeight * visibleWidth;
+
+      // Calculate the percentage of the element that is visible in the viewport
+      const visiblePercentage = (visibleArea / elArea) * 100;
+
+      return visiblePercentage;
+    }
+
     window.addEventListener("scroll", function () {
+      const elements = document.querySelectorAll('[id^="webspark-anchor-link--"]');
+      let max = 0;
+      elements.forEach(function(el) {
+        const parentVisiblePercentage = calculateVisiblePercentage(el.parentNode);
+        if (parentVisiblePercentage > 0 && parentVisiblePercentage > max) {
+          max = parentVisiblePercentage;
+          document.querySelector('[href="#' + el.id + '"]').classList.add('active');
+          document.querySelectorAll('a[href^="#webspark-anchor-link--"]:not([href="#' + el.id + '"])').forEach(function(e) {
+            e.classList.remove('active');
+          });
+        }
+      });
+
       const navbarY = navbar.getBoundingClientRect().top;
       const headerHeight = globalHeader.classList.contains("scrolled") ?  globalHeader.offsetHeight - 32 : globalHeader.offsetHeight; // 32 is the set height of the gray toolbar above the global header.
 

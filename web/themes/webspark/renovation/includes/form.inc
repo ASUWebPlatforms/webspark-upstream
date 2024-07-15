@@ -17,9 +17,6 @@ function renovation_form_alter(&$form, &$form_state, $form_id) {
       $form['actions']['submit']['#value'] = t('Confirm');
     }
   }
-
-  // Add the class required for all the forms in front theme.
-  $form['#attributes']['class'][] = 'uds-form';
 }
 
 /**

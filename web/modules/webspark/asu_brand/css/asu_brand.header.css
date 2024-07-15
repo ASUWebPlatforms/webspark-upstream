@@ -176,3 +176,8 @@ body.toolbar-vertical.toolbar-tray-open {
     top: 0.55rem
   }
 }
+
+/* WS2-2021: Keep the admin toolbar fixed at all times */
+#toolbar-bar {
+  position: fixed;
+}

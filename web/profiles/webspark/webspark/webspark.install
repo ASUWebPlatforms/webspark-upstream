@@ -481,3 +481,64 @@ function webspark_update_10002(&$sandbox) {
   }
   \Drupal::state()->set('configuration_locked', TRUE);
 }
+
+/**
+ * WS2-1565 - CK Editor - Remove H1 capabilities for non hero blocks.
+ */
+function webspark_update_10003(&$sandbox) {
+  \Drupal::state()->set('configuration_locked', FALSE);
+  $config_factory = \Drupal::service('config.factory');
+  $editor_configs = $config_factory->listAll($prefix = 'editor.editor');
+  $editor_configs = [...$editor_configs, ...$config_factory->listAll($prefix = 'filter.format')];
+  foreach ($editor_configs as $value) {
+    $config = \Drupal::config($value);
+    if ($config) {
+      $data = $config->getRawData();
+      if ($data && isset($data['settings']['plugins']['ckeditor5_heading']['enabled_headings'])) {
+        $headings = $data['settings']['plugins']['ckeditor5_heading']['enabled_headings'];
+        if ($headings) {
+          $heading1_key = array_search('heading1', $headings);
+          if ($heading1_key !== false) {
+            unset($headings[$heading1_key]);
+            $config_editable = $config_factory->getEditable($value);
+            $config_editable->set('settings.plugins.ckeditor5_heading.enabled_headings', $headings);
+            $config_editable->save();
+            \Drupal::service('messenger')
+              ->addMessage("CK Editor - Removed H1 capabilities for " . $config->getName());
+          }
+        }
+      }
+    }
+  }
+  \Drupal::state()->set('configuration_locked', TRUE);
+}
+
+/**
+ * WS2-2011 and WS2-2088: Set TTL to 1 day and add pantheon_advanced_page_cache
+ */
+function webspark_update_10004(&$sandbox) {
+  // Don't set TTL if pantheon_advanced_page_cache isn't available. Avoiding
+  // overly aggressive caching.
+  if (!Drupal::moduleHandler()->moduleExists('pantheon_advanced_page_cache')) {
+    Drupal::service('module_installer')->install(['pantheon_advanced_page_cache']);
+
+    \Drupal::state()->set('configuration_locked', FALSE);
+    $config_factory = \Drupal::configFactory();
+    $config = $config_factory->getEditable('system.performance');
+    // Only set if default of zero or none is found. Otherwise, we assume the
+    // site owner has intentionally changed the setting. Using non-typed check so
+    // if there's a null or 0 or even '0' value they'll all get updated.
+    if ($config->get('cache.page.max_age') == 0) {
+      $config->set('cache.page.max_age', 86400);
+    }
+    $config->save(TRUE);
+    \Drupal::state()->set('configuration_locked', TRUE);
+  }
+}
+
+function webspark_update_10005(&$sandbox) {
+  \Drupal::state()->set('configuration_locked', FALSE);
+  \Drupal::service('webspark.config_manager')->updateConfigFile('field.field.block_content.image.field_image_caption');
+  \Drupal::state()->set('configuration_locked', TRUE);
+}
+

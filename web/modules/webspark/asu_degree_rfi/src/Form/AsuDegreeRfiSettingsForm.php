@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Conttains Drupal\asu_degree_rfi\Form\AsuDegreeRfiSettingsForm
- */
-
 namespace Drupal\asu_degree_rfi\Form;
 
 use Drupal\Core\Form\ConfigFormBase;
@@ -21,7 +16,8 @@ class AsuDegreeRfiSettingsForm extends ConfigFormBase {
    *
    * @var string
    */
-  const SETTINGS = 'asu_degree_rfi.settings'; // Config variable name for module.
+  // Config variable name for module.
+  const SETTINGS = 'asu_degree_rfi.settings';
 
   /**
    * {@inheritdoc}
@@ -46,14 +42,13 @@ class AsuDegreeRfiSettingsForm extends ConfigFormBase {
    */
   public function buildForm(array $form, FormStateInterface $form_state) {
     // Build and return the form array.
-
     // Loads admin settings for this form/module.
     $config = $this->config(static::SETTINGS);
 
-    // Note: asu_brand module provides both global and per-block configs.
+    // Note: asu_degree_rfi module provides both global and per-node/block
+    // configs.
 
-    // Global configs
-
+    // Global configs.
     $form['asu_degree_rfi']['asu_degree_rfi_degree_instructions'] = [
       '#type' => 'item',
       '#title' => $this->t("About the ASU Degree RFI module"),
@@ -91,25 +86,32 @@ class AsuDegreeRfiSettingsForm extends ConfigFormBase {
       '#description' => $this->t('Because you will often be syncing
         configurations between environments, to avoid overwriting
         an environment\'s unique RFI Source ID and submission URL, it is
-        recommended you add code to your site\'s settings.php to detect 
-        the environment and set its unique values. 
+        recommended you add code to your site\'s settings.php to detect
+        the environment and set its unique values.
         <a href="https://github.com/ASUWebPlatforms/webspark-module-asu_degree_rfi#readme">
-        Example code can be found in the ASU Degree RFI module\'s README.md 
+        Example code can be found in the ASU Degree RFI module\'s README.md
         file</a>. These overrides also include system timeout settings you
         should apply to avoid unnecessary false-positive error emails.'),
     ];
 
-    // RFI
-    $form['asu_degree_rfi']['rfi'] = array(
+    // RFI.
+    $form['asu_degree_rfi']['rfi'] = [
       '#type' => 'fieldset',
       '#title' => $this->t('RFI components'),
-    );
+    ];
     $form['asu_degree_rfi']['rfi']['rfi_source_id'] = [
       '#type' => 'textfield',
       '#title' => $this->t('Source ID'),
       '#default_value' => $config->get('asu_degree_rfi.rfi_source_id'),
       '#description' => $this->t("You must provide a valid source ID to submit RFIs."),
       '#required' => TRUE,
+    ];
+    $form['asu_degree_rfi']['rfi']['rfi_variant_default'] = [
+      '#type' => 'select',
+      '#title' => $this->t('Default RFI form type'),
+      '#default_value' => $config->get('asu_degree_rfi.rfi_variant_default'),
+      '#description' => $this->t("Default form type for new RFI forms. This setting can be overriden on a per-form basis."),
+      '#options' => \Drupal::service('asu_degree_rfi.helper_functions')->getRfiVariantOptions(),
     ];
     $form['asu_degree_rfi']['rfi']['rfi_submission_handler_url'] = [
       '#type' => 'textfield',
@@ -125,7 +127,7 @@ class AsuDegreeRfiSettingsForm extends ConfigFormBase {
       '#type' => 'textfield',
       '#title' => $this->t('RFI Degree Search data source URL'),
       '#default_value' => $config->get('asu_degree_rfi.rfi_degree_search_datasource_endpoint'),
-      '#description' => $this->t("Recommended to be left blank to use default data source (https://degreesearch-proxy.apps.asu.edu/degreesearch/) defined internally by the RFI component."),
+      '#description' => $this->t("Recommended to be left blank to use default data source (https://api.myasuplat-dpl.asu.edu/api/codeset) defined internally by the RFI component."),
     ];
     $form['asu_degree_rfi']['rfi']['rfi_asuonline_datasource_endpoint'] = [
       '#type' => 'textfield',
@@ -140,48 +142,23 @@ class AsuDegreeRfiSettingsForm extends ConfigFormBase {
       '#description' => $this->t("Recommended to be left blank to use default data source (https://api.myasuplat-dpl.asu.edu/api/codeset/countries) defined internally by the RFI component."),
     ];
 
-    // DEGREES
-    $form['asu_degree_rfi']['degree'] = array(
+    // DEGREES.
+    $form['asu_degree_rfi']['degree'] = [
       '#type' => 'fieldset',
       '#title' => $this->t('Degree components'),
-    );
+    ];
     $form['asu_degree_rfi']['degree']['program_list_datasource_endpoint'] = [
       '#type' => 'textfield',
       '#title' => $this->t('Degree list data source URL'),
       '#default_value' => $config->get('asu_degree_rfi.program_list_datasource_endpoint'),
-      '#description' => $this->t("Recommended to be left blank to use default data source (https://degreesearch-proxy.apps.asu.edu/degreesearch/) defined internally by the degree list component."),
-    ];
-    $form['asu_degree_rfi']['degree']['program_list_datasource_method'] = [
-      '#type' => 'textfield',
-      '#title' => $this->t('Degree list data source method'),
-      '#default_value' => $config->get('asu_degree_rfi.program_list_datasource_method'),
-      '#description' => $this->t("Recommended to be left blank to use default data source method (findAllDegrees) defined internally by the degree list component."),
-    ];
-    $form['asu_degree_rfi']['degree']['program_list_datasource_init'] = [
-      '#type' => 'textfield',
-      '#title' => $this->t('Degree list data source init value'),
-      '#default_value' => $config->get('asu_degree_rfi.program_list_datasource_init'),
-      '#description' => $this->t("Recommended to be left blank to use default data source init value (false) defined internally by the degree list component."),
+      '#description' => $this->t("Recommended to be left blank to use default data source (https://api.myasuplat-dpl.asu.edu/api/codeset/acad-plans) defined internally by the degree list component."),
     ];
     $form['asu_degree_rfi']['degree']['program_detail_datasource_endpoint'] = [
       '#type' => 'textfield',
       '#title' => $this->t('Degree detail data source URL'),
       '#default_value' => $config->get('asu_degree_rfi.program_detail_datasource_endpoint'),
-      '#description' => $this->t("Recommended to be left blank to use default data source (https://degreesearch-proxy.apps.asu.edu/degreesearch/) defined internally by the degree list component."),
+      '#description' => $this->t("Recommended to be left blank to use default data source (https://api.myasuplat-dpl.asu.edu/api/codeset/acad-plan) defined internally by the degree list component."),
     ];
-    $form['asu_degree_rfi']['degree']['program_detail_datasource_method'] = [
-      '#type' => 'textfield',
-      '#title' => $this->t('Degree detail data source method'),
-      '#default_value' => $config->get('asu_degree_rfi.program_detail_datasource_method'),
-      '#description' => $this->t("Recommended to be left blank to use default data source method (findDegreeByAcadPlan) defined internally by the degree list component."),
-    ];
-    $form['asu_degree_rfi']['degree']['program_detail_datasource_init'] = [
-      '#type' => 'textfield',
-      '#title' => $this->t('Degree detail data source init value'),
-      '#default_value' => $config->get('asu_degree_rfi.program_detail_datasource_init'),
-      '#description' => $this->t("Recommended to be left blank to use default data source init value (false) defined internally by the degree list component."),
-    ];
-
 
     return parent::buildForm($form, $form_state);
   }
@@ -191,17 +168,16 @@ class AsuDegreeRfiSettingsForm extends ConfigFormBase {
    */
   public function submitForm(array &$form, FormStateInterface $form_state) {
     // Process the form submission.
-
     // Break RFI block cache when we save.
     Cache::invalidateTags(['rfi_block_cache']);
 
     // Note: Use asu_degree_rfi prefix when handling config values, but not with
     // form_state versions of those values.
-
     // Retrieve the configuration.
     $this->configFactory->getEditable(static::SETTINGS)
       // Set the submitted configurations on our config.
       ->set('asu_degree_rfi.rfi_source_id', $form_state->getValue('rfi_source_id'))
+      ->set('asu_degree_rfi.rfi_variant_default', $form_state->getValue('rfi_variant_default'))
       ->set('asu_degree_rfi.rfi_submission_handler_url', $form_state->getValue('rfi_submission_handler_url'))
       ->set('asu_degree_rfi.rfi_degree_search_datasource_endpoint', $form_state->getValue('rfi_degree_search_datasource_endpoint'))
       ->set('asu_degree_rfi.rfi_asuonline_datasource_endpoint', $form_state->getValue('rfi_asuonline_datasource_endpoint'))
@@ -216,4 +192,5 @@ class AsuDegreeRfiSettingsForm extends ConfigFormBase {
 
     parent::submitForm($form, $form_state);
   }
+
 }

@@ -4,6 +4,6 @@ type: module
 core_version_requirement: ^8 || ^9 || ^10
 package: ASU
 dependencies:
-  - cas
-  - file
+  - drupal:cas
+  - drupal:file
 

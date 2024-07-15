@@ -13,6 +13,7 @@
 ] %}
 
 <div{{ attributes.addClass(classes) }}>
+  {{ content.field_anchor_menu_settings }}
   {# To allow contextual links to display the title_suffix is required. #}
   {{ title_prefix }}
   {% if label %}
@@ -21,7 +22,6 @@
     {% endblock %}
   {% endif %}
   {{ title_suffix }}
-  {{ content.field_anchor_menu_settings }}
   {{ content.field_tooltip }}
   {{ content|without('field_anchor_menu_settings', 'field_tooltip') }}
 </div>

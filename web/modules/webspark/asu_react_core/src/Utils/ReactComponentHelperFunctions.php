@@ -87,8 +87,7 @@ class ReactComponentHelperFunctions {
     if ($paragraph->field_cta && $paragraph->field_cta->entity) {
       $cta = new \stdClass();
       $cta->label = $paragraph->field_cta->entity->field_cta_link->title;
-      $link = Url::fromUri($paragraph->field_cta->entity->field_cta_link->uri);
-      $cta->href = $link->toString();
+      $cta->href = $this->processLink($paragraph->field_cta->entity->field_cta_link->uri);
       $options = $paragraph->field_cta->entity->field_cta_link->options;
       $color = $this->getButtonColor($options,'maroon' );
       if (isset($options['attributes']['target'])) {
@@ -101,8 +100,7 @@ class ReactComponentHelperFunctions {
     if ($paragraph->field_cta_secondary && $paragraph->field_cta_secondary->entity) {
       $cta = new \stdClass();
       $cta->label = $paragraph->field_cta_secondary->entity->field_cta_link->title;
-      $link = Url::fromUri($paragraph->field_cta_secondary->entity->field_cta_link->uri);
-      $cta->href = $link->toString();
+      $cta->href = $this->processLink($paragraph->field_cta_secondary->entity->field_cta_link->uri);
       $options = $paragraph->field_cta_secondary->entity->field_cta_link->options;
       $color = $this->getButtonColor($options,'gold' );
       if (isset($options['attributes']['target'])) {
@@ -115,8 +113,7 @@ class ReactComponentHelperFunctions {
     // Field link URL with title and URL
     if ($paragraph->field_link && $paragraph->field_link->title && $paragraph->field_link->uri) {
       $card->linkLabel = $paragraph->field_link->title;
-      $link = Url::fromUri($paragraph->field_link->uri);
-      $card->linkUrl = $link->toString();
+      $card->linkUrl = $this->processLink($paragraph->field_link->uri);
     }
 
     // WS2-1674 - Card ranking image size.
@@ -132,7 +129,7 @@ class ReactComponentHelperFunctions {
     // WS2-1674 - Card ranking link URL, no link title
     if (isset($paragraph->field_card_ranking_image_size->value) && isset($paragraph->field_link->uri)) {
       $link = Url::fromUri($paragraph->field_link->uri);
-      $card->linkUrl = $link->toString();
+      $card->linkUrl = $this->processLink($paragraph->field_link->uri);
     }
 
     //@TODO We are not going to send this information to the react component,
@@ -152,7 +149,7 @@ class ReactComponentHelperFunctions {
       $icon_name = $paragraph->field_icon->icon_name;
       $icon_style = $paragraph->field_icon->style;
       if (isset($paragraph->field_icon->settings)) {
-        // PHP 8.1 warning - when null is passed to build in function, 
+        // PHP 8.1 warning - when null is passed to build in function,
         // it is no longer silently converted to empty string
         $icon_settings = unserialize($paragraph->field_icon->settings);
       } else {
@@ -165,7 +162,7 @@ class ReactComponentHelperFunctions {
     if (isset($paragraph->field_clickable->value) && isset($paragraph->field_card_link->uri)){
       $card->clickable = true;
       $link = Url::fromUri($paragraph->field_card_link->uri);
-      $card->clickHref = $link->toString();
+      $card->clickHref = $this->processLink($paragraph->field_card_link->uri);
     }
 
     $card->showBorders = false;
@@ -203,4 +200,22 @@ class ReactComponentHelperFunctions {
     return $color;
   }
 
+  function processLink($raw_link) {
+    if (isset($raw_link)) {
+      if (preg_match('/^https?:\/\//', $raw_link)) {
+        return $raw_link;
+      }
+      // Drupal prepends internal links with 'internal:' so we need to strip it.
+      else if (str_starts_with($raw_link, 'internal:')) {
+        $raw_link = preg_replace('/internal:/', '', $raw_link);
+        $link = Url::fromUserInput($raw_link);
+        return $link->toString() ?: $raw_link;
+      }
+      else if (str_starts_with($raw_link, 'route:') || str_starts_with($raw_link, 'entity:') || str_starts_with($raw_link, 'base:')) {
+        $link = Url::fromUri($raw_link);
+        return $link->toString() ?: '';
+      }
+    }
+    return NULL;
+  }
 }

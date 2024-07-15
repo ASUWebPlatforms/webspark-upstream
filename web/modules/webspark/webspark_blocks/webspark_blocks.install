@@ -2,6 +2,8 @@
 
 use Drupal\block_content\Entity\BlockContent;
 use Drupal\Core\Config\FileStorage;
+use Drupal\paragraphs\Entity\ParagraphsType;
+use Drupal\block_content\Entity\BlockContentType;
 
 /**
  * Removes the basic block entities and basic block entity type.
@@ -165,8 +167,11 @@ function webspark_blocks_update_9019(&$sandbox) {
       $accordion->save();
     }
   }
-
-  _webspark_blocks_revert_module_config();
+  // Update the configs without using the revertAll() function,
+  // due to a change in where config files are stored. This also targets
+  // the configs to match the release in which this update was made.
+  $configs = \Drupal::service('webspark.config_manager')->getCsvConfigArray('webspark_blocks', '2.11.1_webspark_blocks_configs.csv');
+  _webspark_blocks_update_module_config_list($configs);
 
   if (!empty($accordions_to_update)) {
     $accordions_colors = [
@@ -242,7 +247,8 @@ function webspark_blocks_update_9023() {
  * WS2-1839 - Add required and default value to field_hero_background_color.
  */
 function webspark_blocks_update_9024(&$sandbox) {
-  _webspark_blocks_revert_module_config();
+  // updated in WS2-1936 to avoid doing a full revert.
+  _webspark_blocks_update_module_config_list(['field.field.block_content.video_hero.field_hero_background_color']);
 }
 
 /**
@@ -298,21 +304,186 @@ function webspark_blocks_update_9028(&$sandbox) {
 }
 
 /**
- * Reverts the module related configuration.
+ * Add 'expanded' field to accordions.
  */
-function _webspark_blocks_revert_module_config() {
-  // Get this module name.
-  $module = \Drupal::service('module_handler')
-      ->getModule(basename(__FILE__, '.install'))
-      ->getName();
-
+function webspark_blocks_update_10000(&$sandbox) {
+  $configs = [
+    'core.entity_form_display.block_content.accordion.default',
+    'core.entity_form_display.paragraph.accordion_panel.default',
+    'core.entity_view_display.paragraph.accordion_panel.default',
+    'field.field.paragraph.accordion_panel.field_expanded',
+    'field.storage.paragraph.field_expanded',
+  ];
   // Unlock the configuration storage.
   \Drupal::state()->set('configuration_locked', FALSE);
-  // Revert all configs from this module.
-  \Drupal::service('webspark.config_manager')->revertAll($module);
+  // Update or install configs.
+  _webspark_blocks_update_module_config_list($configs);
   // Lock the configuration storage.
   \Drupal::state()->set('configuration_locked', TRUE);
 }
+
+/**
+  * WS2-1661 - Custom block types - Organized Appearance Settings
+  */
+function webspark_blocks_update_10001(&$sandbox) {
+  $configs = [
+    'field.field.block_content.donut_chart.field_spacing_top',
+    'field.field.block_content.donut_chart.field_spacing_bottom',
+    'field.field.block_content.grid_links.field_anchor_menu_settings',
+    'field.field.block_content.donut_chart.field_anchor_menu_settings',
+    'core.entity_form_display.block_content.card_and_image.default',
+    'core.entity_form_display.block_content.testimonial.default',
+    'core.entity_form_display.block_content.image.default',
+    'core.entity_view_display.block_content.grid_links.default',
+    'core.entity_form_display.block_content.grid_links.default',
+    'core.entity_form_display.block_content.events.default',
+    'core.entity_form_display.block_content.image_and_text_block.default',
+    'core.entity_form_display.block_content.hero.default',
+    'core.entity_view_display.block_content.donut_chart.default',
+    'core.entity_form_display.block_content.donut_chart.default',
+    'core.entity_form_display.block_content.card_arrangement.default'
+  ];
+  _webspark_blocks_update_module_config_list($configs);
+}
+
+/**
+ *
+ * WS2-1834 - Media Library: Add cropped image round option.
+ */
+function webspark_blocks_update_10002(&$sandbox) {
+  $configs = [
+    'crop.type.1_1_rounded',
+    'image.style.block_image_1_1_sml_rounded',
+    'image.style.block_image_1_1_med_rounded',
+    'image.style.block_image_1_1_lge_rounded',
+    'media.type.cropped_image_rounded_1_1',
+    'field.field.media.cropped_image_rounded_1_1.field_media_image',
+    'core.entity_view_display.media.cropped_image_rounded_1_1.small',
+    'core.entity_view_display.media.cropped_image_rounded_1_1.medium',
+    'core.entity_view_display.media.cropped_image_rounded_1_1.media_library',
+    'core.entity_view_display.media.cropped_image_rounded_1_1.large',
+    'core.entity_view_display.media.cropped_image_rounded_1_1.default',
+    'core.entity_form_display.media.cropped_image_rounded_1_1.media_library',
+    'core.entity_form_display.media.cropped_image_rounded_1_1.default',
+    'field.field.block_content.image_and_text_block.field_media',
+    'field.field.block_content.image.field_media',
+    'field.field.paragraph.card.field_media',
+    'field.storage.media.field_media_image'
+   ];
+  _webspark_blocks_update_module_config_list($configs);
+}
+
+/**
+ * WS2-2035
+ */
+function webspark_blocks_update_10003(&$sandbox) {
+  $configs = [
+    'field.field.block_content.content_image.field_media'
+  ];
+  _webspark_blocks_update_module_config_list($configs);
+}
+
+/**
+ *
+ * WS2-2026 - Add new hero option
+ */
+function webspark_blocks_update_10004(&$sandbox) {
+  $configs = [
+    'field.storage.block_content.field_sub_heading_background'
+  ];
+
+  _webspark_blocks_update_module_config_list($configs);
+}
+
+/**
+ *
+ * WS2-1934 - Modified default value like '' or ' ' in List(Text) fields.
+ */
+function webspark_blocks_update_10005(&$sandbox) {
+
+  $entity_field_manager = \Drupal::service('entity_field.manager');
+
+  $fields_to_check = [
+    'field_accent_color' => 'accent-gray',
+    'field_card_arrangement_display' => 'two-columns',
+    'field_citation_style' => 'default',
+    'field_links_color' => 'text-gray-7',
+  ];
+
+  // Update Paragraph content type fields.
+  // For each Paragraph content type, load the fields and iterate over the
+  // entities. If the field exists and has an empty value or a blank value, update the field
+  // value to the expected value.
+  $paragraph_types = ParagraphsType::loadMultiple();
+  $paragraph_storage = \Drupal::entityTypeManager()->getStorage('paragraph');
+  foreach ($paragraph_types as $type) {
+    $type_id = $type->id();
+    $fields = $entity_field_manager->getFieldDefinitions('paragraph', $type_id);
+
+    foreach ($fields_to_check as $field_name => $expected_value) {
+      if (isset($fields[$field_name])) {
+        $query = $paragraph_storage->getQuery();
+
+        $result = $query
+          ->condition('type', $type_id)
+          ->accessCheck(FALSE)
+          ->execute();
+
+        $paragraphs = $paragraph_storage->loadMultiple($result);
+
+        foreach ($paragraphs as $p) {
+          if ($p->hasField($field_name)) {
+            if ($p->get($field_name)->value == "''" || $p->get($field_name)->value == "' '") {
+              $p->set($field_name, $expected_value);
+              $p->save();
+            }
+          }
+        }
+      }
+    }
+  }
+
+  // Apply same logic for Blocks.
+  $block_content_types = BlockContentType::loadMultiple();
+  $blockStorage = \Drupal::entityTypeManager()->getStorage('block_content');
+  foreach ($block_content_types as $block_content_type) {
+    $type_id = $block_content_type->id();
+    $fields = $entity_field_manager->getFieldDefinitions('block_content', $type_id);
+
+    foreach ($fields_to_check as $field_name => $expected_value) {
+      if (isset($fields[$field_name])) {
+        $block_ids = $blockStorage->getQuery()
+          ->condition('type', $type_id)
+          ->accessCheck(false)
+          ->execute();
+        $blocks = $blockStorage->loadMultiple($block_ids);
+
+        foreach ($blocks as $b) {
+          if ($b->hasField($field_name)) {
+            if ($b->get($field_name)->value == "''" || $b->get($field_name)->value == "' '") {
+              $b->set($field_name, $expected_value);
+              $b->save();
+            }
+          }
+        }
+      }
+    }
+  }
+
+
+  $configs = [
+    'field.storage.paragraph.field_accent_color',
+    'field.storage.paragraph.field_citation_style',
+    'field.storage.block_content.field_card_arrangement_display',
+    'field.storage.block_content.field_links_color',
+    'field.storage.block_content.field_accent_color',
+    'field.field.block_content.testimonial.field_accent_color',
+    'field.field.block_content.grid_links.field_links_color',
+    'field.field.block_content.testimonial_on_image_background.field_accent_color',
+   ];
+   _webspark_blocks_update_module_config_list($configs);
+}
+
 
 /**
  * Update specific configuration files.
@@ -336,6 +507,13 @@ function webspark_blocks_update_dependencies() {
   // before it has been installed, and generate errors.
   $dependencies['webspark_blocks'][9024] = [
     'webspark' => 9018,
+  ];
+
+  // Indicate that the webspark_blocks_update_10002() function provided by this module
+  // must run after the webspark_update_10004() function provided by the
+  // 'webspark' profile.
+  $dependencies['webspark_blocks'][10002] = [
+    'webspark' => 10004,
   ];
 
   return $dependencies;

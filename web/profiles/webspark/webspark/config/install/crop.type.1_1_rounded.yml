@@ -1,0 +1,11 @@
+langcode: en
+status: true
+dependencies: {  }
+label: '1:1 (Rounded)'
+id: 1_1_rounded
+description: ''
+aspect_ratio: '1:1'
+soft_limit_width: null
+soft_limit_height: null
+hard_limit_width: 600
+hard_limit_height: 600

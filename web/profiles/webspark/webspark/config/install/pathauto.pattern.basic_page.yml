@@ -8,10 +8,10 @@ label: 'Basic Page'
 type: 'canonical_entities:node'
 pattern: '[node:menu-link:parents:join-path]/[node:title]'
 selection_criteria:
-  24e2ef1e-b842-4326-9666-87eef4bfd3c9:
+  a1eb5b64-2915-444e-a0cc-d5e6141f3102:
     id: 'entity_bundle:node'
     negate: false
-    uuid: 24e2ef1e-b842-4326-9666-87eef4bfd3c9
+    uuid: a1eb5b64-2915-444e-a0cc-d5e6141f3102
     context_mapping:
       node: node
     bundles:

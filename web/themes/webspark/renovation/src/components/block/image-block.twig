@@ -1,10 +1,13 @@
 {% set style = size == "default" ? '100%' : size ~ '%' %}
+{% set is_rounded = 'rounded' in media[0]['#media'].bundle() %}
+{% set is_drop_shadow = drop_shadow[0]['#markup'] == '1' %}
+
 
 <div style="max-width: {{ style }};">
-  <div class="uds-img {{ drop_shadow[0]['#markup'] == '1' ? 'uds-img-drop-shadow' }}">
+  <div class="uds-img {{ is_drop_shadow ? 'uds-img-drop-shadow' : '' }} {{ is_rounded ? 'uds-img-rounded' : '' }}">
     <figure class="figure uds-figure">
       {{ media }}
-      {% if caption|render %}
+      {% if caption|render and not is_rounded %}
         <figcaption class="figure-caption uds-figure-caption">
           <span class="uds-caption-text">
             {{ caption }}

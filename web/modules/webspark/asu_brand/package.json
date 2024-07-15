@@ -6,7 +6,7 @@
   "author": "Michael Samuelson",
   "license": "MIT",
   "dependencies": {
-    "@asu/component-cookie-consent": "2.0.1",
-    "@asu/component-header": "2.2.3"
+    "@asu/component-cookie-consent": "2.1.0",
+    "@asu/component-header": "2.2.7"
   }
 }

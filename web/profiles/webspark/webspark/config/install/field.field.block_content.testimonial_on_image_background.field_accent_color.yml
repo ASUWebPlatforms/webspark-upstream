@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.testimonial_on_image_background
+    - field.storage.block_content.field_accent_color
+  module:
+    - options
+id: block_content.testimonial_on_image_background.field_accent_color
+field_name: field_accent_color
+entity_type: block_content
+bundle: testimonial_on_image_background
+label: 'Accent Color'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: "accent-gray"
+default_value_callback: ''
+settings: {  }
+field_type: list_string

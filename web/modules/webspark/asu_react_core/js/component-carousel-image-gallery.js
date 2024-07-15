@@ -21,7 +21,7 @@
             props: {
               perView: "2",
               imageItems: images,
-              maxWidth: "600px",
+              maxWidth: "996px",
               hasContent:  true,
             },
           });

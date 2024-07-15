@@ -2,12 +2,12 @@
 # yarn lockfile v1
 
 
-"@asu/app-degree-pages@2.2.0":
-  version "2.2.0"
-  resolved "https://npm.pkg.github.com/download/@asu/app-degree-pages/2.2.0/2e4df2bdd57a8aa5ac79ad68686a15d47f61cd2b#2e4df2bdd57a8aa5ac79ad68686a15d47f61cd2b"
-  integrity sha512-VS/6OFUp/okp54TzwdnN9WENjHMUsLnKcrBpMaikU6DPgMh61arFVrSEo3X7uboEE90GBt1vZ0HOa9XI/7SsPg==
+"@asu/app-degree-pages@2.5.5":
+  version "2.5.5"
+  resolved "https://npm.pkg.github.com/download/@asu/app-degree-pages/2.5.5/6641752c606b778136e42d4c026c8f451477f4b8#6641752c606b778136e42d4c026c8f451477f4b8"
+  integrity sha512-2ec0vOPyEpgx8O9KLhwXNx9Yj/50mXOYhXILHLS90sDGoATYXdPQN7OJwDcCpJUjCUz4ySQVyqCfMbSkHkRNHQ==
   dependencies:
-    "@asu/components-core" "^2.1.0"
+    "@asu/components-core" "^3.1.0"
     "@popperjs/core" "^2.9.2"
     classnames "^2.3.1"
     prop-types "^15.7.2"
@@ -17,12 +17,12 @@
     react-tooltip "^4.2.21"
     styled-components "^5.3.0"
 
-"@asu/app-rfi@2.0.3":
-  version "2.0.3"
-  resolved "https://npm.pkg.github.com/download/@asu/app-rfi/2.0.3/769aed0b0b69f6753c66d01b0b321e6f5ca43129#769aed0b0b69f6753c66d01b0b321e6f5ca43129"
-  integrity sha512-1kQHpavQT400kiAEcuAu6pYA8YbWj4c8X/A0iAFZ1PhXZDCp8yJt5w83SpujhXAG1q8hNx27EazMo+fmhE3caw==
+"@asu/app-rfi@2.3.9":
+  version "2.3.9"
+  resolved "https://npm.pkg.github.com/download/@asu/app-rfi/2.3.9/97ea3665c13204c876e9ff85247399052df081be#97ea3665c13204c876e9ff85247399052df081be"
+  integrity sha512-Qu8lOX3Z1ibc87c98m3U1xOdA32GI0CYW3c9+Am3tW7cKN64T6TmksiFhcYEl04W3l+QsnCzGnT4pAlWbRAnww==
   dependencies:
-    "@asu/components-core" "^2.1.0"
+    "@asu/components-core" "^3.0.0"
     formik "^2.1.4"
     prop-types "^15.7.2"
     react ">= 16.14.0 < 18"
@@ -32,15 +32,25 @@
     yup "^0.28.1"
     yup-phone "^1.2.19"
 
-"@asu/components-core@^2.1.0":
-  version "2.2.2"
-  resolved "https://npm.pkg.github.com/download/@asu/components-core/2.2.2/9c2feb05aee4330d7e39386f71c1749cdd5b3adf#9c2feb05aee4330d7e39386f71c1749cdd5b3adf"
-  integrity sha512-eo5evxlRtNrCjVKnAXonx5jVENxPWAWeeqkyO747BsGwnBBXBfUn/UYSoyJYwme3126sTAmdd3yv1coqCsOi1g==
+"@asu/components-core@^3.0.0":
+  version "3.3.5"
+  resolved "https://npm.pkg.github.com/download/@asu/components-core/3.3.5/29abc0de94172f787328295b8be7f7b294bacbe5#29abc0de94172f787328295b8be7f7b294bacbe5"
+  integrity sha512-5k02yMT9dighjUuNZi8FaaFovX0tmvL6v4s9X3P2NMjRuF8pu97DmTrKLnNaOsUrmaUjIcyKPP/upk/skN1AqA==
+  dependencies:
+    classnames "^2.2.6"
+    date-fns "^2.19.0"
+    phone-fns "^3.2.3"
+    prop-types "^15.7.2"
+    styled-components "^5.3.0"
+
+"@asu/components-core@^3.1.0":
+  version "3.3.4"
+  resolved "https://npm.pkg.github.com/download/@asu/components-core/3.3.4/98bd47a5716ddfc31e10ea196eba090596e0b192#98bd47a5716ddfc31e10ea196eba090596e0b192"
+  integrity sha512-cjpRRpwXNPOOid4sMsos2SS4nksp3WQ8n9gkIAP8f6oh9e0wysJbO3NGpnuPRZHfed/OjxyrQGvwwcdOQRgI+g==
   dependencies:
     "@storybook/addon-knobs" "^6.2.9"
     classnames "^2.2.6"
     date-fns "^2.19.0"
-    dompurify "^2.2.7"
     phone-fns "^3.2.3"
     prop-types "^15.7.2"
     styled-components "^5.3.0"
@@ -570,11 +580,6 @@ dom-walk@^0.1.0:
   version "0.1.2"
   resolved "https://registry.yarnpkg.com/dom-walk/-/dom-walk-0.1.2.tgz#0c548bef048f4d1f2a97249002236060daa3fd84"
   integrity sha512-6QvTW9mrGeIegrFXdtQi9pk7O/nSK6lSdXW2eqUspN5LWD7UTji2Fqw5V2YLjBpHEoU9Xl/eUWNpDeZvoyOv2w==
-
-dompurify@^2.2.7:
-  version "2.3.3"
-  resolved "https://registry.yarnpkg.com/dompurify/-/dompurify-2.3.3.tgz#c1af3eb88be47324432964d8abc75cf4b98d634c"
-  integrity sha512-dqnqRkPMAjOZE0FogZ+ceJNM2dZ3V/yNOuFB7+39qpO93hHhfRpHw3heYQC7DPK9FqbQTfBKUJhiSfz4MvXYwg==
 
 error-ex@^1.3.1:
   version "1.3.2"

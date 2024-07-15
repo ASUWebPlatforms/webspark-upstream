@@ -1,0 +1,14 @@
+langcode: en
+status: true
+dependencies: {  }
+name: footer_logo
+label: 'Footer Logo'
+effects:
+  55d0afd6-94bf-428d-a15c-b17365f1eefb:
+    uuid: 55d0afd6-94bf-428d-a15c-b17365f1eefb
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 380
+      height: 112
+      anchor: center-center
