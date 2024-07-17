@@ -6,7 +6,7 @@
   "author": "Michael Samuelson",
   "license": "MIT",
   "dependencies": {
-    "@asu/app-degree-pages": "2.5.5",
+    "@asu/app-degree-pages": "2.5.6",
     "@asu/app-rfi": "2.3.9"
   }
 }

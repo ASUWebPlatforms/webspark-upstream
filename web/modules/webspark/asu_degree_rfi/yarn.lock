@@ -2,10 +2,10 @@
 # yarn lockfile v1
 
 
-"@asu/app-degree-pages@2.5.5":
-  version "2.5.5"
-  resolved "https://npm.pkg.github.com/download/@asu/app-degree-pages/2.5.5/6641752c606b778136e42d4c026c8f451477f4b8#6641752c606b778136e42d4c026c8f451477f4b8"
-  integrity sha512-2ec0vOPyEpgx8O9KLhwXNx9Yj/50mXOYhXILHLS90sDGoATYXdPQN7OJwDcCpJUjCUz4ySQVyqCfMbSkHkRNHQ==
+"@asu/app-degree-pages@2.5.6":
+  version "2.5.6"
+  resolved "https://npm.pkg.github.com/download/@asu/app-degree-pages/2.5.6/96efb5fca1a24f0a7eac1802c60509fa3da5bb80#96efb5fca1a24f0a7eac1802c60509fa3da5bb80"
+  integrity sha512-Kata4ybaCbuk3HmxTieNeQPv2fAQZ6OxUd+CCGPJhnZ+/1fstXAbjNPkcQe1c/4ZvYTBAHiOrz16G0BRMfsMVg==
   dependencies:
     "@asu/components-core" "^3.1.0"
     "@popperjs/core" "^2.9.2"
