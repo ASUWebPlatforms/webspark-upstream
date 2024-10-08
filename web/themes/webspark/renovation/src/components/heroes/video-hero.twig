@@ -57,16 +57,25 @@
   </div>
 
   {% if sub_heading %}
-    <div role="doc-subtitle">
-      <span class="{{ sub_heading_background }}">{{ sub_heading }}</span>
-    </div>
+    <header>
+      <p class="hero-subtitle">
+        <span class="{{ sub_heading_background }}">
+          {{ sub_heading }}
+        </span>
+      </p>
+      {% include '@renovation/headings/heading-highlighted.twig' with {
+        html_tag: 'h1',
+        heading: heading,
+        highlight: heading_background,
+      } %}
+    </header>
+  {% else %}
+    {% include '@renovation/headings/heading-highlighted.twig' with {
+      html_tag: 'h1',
+      heading: heading,
+      highlight: heading_background,
+    } %}
   {% endif %}
-
-  {% include '@renovation/headings/heading-highlighted.twig' with {
-    html_tag : 'h1',
-    heading: heading,
-    highlight: heading_background,
-  } %}
 
   <div class="content">
     <p class="text-white">{{ hero_body|raw }}</p>

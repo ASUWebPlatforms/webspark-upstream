@@ -1,7 +1,8 @@
 {
     "drupal/core": {
         "#2951547: Fix issue with layout overflow": "https://www.drupal.org/files/issues/2022-07-13/f245f21ea664f22c81d8d28c6f0f4a42fb9a5890.patch",
-        "3109650: Refactor Xss::attributes() to allow filtering of style attribute values": "https://www.drupal.org/files/issues/2024-05-16/core-10.2.3-xss-refactor_filter_attributes-3109650-74.patch"
+        "3109650: Refactor Xss::attributes() to allow filtering of style attribute values": "https://www.drupal.org/files/issues/2024-05-16/core-10.2.3-xss-refactor_filter_attributes-3109650-74.patch",
+        "#3415961: Fix issue with focus after inserting media via the modal dialog": "https://www.drupal.org/files/issues/2024-02-15/3415961.patch"
     },
     "drupal/config_readonly": {
         "#3085001: Config blacklist to only block some configuration while in read only mode": "https://www.drupal.org/files/issues/2019-10-31/config_readonly-3085001-2.patch"
@@ -14,7 +15,7 @@
     },
     "drupal/fontawesome": {
         "#3274028: Fixing CKEditor 5 compatibility": "https://www.drupal.org/files/issues/2024-01-17/ckeditor_compatibility_issue_0.patch",
-        "#3274028: Fixing CKEditor 5 inline Icons": "https://www.drupal.org/files/issues/2024-01-16/fix_inline_icons_0.patch",
+        "#3274028: Fixing CKEditor 5 inline Icons": "upstream-configuration/patches/fix_inline_icons_1.patch",
         "3417901: Breaking change introduced in a38b572": "https://www.drupal.org/files/issues/2024-01-29/fontawesome-prefixbug-3417901-1.patch"
     },
     "drupal/cas": {

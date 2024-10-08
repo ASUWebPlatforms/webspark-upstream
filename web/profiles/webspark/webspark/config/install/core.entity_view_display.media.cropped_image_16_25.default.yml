@@ -1,0 +1,30 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.media.cropped_image_16_25.field_media_image
+    - image.style.block_image_16_25_lge
+    - media.type.cropped_image_16_25
+  module:
+    - image
+id: media.cropped_image_16_25.default
+targetEntityType: media
+bundle: cropped_image_16_25
+mode: default
+content:
+  field_media_image:
+    type: image
+    label: visually_hidden
+    settings:
+      image_link: ''
+      image_style: block_image_16_25_lge
+      image_loading:
+        attribute: lazy
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  created: true
+  name: true
+  thumbnail: true
+  uid: true

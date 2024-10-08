@@ -1,14 +1,25 @@
 {# TODO: Where is this being used? #}
 <div>
-  <div role="doc-subtitle">
-    <span class="{{ sub_heading_background }}">{{ sub_heading }}</span>
-  </div>
-
-  {% include '@renovation/headings/heading-highlighted.twig' with {
-    html_tag : 'h1',
-    heading: heading,
-    highlight: heading_background,
-  } %}
+  {% if sub_heading %}
+    <header>
+      <p class="hero-subtitle">
+        <span class="{{ sub_heading_background }}">
+          {{ sub_heading }}
+        </span>
+      </p>
+      {% include '@renovation/headings/heading-highlighted.twig' with {
+        html_tag: 'h1',
+        heading: heading,
+        highlight: heading_background,
+      } %}
+    </header>
+  {% else %}
+    {% include '@renovation/headings/heading-highlighted.twig' with {
+      html_tag: 'h1',
+      heading: heading,
+      highlight: heading_background,
+    } %}
+  {% endif %}
 
   {% if size != 'sm' %}
     <div class="content">

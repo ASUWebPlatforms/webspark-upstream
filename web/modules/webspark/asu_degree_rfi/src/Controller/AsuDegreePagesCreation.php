@@ -62,7 +62,7 @@ class AsuDegreePagesCreation extends ControllerBase {
       $node = Node::create(['type' => 'degree_detail_page']);
       $degree_query = $this->dataPotluckClient->getDegreeByAcadPlan($split_path[3]);
       if ($degree_query) {
-        $title = $degree_query['acadPlanDescription'] ?? $split_path[3];
+        $title = $degree_query['acadPlanMarketingDescription'] ?? $split_path[3];
         $node->set('title', $title);
         $node->set('field_degree_detail_acadplancode', $split_path[3]);
         $node->set('status', 1);

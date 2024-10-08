@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.step_list
+    - field.storage.block_content.field_accent_color
+  module:
+    - options
+id: block_content.step_list.field_accent_color
+field_name: field_accent_color
+entity_type: block_content
+bundle: step_list
+label: 'Accent Color'
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    value: accent-gray
+default_value_callback: ''
+settings: {  }
+field_type: list_string

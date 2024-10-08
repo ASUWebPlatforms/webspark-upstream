@@ -43,8 +43,8 @@ class AsuFooterBlock extends BlockBase {
     $src_unit_logo = '/' . $path_module . '/img/ASU-EndorsedLogo.png';
     $src_unit_logo_internal = $path_module . '/img/ASU-EndorsedLogo.png';
     list($src_unit_logo_width, $src_unit_logo_height) = getimagesize($src_unit_logo_internal);
-    $src_footer_img = '/' . $path_module . '/img/230918-ASU-2024-Repeatedly-rankednumber-one-global-footer-863x188.png';
-    $src_footer_img_internal = $path_module . '/img/230918-ASU-2024-Repeatedly-rankednumber-one-global-footer-863x188.png';
+    $src_footer_img = '/' . $path_module . '/img/240917_ASU_Rankings_GOLD.png';
+    $src_footer_img_internal = $path_module . '/img/240917_ASU_Rankings_GOLD.png';
     list($src_footer_img_width, $src_footer_img_height) = getimagesize($src_footer_img_internal);
     if (!empty($config['asu_footer_block_unit_logo_img'])) {
       $unit_custom_logo = $this->load_unit_logo($config['asu_footer_block_unit_logo_img']);

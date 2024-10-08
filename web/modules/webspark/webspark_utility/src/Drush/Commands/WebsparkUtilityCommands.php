@@ -19,6 +19,15 @@ final class WebsparkUtilityCommands extends DrushCommands {
     $success = FALSE;
     // Turn on output buffering.
     ob_start();
+    // Check if user is logged in.
+    $logInCheck = exec('terminus auth:whoami 2>&1', $logInCheckOutput);
+    $logInCheckOutputArray = array_map(fn($i) => str_contains($i, 'You are not logged in.'), $logInCheckOutput);
+    if (in_array(true, $logInCheckOutputArray, true)) {
+      $this->logger()->error('Your DDEV instance is currently not logged in to Pantheon via terminus.' . PHP_EOL .
+        '  Please run "ddev ssh" and then run ' . PHP_EOL . '  "terminus auth:login --machine-token=$TERMINUS_MACHINE_TOKEN; exit" to authenticate.');
+      return;
+    }
+
     if (!(is_dir('../.ddev') && is_file('../.ddev/providers/pantheon.yaml'))) {
       $this->logger()->error('This command is intended for local use with DDEV only. Please install and configure DDEV locally and try again.');
       return;
@@ -44,12 +53,7 @@ final class WebsparkUtilityCommands extends DrushCommands {
     $this->io()->writeln(' // Fetching latest database from the Webspark Release Stable site in Pantheon.' . PHP_EOL);
     $date = new \DateTime();
     $now = $date->getTimestamp();
-    $getBackupDate = exec('terminus backup:info webspark-release-stable.dev --element=db --format=php 2>&1', $backupOutput);
-    if (in_array('[37;41m  You are not logged in. Run `auth:login` to authenticate or `help auth:login` for more info.  [39;49m', $backupOutput)) {
-      $this->logger()->error('Your DDEV instance is currently not logged in to Pantheon via terminus.' . PHP_EOL .
-        '  Please run `ddev ssh` and then run `terminus auth:login --machine-token=$TERMINUS_MACHINE_TOKEN; exit` to authenticate.');
-      return;
-    }
+    $getBackupDate = exec('terminus backup:info webspark-release-stable.dev --element=db --format=php');
     $backupDate = $getBackupDate ? unserialize($getBackupDate, ['allowed_classes' => TRUE])['date'] : NULL;
     if (empty($backupDate) || ($backupDate < ($now - 86400))) {
       // Create new backup if it doesn't exist or latest is older than 24 hours.

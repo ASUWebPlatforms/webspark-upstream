@@ -5,6 +5,7 @@ namespace Drupal\asu_degree_rfi\Plugin\Block;
 use Drupal\node\NodeInterface;
 use Drupal\Core\Block\BlockBase;
 use Drupal\Core\Cache\Cache;
+use Drupal\Core\Url;
 
 /**
  * ASU Degree RFI module Degree listing component block.
@@ -121,6 +122,43 @@ class AsuDegreeRfiDegreeListingBlock extends BlockBase {
 
     //Intro content
     $introContent = new \stdClass;
+
+    $breadcrumbs = [];
+    foreach ($node->field_degree_detail_breadcrumbs as $breadcrumbs_link) {
+      $item_breadcrumbs = new \stdClass;
+      $item_breadcrumbs->text = $breadcrumbs_link->title;
+      $link = Url::fromUri($breadcrumbs_link->uri);
+      $item_breadcrumbs->url = $link->toString();
+      $breadcrumbs[] = $item_breadcrumbs;
+    }
+
+    // Set default breacdcrumbs.
+    if (empty($breadcrumbs)) {
+      $breadcrumbs[] = (object) [
+        'text' => 'Home',
+        'url' => Url::fromRoute('<front>')->toString(),
+      ];
+      $url = Url::fromRoute('<current>')->toString();
+      $split = explode('/', $url);
+
+      if (isset($split[6]) && is_numeric($split[6])) {
+        $node_storage = \Drupal::entityTypeManager()->getStorage('node');
+        $listing_page_node = $node_storage->load($split[6]);
+        if ($node && $listing_page_node) {
+          $breadcrumbs[] = (object) [
+            'text' => $listing_page_node->getTitle(),
+            'url' => Url::fromRoute('entity.node.canonical', ['node' => $listing_page_node->id()])->toString(),
+          ];
+        }
+      }
+    }
+    //Add active link
+    //@TODO get title from Academic plan code
+    $breadcrumbs[] = (object) [
+      'text' => 'Listing Page',
+      'isActive' => true,
+    ];
+    $introContent->breadcrumbs = $breadcrumbs;
 
     if ($node->field_degree_list_intro_type->value) {
       $introContent->type = $node->field_degree_list_intro_type->value;

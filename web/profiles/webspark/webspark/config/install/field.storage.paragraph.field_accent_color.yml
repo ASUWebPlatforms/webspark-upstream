@@ -11,7 +11,7 @@ type: list_string
 settings:
   allowed_values:
     -
-      value: "accent-gray"
+      value: accent-gray
       label: 'Gray 7'
     -
       value: accent-maroon

@@ -11,12 +11,12 @@ field_name: field_link
 entity_type: paragraph
 bundle: image_based_card
 label: 'Card Link'
-description: ''
+description: 'Link text is required, as it will be used for accessibility purposes.'
 required: false
 translatable: true
 default_value: {  }
 default_value_callback: ''
 settings:
-  title: 1
+  title: 2
   link_type: 17
 field_type: link

@@ -1,0 +1,7 @@
+langcode: en
+status: true
+dependencies: {  }
+id: hover_cards
+label: 'Hover Cards'
+revision: 0
+description: 'A set of three cards where the content appears on hover.'

@@ -23,6 +23,6 @@
 
   {% set unique_id = block.id.value %}
   <div class="accordion" id="accordion-{{ unique_id }}">
-    {{ content|without('field_color', 'field_anchor_menu_settings', 'field_tooltip', 'field_anchor_menu_settings') }}
+    {{ content|without('field_color', 'field_anchor_menu_settings', 'field_tooltip') }}
   </div>
 </div>

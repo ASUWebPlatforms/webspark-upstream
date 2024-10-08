@@ -3,6 +3,7 @@
 namespace Drupal\asu_degree_rfi;
 
 use Drupal\asu_data_potluck\PotluckClient;
+use GuzzleHttp\Psr7\Query;
 
 /**
  * ASU Degree RFI module Data Potluck client.
@@ -65,7 +66,7 @@ class AsuDegreeRfiDataPotluckClient {
   public function degreeQuery(array $params, string $codeSet = NULL) {
     return $this->potluckClient->getData('codeset/' . $codeSet, [
       // Array of params including method and fields.
-      'query' => $params,
+      'query' => Query::build($params),
     ]);
   }
 
@@ -79,7 +80,9 @@ class AsuDegreeRfiDataPotluckClient {
    *   Response data.
    */
   public function degreeLookup(string $code) {
-    return $this->potluckClient->getData('codeset/acad-plan/' . $code);
+    return $this->potluckClient->getData('codeset/acad-plan/' . $code, [
+      'query' => Query::build(['include' => 'acadPlanMarketingDescription']),
+    ]);
   }
 
   // Services reference:
@@ -176,6 +179,7 @@ class AsuDegreeRfiDataPotluckClient {
       [
         'degreeType' => $program,
         'method' => 'findAllDegrees',
+        'filter' => 'activeInDegreeSearch',
         'include' => 'planCategories',
       ],
       "acad-plans"
@@ -203,7 +207,7 @@ class AsuDegreeRfiDataPotluckClient {
    * @return array
    *   Programs of Interest.
    */
-  public function getProgramsOfInterest($program) {
+  public function getProgramsOfInterest($program, $requireiRfiDisplay = TRUE) {
 
     $poi_options = [];
 
@@ -211,13 +215,17 @@ class AsuDegreeRfiDataPotluckClient {
       [
         'degreeType' => $program,
         'method' => 'findAllDegrees',
+        'filter' => 'activeInDegreeSearch',
+        'include' => ['rfiDisplay','acadPlanMarketingDescription']
       ],
       "acad-plans"
     );
 
     // Process and return as options-ready key-value array.
     foreach ($response as $row) {
-      $poi_options[$row['acadPlanCode']] = $row['acadPlanDescription'] . ' : ' . $row['acadPlanCode'];
+      if (!$requireiRfiDisplay || ($requireiRfiDisplay && $row['rfiDisplay'] === TRUE)) {
+        $poi_options[$row['acadPlanCode']] = $row['acadPlanMarketingDescription'] . ' : ' . $row['acadPlanCode'];
+      }
     }
     asort($poi_options, SORT_STRING);
     return $poi_options;

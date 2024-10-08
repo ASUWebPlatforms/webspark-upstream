@@ -4,8 +4,8 @@
 
 <div class="accordion-item mt-3 {{ color != 'default' ? color }}">
   <div class="accordion-header {{ is_icon ? 'accordion-header-icon' }}">
-    <h3>
-      <a id="accordion-header-{{ link_id|lower }}"
+    <h4>
+      <button id="accordion-header-{{ link_id|lower }}"
         {% if expanded is same as('On') %}
           class=""
         {% else %}
@@ -37,8 +37,8 @@
           {{ heading }}
         {% endif %}
         <span class="fas fa-chevron-up"></span>
-      </a>
-    </h3>
+      </button>
+    </h4>
   </div>
   <div id="accordion-content-{{ link_id }}"
     {% if expanded is same as('On') %}
@@ -46,7 +46,6 @@
     {% else %}
        class="collapse"
     {% endif %}
-     aria-labelledby="{{ heading }}"
      data-bs-parent="#accordion-{{ parent_id }}">
     <div class="accordion-body">
       {{ body_text  }}

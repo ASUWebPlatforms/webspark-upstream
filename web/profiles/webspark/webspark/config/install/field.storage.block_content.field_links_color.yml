@@ -11,7 +11,7 @@ type: list_string
 settings:
   allowed_values:
     -
-      value: "text-gray-7"
+      value: text-gray-7
       label: 'Gray 7 Links'
     -
       value: text-gold

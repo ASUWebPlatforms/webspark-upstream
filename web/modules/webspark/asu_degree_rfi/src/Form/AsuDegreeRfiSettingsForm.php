@@ -73,8 +73,8 @@ class AsuDegreeRfiSettingsForm extends ConfigFormBase {
         handling systems which route submissions to appropriate Salesforce
         destinations. Before you can begin using the RFI form, you must first
         obtain a Source ID. <strong>Please visit
-        <a href="https://asudev.jira.com/servicedesk/customer/portal/5">the
-        RFI Setup Request form</a> to begin the process for obtaining your
+        <a href="https://asudev.jira.com/servicedesk/customer/portal/2/create/286">
+        the RFI Setup Request form</a> to begin the process for obtaining your
         Source ID.</strong> Note: Source IDs are tied to a single domain.
         If you plan on testing or using RFIs from multiple environments, you
         must submit a request for each. Lastly, for most sites, using the

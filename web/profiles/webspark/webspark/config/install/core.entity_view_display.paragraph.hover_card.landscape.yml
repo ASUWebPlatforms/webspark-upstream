@@ -1,0 +1,40 @@
+langcode: en
+status: false
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.landscape
+    - field.field.paragraph.hover_card.field_body
+    - field.field.paragraph.hover_card.field_heading
+    - field.field.paragraph.hover_card.field_link
+    - field.field.paragraph.hover_card.field_media
+    - paragraphs.paragraphs_type.hover_card
+  module:
+    - link
+    - text
+id: paragraph.hover_card.landscape
+targetEntityType: paragraph
+bundle: hover_card
+mode: landscape
+content:
+  field_body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_link:
+    type: link
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 3
+    region: content
+hidden:
+  field_heading: true
+  field_media: true

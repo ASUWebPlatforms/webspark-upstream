@@ -1,0 +1,17 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - crop
+third_party_settings:
+  crop:
+    image_field: _none
+id: cropped_image_16_25
+label: 'Cropped image (16:25)'
+description: 'Primarily for use in Hover Cards.'
+source: image
+queue_thumbnail_downloads: false
+new_revision: false
+source_configuration:
+  source_field: field_media_image
+field_map: {  }

@@ -1,0 +1,28 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_media
+    - media.type.cropped_image_16_25
+    - paragraphs.paragraphs_type.hover_card
+id: paragraph.hover_card.field_media
+field_name: field_media
+entity_type: paragraph
+bundle: hover_card
+label: Media
+description: 'Recommended image size: 400 x 625px'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      cropped_image_16_25: cropped_image_16_25
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: cropped_image_16_25
+field_type: entity_reference

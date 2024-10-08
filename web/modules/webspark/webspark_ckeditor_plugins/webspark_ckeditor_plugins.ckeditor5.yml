@@ -20,6 +20,8 @@ webspark_ckeditor_plugins_plugins:
       - websparkPlugin.WebsparkTable
       - websparkPlugin.WebsparkMediaAlter
       - websparkPlugin.WebsparkListStyle
+      - websparkPlugin.WebsparkAnimatedText
+      - websparkPlugin.WebsparkBlockquoteAnimated
 
     # *Additional configuration properties*
     # config: data sent to the constructor of any CKEditor 5 plugin
@@ -75,6 +77,10 @@ webspark_ckeditor_plugins_plugins:
         label: Table
       websparkListStyle:
         label: List Properties
+      websparkAnimatedText:
+        label: Animated Text
+      websparkBlockquoteAnimated:
+        label: Blockquote Animated
     # If the plugin does not provide elements, set this as
     # `elements: false`
     elements:

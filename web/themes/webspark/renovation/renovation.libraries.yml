@@ -6,6 +6,7 @@ style:
   js:
     assets/js/bootstrap.bundle.min.js: {}
     js/datalayer.js: {}
+    js/animated.js: {}
     # assets/js/renovation.script.js: {}
   dependencies:
     - core/jquery

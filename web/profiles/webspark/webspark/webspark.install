@@ -2,7 +2,7 @@
 
 /**
  * @file
- * Install, update and uninstall functions for the webspark installation profile.
+ * Install, update and uninstall functions for the Webspark installation profile.
  */
 
 use Drupal\user\Entity\User;
@@ -539,6 +539,199 @@ function webspark_update_10004(&$sandbox) {
 function webspark_update_10005(&$sandbox) {
   \Drupal::state()->set('configuration_locked', FALSE);
   \Drupal::service('webspark.config_manager')->updateConfigFile('field.field.block_content.image.field_image_caption');
+  \Drupal::state()->set('configuration_locked', TRUE);
+}
+
+/**
+ * Adds Display List block and fields.
+ */
+function webspark_update_10006(&$sandbox): void {
+  \Drupal::state()->set('configuration_locked', FALSE);
+  \Drupal::service('webspark.config_manager')->importConfigFile('block_content.type.display_list');
+  \Drupal::service('webspark.config_manager')->importConfigFile('core.entity_form_display.block_content.display_list.default');
+  \Drupal::service('webspark.config_manager')->importConfigFile('core.entity_form_display.paragraph.display_list_item.carousel_card');
+  \Drupal::service('webspark.config_manager')->importConfigFile('core.entity_form_display.paragraph.display_list_item.default');
+  \Drupal::service('webspark.config_manager')->importConfigFile('core.entity_view_display.block_content.display_list.default');
+  \Drupal::service('webspark.config_manager')->importConfigFile('core.entity_view_display.paragraph.display_list_item.default');
+  \Drupal::service('webspark.config_manager')->importConfigFile('core.entity_view_display.paragraph.display_list_item.landscape');
+  \Drupal::service('webspark.config_manager')->importConfigFile('core.entity_view_display.paragraph.display_list_item.portrait');
+  \Drupal::service('webspark.config_manager')->importConfigFile('field.field.block_content.display_list.field_anchor_menu_settings');
+  \Drupal::service('webspark.config_manager')->importConfigFile('field.field.block_content.display_list.field_list_item');
+  \Drupal::service('webspark.config_manager')->importConfigFile('field.field.block_content.display_list.field_spacing_bottom');
+  \Drupal::service('webspark.config_manager')->importConfigFile('field.field.block_content.display_list.field_spacing_top');
+  \Drupal::service('webspark.config_manager')->importConfigFile('field.field.block_content.display_list.field_tooltip');
+  \Drupal::service('webspark.config_manager')->importConfigFile('field.field.paragraph.display_list_item.field_body');
+  \Drupal::service('webspark.config_manager')->importConfigFile('field.field.paragraph.display_list_item.field_heading');
+  \Drupal::service('webspark.config_manager')->importConfigFile('paragraphs.paragraphs_type.display_list_item');
+  \Drupal::state()->set('configuration_locked', TRUE);
+}
+
+/**
+ * Adds Icon List block and fields.
+ */
+function webspark_update_10007(&$sandbox): void {
+  \Drupal::state()->set('configuration_locked', FALSE);
+  \Drupal::service('webspark.config_manager')->importConfigFile('block_content.type.icon_list');
+  \Drupal::service('webspark.config_manager')->importConfigFile('core.entity_form_display.block_content.icon_list.default');
+  \Drupal::service('webspark.config_manager')->importConfigFile('core.entity_form_display.paragraph.icon_list_item.carousel_card');
+  \Drupal::service('webspark.config_manager')->importConfigFile('core.entity_form_display.paragraph.icon_list_item.default');
+  \Drupal::service('webspark.config_manager')->importConfigFile('core.entity_view_display.block_content.icon_list.default');
+  \Drupal::service('webspark.config_manager')->importConfigFile('core.entity_view_display.paragraph.icon_list_item.default');
+  \Drupal::service('webspark.config_manager')->importConfigFile('core.entity_view_display.paragraph.icon_list_item.landscape');
+  \Drupal::service('webspark.config_manager')->importConfigFile('core.entity_view_display.paragraph.icon_list_item.portrait');
+  \Drupal::service('webspark.config_manager')->importConfigFile('field.field.block_content.icon_list.field_anchor_menu_settings');
+  \Drupal::service('webspark.config_manager')->importConfigFile('field.field.block_content.icon_list.field_list_item');
+  \Drupal::service('webspark.config_manager')->importConfigFile('field.field.block_content.icon_list.field_spacing_bottom');
+  \Drupal::service('webspark.config_manager')->importConfigFile('field.field.block_content.icon_list.field_spacing_top');
+  \Drupal::service('webspark.config_manager')->importConfigFile('field.field.block_content.icon_list.field_tooltip');
+  \Drupal::service('webspark.config_manager')->importConfigFile('field.field.paragraph.icon_list_item.field_body');
+  \Drupal::service('webspark.config_manager')->importConfigFile('field.field.paragraph.icon_list_item.field_icon');
+  \Drupal::service('webspark.config_manager')->importConfigFile('paragraphs.paragraphs_type.icon_list_item');
+  \Drupal::state()->set('configuration_locked', TRUE);
+}
+
+/**
+ * Adds Step List block and fields.
+ */
+function webspark_update_10008(&$sandbox): void {
+  \Drupal::state()->set('configuration_locked', FALSE);
+  \Drupal::service('webspark.config_manager')->importConfigFile('block_content.type.step_list');
+  \Drupal::service('webspark.config_manager')->importConfigFile('core.entity_form_display.block_content.step_list.default');
+  \Drupal::service('webspark.config_manager')->importConfigFile('core.entity_form_display.paragraph.step_list_item.carousel_card');
+  \Drupal::service('webspark.config_manager')->importConfigFile('core.entity_form_display.paragraph.step_list_item.default');
+  \Drupal::service('webspark.config_manager')->importConfigFile('core.entity_view_display.block_content.step_list.default');
+  \Drupal::service('webspark.config_manager')->importConfigFile('core.entity_view_display.paragraph.step_list_item.default');
+  \Drupal::service('webspark.config_manager')->importConfigFile('core.entity_view_display.paragraph.step_list_item.landscape');
+  \Drupal::service('webspark.config_manager')->importConfigFile('core.entity_view_display.paragraph.step_list_item.portrait');
+  \Drupal::service('webspark.config_manager')->importConfigFile('field.field.block_content.step_list.field_accent_color');
+  \Drupal::service('webspark.config_manager')->importConfigFile('field.field.block_content.step_list.field_anchor_menu_settings');
+  \Drupal::service('webspark.config_manager')->importConfigFile('field.field.block_content.step_list.field_list_item');
+  \Drupal::service('webspark.config_manager')->importConfigFile('field.field.block_content.step_list.field_spacing_bottom');
+  \Drupal::service('webspark.config_manager')->importConfigFile('field.field.block_content.step_list.field_spacing_top');
+  \Drupal::service('webspark.config_manager')->importConfigFile('field.field.block_content.step_list.field_tooltip');
+  \Drupal::service('webspark.config_manager')->importConfigFile('field.field.paragraph.step_list_item.field_body');
+  \Drupal::service('webspark.config_manager')->importConfigFile('field.field.paragraph.step_list_item.field_heading');
+  \Drupal::service('webspark.config_manager')->importConfigFile('paragraphs.paragraphs_type.step_list_item');
+  \Drupal::state()->set('configuration_locked', TRUE);
+}
+
+/**
+ * Aux fields for the new Display, Icon, and Step blocks
+ */
+function webspark_update_10009(&$sandbox): void {
+  \Drupal::state()->set('configuration_locked', FALSE);
+  \Drupal::service('webspark.config_manager')->importConfigFile('field.storage.block_content.field_list_item');
+  \Drupal::service('webspark.config_manager')->updateConfigFile('field.storage.block_content.field_accent_color');
+  \Drupal::state()->set('configuration_locked', TRUE);
+  }
+
+/**
+ * Makes Image Based Card link text required.
+ */
+function webspark_update_10010(&$sandbox): void {
+  \Drupal::state()->set('configuration_locked', FALSE);
+  \Drupal::service('webspark.config_manager')->updateConfigFile('field.field.paragraph.image_based_card.field_link');
+  \Drupal::state()->set('configuration_locked', TRUE);
+}
+
+/**
+ * Adds Hover Cards block and fields.
+ */
+function webspark_update_10011(&$sandbox): void {
+  \Drupal::state()->set('configuration_locked', FALSE);
+  \Drupal::service('webspark.config_manager')->importConfigFile('block_content.type.hover_cards');
+  \Drupal::service('webspark.config_manager')->importConfigFile('core.entity_form_display.block_content.hover_cards.default');
+  \Drupal::service('webspark.config_manager')->importConfigFile('core.entity_form_display.media.cropped_image_16_25.default');
+  \Drupal::service('webspark.config_manager')->importConfigFile('core.entity_form_display.media.cropped_image_16_25.media_library');
+  \Drupal::service('webspark.config_manager')->importConfigFile('core.entity_form_display.paragraph.hover_card.carousel_card');
+  \Drupal::service('webspark.config_manager')->importConfigFile('core.entity_form_display.paragraph.hover_card.default');
+  \Drupal::service('webspark.config_manager')->importConfigFile('core.entity_view_display.block_content.hover_cards.default');
+  \Drupal::service('webspark.config_manager')->importConfigFile('core.entity_view_display.media.cropped_image_16_25.default');
+  \Drupal::service('webspark.config_manager')->importConfigFile('core.entity_view_display.media.cropped_image_16_25.media_library');
+  \Drupal::service('webspark.config_manager')->importConfigFile('core.entity_view_display.paragraph.hover_card.default');
+  \Drupal::service('webspark.config_manager')->importConfigFile('core.entity_view_display.paragraph.hover_card.landscape');
+  \Drupal::service('webspark.config_manager')->importConfigFile('core.entity_view_display.paragraph.hover_card.portrait');
+  \Drupal::service('webspark.config_manager')->importConfigFile('crop.type.16_25');
+  \Drupal::service('webspark.config_manager')->importConfigFile('field.field.block_content.hover_cards.field_anchor_menu_settings');
+  \Drupal::service('webspark.config_manager')->importConfigFile('field.field.block_content.hover_cards.field_hover_cards');
+  \Drupal::service('webspark.config_manager')->importConfigFile('field.field.block_content.hover_cards.field_spacing_bottom');
+  \Drupal::service('webspark.config_manager')->importConfigFile('field.field.block_content.hover_cards.field_spacing_top');
+  \Drupal::service('webspark.config_manager')->importConfigFile('field.field.block_content.hover_cards.field_tooltip');
+  \Drupal::service('webspark.config_manager')->importConfigFile('field.field.media.cropped_image_16_25.field_media_image');
+  \Drupal::service('webspark.config_manager')->importConfigFile('field.field.paragraph.hover_card.field_body');
+  \Drupal::service('webspark.config_manager')->importConfigFile('field.field.paragraph.hover_card.field_heading');
+  \Drupal::service('webspark.config_manager')->importConfigFile('field.field.paragraph.hover_card.field_link');
+  \Drupal::service('webspark.config_manager')->importConfigFile('field.field.paragraph.hover_card.field_media');
+  \Drupal::service('webspark.config_manager')->importConfigFile('field.storage.block_content.field_hover_cards');
+  \Drupal::service('webspark.config_manager')->importConfigFile('image.style.block_image_16_25_lge');
+  \Drupal::service('webspark.config_manager')->importConfigFile('media.type.cropped_image_16_25');
+  \Drupal::service('webspark.config_manager')->importConfigFile('paragraphs.paragraphs_type.hover_card');
+  \Drupal::state()->set('configuration_locked', TRUE);
+}
+
+/**
+ * WS2-2089 - CK Editor - Added Highlighting capabilities and Animated Blockquote.
+ */
+function webspark_update_10012(&$sandbox): void{
+  \Drupal::state()->set('configuration_locked', FALSE);
+  $config_factory = \Drupal::service('config.factory');
+  // Find all editor configs
+  $editor_configs = $config_factory->listAll('editor.editor');
+  $editor_configs = [...$editor_configs, ...$config_factory->listAll('filter.format')];
+  // Loop through all editor configs
+  foreach ($editor_configs as $value) {
+    $config = \Drupal::config($value);
+    // Check if the config is not the restricted_html
+    if ($config && !strpos($config->getName(), 'restricted_html') && !strpos($config->getName(), 'minimal_format') && !strpos($config->getName(), 'webform_default')) {
+      $data = $config->getRawData();
+      if ($data && isset($data['settings']['toolbar']['items'])) {
+        $toolbar_items = $data['settings']['toolbar']['items'];
+        if ($toolbar_items) {
+          // Add Animated Blockquote
+          $webspark_blockquote_key = array_search('websparkBlockquote', $toolbar_items);
+          if ($webspark_blockquote_key !== false) {
+            $position = $webspark_blockquote_key + 1;
+            $toolbar_items = array_merge(
+                array_slice($toolbar_items, 0, $position),
+                ['websparkBlockquoteAnimated'],
+                array_slice($toolbar_items, $position)
+            );
+          }
+          else {
+            array_push($toolbar_items, 'websparkBlockquoteAnimated');
+          }
+
+          // Add Highlighting capabilities
+          $webspark_blockquote_animated_key = array_search('websparkBlockquoteAnimated', $toolbar_items);
+          if ($webspark_blockquote_animated_key !== false) {
+            $position = $webspark_blockquote_animated_key + 1;
+            $toolbar_items = array_merge(
+                array_slice($toolbar_items, 0, $position),
+                ['websparkAnimatedText'],
+                array_slice($toolbar_items, $position)
+            );
+          }
+          else {
+            array_unshift($toolbar_items, 'websparkAnimatedText');
+          }
+
+          $config_editable = $config_factory->getEditable($value);
+          $config_editable->set('settings.toolbar.items', $toolbar_items);
+          $config_editable->save();
+        }
+      }
+      else if ($data && isset($data['filters']['filter_html']['settings']['allowed_html'])) {
+        $allowed_html = $data['filters']['filter_html']['settings']['allowed_html'];
+        // Add mark class to allowed_html
+        if ($allowed_html) {
+          $allowed_html = $allowed_html . ' <mark class>';
+          $config_editable = $config_factory->getEditable($value);
+          $config_editable->set('filters.filter_html.settings.allowed_html', $allowed_html);
+          $config_editable->save();
+        }
+      }
+    }
+  }
   \Drupal::state()->set('configuration_locked', TRUE);
 }
 

@@ -1,0 +1,83 @@
+diff --git a/js/ckeditor5_plugins/drupalfontawesome/build/drupalfontawesome.min.js b/js/ckeditor5_plugins/drupalfontawesome/build/drupalfontawesome.min.js
+index 5b66c6b..30c3032 100644
+--- a/js/ckeditor5_plugins/drupalfontawesome/build/drupalfontawesome.min.js
++++ b/js/ckeditor5_plugins/drupalfontawesome/build/drupalfontawesome.min.js
+@@ -1 +1 @@
+-!function(e,t){"object"==typeof exports&&"object"==typeof module?module.exports=t(require("Drupal")):"function"==typeof define&&define.amd?define(["Drupal"],t):"object"==typeof exports?exports.CKEditor5=t(require("Drupal")):(e.CKEditor5=e.CKEditor5||{},e.CKEditor5.drupalfontawesome=t(e.Drupal))}(self,(e=>(()=>{var t={"ckeditor5/src/core.js":(e,t,o)=>{e.exports=o("dll-reference CKEditor5.dll")("./src/core.js")},"ckeditor5/src/ui.js":(e,t,o)=>{e.exports=o("dll-reference CKEditor5.dll")("./src/ui.js")},"ckeditor5/src/widget.js":(e,t,o)=>{e.exports=o("dll-reference CKEditor5.dll")("./src/widget.js")},Drupal:t=>{"use strict";t.exports=e},"dll-reference CKEditor5.dll":e=>{"use strict";e.exports=CKEditor5.dll}},o={};function n(e){var r=o[e];if(void 0!==r)return r.exports;var s=o[e]={exports:{}};return t[e](s,s.exports,n),s.exports}n.d=(e,t)=>{for(var o in t)n.o(t,o)&&!n.o(e,o)&&Object.defineProperty(e,o,{enumerable:!0,get:t[o]})},n.o=(e,t)=>Object.prototype.hasOwnProperty.call(e,t);var r={};return(()=>{"use strict";n.d(r,{default:()=>l});var e=n("ckeditor5/src/core.js"),t=n("ckeditor5/src/widget.js");class o extends e.Command{constructor(e){super(e)}execute(e,t){const{model:o}=this.editor;o.change((n=>{o.insertContent(function(e,t,o){const n=e.createElement("fontAwesomeIconInline",t);return e.setAttribute("data-tag",o,n),n}(n,e,t))}))}refresh(){const{model:e}=this.editor,{selection:t}=e.document,o=e.schema.findAllowedParent(t.getFirstPosition(),"fontAwesomeIcon");this.isEnabled=null!==o}}class s extends e.Plugin{init(){this._defineSchema(),this._defineConverters(),this.editor.commands.add("insertFontAwesomeIcon",new o(this.editor))}_defineSchema(){const e=this.editor.model.schema;e.register("fontAwesomeIconInline",{inheritAllFrom:"$inlineObject",allowAttributes:["class","data-fa-transform","data-tag"]}),e.register("fontAwesomeIcon",{inheritAllFrom:"$inlineObject",allowAttributes:["class","data-fa-transform","data-tag"]})}_defineConverters(){const{conversion:e}=this.editor;function o(e,t){const o=e.getAttribute("data-tag"),n=e.getAttribute("class"),r=e.getAttribute("data-fa-transform");return t.createRawElement("span",{class:"fontawesome-icon-inline"},(function(e){const t=r?`data-fa-transform="${r}"`:"";e.innerHTML=`<${o} class="${n}" ${t}></${o}>`}))}function n(e,t){const o={class:e.getAttribute("class")},n=e.getAttribute("data-fa-transform");return n&&(o["data-fa-transform"]=n),t.createRawElement(e.getAttribute("data-tag"),o)}e.for("upcast").elementToElement({view:{name:"span",classes:"fontawesome-icon-inline"},model:(e,{writer:t})=>{const o=e.getChild(0),n=t.createElement("fontAwesomeIconInline",o.getAttributes());return t.setAttribute("data-tag",o.name,n),n}}),e.for("upcast").elementToElement({view:{name:/^(span|i)$/,classes:/^(fa|fa-classic|fa-sharp|fas|fa-solid|far|fa-regular|fab|fa-brands)$/},model:(e,{writer:t})=>{const o=t.createElement("fontAwesomeIcon",e.getAttributes());return t.setAttribute("data-tag",e.name,o),o}}),e.for("upcast").elementToAttribute({view:{name:/^(span|i)$/,classes:/(fa-)\w+/},model:{key:null},converterPriority:"high"}),e.for("dataDowncast").elementToElement({model:{name:"fontAwesomeIconInline",attributes:["class","data-fa-transform","data-tag"]},view:(e,{writer:t})=>o(e,t)}),e.for("dataDowncast").elementToElement({model:{name:"fontAwesomeIcon",attributes:["class","data-fa-transform","data-tag"]},view:(e,{writer:t})=>n(e,t)}),e.for("editingDowncast").elementToElement({model:{name:"fontAwesomeIconInline",attributes:["class","data-fa-transform","data-tag"]},view:(e,{writer:n})=>{const r=o(e,n),s=n.createContainerElement("span",{},[r]);return(0,t.toWidget)(s,n)}}),e.for("editingDowncast").elementToElement({model:{name:"fontAwesomeIcon",attributes:["class","data-fa-transform","data-tag"]},view:(e,{writer:o})=>{const r=n(e,o),s=o.createContainerElement("span",{},[r]);return(0,t.toWidget)(s,o)}})}}var a=n("ckeditor5/src/ui.js");class i extends e.Plugin{init(){this.drupal=n("Drupal");const e=this.editor,t=e.sourceElement.getAttribute("data-editor-active-text-format");e.ui.componentFactory.add("fontAwesome",(o=>{const n=new a.ButtonView(o),r=e.commands.get("insertFontAwesomeIcon");return n.set({label:e.t("Insert Fontawesome Icon"),icon:'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">\x3c!--! Font Awesome Pro 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc.--\x3e<path d="M64 32C64 14.3 49.7 0 32 0S0 14.3 0 32v448c0 17.7 14.3 32 32 32s32-14.3 32-32V352l64.3-16.1c41.1-10.3 84.6-5.5 122.5 13.4 44.2 22.1 95.5 24.8 141.7 7.4l34.7-13c12.5-4.7 20.8-16.6 20.8-30V66.1c0-23-24.2-38-44.8-27.7l-9.6 4.8c-46.3 23.2-100.8 23.2-147.1 0-35.1-17.6-75.4-22-113.5-12.5L64 48V32z"/></svg>',tooltip:!0}),n.bind("isEnabled").to(r,"isEnabled"),this.listenTo(n,"execute",(()=>{this.drupal.ckeditor5.openDialog(this.drupal.url(`fontawesome/dialog/icon/${t}`),(({attributes:t,tag:o})=>{e.execute("insertFontAwesomeIcon",t,o)}),{title:"FontAwesome",dialogClass:"fontawesome-icon-dialog"})})),n}))}}class c extends e.Plugin{static get requires(){return[s,i]}}const l={FontAwesome:c}})(),r=r.default})()));
+\ No newline at end of file
++!function(e,t){"object"==typeof exports&&"object"==typeof module?module.exports=t(require("Drupal")):"function"==typeof define&&define.amd?define(["Drupal"],t):"object"==typeof exports?exports.CKEditor5=t(require("Drupal")):(e.CKEditor5=e.CKEditor5||{},e.CKEditor5.drupalfontawesome=t(e.Drupal))}(self,(e=>(()=>{var t={"ckeditor5/src/core.js":(e,t,o)=>{e.exports=o("dll-reference CKEditor5.dll")("./src/core.js")},"ckeditor5/src/ui.js":(e,t,o)=>{e.exports=o("dll-reference CKEditor5.dll")("./src/ui.js")},"ckeditor5/src/widget.js":(e,t,o)=>{e.exports=o("dll-reference CKEditor5.dll")("./src/widget.js")},Drupal:t=>{"use strict";t.exports=e},"dll-reference CKEditor5.dll":e=>{"use strict";e.exports=CKEditor5.dll}},o={};function n(e){var r=o[e];if(void 0!==r)return r.exports;var s=o[e]={exports:{}};return t[e](s,s.exports,n),s.exports}n.d=(e,t)=>{for(var o in t)n.o(t,o)&&!n.o(e,o)&&Object.defineProperty(e,o,{enumerable:!0,get:t[o]})},n.o=(e,t)=>Object.prototype.hasOwnProperty.call(e,t);var r={};return(()=>{"use strict";n.d(r,{default:()=>l});var e=n("ckeditor5/src/core.js"),t=n("ckeditor5/src/widget.js");class o extends e.Command{constructor(e){super(e)}execute(e,t){const{model:o}=this.editor;o.change((n=>{o.insertContent(function(e,t,o){const n=e.createElement("fontAwesomeIconInline",t);return e.setAttribute("data-tag",o,n),n}(n,e,t))}))}refresh(){const{model:e}=this.editor,{selection:t}=e.document,o=e.schema.findAllowedParent(t.getFirstPosition(),"fontAwesomeIcon");this.isEnabled=null!==o}}class s extends e.Plugin{init(){this._defineSchema(),this._defineConverters(),this.editor.commands.add("insertFontAwesomeIcon",new o(this.editor))}_defineSchema(){const e=this.editor.model.schema;e.register("fontAwesomeIconInline",{inheritAllFrom:"$inlineObject",allowAttributes:["class","data-fa-transform","data-tag"]}),e.register("fontAwesomeIcon",{inheritAllFrom:"$inlineObject",allowAttributes:["class","data-fa-transform","data-tag"]})}_defineConverters(){const{conversion:e}=this.editor;function o(e,t){const o=e.getAttribute("data-tag")?e.getAttribute("data-tag"):"span",n=e.getAttribute("class"),r=e.getAttribute("data-fa-transform");return t.createRawElement("span",{class:"fontawesome-icon-inline"},(function(e){const t=r?`data-fa-transform="${r}"`:"";e.innerHTML=`<${o} class="${n}" ${t}>&nbsp;</${o}>`}))}e.for("upcast").elementToElement({view:{name:"span",classes:"fontawesome-icon-inline"},model:(e,{writer:t})=>{const o=e.getChild(0),n=t.createElement("fontAwesomeIconInline",o.getAttributes());return t.setAttribute("data-tag",o.name,n),n}}),e.for("upcast").elementToElement({view:{name:/^(span|i)$/,classes:/^(fa|fa-classic|fa-sharp|fas|fa-solid|far|fa-regular|fab|fa-brands)$/},model:(e,{writer:t})=>{const o=t.createElement("fontAwesomeIcon",e.getAttributes());return t.setAttribute("data-tag",e.name,o),o}}),e.for("dataDowncast").elementToElement({model:{name:"fontAwesomeIconInline",attributes:["class","data-fa-transform","data-tag"]},view:(e,{writer:t})=>o(e,t)}),e.for("dataDowncast").elementToElement({model:{name:"fontAwesomeIcon",attributes:["class","data-fa-transform","data-tag"]},view:(e,{writer:t})=>o(e,t)}),e.for("editingDowncast").elementToElement({model:{name:"fontAwesomeIconInline",attributes:["class","data-fa-transform","data-tag"]},view:(e,{writer:n})=>{const r=o(e,n),s=n.createContainerElement("span",{},[r]);return(0,t.toWidget)(s,n)}}),e.for("editingDowncast").elementToElement({model:{name:"fontAwesomeIcon",attributes:["class","data-fa-transform","data-tag"]},view:(e,{writer:n})=>{const r=o(e,n),s=n.createContainerElement("span",{},[r]);return(0,t.toWidget)(s,n)}})}}var a=n("ckeditor5/src/ui.js");class i extends e.Plugin{init(){this.drupal=n("Drupal");const e=this.editor,t=e.sourceElement.getAttribute("data-editor-active-text-format");e.ui.componentFactory.add("fontAwesome",(o=>{const n=new a.ButtonView(o),r=e.commands.get("insertFontAwesomeIcon");return n.set({label:e.t("Insert Fontawesome Icon"),icon:'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">\x3c!--! Font Awesome Pro 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc.--\x3e<path d="M64 32C64 14.3 49.7 0 32 0S0 14.3 0 32v448c0 17.7 14.3 32 32 32s32-14.3 32-32V352l64.3-16.1c41.1-10.3 84.6-5.5 122.5 13.4 44.2 22.1 95.5 24.8 141.7 7.4l34.7-13c12.5-4.7 20.8-16.6 20.8-30V66.1c0-23-24.2-38-44.8-27.7l-9.6 4.8c-46.3 23.2-100.8 23.2-147.1 0-35.1-17.6-75.4-22-113.5-12.5L64 48V32z"/></svg>',tooltip:!0}),n.bind("isEnabled").to(r,"isEnabled"),this.listenTo(n,"execute",(()=>{this.drupal.ckeditor5.openDialog(this.drupal.url(`fontawesome/dialog/icon/${t}`),(({attributes:t,tag:o})=>{e.execute("insertFontAwesomeIcon",t,o)}),{title:"FontAwesome",dialogClass:"fontawesome-icon-dialog"})})),n}))}}class c extends e.Plugin{static get requires(){return[s,i]}}const l={FontAwesome:c}})(),r=r.default})()));
+\ No newline at end of file
+diff --git a/js/ckeditor5_plugins/drupalfontawesome/src/FontAwesomeEditing.js b/js/ckeditor5_plugins/drupalfontawesome/src/FontAwesomeEditing.js
+index 327552c..65e1109 100644
+--- a/js/ckeditor5_plugins/drupalfontawesome/src/FontAwesomeEditing.js
++++ b/js/ckeditor5_plugins/drupalfontawesome/src/FontAwesomeEditing.js
+@@ -56,18 +56,6 @@ export default class FontAwesomeEditing extends Plugin {
+       }
+     });
+
+-    // Prevent ckeditor 5 from converting fontawesome icons to attributes.
+-    conversion.for('upcast').elementToAttribute({
+-      view: {
+-        name: /^(span|i)$/,
+-        classes: /(fa-)\w+/,
+-      },
+-      model: {
+-        key: null,
+-      },
+-      converterPriority: 'high',
+-    });
+-
+     conversion.for('dataDowncast').elementToElement({
+       model: {
+         name: 'fontAwesomeIconInline',
+@@ -84,7 +72,7 @@ export default class FontAwesomeEditing extends Plugin {
+         attributes: ['class', 'data-fa-transform', 'data-tag']
+       },
+       view: (modelElement, { writer }) => {
+-        return createFontAwesomeIconView(modelElement, writer);
++        return createFontAwesomeIconInlineView(modelElement, writer);
+       }
+     } );
+
+@@ -106,29 +94,37 @@ export default class FontAwesomeEditing extends Plugin {
+         attributes: ['class', 'data-fa-transform', 'data-tag']
+       },
+       view: ( modelElement, { writer} ) => {
+-        const icon = createFontAwesomeIconView(modelElement, writer);
++        const icon = createFontAwesomeIconInlineView(modelElement, writer);
+         const widgetElement = writer.createContainerElement('span', {}, [icon]);
+         return toWidget(widgetElement, writer);
+       }
+     } );
+
+     function createFontAwesomeIconInlineView(modelElement, writer) {
+-      const tag = modelElement.getAttribute('data-tag');
++      const tag = modelElement.getAttribute('data-tag')? modelElement.getAttribute('data-tag') : 'span';
+       const classes = modelElement.getAttribute('class');
+       const transforms = modelElement.getAttribute('data-fa-transform');
+       return writer.createRawElement('span', { class: 'fontawesome-icon-inline' }, function(domElement) {
+         const transformAttribute = transforms ? `data-fa-transform="${transforms}"` : '';
+-        domElement.innerHTML = `<${tag} class="${classes}" ${transformAttribute}></${tag}>`;
++        domElement.innerHTML = `<${tag} class="${classes}" ${transformAttribute}>&nbsp;</${tag}>`;
+       });
+     }
+
+     function createFontAwesomeIconView(modelElement, writer) {
+       const attributes = { class: modelElement.getAttribute('class') };
++      const tag = modelElement.getAttribute('data-tag');
++      const classes = modelElement.getAttribute('class');
+       const transforms = modelElement.getAttribute('data-fa-transform');
+       if (transforms) {
+         attributes['data-fa-transform'] = transforms;
+       }
+-      return writer.createRawElement(modelElement.getAttribute('data-tag'), attributes);
++      return writer.createRawElement('span', [], function (domElement) {
++        // domElement.innerHTML = '&nbsp;';
++        const transformAttribute = transforms ? `data-fa-transform="${transforms}"` : '';
++        domElement.innerHTML = `<${tag} class="${classes}" ${transformAttribute}>&nbsp;</${tag}>`;
++      });
+     }
+   }
+ }
++
++

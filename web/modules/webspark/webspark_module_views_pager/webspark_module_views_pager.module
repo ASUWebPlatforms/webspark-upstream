@@ -82,8 +82,58 @@ function template_preprocess_asu_pager(&$variables) {
     return;
   }
 
-  $tags = $variables['tags'];
 
+  // Initialize the pager for 'desktop' with dynamic page quantity
+  $variables = _webspark_module_views_pager_init_pager('desktop',$quantity, $element, $variables, $pager, $pager_max, $pager_manager, $route_name, $route_parameters, $parameters);
+  // Initialize the pager for 'mobile' with a fixed 3-page limit
+  $variables = _webspark_module_views_pager_init_pager('mobile', 3, $element, $variables, $pager, $pager_max, $pager_manager, $route_name, $route_parameters, $parameters);
+
+
+  // $variables['items'] = $items;
+  $variables['last_page'] = $pager_max;
+  $variables['heading_id'] = Html::getUniqueId('pagination-heading');
+
+  // The rendered link needs to play well with any other query parameter used
+  // on the page, like exposed filters, so for the cacheability all query
+  // parameters matter.
+  $variables['#cache']['contexts'][] = 'url.query_args';
+}
+
+/**
+ * Initialize pager variables for the given scope.
+ *
+ * @param string $scope
+ *   The scope of the pager, either "desktop" or "mobile".
+ * @param int $quantity
+ *   The number of pages in the pager.
+ * @param int $element
+ *   The element ID of the pager.
+ * @param array $variables
+ *   An associative array containing:
+ *   - tags: An array of labels for the controls in the pager.
+ *   - parameters: An associative array of query string parameters to append
+ *     to the pager links.
+ *   - route_name: The route name of the pager.
+ *   - route_parameters: An associative array of the route parameters.
+ * @param \Drupal\Core\Pager\PagerInterface $pager
+ *   The pager object.
+ * @param int $pager_max
+ *   The total number of pages in the pager.
+ * @param \Drupal\Core\Pager\PagerManagerInterface $pager_manager
+ *   The pager manager service.
+ * @param string $route_name
+ *   The route name of the pager.
+ * @param array $route_parameters
+ *   An associative array of the route parameters.
+ * @param array $parameters
+ *   An associative array of query string parameters to append to the pager
+ *   links.
+ *
+ * @return array
+ *   The initialized pager variables.
+ */
+function _webspark_module_views_pager_init_pager($scope, $quantity, $element, $variables, $pager, $pager_max, $pager_manager, $route_name, $route_parameters, $parameters) {
+  $tags = $variables['tags'];
   // Calculate various markers within this pager piece:
   // Middle is used to "center" pages around the current page.
   $pager_middle = ceil($quantity / 2);
@@ -147,7 +197,7 @@ function template_preprocess_asu_pager(&$variables) {
     }
     // Add an ellipsis if there are further next pages.
     if ($i < $pager_max + 1) {
-      $variables['ellipses']['next'] = TRUE;
+      $variables[$scope]['ellipses']['next'] = TRUE;
     }
   }
 
@@ -182,12 +232,7 @@ function template_preprocess_asu_pager(&$variables) {
     }
   }
 
-  $variables['items'] = $items;
-  $variables['last_page'] = $pager_max;
-  $variables['heading_id'] = Html::getUniqueId('pagination-heading');
+  $variables[$scope]['items'] = $items;
 
-  // The rendered link needs to play well with any other query parameter used
-  // on the page, like exposed filters, so for the cacheability all query
-  // parameters matter.
-  $variables['#cache']['contexts'][] = 'url.query_args';
+  return $variables;
 }

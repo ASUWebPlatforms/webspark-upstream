@@ -1,0 +1,47 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.display_list
+    - field.field.block_content.display_list.field_anchor_menu_settings
+    - field.field.block_content.display_list.field_list_item
+    - field.field.block_content.display_list.field_spacing_bottom
+    - field.field.block_content.display_list.field_spacing_top
+    - field.field.block_content.display_list.field_tooltip
+  module:
+    - entity_reference_revisions
+id: block_content.display_list.default
+targetEntityType: block_content
+bundle: display_list
+mode: default
+content:
+  field_anchor_menu_settings:
+    type: entity_reference_revisions_entity_view
+    label: above
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_list_item:
+    type: entity_reference_revisions_entity_view
+    label: above
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_tooltip:
+    type: entity_reference_revisions_entity_view
+    label: above
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 1
+    region: content
+hidden:
+  field_spacing_bottom: true
+  field_spacing_top: true

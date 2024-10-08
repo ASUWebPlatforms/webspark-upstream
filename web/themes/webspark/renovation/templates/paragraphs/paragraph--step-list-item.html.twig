@@ -1,0 +1,9 @@
+{% block paragraph %}
+  <li>
+    {% block content %}
+      {{ content.field_heading }}
+      <br>
+      <span>{{ content.field_body }}</span>
+    {% endblock %}
+  </li>
+{% endblock paragraph %}

@@ -20,3 +20,52 @@
   }
 }
 
+.uds-blockquoteAnimated {
+
+  h2 {
+    font-size: 4rem;
+    letter-spacing: -.14rem;
+    line-height: 4.25rem;
+    max-width: 100%;
+    color: #191919;
+  }
+
+  mark {
+    color: #191919;
+  }
+
+  a {
+    color: $black;
+  }
+
+  p {
+    max-width: none;
+  }
+
+  .citation {
+    display: flex;
+
+    .citation-content {
+      display: flex;
+      flex-direction: column;
+    }
+    cite {
+      display: block;
+      font-size: $uds-size-font-medium;
+      font-style: normal;
+
+      &.name {
+        font-weight: 700;
+      }
+
+      &.description {
+        font-weight: 400;
+      }
+    }
+  }
+
+  .citation:before {
+    padding-right: 0.5em;
+    content: '\2014';
+  }
+}

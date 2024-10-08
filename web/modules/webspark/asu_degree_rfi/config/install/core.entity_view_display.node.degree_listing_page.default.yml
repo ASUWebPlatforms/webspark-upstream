@@ -3,6 +3,7 @@ status: true
 dependencies:
   config:
     - field.field.node.degree_listing_page.field_degree_degrees_per_page
+    - field.field.node.degree_listing_page.field_degree_detail_breadcrumbs
     - field.field.node.degree_listing_page.field_degree_list_apply_now_url
     - field.field.node.degree_listing_page.field_degree_list_card_image
     - field.field.node.degree_listing_page.field_degree_list_certs_minors
@@ -31,6 +32,7 @@ dependencies:
     - layout_builder
     - layout_builder_restrictions
     - layout_discovery
+    - link
     - options
     - text
     - user
@@ -77,6 +79,18 @@ content:
     settings: {  }
     third_party_settings: {  }
     weight: 21
+    region: content
+  field_degree_detail_breadcrumbs:
+    type: link
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 101
     region: content
   field_degree_list_apply_now_url:
     type: string

@@ -199,9 +199,9 @@ class AsuBrandHeaderBlock extends BlockBase {
     $form['titles']['asu_brand_header_block_base_url'] = [
       '#type' => 'url',
       '#title' => $this->t('Site URL'),
-      '#description' => $this->t("URL of this site's home page."),
-      '#default_value' => $config['asu_brand_header_block_base_url'] ?? $this->getBaseUrl(),
-      '#required' => TRUE
+      '#description' => $this->t("(optional) Only use if you need to specify a subsite URL. Leave blank to use the current site URL."),
+      '#default_value' => $config['asu_brand_header_block_base_url'] ?? '',
+      '#required' => FALSE
     ];
     $form['titles']['asu_brand_header_block_parent_org'] = [
       '#type' => 'textfield',

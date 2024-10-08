@@ -1,0 +1,23 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_body
+    - filter.format.basic_html
+    - paragraphs.paragraphs_type.icon_list_item
+  module:
+    - text
+id: paragraph.icon_list_item.field_body
+field_name: field_body
+entity_type: paragraph
+bundle: icon_list_item
+label: Body
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats:
+    - basic_html
+field_type: text_long

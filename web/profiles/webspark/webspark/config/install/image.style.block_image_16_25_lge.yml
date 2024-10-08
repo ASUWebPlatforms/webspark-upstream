@@ -1,0 +1,25 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - crop.type.16_25
+  module:
+    - crop
+name: block_image_16_25_lge
+label: 'Block Image 16:25 LGE'
+effects:
+  1f8298d9-ff9b-48a6-ac4e-fd2b60d21b2a:
+    uuid: 1f8298d9-ff9b-48a6-ac4e-fd2b60d21b2a
+    id: crop_crop
+    weight: 1
+    data:
+      crop_type: '16_25'
+      automatic_crop_provider: null
+  dae5d404-b8d8-4241-9d11-a66252a5beb7:
+    uuid: dae5d404-b8d8-4241-9d11-a66252a5beb7
+    id: image_scale_and_crop
+    weight: 2
+    data:
+      width: 400
+      height: 625
+      anchor: center-center

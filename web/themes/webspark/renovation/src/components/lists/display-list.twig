@@ -1,0 +1,10 @@
+<ul class="uds-list uds-display-list">
+  {% for item in items %}
+    <li>
+      {% if item.heading %}
+        {{ item.heading}}
+      {% endif %}
+      <span>{{ item.content }}</span>
+    </li>
+  {% endfor %}
+</ul>

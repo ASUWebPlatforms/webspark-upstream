@@ -263,10 +263,10 @@ class AsuDegreeRfiRfiBlock extends BlockBase implements ContainerFactoryPluginIn
     }
     else {
       // Call Data Potluck to get all the Program of Interest permutations.
-      $poi_ugrad = $this->dataPotluckClient->getProgramsOfInterest('UG');
-      $poi_grad = $this->dataPotluckClient->getProgramsOfInterest('GR');
-      $poi_ucert = $this->dataPotluckClient->getProgramsOfInterest('UGCM');
-      $poi_other = $this->dataPotluckClient->getProgramsOfInterest('OTHR');
+      $poi_ugrad = $this->dataPotluckClient->getProgramsOfInterest('UG', TRUE);
+      $poi_grad = $this->dataPotluckClient->getProgramsOfInterest('GR', TRUE);
+      $poi_ucert = $this->dataPotluckClient->getProgramsOfInterest('UGCM', FALSE);
+      $poi_other = $this->dataPotluckClient->getProgramsOfInterest('OTHR', FALSE);
       // Merge with headings to break up a looong select list.
       $poi_options = array_merge(
         ["Undergrad" => $poi_ugrad],

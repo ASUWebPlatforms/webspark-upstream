@@ -2,10 +2,10 @@
 # yarn lockfile v1
 
 
-"@asu/app-webdir-ui@3.5.0":
-  version "3.5.0"
-  resolved "https://npm.pkg.github.com/download/@asu/app-webdir-ui/3.5.0/1876a3749533a72f2994fb130f58b074d2e46d90#1876a3749533a72f2994fb130f58b074d2e46d90"
-  integrity sha512-pJ57xSXInr4l6gHUTq57yH4nsrCt3QMMjeNb3nlR5okQKyYhvWNiskZo2HAb1HsJrhttN5i82zcaXLebnX2HrQ==
+"@asu/app-webdir-ui@3.6.2":
+  version "3.6.2"
+  resolved "https://npm.pkg.github.com/download/@asu/app-webdir-ui/3.6.2/74abe95b708a5b621c7011ea4f27cc753b1b9370#74abe95b708a5b621c7011ea4f27cc753b1b9370"
+  integrity sha512-6Wnvd5BrcrOTzizr+lzDpuUsviItCgZQpQVSezdmqrCnN/CvtGtvhiEUfwVxyIluo4tJxK1dYumBbm2QcM3bCA==
   dependencies:
     "@asu/components-core" "^3.0.0"
     "@babel/preset-env" "^7.15.0"

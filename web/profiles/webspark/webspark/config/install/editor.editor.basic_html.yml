@@ -34,6 +34,8 @@ settings:
       - websparkLead
       - websparkHighlightedHeading
       - websparkBlockquote
+      - websparkBlockquoteAnimated
+      - websparkAnimatedText
       - '|'
       - websparkTable
   plugins:

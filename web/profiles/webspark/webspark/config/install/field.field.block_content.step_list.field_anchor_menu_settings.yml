@@ -1,0 +1,99 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.step_list
+    - field.storage.block_content.field_anchor_menu_settings
+    - paragraphs.paragraphs_type.anchor_menu_settings
+  module:
+    - entity_reference_revisions
+id: block_content.step_list.field_anchor_menu_settings
+field_name: field_anchor_menu_settings
+entity_type: block_content
+bundle: step_list
+label: 'Anchor Menu Settings'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      anchor_menu_settings: anchor_menu_settings
+    negate: 0
+    target_bundles_drag_drop:
+      accordion_panel:
+        weight: 41
+        enabled: false
+      anchor_menu_settings:
+        weight: 42
+        enabled: true
+      blockquote:
+        weight: 44
+        enabled: false
+      card:
+        weight: 45
+        enabled: false
+      card_degree:
+        weight: 46
+        enabled: false
+      card_event:
+        weight: 47
+        enabled: false
+      card_group_default:
+        weight: 48
+        enabled: false
+      card_group_degree:
+        weight: 49
+        enabled: false
+      card_group_ranking:
+        weight: 33
+        enabled: false
+      card_group_story:
+        weight: 50
+        enabled: false
+      card_group_with_icon:
+        weight: 35
+        enabled: false
+      card_media:
+        weight: 51
+        enabled: false
+      card_ranking:
+        weight: 37
+        enabled: false
+      card_story:
+        weight: 52
+        enabled: false
+      card_with_icon:
+        weight: 39
+        enabled: false
+      cta:
+        weight: 53
+        enabled: false
+      degree_details_next_steps:
+        weight: 41
+        enabled: false
+      degree_details_why_choose:
+        weight: 42
+        enabled: false
+      gallery_image:
+        weight: 56
+        enabled: false
+      image_based_card:
+        weight: 44
+        enabled: false
+      image_based_cards:
+        weight: 45
+        enabled: false
+      tab_content:
+        weight: 78
+        enabled: false
+      testimonial:
+        weight: 79
+        enabled: false
+      tooltip:
+        weight: 80
+        enabled: false
+field_type: entity_reference_revisions

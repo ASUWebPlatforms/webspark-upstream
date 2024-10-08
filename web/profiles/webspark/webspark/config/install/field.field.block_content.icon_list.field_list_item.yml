@@ -1,0 +1,108 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.icon_list
+    - field.storage.block_content.field_list_item
+    - paragraphs.paragraphs_type.icon_list_item
+  module:
+    - entity_reference_revisions
+id: block_content.icon_list.field_list_item
+field_name: field_list_item
+entity_type: block_content
+bundle: icon_list
+label: 'List Items'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      icon_list_item: icon_list_item
+    negate: 0
+    target_bundles_drag_drop:
+      accordion_panel:
+        weight: 28
+        enabled: false
+      anchor_menu_settings:
+        weight: 29
+        enabled: false
+      blockquote:
+        weight: 30
+        enabled: false
+      card:
+        weight: 31
+        enabled: false
+      card_degree:
+        weight: 32
+        enabled: false
+      card_event:
+        weight: 33
+        enabled: false
+      card_group_default:
+        weight: 34
+        enabled: false
+      card_group_degree:
+        weight: 35
+        enabled: false
+      card_group_ranking:
+        weight: 36
+        enabled: false
+      card_group_story:
+        weight: 37
+        enabled: false
+      card_group_with_icon:
+        weight: 38
+        enabled: false
+      card_media:
+        weight: 39
+        enabled: false
+      card_ranking:
+        weight: 40
+        enabled: false
+      card_story:
+        weight: 41
+        enabled: false
+      card_with_icon:
+        weight: 42
+        enabled: false
+      cta:
+        weight: 43
+        enabled: false
+      degree_details_next_steps:
+        weight: 44
+        enabled: false
+      degree_details_why_choose:
+        weight: 45
+        enabled: false
+      display_list_item:
+        weight: 46
+        enabled: false
+      gallery_image:
+        weight: 47
+        enabled: false
+      icon_list_item:
+        weight: 48
+        enabled: true
+      image_based_card:
+        weight: 49
+        enabled: false
+      image_based_cards:
+        weight: 50
+        enabled: false
+      step_list_item:
+        weight: 51
+        enabled: false
+      tab_content:
+        weight: 52
+        enabled: false
+      testimonial:
+        weight: 53
+        enabled: false
+      tooltip:
+        weight: 54
+        enabled: false
+field_type: entity_reference_revisions

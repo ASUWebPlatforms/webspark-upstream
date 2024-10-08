@@ -1,0 +1,31 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.icon_list_item.field_body
+    - field.field.paragraph.icon_list_item.field_icon
+    - paragraphs.paragraphs_type.icon_list_item
+  module:
+    - fontawesome
+    - text
+id: paragraph.icon_list_item.default
+targetEntityType: paragraph
+bundle: icon_list_item
+mode: default
+content:
+  field_body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_icon:
+    type: fontawesome_icon_formatter
+    label: hidden
+    settings:
+      layers: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden: {  }

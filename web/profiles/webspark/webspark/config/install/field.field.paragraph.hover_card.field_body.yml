@@ -1,0 +1,23 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_body
+    - filter.format.plain_text
+    - paragraphs.paragraphs_type.hover_card
+  module:
+    - text
+id: paragraph.hover_card.field_body
+field_name: field_body
+entity_type: paragraph
+bundle: hover_card
+label: Body
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats:
+    - plain_text
+field_type: text_long

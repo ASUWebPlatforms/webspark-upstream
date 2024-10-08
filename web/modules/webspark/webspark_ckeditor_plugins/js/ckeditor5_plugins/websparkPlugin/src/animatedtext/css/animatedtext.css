@@ -1,0 +1,9 @@
+ :root {
+  --ck-highlight-marker-yellow: #ffc627;
+}
+
+.ck-content .pen-yellow {
+  background-color: var(--ck-highlight-marker-yellow);
+}
+
+

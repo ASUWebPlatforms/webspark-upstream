@@ -3,6 +3,7 @@ status: true
 dependencies:
   config:
     - field.field.node.degree_listing_page.field_degree_degrees_per_page
+    - field.field.node.degree_listing_page.field_degree_detail_breadcrumbs
     - field.field.node.degree_listing_page.field_degree_list_apply_now_url
     - field.field.node.degree_listing_page.field_degree_list_card_image
     - field.field.node.degree_listing_page.field_degree_list_certs_minors
@@ -28,6 +29,9 @@ dependencies:
     - node.type.degree_listing_page
   module:
     - field_group
+    - field_states_ui
+    - link
+    - maxlength
     - media_library
     - path
     - text
@@ -54,6 +58,7 @@ third_party_settings:
         required_fields: true
     group_degree_list_intro_content:
       children:
+        - field_degree_detail_breadcrumbs
         - field_degree_list_intro_type
         - field_degree_list_intro_title
         - field_degree_list_header
@@ -87,6 +92,23 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
+  field_degree_detail_breadcrumbs:
+    type: link_default
+    weight: 21
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings:
+      maxlength:
+        maxlength_js: null
+        maxlength_js_label: 'Content limited to @limit characters, remaining: <strong>@remaining</strong>'
+        maxlength_js_enforce: false
+      field_states_ui:
+        form:
+          type: ''
+          list: ''
+          add: Add
   field_degree_list_apply_now_url:
     type: string_textfield
     weight: 19
@@ -123,7 +145,7 @@ content:
     third_party_settings: {  }
   field_degree_list_header:
     type: string_textfield
-    weight: 20
+    weight: 24
     region: content
     settings:
       size: 60
@@ -165,7 +187,7 @@ content:
     third_party_settings: {  }
   field_degree_list_intro_content:
     type: text_textarea
-    weight: 21
+    weight: 25
     region: content
     settings:
       rows: 5
@@ -173,7 +195,7 @@ content:
     third_party_settings: {  }
   field_degree_list_intro_title:
     type: string_textfield
-    weight: 19
+    weight: 23
     region: content
     settings:
       size: 60
@@ -181,13 +203,13 @@ content:
     third_party_settings: {  }
   field_degree_list_intro_type:
     type: options_select
-    weight: 18
+    weight: 22
     region: content
     settings: {  }
     third_party_settings: {  }
   field_degree_list_photo_grid:
     type: media_library_widget
-    weight: 22
+    weight: 26
     region: content
     settings:
       media_types: {  }
@@ -214,7 +236,7 @@ content:
     third_party_settings: {  }
   field_degree_listing_intro_media:
     type: media_library_widget
-    weight: 26
+    weight: 27
     region: content
     settings:
       media_types: {  }
