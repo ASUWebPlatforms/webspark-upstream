@@ -3,8 +3,10 @@
 
 <div class="uds-charts-and-graphs-container" data-number="{{ number }}">
   <div class="uds-charts-and-graphs-overlay {{ text_color }}">
-    <h4 id="percentage-display">{{ number }}%</h4>
-    <span>{{ text }}</span>
+    <p>
+      <span id="percentage-display">{{ number }}%</span>
+      <span>{{ text }}</span>
+    </p>
   </div>
   <canvas id="uds-donut"></canvas>
 </div>

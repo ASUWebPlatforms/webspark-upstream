@@ -4,6 +4,7 @@ dependencies:
   config:
     - core.entity_view_mode.node.teaser
     - field.field.node.degree_listing_page.field_degree_degrees_per_page
+    - field.field.node.degree_listing_page.field_degree_detail_breadcrumbs
     - field.field.node.degree_listing_page.field_degree_list_apply_now_url
     - field.field.node.degree_listing_page.field_degree_list_card_image
     - field.field.node.degree_listing_page.field_degree_list_certs_minors
@@ -44,6 +45,7 @@ content:
     region: content
 hidden:
   field_degree_degrees_per_page: true
+  field_degree_detail_breadcrumbs: true
   field_degree_list_apply_now_url: true
   field_degree_list_card_image: true
   field_degree_list_certs_minors: true

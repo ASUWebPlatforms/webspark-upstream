@@ -24,7 +24,7 @@ import {
 export class WebsparkHighlightedHeadingFormView extends View {
   DEFAULT_TEXT = "";
   DEFAULT_STYLE = "gold";
-  DEFAULT_HEADING = "h1";
+  DEFAULT_HEADING = "h2";
 
   constructor(validators, locale) {
     super(locale);

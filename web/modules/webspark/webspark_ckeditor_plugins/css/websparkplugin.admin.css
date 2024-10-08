@@ -27,5 +27,13 @@
 }
 
 .cke_button__anchor_icon {
-  background-image: url('../img/websparkanchorlink.png') !important;
+  background-image: url("../img/websparkanchorlink.png") !important;
+}
+
+.ckeditor5-toolbar-button-websparkAnimatedText {
+  background-image: url(../js/ckeditor5_plugins/websparkPlugin/src/animatedtext/icons/marker.svg);
+}
+
+.ckeditor5-toolbar-button-websparkBlockquoteAnimated {
+  background-image: url(../icons/websparkblockquoteAnimated.svg);
 }

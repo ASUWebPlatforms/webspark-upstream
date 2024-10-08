@@ -12,9 +12,6 @@ app-rfi:
   js:
     node_modules/@asu/app-rfi/dist/appRfi.umd.js: {}
     js/asu_degree_rfi.rfi.js: {}
-  css:
-    component:
-      css/asu_degree_rfi.rfi.css: {}
 degree-page-core:
   dependencies:
     - asu_degree_rfi/asu-degree-rfi-core

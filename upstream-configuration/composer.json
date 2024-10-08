@@ -43,9 +43,9 @@
         "drupal/redirect": "1.9.0",
         "drupal/robotstxt": "1.5.0",
         "drupal/schema_metatag": "3.0.1",
-        "drupal/seckit": "2.0.1",
+        "drupal/seckit": "2.0.3",
         "drupal/select2": "1.15.0",
-        "drupal/simple_sitemap": "4.1.8",
+        "drupal/simple_sitemap": "4.2.1",
         "drupal/smtp": "1.2.0",
         "drupal/webform": "6.2.3",
         "drush/drush": "^11 || ^12.4.3",
@@ -68,5 +68,5 @@
     "config": {
         "sort-packages": true
     },
-    "version": "2.13.1"
+    "version": "2.14.0"
 }

@@ -87,3 +87,28 @@ a.btn-maroon, a.btn-dark {
     color: $uds-color-font-light-base !important;
   }
 }
+
+$marker-yellow: #ffc627;
+
+@mixin mark-background {
+  background-color: transparent;
+  background-position: 100%;
+  background-size: 200% 200%;
+  box-shadow: none;
+  transition: background-position .8s;
+  transition-delay: .2s;
+  padding: 0;
+}
+
+.marker-yellow {
+  background-color: $marker-yellow;
+}
+
+.pen-yellow{
+  background-image: linear-gradient(270deg, transparent 50%, $marker-yellow 0);
+  @include mark-background;
+}
+
+.animate-bg-in-scroll {
+  background-position: 0;
+}

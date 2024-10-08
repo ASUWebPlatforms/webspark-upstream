@@ -1,0 +1,30 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.step_list_item.field_body
+    - field.field.paragraph.step_list_item.field_heading
+    - paragraphs.paragraphs_type.step_list_item
+  module:
+    - text
+id: paragraph.step_list_item.default
+targetEntityType: paragraph
+bundle: step_list_item
+mode: default
+content:
+  field_body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_heading:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden: {  }

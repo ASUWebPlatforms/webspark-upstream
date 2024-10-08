@@ -1,0 +1,11 @@
+<ol class="uds-list uds-steplist uds-steplist-{{ color }}">
+  {% for item in items %}
+    <li>
+      {% if item.heading %}
+        {{ item.heading}}
+        <br />
+      {% endif %}
+      <span>{{ item.content }}</span>
+    </li>
+  {% endfor %}
+</ol>

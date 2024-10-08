@@ -34,7 +34,7 @@ form .webspark-blockquote-dialog {
   width: 700px !important;
 }
 
-textarea.ck-webspark-form-textarea {
+textarea.ck-webspark-form-textarea, textarea.ck-textarea {
   width: 100% !important;
   height: 80px !important;
   padding-left: 0.5rem !important;

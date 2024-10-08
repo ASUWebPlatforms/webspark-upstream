@@ -1,0 +1,36 @@
+{% block paragraph %}
+  {% block content %}
+    <div class="content-section text-white my-2">
+      <div class="image-holder">
+        <img
+          src="{{ hoverCardImageUrl }}"
+          alt="{{ content.field_media[0]['#media'].field_media_image.alt }}"
+          loading="lazy"
+          decoding="async"
+        />
+      </div>
+      <div class="content-holder">
+        <div class="content-bg">
+          <h3>{{ content.field_heading }}</h3>
+          <div class="hidden-details">
+            <p class="long-text">{{ content.field_body }}</p>
+            {% if content.field_link.0['#url_title'] %}
+              <a
+                href="{{ content.field_link.0['#url_title'] }}"
+                class="btn btn-gold btn-sm"
+                data-ga="call to action"
+                data-ga-name="onclick"
+                data-ga-event="link"
+                data-ga-action="click"
+                data-ga-type="internal link (external if non asu.edu url)"
+                data-ga-region="main content"
+                data-ga-section="{{ content.field_heading }}">
+                {{ content.field_link.0['#title'] }}
+              </a>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+  {% endblock %}
+{% endblock paragraph %}

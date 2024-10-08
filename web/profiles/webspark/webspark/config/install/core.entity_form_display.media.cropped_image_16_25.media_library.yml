@@ -1,0 +1,49 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_form_mode.media.media_library
+    - field.field.media.cropped_image_16_25.field_media_image
+    - image.style.thumbnail
+    - media.type.cropped_image_16_25
+  module:
+    - field_states_ui
+    - image_widget_crop
+id: media.cropped_image_16_25.media_library
+targetEntityType: media
+bundle: cropped_image_16_25
+mode: media_library
+content:
+  field_media_image:
+    type: image_widget_crop
+    weight: 5
+    region: content
+    settings:
+      progress_indicator: throbber
+      preview_image_style: thumbnail
+      crop_preview_image_style: crop_thumbnail
+      crop_list:
+        - '16_25'
+      crop_types_required: {  }
+      warn_multiple_usages: true
+      show_crop_area: true
+      show_default_crop: true
+    third_party_settings:
+      field_states_ui:
+        form:
+          type: ''
+          list: ''
+          add: Add
+  name:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  path: true
+  status: true
+  uid: true

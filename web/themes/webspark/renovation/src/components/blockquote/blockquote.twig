@@ -5,7 +5,7 @@
 
   <blockquote>
     {% apply spaceless %}
-    <p>{{ body_text['#text']|replace({'</p><p>': '<br>'})|striptags('<a><br>')|raw }}</p>
+    <p>{{ body_text['#text']|replace({'</p><p>': '<br>'})|striptags('<a><br><mark>')|raw }}</p>
     {% endapply %}
 
     {% if citation_author is not empty or citation_description is not empty %}

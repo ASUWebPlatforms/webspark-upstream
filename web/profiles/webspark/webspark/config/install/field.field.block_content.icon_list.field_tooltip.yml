@@ -1,0 +1,99 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.icon_list
+    - field.storage.block_content.field_tooltip
+    - paragraphs.paragraphs_type.tooltip
+  module:
+    - entity_reference_revisions
+id: block_content.icon_list.field_tooltip
+field_name: field_tooltip
+entity_type: block_content
+bundle: icon_list
+label: Tooltip
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      tooltip: tooltip
+    negate: 0
+    target_bundles_drag_drop:
+      accordion_panel:
+        weight: 36
+        enabled: false
+      anchor_menu_settings:
+        weight: 26
+        enabled: false
+      blockquote:
+        weight: 27
+        enabled: false
+      card:
+        weight: 38
+        enabled: false
+      card_degree:
+        weight: 39
+        enabled: false
+      card_event:
+        weight: 40
+        enabled: false
+      card_group_default:
+        weight: 31
+        enabled: false
+      card_group_degree:
+        weight: 32
+        enabled: false
+      card_group_ranking:
+        weight: 33
+        enabled: false
+      card_group_story:
+        weight: 34
+        enabled: false
+      card_group_with_icon:
+        weight: 35
+        enabled: false
+      card_media:
+        weight: 41
+        enabled: false
+      card_ranking:
+        weight: 37
+        enabled: false
+      card_story:
+        weight: 42
+        enabled: false
+      card_with_icon:
+        weight: 39
+        enabled: false
+      cta:
+        weight: 43
+        enabled: false
+      degree_details_next_steps:
+        weight: 41
+        enabled: false
+      degree_details_why_choose:
+        weight: 42
+        enabled: false
+      gallery_image:
+        weight: 46
+        enabled: false
+      image_based_card:
+        weight: 44
+        enabled: false
+      image_based_cards:
+        weight: 45
+        enabled: false
+      tab_content:
+        weight: 68
+        enabled: false
+      testimonial:
+        weight: 69
+        enabled: false
+      tooltip:
+        weight: 70
+        enabled: true
+field_type: entity_reference_revisions

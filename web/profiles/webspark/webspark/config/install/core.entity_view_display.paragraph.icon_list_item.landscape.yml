@@ -1,0 +1,24 @@
+langcode: en
+status: false
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.landscape
+    - field.field.paragraph.icon_list_item.field_body
+    - field.field.paragraph.icon_list_item.field_icon
+    - paragraphs.paragraphs_type.icon_list_item
+  module:
+    - text
+id: paragraph.icon_list_item.landscape
+targetEntityType: paragraph
+bundle: icon_list_item
+mode: landscape
+content:
+  field_body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 2
+    region: content
+hidden:
+  field_icon: true

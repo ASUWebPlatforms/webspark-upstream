@@ -1,0 +1,11 @@
+langcode: en
+status: true
+dependencies: {  }
+label: '16:25'
+id: '16_25'
+description: 'Primarily for use in Hover Cards.'
+aspect_ratio: '16:25'
+soft_limit_width: 400
+soft_limit_height: 625
+hard_limit_width: null
+hard_limit_height: null

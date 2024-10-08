@@ -1,0 +1,8 @@
+{% block paragraph %}
+  <li>
+    {% block content %}
+      <span class="fa-li fas {{ content.field_icon.0['#icons'].0['#name'] }}"></span>
+      {{ content.field_body }}
+    {% endblock %}
+  </li>
+{% endblock paragraph %}

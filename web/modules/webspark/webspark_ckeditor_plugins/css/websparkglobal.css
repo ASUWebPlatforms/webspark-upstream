@@ -70,3 +70,7 @@ span.text.ck-editor__nested-editable_focused {
 .uds-list p {
   display: inline !important;
 }
+
+.uds-blockquoteAnimated a {
+  color: black !important;
+}

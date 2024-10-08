@@ -11,7 +11,7 @@ type: list_string
 settings:
   allowed_values:
     -
-      value: "default"
+      value: default
       label: Default
     -
       value: alt-citation

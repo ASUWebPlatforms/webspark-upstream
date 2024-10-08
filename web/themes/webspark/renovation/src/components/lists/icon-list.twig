@@ -1,0 +1,8 @@
+<ul class="uds-list fa-ul">
+  {% for item in items %}
+    <li>
+      <span class="fa-li fas fa-{{ item.icon }}"></span>
+      {{ item.content }}
+    </li>
+  {% endfor %}
+</ul>
