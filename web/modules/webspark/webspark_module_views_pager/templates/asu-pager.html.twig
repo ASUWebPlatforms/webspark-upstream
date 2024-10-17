@@ -12,6 +12,7 @@
  * @ingroup themeable
  */
 #}
+
 {% if alignment == 'right' %}
   {% set alignment = 'justify-content-end' %}
 {% elseif alignment == 'center' %}
@@ -25,17 +26,21 @@
 {% else %}
   {% set page_link_icon = '' %}
 {% endif %}
+
 {# DESKTOP #}
 {% set items = desktop.items %}
 {% set ellipses = desktop.ellipses %}
-<div class="d-none d-lg-block">
-  {% include '@webspark_module_views_pager/templates/asu-pager-nav.html.twig' %}
-</div>
+{% if items %}
+  <div class="d-none d-lg-block">
+    {% include '@webspark_module_views_pager/templates/asu-pager-nav.html.twig' %}
+  </div>
+{% endif %}
+
 {# MOBILE #}
 {% set items = mobile.items %}
 {% set ellipses = mobile.ellipses %}
-<div class="d-lg-none">
-  {% if items %}
+{% if items %}
+  <div class="d-lg-none">
     {% include '@webspark_module_views_pager/templates/asu-pager-nav.html.twig' %}
-  {% endif %}
-</div>
+  </div>
+{% endif %}
