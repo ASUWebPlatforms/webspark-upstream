@@ -49,6 +49,7 @@
         }
     ],
     "require": {
+        "drupal/ckeditor_responsive_plugin": "dev-2.1.x#22b2e1b",
         "pantheon-upstreams/upstream-configuration": "*",
         "webspark/custom-dependencies": "*"
     },

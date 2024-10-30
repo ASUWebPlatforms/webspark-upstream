@@ -10,7 +10,6 @@
         "drupal/block_field": "1.0.0-rc4",
         "drupal/captcha": "2.0.5",
         "drupal/cas": "2.3.2",
-        "drupal/ckeditor_responsive_plugin": "2.1.x-dev@dev",
         "drupal/components": "3.0.0-beta3",
         "drupal/config_readonly": "1.0.0-beta5",
         "drupal/config_update": "2.0.0-alpha3",
@@ -68,5 +67,5 @@
     "config": {
         "sort-packages": true
     },
-    "version": "2.14.1"
+    "version": "2.14.2"
 }
