@@ -3,5 +3,5 @@ status: true
 dependencies: {  }
 id: gallery
 label: 'Image Gallery'
-revision: 0
+revision: false
 description: ''

@@ -3,5 +3,5 @@ status: true
 dependencies: {  }
 id: card_image_and_content
 label: 'Card image and content'
-revision: 0
+revision: false
 description: ''

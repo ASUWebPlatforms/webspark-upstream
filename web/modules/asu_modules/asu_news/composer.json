@@ -1,0 +1,6 @@
+{
+    "name": "asuwebplatforms/asu_news",
+    "description": "ASU News Integration",
+    "type": "drupal-module",
+    "license": "MIT"
+}

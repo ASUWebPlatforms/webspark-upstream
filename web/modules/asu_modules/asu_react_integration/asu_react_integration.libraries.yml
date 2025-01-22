@@ -1,0 +1,5 @@
+reactjs:
+  version: 1.x
+  js:
+    node_modules/react/umd/react.production.min.js: {minified: true, weight: -10}
+    node_modules/react-dom/umd/react-dom.production.min.js: {minified: true, weight: -10}

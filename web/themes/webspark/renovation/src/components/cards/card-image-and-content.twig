@@ -1,5 +1,8 @@
 <div class="uds-card-image-and-content">
   <div
+    {% if image_alt is not empty %}
+      aria-label="{{ image_alt }}"
+    {% endif %}
     class="uds-card-image-and-content-image-container"
     style="background-image: linear-gradient(rgba(25, 25, 25, 0) 0%, rgba(25, 25, 25, 0.79) 100%), url({{ image_background }});">
   </div>

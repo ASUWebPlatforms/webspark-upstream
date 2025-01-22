@@ -1,3 +1,4 @@
+langcode: en
 login_link_enabled: false
 login_link_label: 'CAS Login'
 login_success_message: 'Successfully logged in using Single Sign On.'

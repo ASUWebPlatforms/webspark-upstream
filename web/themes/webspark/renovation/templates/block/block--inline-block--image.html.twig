@@ -20,11 +20,12 @@
   {% endif %}
   {{ title_suffix }}
   {{ content.field_tooltip }}
-  {{ content|without('field_image_caption', 'field_media', 'field_add_drop_shadow', 'field_image_size', 'field_tooltip') }}
+  {{ content|without('field_image_caption', 'field_media', 'field_add_drop_shadow', 'field_image_size', 'field_tooltip', 'field_center_image') }}
   {% include '@renovation/block/image-block.twig' with {
     caption: content.field_image_caption,
     media: content.field_media,
     drop_shadow: content.field_add_drop_shadow,
     size: content.field_image_size[0]['#markup'],
+    center_image: content.field_center_image,
   } %}
 </div>

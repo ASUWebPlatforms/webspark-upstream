@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.web_directory
+    - field.storage.block_content.field_display_as_grid
+id: block_content.web_directory.field_display_as_grid
+field_name: field_display_as_grid
+entity_type: block_content
+bundle: web_directory
+label: 'Display as grid'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'true'
+  off_label: 'false'
+field_type: boolean

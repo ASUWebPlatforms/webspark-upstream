@@ -19,6 +19,9 @@ settings:
     -
       value: '50'
       label: 50%
+    -
+      value: '75'
+      label: 75%
   allowed_values_function: ''
 module: options
 locked: false

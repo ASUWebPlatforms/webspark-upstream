@@ -1,14 +1,17 @@
 {
     "drupal/core": {
         "#2951547: Fix issue with layout overflow": "https://www.drupal.org/files/issues/2022-07-13/f245f21ea664f22c81d8d28c6f0f4a42fb9a5890.patch",
-        "3109650: Refactor Xss::attributes() to allow filtering of style attribute values": "https://www.drupal.org/files/issues/2024-05-16/core-10.2.3-xss-refactor_filter_attributes-3109650-74.patch",
-        "#3415961: Fix issue with focus after inserting media via the modal dialog": "https://www.drupal.org/files/issues/2024-02-15/3415961.patch"
+        "#3109650: Refactor Xss::attributes() to allow filtering of style attribute values": "https://www.drupal.org/files/issues/2024-05-16/core-10.2.3-xss-refactor_filter_attributes-3109650-74.patch",
+        "#3415961: Fix issue with focus after inserting media via the modal dialog": "https://www.drupal.org/files/issues/2024-02-15/3415961.patch",
+        "#3386605: Add CKEditor 5 support for WebP images": "https://www.drupal.org/files/issues/2024-08-14/3386605-9-add-ckeditor5-support-for-webp.patch"
     },
     "drupal/config_readonly": {
         "#3085001: Config blacklist to only block some configuration while in read only mode": "https://www.drupal.org/files/issues/2019-10-31/config_readonly-3085001-2.patch"
     },
     "drupal/field_states_ui": {
-        "#3225009: Cant add custom block with field states ui using layout builder": "https://www.drupal.org/files/issues/2023-06-21/3225009-6.patch"
+        "#3225009: Cant add custom block with field states ui using layout builder": "https://www.drupal.org/files/issues/2023-06-21/3225009-6.patch",
+        "#3371927: PluginNotFoundException: The \"\" plugin does not exist": "upstream-configuration/patches/field_states_ui_3371927_mr_10.patch",
+        "3442166: Unable to change either the Target or Comparison elements": "https://www.drupal.org/files/issues/2024-09-27/resolve_fields_states_ui.patch"
     },
     "drupal/linkit": {
         "2877535: Fix issue with path alias": "https://www.drupal.org/files/issues/2023-10-05/linkit-2877535-64.patch"
@@ -27,8 +30,5 @@
     },
     "drupal/paragraphs": {
         "#3090200: Paragraphs do not render: access check for view fail when using layout builder": "https://www.drupal.org/files/issues/2022-10-26/3084934-13_combine_3090200-22.patch"
-    },
-    "drupal/ckeditor_responsive_plugin": {
-        "#3334636 : Add content after injecting the grid ": "https://www.drupal.org/files/issues/2023-08-22/ckeditor_responsive_plugin_2-1.patch"
     }
 }

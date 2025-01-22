@@ -11,7 +11,12 @@ use Drupal\Core\Extension\ExtensionDiscovery;
 use Drupal\Core\Entity\Exception\FieldStorageDefinitionUpdateForbiddenException;
 use Drupal\Core\Config\ConfigFactoryInterface;
 
+@trigger_error('The ' . __NAMESPACE__ . '\WebsparkUtilityConfigManager is deprecated in Webspark 2.15.0.
+Instead, use \Drupal\Drupal\asu_config_utility\ASUConfigUtilityConfigManager.', E_USER_DEPRECATED);
+
 /**
+ * @deprecated Deprecated as of Webspark 2.15.0
+ *
  * Description of WebsparkUtilityConfigManager
  *
  * @author ovidiu

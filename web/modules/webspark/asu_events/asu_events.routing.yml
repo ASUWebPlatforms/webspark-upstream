@@ -1,8 +1,0 @@
-asu_events.request:
-  path: '/asu-events-feed/{filter}'
-  defaults:
-    _controller: '\Drupal\asu_events\Controller\AsuEventsController::content'
-    _title: 'Asu Events Feed'
-    filter: ''
-  requirements:
-    _permission: 'access content'

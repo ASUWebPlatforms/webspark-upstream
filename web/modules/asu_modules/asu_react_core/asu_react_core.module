@@ -1,0 +1,133 @@
+<?php
+
+use Drupal\asu_react_core\ComponentFactory;
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function asu_react_core_preprocess_paragraph(&$variables) {
+  $paragraph = $variables['paragraph'];
+
+  $type = $paragraph->type->target_id;
+  $component_builder = 'asu_react_core_process_component_' . $type;
+
+  if (function_exists($component_builder)) {
+    call_user_func_array($component_builder, [&$variables]);
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function asu_react_core_preprocess_block(&$variables) {
+  $plugin_id = $variables['base_plugin_id'] ?? '';
+
+  if ($plugin_id != 'inline_block') {
+    return;
+  }
+
+  $type = $variables['derivative_plugin_id'];
+  $component = ComponentFactory::load($type);
+  if ($component) {
+    $component->buildSettings($variables);
+  }
+}
+
+function asu_react_core_process_component_testimonial(&$variables) {
+  /** @var \Drupal\paragraphs\Entity\Paragraph $paragraph */
+  $paragraph = $variables['paragraph'];
+  $id = $paragraph->uuid();
+
+  $cite = new \stdClass();
+  if ($paragraph->field_citation_author) {
+    $cite->name = $paragraph->field_citation_author->value;
+  }
+  if ($paragraph->field_citation_title) {
+    $cite->description = $paragraph->field_citation_title->value;
+  }
+
+  $quote = new \stdClass();
+  if ($paragraph->field_heading) {
+    $quote->title = $paragraph->field_heading->value;
+  }
+  if ($paragraph->field_formatted_text) {
+    $quote->content = $paragraph->field_formatted_text->value;
+  }
+  $quote->cite = $cite;
+
+  $testimonial = new \stdClass();
+  $testimonial->id = $id;
+  $testimonial->quote = $quote;
+
+  if ($paragraph->field_media->target_id && $paragraph->field_media->entity->field_media_image->target_id) {
+    $imageUri = $paragraph->field_media->entity->field_media_image->entity->getFileUri();
+    $testimonial->imageSource = \Drupal::service('file_url_generator')->generateAbsoluteString($imageUri);
+    $testimonial->imageAltText = $paragraph->field_media->entity->field_media_image->alt;
+  }
+
+  $settings = [];
+  $settings['components'][$paragraph->bundle()][$id] = $testimonial;
+  $variables['content']['#attached']['drupalSettings']['asu'] = $settings;
+}
+
+function asu_react_core_process_component_gallery_image(&$variables) {
+  /** @var \Drupal\paragraphs\Entity\Paragraph $paragraph */
+  $paragraph = $variables['paragraph'];
+  $id = $paragraph->uuid();
+
+  $image = new \stdClass();
+  $image->id = $id;
+
+  if ($paragraph->field_media->target_id && $paragraph->field_media->entity->field_media_image->target_id) {
+    $fileUri = $paragraph->field_media->entity->field_media_image->entity->getFileUri();
+    $image->imageSource = \Drupal::service('file_url_generator')->generateAbsoluteString($fileUri);
+    $image->imageAltText = $paragraph->field_media->entity->field_media_image->alt;
+  }
+  if ($paragraph->field_formatted_text) {
+    $image->content = $paragraph->field_formatted_text->value;
+  }
+  if ($paragraph->field_title) {
+    $image->title = $paragraph->field_title->value;
+  }
+
+  $settings = [];
+  $settings['components'][$paragraph->bundle()][$id] = $image;
+  $variables['content']['#attached']['drupalSettings']['asu'] = $settings;
+}
+
+function asu_react_core_process_component_card(&$variables) {
+  $paragraph = $variables['paragraph'];
+  $settings = \Drupal::service('asu_react_core.helper_functions')->getCardContent($paragraph);
+  $variables['content']['#attached']['drupalSettings']['asu'] = $settings;
+}
+
+function asu_react_core_process_component_card_degree(&$variables) {
+  $paragraph = $variables['paragraph'];
+  $settings = \Drupal::service('asu_react_core.helper_functions')->getCardContent($paragraph);
+  $variables['content']['#attached']['drupalSettings']['asu'] = $settings;
+}
+
+function asu_react_core_process_component_card_story(&$variables) {
+  $paragraph = $variables['paragraph'];
+  $settings = \Drupal::service('asu_react_core.helper_functions')->getCardContent($paragraph);
+  $variables['content']['#attached']['drupalSettings']['asu'] = $settings;
+}
+
+function asu_react_core_process_component_card_with_icon(&$variables) {
+  $paragraph = $variables['paragraph'];
+  $settings = \Drupal::service('asu_react_core.helper_functions')->getCardContent($paragraph);
+  $variables['content']['#attached']['drupalSettings']['asu'] = $settings;
+}
+
+// WS2-1674 - Adding Ranking card
+function asu_react_core_process_component_card_ranking(&$variables) {
+  $paragraph = $variables['paragraph'];
+  $settings = \Drupal::service('asu_react_core.helper_functions')->getCardContent($paragraph);
+  $variables['content']['#attached']['drupalSettings']['asu'] = $settings;
+}
+
+function asu_react_core_process_component_image_based_card(&$variables) {
+  $paragraph = $variables['paragraph'];
+  $settings = \Drupal::service('asu_react_core.helper_functions')->getCardContent($paragraph);
+  $variables['content']['#attached']['drupalSettings']['asu'] = $settings;
+}

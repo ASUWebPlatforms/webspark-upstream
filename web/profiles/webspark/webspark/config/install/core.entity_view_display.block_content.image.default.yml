@@ -4,6 +4,7 @@ dependencies:
   config:
     - block_content.type.image
     - field.field.block_content.image.field_add_drop_shadow
+    - field.field.block_content.image.field_center_image
     - field.field.block_content.image.field_image_caption
     - field.field.block_content.image.field_image_size
     - field.field.block_content.image.field_media
@@ -27,6 +28,16 @@ content:
       format_custom_true: ''
     third_party_settings: {  }
     weight: 2
+    region: content
+  field_center_image:
+    type: boolean
+    label: hidden
+    settings:
+      format: boolean
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    weight: 5
     region: content
   field_image_caption:
     type: basic_string

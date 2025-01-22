@@ -8,6 +8,7 @@ dependencies:
     - field.field.block_content.web_directory.field_component_type
     - field.field.block_content.web_directory.field_default_sort
     - field.field.block_content.web_directory.field_department_ids
+    - field.field.block_content.web_directory.field_display_as_grid
     - field.field.block_content.web_directory.field_filter_campus
     - field.field.block_content.web_directory.field_filter_employee
     - field.field.block_content.web_directory.field_filter_expertise
@@ -36,6 +37,7 @@ third_party_settings:
         - field_webdir_items_to_display
         - field_webdir_exclude_profiles
         - field_webdir_disable_alpha
+        - field_display_as_grid
       label: 'Display settings'
       region: content
       parent_name: ''
@@ -200,6 +202,13 @@ content:
                 edit: Edit
                 delete: Delete
           add: Add
+  field_display_as_grid:
+    type: boolean_checkbox
+    weight: 21
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
   field_filter_campus:
     type: field_webdir_campus_widget
     weight: 4
@@ -451,7 +460,7 @@ content:
     third_party_settings: {  }
   field_webdir_disable_alpha:
     type: boolean_checkbox
-    weight: 23
+    weight: 20
     region: content
     settings:
       display_label: true
@@ -491,7 +500,7 @@ content:
               operations: {  }
   field_webdir_exclude_profiles:
     type: string_textfield
-    weight: 22
+    weight: 19
     region: content
     settings:
       size: 60
@@ -499,14 +508,14 @@ content:
     third_party_settings: {  }
   field_webdir_items_to_display:
     type: number
-    weight: 20
+    weight: 18
     region: content
     settings:
       placeholder: ''
     third_party_settings: {  }
   field_webdir_use_pager:
     type: boolean_checkbox
-    weight: 18
+    weight: 17
     region: content
     settings:
       display_label: true

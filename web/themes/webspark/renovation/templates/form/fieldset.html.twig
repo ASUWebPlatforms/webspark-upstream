@@ -40,14 +40,12 @@
     ]
   %}
   {#  Always wrap fieldset legends in a SPAN for CSS positioning. #}
-  <div class="card-header">
-    <legend{{ legend.attributes.addClass('m-0') }}>
-      {% if required %}
-        <span title="Required" class="fa fa-icon fa-circle uds-field-required"></span>
-      {% endif %}
-      <span{{ legend_span.attributes.addClass(legend_span_classes) }}>{{ legend.title }}</span>
-    </legend>
-  </div>
+  <legend{{ legend.attributes.addClass('m-0 card-header') }}>
+    {% if required %}
+      <span title="Required" class="fa fa-icon fa-circle uds-field-required"></span>
+    {% endif %}
+    <span{{ legend_span.attributes.addClass(legend_span_classes) }}>{{ legend.title }}</span>
+  </legend>
   <div class="card-body fieldset-wrapper">
     {% if errors %}
       <small class="invalid-feedback">

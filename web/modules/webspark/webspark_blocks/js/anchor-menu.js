@@ -1,57 +1,48 @@
 (function ($, Drupal, drupalSettings, once) {
-
   Drupal.behaviors.anchorMenu = {
     attach: function (context, settings) {
-      if ($(context).find('#uds-anchor-menu').length) {
-        let links = $('.webspark-anchor-link-data');
-        if (!links.length) {
-          return;
-        }
+      $(once('anchorMenuInit', '#uds-anchor-menu', context)).each(function () {
+        const $anchorMenuEl = $(this);
+        const $links = $('.webspark-anchor-link-data');
+        if (!$links.length) return;
 
-        let section = $('.uds-anchor-menu-wrapper h2').text().toLowerCase().trim();
+        const anchorMenuNav = $anchorMenuEl.find('nav');
+        const heading = $('.uds-anchor-menu-wrapper').find('h2').text().toLowerCase().trim();
 
+        // NOTE: Leaving this code here for now, if after full testing is complete and
+        // the issue is not present, this should be removed before the next release.
         // If the user is an admin, we clear the anchor menu items to not duplicate links
-        if (drupalSettings.is_admin) {
-          $(once('clear-anchor-menu-items', '#uds-anchor-menu .nav', context)).each(function() {
-            $('#uds-anchor-menu .nav').empty();
-          });
-        }
+        // if (drupalSettings.is_admin) {
+        //   $(once('clear-anchor-menu-items', anchorMenuNav, context)).each(function() {
+        //     anchorMenuNav.empty();
+        //   });
+        // }
 
-        $(once('append-anchor-menu-items', links, context)).each(function(i, item) {
-          let icon = $(item).siblings('.anchor-link-icon').html();
-          let title = $(item).data('title');
-          let href = $(item).attr('id');
-          let data_title = title.toLowerCase();
+        $(once('append-anchor-menu-items', $links, context)).each(function (i, item) {
+          const icon = $(item).siblings('.anchor-link-icon').html();
+          const title = $(item).data('title');
+          const href = $(item).attr('id');
+          const dataTitle = title.toLowerCase();
+          const markup = `<a class="nav-link" data-ga-event="link" data-ga-action="click" data-ga-name="onclick" data-ga-type="internal link" data-ga-region="main content" data-ga-component="" data-ga-section="${heading}" data-ga-text="${dataTitle}" href="#${href}"><span>${icon}</span>${title}</a>`;
 
-          $('#uds-anchor-menu .nav').append('<a class="nav-link" data-ga-event="link" data-ga-action="click" data-ga-name="onclick" data-ga-type="internal link" data-ga-region="main content" data-ga-component="" data-ga-section="' + section + '" data-ga-text="' + data_title + '" href="#' + href + '">' + icon + '</span>' + title + '</a>');
+          anchorMenuNav.append(markup);
         });
 
-        // We use setTimeout to compensate header built by react 🤦
-        let navbar = document.getElementById('uds-anchor-menu');
-
-        setTimeout(function() {
+        // Give the React header time to render
+        setTimeout(function () {
           initializeAnchorMenu();
         }, 100);
 
-        $('.uds-anchor-menu').show();
-
-        let $toolbarIconMenu = $('.toolbar-icon-menu');
-        $toolbarIconMenu.on('click', function(event) {
-          setTimeout(() => {
-            navbar.style.top = getAnchorMenuTop() + 'px';
-          }, 100);
-        });
-
-        window.addEventListener('resize', () => {
-          navbar.style.top = getAnchorMenuTop() + 'px';
-        });
-      }
+        // After render otherwise it will attach to the wrong element
+        $anchorMenuEl.show();
+      });
     }
   };
 
-  // The following function is a copy of the initializeAnchorMenu function from the javascript file
-  // in https://github.com/ASU/asu-unity-stack/pull/1252. More infor about future consolidation: https://asudev.jira.com/browse/WS2-1961?atlOrigin=eyJpIjoiNGYxZWJjNjA5ZmRlNGExNmEwM2JiZDkxZDYxMTdlNjIiLCJwIjoiaiJ9
-  function initializeAnchorMenu () {
+  // Customized version of initializeAnchorMenu for Drupal
+  // See: https://github.com/ASU/asu-unity-stack/blob/dev/packages/unity-bootstrap-theme/stories/atoms/anchor-menu/anchor-menu.js
+  // See: https://asudev.jira.com/browse/WS2-1961
+  function initializeAnchorMenu() {
     const HEADER_IDS = ['asu-header', 'asuHeader'];
 
     const globalHeaderId = HEADER_IDS.find((id) => document.getElementById(id));
@@ -87,7 +78,7 @@
     if (shouldAttachNavbarOnLoad) {
       globalHeader.appendChild(navbar);
       isNavbarAttached = true;
-      navbar.classList.add("uds-anchor-menu-attached");
+      navbar.classList.add('uds-anchor-menu-attached');
     }
 
     /**
@@ -96,6 +87,7 @@
      * @param {Element} el The element to calculate the visible percentage for.
      * @return {number} The percentage of the element that is visible in the viewport.
      */
+    // Custom code added for Drupal
     function calculateVisiblePercentage(el) {
       const rect = el.getBoundingClientRect();
       const windowHeight = window.innerHeight || document.documentElement.clientHeight;
@@ -119,36 +111,38 @@
       return visiblePercentage;
     }
 
-    window.addEventListener("scroll", function () {
+    window.addEventListener('scroll', function () {
+      // Custom code added for Drupal
       const elements = document.querySelectorAll('[id^="webspark-anchor-link--"]');
       let max = 0;
-      elements.forEach(function(el) {
+      elements.forEach(function (el) {
         const parentVisiblePercentage = calculateVisiblePercentage(el.parentNode);
         if (parentVisiblePercentage > 0 && parentVisiblePercentage > max) {
           max = parentVisiblePercentage;
           document.querySelector('[href="#' + el.id + '"]').classList.add('active');
-          document.querySelectorAll('a[href^="#webspark-anchor-link--"]:not([href="#' + el.id + '"])').forEach(function(e) {
+          document.querySelectorAll('a[href^="#webspark-anchor-link--"]:not([href="#' + el.id + '"])').forEach(function (e) {
             e.classList.remove('active');
           });
         }
       });
 
+      // Standard code
       const navbarY = navbar.getBoundingClientRect().top;
-      const headerHeight = globalHeader.classList.contains("scrolled") ?  globalHeader.offsetHeight - 32 : globalHeader.offsetHeight; // 32 is the set height of the gray toolbar above the global header.
+      const headerHeight = globalHeader.classList.contains('scrolled') ? globalHeader.offsetHeight - 32 : globalHeader.offsetHeight; // 32 is the set height of the gray toolbar above the global header.
 
       // If scrolling DOWN and navbar touches the globalHeader
       if (
         window.scrollY > previousScrollPosition &&
         navbarY > 0 && navbarY < headerHeight
-        ) {
-          if (!isNavbarAttached) {
-            // Attach navbar to globalHeader
-            globalHeader.appendChild(navbar);
-            isNavbarAttached = true;
-            navbar.classList.add('uds-anchor-menu-attached');
-          }
-          previousScrollPosition = window.scrollY;
+      ) {
+        if (!isNavbarAttached) {
+          // Attach navbar to globalHeader
+          globalHeader.appendChild(navbar);
+          isNavbarAttached = true;
+          navbar.classList.add('uds-anchor-menu-attached');
         }
+        previousScrollPosition = window.scrollY;
+      }
 
       // If scrolling UP and past the initial navbar position
       if (
@@ -175,11 +169,15 @@
 
         // If window hasn't been scrolled, compensate for header shrinking.
         const approximateHeaderSize = 65;
-        if (window.scrollY === 0) scrollBy += approximateHeaderSize;
+        if (window.scrollY === 0) {
+          scrollBy += approximateHeaderSize;
+        }
 
         // If navbar hasn't been stickied yet, that means global header is still in view, so compensate for header height
         if (!navbar.classList.contains('uds-anchor-menu-sticky')) {
-          if (window.scrollY > 0) scrollBy += 24;
+          if (window.scrollY > 0) {
+            scrollBy += 24;
+          }
           scrollBy -= globalHeader.offsetHeight;
         }
 
@@ -191,49 +189,12 @@
         // Remove active class from other anchor in navbar, and add it to the clicked anchor
         const active = navbar.querySelector('.nav-link.active');
 
-        if (active) active.classList.remove('active');
+        if (active) {
+          active.classList.remove('active');
+        }
 
         e.target.classList.add('active');
       });
     }
-  };
-
-  /**
-   * This functions has the ability to calculate
-   * the position where the Anchor menu must be renderized.
-   */
-  function getAnchorMenuTop() {
-    let $toolbarBar = $('#toolbar-bar');
-    let $toolbarItemAdministrationTray = $('#toolbar-item-administration-tray');
-    let $globalHeader = $('#asuHeader');
-
-    // On mobile devices the Anchor Menu must be rendered after the global header.
-    if (window.innerWidth < 610 || !$toolbarBar.length) return $globalHeader.height();
-
-    let $navbar = $('#uds-anchor-menu');
-    if ($navbar.length && $navbar.hasClass('uds-anchor-menu-sticky')
-      && $toolbarItemAdministrationTray.hasClass('is-active')
-      && !$toolbarItemAdministrationTray.hasClass('toolbar-tray-vertical')) {
-      // If the Administration toolbar and the Secondary Administration toolbar are rendered
-      // the Anchor menu must be rendered after the Secondary Administration toolbar.
-      return $toolbarItemAdministrationTray.height() + $toolbarBar.height() + $globalHeader.height();
-    }
-    else {
-      // If the Administration toolbar is rendered and the Secondary Administration toolbar is not rendered
-      // or when the Secondary toolbar is a sidebar the Anchor menu must be rendered after the Administration toolbar.
-      return $toolbarBar.height();
-    }
-  }
-
-  function getGlobalHeaderTop() {
-    let $toolbarBar = $('#toolbar-bar');
-    let $toolbarItemAdministrationTray = $('#toolbar-item-administration-tray');
-    if (!$toolbarBar.length) return  0;
-
-    if ($toolbarItemAdministrationTray.hasClass('is-active') && !$toolbarItemAdministrationTray.hasClass('toolbar-tray-vertical')) {
-      return $toolbarItemAdministrationTray.height() + $toolbarBar.height();
-    }
-
-    return $toolbarBar.height();
   }
 })(jQuery, Drupal, drupalSettings, once);

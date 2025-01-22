@@ -62,7 +62,8 @@ function markerConversion(conversion) {
     converterPriority: "high",
   });
 
-  conversion.for("downcast").elementToElement({
+  // For the editing view (with contenteditable)
+  conversion.for("editingDowncast").elementToElement({
     model: {
       name: "tableCell",
       attributes: ["cellType"],
@@ -73,7 +74,7 @@ function markerConversion(conversion) {
           return writer.createEditableElement(
             "th",
             {
-              contenteditable: "true",
+              contenteditable: "true",  // Allow editing in the editor
               class: "ck-editor__editable ck-editor__nested-editable",
               role: "textbox",
             },
@@ -83,7 +84,7 @@ function markerConversion(conversion) {
           return writer.createEditableElement(
             "td",
             {
-              contenteditable: "true",
+              contenteditable: "true",  // Allow editing in the editor
               class: "ck-editor__editable ck-editor__nested-editable",
               role: "textbox",
             },
@@ -94,7 +95,7 @@ function markerConversion(conversion) {
           return writer.createEditableElement(
             "th",
             {
-              contenteditable: "true",
+              contenteditable: "true",  // Allow editing in the editor
               class:
                 "ck-editor__editable ck-editor__nested-editable " +
                 modelElement.getAttribute("cellType"),
@@ -104,6 +105,29 @@ function markerConversion(conversion) {
           );
       }
     },
-    converterPriority: "high",
+    converterPriority: "high", // Ensure this converter has a high priority
   });
+
+  // For the data view (without contenteditable)
+  conversion.for("dataDowncast").elementToElement({
+    model: {
+      name: "tableCell",
+      attributes: ["cellType"],
+    },
+    view: (modelElement, { writer }) => {
+      switch (modelElement.getAttribute("cellType")) {
+        case "th":
+          return writer.createContainerElement("th", {});  // No contenteditable attribute, just a basic table header element
+        case "td":
+          return writer.createContainerElement("td", {});  // No contenteditable attribute, just a basic table data element
+        case "indent":
+        case "normal":
+          return writer.createContainerElement("th", {
+            class: modelElement.getAttribute("cellType"),
+          });  // Apply the custom class, but no contenteditable attribute
+      }
+    },
+    converterPriority: "high", // Ensure this converter has a high priority
+  });
+
 }

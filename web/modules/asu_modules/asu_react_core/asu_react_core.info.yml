@@ -1,0 +1,8 @@
+name: ASU React Core
+type: module
+description: Provides basic functionality and components for the react functionality.
+package: ASU
+core_version_requirement: ^10
+dependencies:
+  - drupal:block_content
+  - drupal:paragraphs

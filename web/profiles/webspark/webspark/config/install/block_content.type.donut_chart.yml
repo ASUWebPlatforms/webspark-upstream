@@ -3,5 +3,5 @@ status: true
 dependencies: {  }
 id: donut_chart
 label: 'Donut Chart'
-revision: 1
+revision: true
 description: ''

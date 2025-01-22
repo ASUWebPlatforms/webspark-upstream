@@ -194,6 +194,7 @@ export class WebsparkButtonFormView extends View {
     this.styles = values?.styles || this.DEFAULT_STYLE;
     this.size = values?.size || this.DEFAULT_SIZE;
     this.target = values?.target || this.DEFAULT_TARGET;
+    this.resetFormStatus();
   }
 
   isValid() {
@@ -202,9 +203,11 @@ export class WebsparkButtonFormView extends View {
       const errorText = validator(this);
       if (errorText) {
         if (errorText.includes("text")) {
-          this.textInputView.errorText = errorText;
+          this.textInputView.children[2].text = errorText;
+          this.textInputView.children[1].hasError = true;
         } else if (errorText.includes("URL")) {
-          this.urlInputView.errorText = errorText;
+          this.urlInputView.children[2].text = errorText;
+          this.urlInputView.children[1].hasError = true;
         }
         return false;
       }
@@ -214,8 +217,10 @@ export class WebsparkButtonFormView extends View {
   }
 
   resetFormStatus() {
-    this.textInputView.errorText = null;
-    this.urlInputView.errorText = null;
+    this.textInputView.children[2].text = '';
+    this.textInputView.children[1].hasError = false;
+    this.urlInputView.children[2].text = '';
+    this.urlInputView.children[1].hasError = false;
   }
 
   _getStyleOptions(t) {

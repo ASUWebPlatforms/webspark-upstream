@@ -2,10 +2,12 @@ api_version: 1
 web_docroot: true
 # See https://pantheon.io/docs/pantheon-yml/#enforce-https--hsts for valid values
 enforce_https: transitional
-php_version: 8.1
+php_version: 8.3
 database:
-  version: 10.4
+  version: 10.6
 drush_version: 10
+# The drush version is kept at 10 because Pantheon does not support Drush
+# at a higher version at the platform level, so we have to use composer.
 build_step: true
 protected_web_paths:
   - /private/

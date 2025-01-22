@@ -36,3 +36,7 @@ layout_builder:
   css:
     theme:
       css/layout-builder.css: {}
+
+messages:
+  js:
+    js/messages.js: {}

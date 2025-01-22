@@ -158,6 +158,12 @@ class ComposerScripts {
         $io->write("<info>Allow phpstan/extension-installer in preparation for Drupal 10</info>");
         $composerJson['config']['allow-plugins']['phpstan/extension-installer'] = true;
       }
+
+      // allow php-http/discovery
+      if(! isset($composerJson['config']['allow-plugins']['php-http/discovery'])) {
+        $io->write("<info>Allow php-http/discovery</info>");
+        $composerJson['config']['allow-plugins']['php-http/discovery'] = true;
+      }
     }
 
     if(serialize($composerJson) == serialize($originalComposerJson)) {
@@ -236,6 +242,7 @@ class ComposerScripts {
     // Drupal 9 requires PHP 7.3 at a minimum.
     // Integrated Composer requires PHP 7.1 at a minimum.
     $patchVersions = [
+      '8.3' => '8.3.0',
       '8.2' => '8.2.0',
       '8.1' => '8.1.13',
       '8.0' => '8.0.26',

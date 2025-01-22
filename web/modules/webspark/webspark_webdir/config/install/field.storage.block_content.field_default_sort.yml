@@ -14,9 +14,6 @@ settings:
       value: last_name
       label: 'Last name'
     -
-      value: webdir_customized
-      label: 'Web Directory customized sort'
-    -
       value: people_order
       label: 'Sort by order people added'
   allowed_values_function: ''

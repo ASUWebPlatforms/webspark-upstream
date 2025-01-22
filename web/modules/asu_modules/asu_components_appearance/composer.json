@@ -1,0 +1,6 @@
+{
+    "name": "asuwebplatforms/asu_components_appearance",
+    "description": "Provides dynamic appearance changes for the ASU components",
+    "type": "drupal-module",
+    "license": "MIT"
+}

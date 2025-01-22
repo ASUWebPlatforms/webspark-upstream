@@ -1,0 +1,7 @@
+name: ASU React Integration
+description: Provide functionality related to  integration of react components
+type: module
+core_version_requirement: ^8 || ^9 || ^10
+package: ASU
+dependencies:
+  - asuwebplatforms:asu_react_core

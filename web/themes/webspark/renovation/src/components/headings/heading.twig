@@ -6,6 +6,6 @@
   {% set classes = classes|merge(['article']) %}
 {% endif %}
 
-<{{ html_tag }}{{ classes|length > 0 ? attributes.addClass(classes) }} tabindex="0">
+<{{ html_tag }}{{ classes|length > 0 ? attributes.addClass(classes) }}>
   {{ heading }}
 </{{ html_tag }}>

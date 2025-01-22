@@ -86,9 +86,14 @@ function webspark_webdir_preprocess_block__web_directory(&$variables)
     }
   }
 
-  $dontDisplayProfiles = '';
+  $doNotDisplayProfiles = '';
   if ($blockContent->hasField('field_webdir_exclude_profiles')) {
-    $dontDisplayProfiles = $blockContent->field_webdir_exclude_profiles->value;
+    $doNotDisplayProfiles = $blockContent->field_webdir_exclude_profiles->value;
+  }
+
+  $grid = 'false';
+  if ($blockContent->hasField('field_display_as_grid')) {
+    $grid = $blockContent->field_display_as_grid->value == 1 ? 'true' : 'false';
   }
 
   $alphaFilter = "true";
@@ -139,7 +144,8 @@ $renderFields
   data-use-pager="{$usePager}"
   data-profiles-per-page="{$profilesPerPage}"
   data-default-sort="{$defaultSort}"
-  data-do-not-display-profiles="{$dontDisplayProfiles}"
+  data-do-not-display-profiles="{$doNotDisplayProfiles}"
+  data-grid="{$grid}"
   data-alpha-filter="{$alphaFilter}"
   data-app-path-folder="{$appPathFolder}"
 ></div>

@@ -1,0 +1,6 @@
+{
+    "name": "asuwebplatforms/asu_data_potluck",
+    "description": "Provides access to the data potluck resource.",
+    "type": "drupal-module",
+    "license": "MIT"
+}
