@@ -3,5 +3,5 @@ status: true
 dependencies: {  }
 id: video
 label: Video
-revision: 0
+revision: false
 description: ''

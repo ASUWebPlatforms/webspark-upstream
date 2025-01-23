@@ -1,0 +1,21 @@
+<?php
+
+/**
+ * Revert all the module config.
+ */
+function asu_user_update_9001(&$sandbox) {
+  _asu_user_revert_all_module_config();
+}
+
+function _asu_user_revert_all_module_config() {
+  // Get this module name.
+  $module = \Drupal::service('module_handler')
+    ->getModule(basename(__FILE__, '.install'))
+    ->getName();
+  // Unlock the configuration storage.
+  \Drupal::state()->set('configuration_locked', FALSE);
+  // Revert all configs from this module.
+  \Drupal::service('webspark.config_manager')->revertAll($module);
+  // Lock the configuration storage.
+  \Drupal::state()->set('configuration_locked', TRUE);
+}

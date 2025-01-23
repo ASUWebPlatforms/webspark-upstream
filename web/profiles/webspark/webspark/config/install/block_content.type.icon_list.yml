@@ -3,5 +3,5 @@ status: true
 dependencies: {  }
 id: icon_list
 label: 'Icon List'
-revision: 0
+revision: false
 description: ''

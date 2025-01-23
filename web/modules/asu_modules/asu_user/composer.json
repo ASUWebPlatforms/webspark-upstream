@@ -1,0 +1,10 @@
+{
+    "name": "asuwebplatforms/asu_user",
+    "description": "Contains drupal customisations for the asurite users.",
+    "type": "drupal-module",
+    "license": "MIT",
+    "require": {
+        "asuwebplatforms/asu_config_utility": "^2.14",
+        "drupal/cas": "^2.3.2"
+    }
+}

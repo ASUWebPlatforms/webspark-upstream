@@ -1,10 +1,15 @@
 parameters:
 	customRulesetUsed: true
+	level: 0
+	paths:
+	  - web/modules/webspark/
+	  - web/themes/webspark/renovation
 	ignoreErrors:
-		- '#Plugin definitions cannot be altered.#'
-		- '#Missing cache backend declaration for performance.#'
-		- '#Plugin manager has cache backend specified but does not declare cache tags.#'
-		- '#Unsafe usage of new static.#'
+	  - '#\Drupal calls should be avoided in classes, use dependency injection instead#'
+	  - '#Plugin definitions cannot be altered.#'
+	  - '#Missing cache backend declaration for performance.#'
+	  - '#Plugin manager has cache backend specified but does not declare cache tags.#'
+	  - '#Unsafe usage of new static.#'
 
 	# FROM mglaman/drupal-check/phpstan/base_config.neon
 	reportUnmatchedIgnoredErrors: false

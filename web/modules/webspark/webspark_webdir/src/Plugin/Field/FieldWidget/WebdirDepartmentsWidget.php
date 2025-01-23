@@ -30,6 +30,10 @@ class WebdirDepartmentsWidget extends WidgetBase {
       '#default_value' => $value,
       '#attributes' => array('class' => array('directory-tree')),
       '#prefix' => '<div id="directory-tree-options" style="width: 100%" class="ck-reset"></div>',
+      '#field_parents' => [
+        0 => 'settings',
+        1 => 'block_form',
+      ],
     ];
 
     // Add the required libraries.

@@ -1,0 +1,7 @@
+name: ASU Config Utility
+description: Contains Utility Functionality
+package: ASU
+type: module
+core_version_requirement: ^10
+dependencies:
+  - drupal:config_update

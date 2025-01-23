@@ -3,5 +3,5 @@ status: true
 dependencies: {  }
 id: tabbed_content
 label: 'Tabbed Content'
-revision: 0
+revision: false
 description: ''

@@ -1,0 +1,6 @@
+{
+    "name": "asuwebplatforms/asu_events",
+    "description": "ASU Events Integration",
+    "type": "drupal-module",
+    "license": "MIT"
+}

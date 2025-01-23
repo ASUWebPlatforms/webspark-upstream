@@ -30,6 +30,10 @@ class WebdirEmployeeTypeWidget extends WidgetBase {
       '#default_value' => $value,
       '#attributes' => array('class' => array('employee-type-tree')),
       '#prefix' => '<div id="employee-type-tree-options" style="width: 100%" class="ck-reset"></div>',
+      '#field_parents' => [
+        0 => 'settings',
+        1 => 'block_form',
+      ],
     ];
 
     // Add the required libraries.

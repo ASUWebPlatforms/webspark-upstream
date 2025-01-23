@@ -1,0 +1,33 @@
+<?php
+
+use Drupal\Core\Form\FormStateInterface;
+/**
+ * @file
+ * Change the appearance of blocks depending of field values.
+ */
+
+
+/*
+ * Implements hook_preprocess_block().
+ */
+function asu_components_appearance_preprocess_block(&$variables) {
+  // Check if we have a block entity.
+  if (isset($variables['content']['#block_content']) && ($block = $variables['content']['#block_content'])) {
+    // Add the field_spacing_top field in the class of the dom object.
+    if (isset($block->field_spacing_top->value) && $spacing_top = $block->field_spacing_top->value) {
+      $variables['attributes']['class'][] = $spacing_top;
+    }
+    if (isset($block->field_spacing_bottom->value) && $spacing_bottom = $block->field_spacing_bottom->value) {
+      $variables['attributes']['class'][] = $spacing_bottom;
+    }
+  }
+}
+
+/**
+ * Implements hook_field_widget_WIDGET_TYPE_form_alter().
+ */
+function asu_components_appearance_field_widget_entity_reference_paragraphs_form_alter(&$element, &$form_state, $context)
+{
+  // Skip "Confirm deletion / Restore actions" behavior for a given paragraph.
+  $element['top']['links']['remove_button']['#paragraphs_mode'] = 'removed';
+}

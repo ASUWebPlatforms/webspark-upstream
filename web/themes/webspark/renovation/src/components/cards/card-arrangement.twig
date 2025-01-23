@@ -1,6 +1,8 @@
 <div class="uds-card-arrangement {{ class_layout }}">
   <div class="uds-card-arrangement-content-container {{ text_color }}">
-    <h2>{{ heading }}</h2>
+    {% if heading['#title'] is not empty %}
+      <h2>{{ heading }}</h2>
+    {% endif %}
     {{ text }}
     {{ cta }}
   </div>

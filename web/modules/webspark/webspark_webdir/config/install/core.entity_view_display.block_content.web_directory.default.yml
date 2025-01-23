@@ -8,6 +8,7 @@ dependencies:
     - field.field.block_content.web_directory.field_component_type
     - field.field.block_content.web_directory.field_default_sort
     - field.field.block_content.web_directory.field_department_ids
+    - field.field.block_content.web_directory.field_display_as_grid
     - field.field.block_content.web_directory.field_filter_campus
     - field.field.block_content.web_directory.field_filter_employee
     - field.field.block_content.web_directory.field_filter_expertise
@@ -33,6 +34,7 @@ hidden:
   field_component_type: true
   field_default_sort: true
   field_department_ids: true
+  field_display_as_grid: true
   field_filter_campus: true
   field_filter_employee: true
   field_filter_expertise: true

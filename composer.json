@@ -49,7 +49,6 @@
         }
     ],
     "require": {
-        "drupal/ckeditor_responsive_plugin": "dev-2.1.x#22b2e1b",
         "pantheon-upstreams/upstream-configuration": "*",
         "webspark/custom-dependencies": "*"
     },
@@ -62,8 +61,16 @@
         "drupal/drupal-extension": "5.0.0",
         "genesis/behat-fail-aid": "3.7.5",
         "nuvoleweb/drupal-behat": "1.3.0",
-        "palantirnet/drupal-rector": "0.18.6",
+        "palantirnet/drupal-rector": "0.20.3",
+        "phpstan/phpstan-deprecation-rules": "^1.2",
         "sirbrillig/phpcs-changed": "v2.11.4"
+    },
+    "replace": {
+        "asu_modules/asu_brand": "self.version",
+        "asu_modules/asu_config_utility": "self.version",
+        "asu_modules/asu_react_core": "self.version",
+        "asu_modules/asu_react_integration": "self.version",
+        "asu_modules/asu_user": "self.version"
     },
     "conflict": {
         "drupal/drupal": "*"
@@ -82,49 +89,27 @@
             "bower-asset"
         ],
         "installer-paths": {
-            "web/core": [
-                "type:drupal-core"
-            ],
+            "web/core": ["type:drupal-core"],
             "web/libraries/{$name}": [
                 "type:drupal-library",
                 "type:npm-asset",
                 "type:bower-asset"
             ],
-            "web/modules/composer/{$name}": [
-                "type:drupal-module"
-            ],
-            "web/profiles/composer/{$name}": [
-                "type:drupal-profile"
-            ],
-            "web/themes/composer/{$name}": [
-                "type:drupal-theme"
-            ],
-            "drush/Commands/contrib/{$name}": [
-                "type:drupal-drush"
-            ],
-            "web/modules/custom/{$name}": [
-                "type:drupal-custom-module"
-            ],
-            "web/profiles/custom/{$name}": [
-                "type:drupal-custom-profile"
-            ],
-            "web/themes/custom/{$name}": [
-                "type:drupal-custom-theme"
-            ],
-            "web/private/scripts/quicksilver/{$name}/": [
-                "type:quicksilver-script"
-            ],
-            "web/libraries/ckeditor/plugins/{$name}": [
-                "vendor:ckeditor-plugin"
-            ]
+            "web/modules/composer/{$name}": ["type:drupal-module"],
+            "web/profiles/composer/{$name}": ["type:drupal-profile"],
+            "web/themes/composer/{$name}": ["type:drupal-theme"],
+            "drush/Commands/contrib/{$name}": ["type:drupal-drush"],
+            "web/modules/custom/{$name}": ["type:drupal-custom-module"],
+            "web/profiles/custom/{$name}": ["type:drupal-custom-profile"],
+            "web/themes/custom/{$name}": ["type:drupal-custom-theme"],
+            "web/private/scripts/quicksilver/{$name}/": ["type:quicksilver-script"],
+            "web/libraries/ckeditor/plugins/{$name}": ["vendor:ckeditor-plugin"]
         },
         "drupal-scaffold": {
             "locations": {
                 "web-root": "./web"
             },
-            "allowed-packages": [
-                "pantheon-systems/drupal-integrations"
-            ],
+            "allowed-packages": ["pantheon-systems/drupal-integrations"],
             "file-mapping": {
                 "[project-root]/.editorconfig": false,
                 "[project-root]/pantheon.upstream.yml": false,
@@ -164,24 +149,16 @@
             "./vendor/bin/phpcs --standard=DrupalPractice --extensions=php,module,inc,install,test,profile,theme,css,info,txt,md --ignore=node_modules,bower_components,vendor ./web/modules/webspark",
             "./vendor/bin/phpcs --standard=DrupalPractice --extensions=php,module,inc,install,test,profile,theme,css,info,txt,md --ignore=node_modules,bower_components,vendor ./web/themes/webspark"
         ],
-        "pre-update-cmd": [
-            "DrupalComposerManaged\\ComposerScripts::preUpdate"
-        ],
-        "post-update-cmd": [
-            "DrupalComposerManaged\\ComposerScripts::postUpdate"
-        ],
-        "custom-require": [
-            "WebsparkCustomScripts\\CustomComposerScripts::customRequire"
-        ],
-        "custom-remove": [
-            "WebsparkCustomScripts\\CustomComposerScripts::customRemove"
-        ]
+        "pre-update-cmd": ["DrupalComposerManaged\\ComposerScripts::preUpdate"],
+        "post-update-cmd": ["DrupalComposerManaged\\ComposerScripts::postUpdate"],
+        "custom-require": ["WebsparkCustomScripts\\CustomComposerScripts::customRequire"],
+        "custom-remove": ["WebsparkCustomScripts\\CustomComposerScripts::customRemove"]
     },
     "config": {
         "preferred-install": "dist",
         "sort-packages": true,
         "platform": {
-            "php": "8.1.6"
+            "php": "8.3.0"
         },
         "allow-plugins": {
             "composer/installers": true,
@@ -192,7 +169,7 @@
             "phpstan/extension-installer": true,
             "zaporylie/composer-drupal-optimizations": true,
             "php-http/discovery": true,
-            "tbachert/spi": false
+            "tbachert/spi": true
         }
     }
 }

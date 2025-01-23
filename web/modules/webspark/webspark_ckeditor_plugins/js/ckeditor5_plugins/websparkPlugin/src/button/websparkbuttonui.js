@@ -91,12 +91,12 @@ export default class WebsparkButtonUI extends Plugin {
 
 function getFormValidators(t) {
   return [
-    (form) =>{} /*/{
+    (form) =>{
       if (!form.text.length) {
-       return t("The text must not be empty.");
-      } else if (!form.href.length) {
-       t("The URL must not be empty.");
+        return t("The text must not be empty.");
+      } else if (!form.href.length || form.href == '#') {
+        return t("The URL must not be empty or '#'.");
       }
-    },*/
+    }
   ];
 }

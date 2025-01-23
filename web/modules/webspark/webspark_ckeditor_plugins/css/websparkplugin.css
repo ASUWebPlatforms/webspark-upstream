@@ -47,3 +47,8 @@ form .webspark-blockquote-dialog input.ck-input {
 form .webspark-liststyle-dialog {
   width: 250px !important;
 }
+
+.ck-list > .ck-list__item > button {
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}

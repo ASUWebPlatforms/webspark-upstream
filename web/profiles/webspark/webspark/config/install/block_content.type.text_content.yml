@@ -3,5 +3,5 @@ status: true
 dependencies: {  }
 id: text_content
 label: 'Text Content'
-revision: 0
+revision: false
 description: ''

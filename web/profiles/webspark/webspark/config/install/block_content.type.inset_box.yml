@@ -3,5 +3,5 @@ status: true
 dependencies: {  }
 id: inset_box
 label: 'Inset Box'
-revision: 0
+revision: false
 description: ''

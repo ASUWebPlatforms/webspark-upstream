@@ -57,24 +57,9 @@
     sortOptions.each(function () {
       let val = $(this).val();
       if (componentType !== "departments") {
-        if (val === "webdir_customized") {
-          $(this).hide();
-          $(this).prop("selected", false);
-        }
-        else {
-          $(this).show();
-        }
+        $(this).show();
       }
       else if (componentType === "departments") {
-        if (val === "webdir_customized") {
-          if (units > 1) {
-            $(this).hide();
-            $(this).prop("selected", false);
-          }
-          else {
-            $(this).show();
-          }
-        }
         if (val === "people_order") {
           $(this).hide();
           $(this).prop("selected", false);

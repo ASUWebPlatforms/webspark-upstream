@@ -3,5 +3,5 @@ status: true
 dependencies: {  }
 id: image
 label: Image
-revision: 0
+revision: false
 description: ''

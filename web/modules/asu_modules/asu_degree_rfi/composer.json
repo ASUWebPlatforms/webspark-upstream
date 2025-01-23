@@ -1,0 +1,6 @@
+{
+    "name": "asuwebplatforms/asu_degree_rfi",
+    "description": "Webspark degree and RFI component launcher module.",
+    "type": "drupal-module",
+    "license": "MIT"
+}

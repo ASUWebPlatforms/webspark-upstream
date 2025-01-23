@@ -2,103 +2,103 @@ name: Webspark
 type: profile
 core_version_requirement: ^9.0 || ^10
 description: 'ASU custom profile.'
-version: 2.14.2
+version: 2.15.0
 distribution:
   name: 'Webspark'
 install:
   # Webspark.
-  - node
-  - history
-  - block
-  - breakpoint
-  - ckeditor5
-  - config
-  - comment
-  - contextual
-  - contact
-  - menu_link_content
-  - datetime
-  - block_content
-  - editor
-  - help
-  - image
-  - menu_ui
-  - options
-  - path
-  - page_cache
-  - dynamic_page_cache
-  - big_pipe
-  - taxonomy
-  - dblog
-  - search
-  - shortcut
-  - toolbar
-  - field_ui
-  - file
-  - views
-  - views_ui
-  - automated_cron
-  - media
-  - media_library
-  - layout_builder
-  - components
-  - cas
-  - asu_brand
-  - webspark_utility
-  - select2
-  - paragraphs
-  - fontawesome
-  - fontawesome_iconpicker_widget
-  - layout_section_classes
-  - webspark_module_renovation_layouts
-  - crop
-  - image_widget_crop
-  - layout_builder_restrictions
-  - webspark_module_views_pager
-  - webspark_blocks
-  - linkit
-  - current_page_crumb
-  - pathauto
-  - media_library_form_element
   - admin_toolbar
   - allowed_formats
-  - field_menu
-  - asu_react_integration
-  - asu_news
+  - asu_brand
+  - asu_components_appearance
+  - asu_config_utility
   - asu_events
   - asu_footer
-  - webspark_module_asu_breadcrumb
-  - datetime_range
+  - asu_news
   - asu_react_core
-  - field_group
-  - asu_components_appearance
-  - metatag
-  - webspark_ckeditor_plugins
+  - asu_react_integration
   - asu_user
-  - webspark_cropper_theme
-  - seckit
-  - redirect
-  - simple_sitemap
+  - automated_cron
+  - big_pipe
+  - block
+  - block_content
+  - block_field
+  - breakpoint
+  - captcha
+  - cas
+  - ckeditor5
+  - components
+  - config
+  - config_update
+  - contact
+  - contextual
+  - crop
+  - current_page_crumb
+  - datetime
+  - datetime_range
+  - dblog
+  - decorative_image_widget
+  - dynamic_page_cache
+  - editor
+  - editor_advanced_link
+  - editoria11y
+  - field_group
+  - field_menu
+  - field_states_ui
+  - field_ui
+  - file
+  - file_mdm
+  - fontawesome
+  - fontawesome_iconpicker_widget
+  - help
+  - history
+  - image
+  - image_widget_crop
+  - imagemagick
   - inline_form_errors
+  - layout_builder
+  - layout_builder_restrictions
+  - layout_builder_usage_reports
+  - layout_section_classes
+  - linkit
+  - maxlength
+  - media
+  - media_library
+  - media_library_form_element
+  - menu_link_content
+  - menu_ui
+  - metatag
+  - node
+  - options
+  - page_cache
+  - pantheon_advanced_page_cache
+  - paragraphs
+  - path
+  - pathauto
+  - redirect
+  - robotstxt
+  - schema_metatag
+  - search
+  - seckit
+  - select2
+  - shortcut
+  - simple_sitemap
+  - sophron
+  - taxonomy
+  - toolbar
+  - views
+  - views_ui
   - webform
   - webform_ui
-  - config_update
-  - robotstxt
-  - captcha
-  - schema_metatag
-  - editoria11y
-  - decorative_image_widget
-  - block_field
+  - webspark_blocks
   - webspark_cas
+  - webspark_ckeditor_plugins
+  - webspark_cropper_theme
+  - webspark_module_asu_breadcrumb
+  - webspark_module_renovation_layouts
+  - webspark_module_views_pager
+  - webspark_utility
   - webspark_webdir
-  - maxlength
-  - field_states_ui
-  - file_mdm
-  - sophron
-  - imagemagick
-  - layout_builder_usage_reports
-  - editor_advanced_link
-  - pantheon_advanced_page_cache
 themes:
   - renovation
   - claro

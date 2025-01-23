@@ -1,0 +1,10 @@
+{
+    "name": "asuwebplatforms/asu_react_integration",
+    "description": "Provide functionality related to  integration of react components",
+    "type": "drupal-module",
+    "license": "MIT",
+    "require": {
+        "asuwebplatforms/asu_react_core": "^2.14"
+    }
+}
+

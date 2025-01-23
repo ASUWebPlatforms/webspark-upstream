@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "@asu/component-carousel": "2.4.0",
+    "@asu/components-core": "4.1.1"
+  }
+}

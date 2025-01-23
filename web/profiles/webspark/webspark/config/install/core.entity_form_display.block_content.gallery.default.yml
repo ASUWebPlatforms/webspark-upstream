@@ -21,7 +21,7 @@ third_party_settings:
       label: 'Appearance Settings'
       region: content
       parent_name: ''
-      weight: 5
+      weight: 4
       format_type: tab
       format_settings:
         classes: ''
@@ -30,15 +30,15 @@ third_party_settings:
         description: ''
         required_fields: true
     group_help_text:
-      children:
-        - field_carousel_card
+      children: {  }
       label: 'Note: All carousel images have to be the same aspect ratio.'
       region: content
       parent_name: ''
-      weight: 3
+      weight: 1
       format_type: html_element
       format_settings:
         classes: ''
+        show_empty_fields: true
         id: ''
         element: H3
         show_label: true
@@ -91,7 +91,7 @@ content:
     third_party_settings: {  }
   field_tooltip:
     type: entity_reference_paragraphs
-    weight: 4
+    weight: 3
     region: content
     settings:
       title: Paragraph

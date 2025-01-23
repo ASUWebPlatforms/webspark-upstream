@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.image
+    - field.storage.block_content.field_center_image
+id: block_content.image.field_center_image
+field_name: field_center_image
+entity_type: block_content
+bundle: image
+label: 'Center image'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

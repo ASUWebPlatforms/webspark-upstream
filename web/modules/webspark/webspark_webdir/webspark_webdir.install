@@ -292,6 +292,42 @@ function webspark_webdir_update_9016(&$sandbox): void {
   \Drupal::service('webspark.config_manager')->updateConfigFile('field.field.block_content.web_directory.field_spacing_top');
 }
 
+/**
+ * WS2-2470 - Remove custom sort option from Web Directory block.
+ */
+function webspark_webdir_update_10000(&$sandbox): void {
+  if (!\Drupal::moduleHandler()->moduleExists('asu_config_utility')) {
+    \Drupal::service('module_installer')->install(['asu_config_utility']);
+  }
+
+  // Update the field_default_sort_value to 'last_name' for all instances of 'webdir_customized'.
+  \Drupal::database()->update('block_content_revision__field_default_sort')
+    ->fields(['field_default_sort_value' => 'last_name'])
+    ->condition('field_default_sort_value', 'webdir_customized')
+    ->condition('bundle', 'web_directory')
+    ->execute();
+  \Drupal::database()->update('block_content__field_default_sort')
+    ->fields(['field_default_sort_value' => 'last_name'])
+    ->condition('field_default_sort_value', 'webdir_customized')
+    ->condition('bundle', 'web_directory')
+    ->execute();
+
+  \Drupal::service('asu_config.config_manager')->updateConfigFile('field.storage.block_content.field_default_sort');
+  \Drupal::service('asu_config.config_manager')->updateConfigFile('field.field.block_content.web_directory.field_default_sort');
+}
+
+/**
+ * WS2-2190 - Add grid view option.
+ */
+function webspark_webdir_update_10001(&$sandbox): void {
+  \Drupal::state()->set('configuration_locked', FALSE);
+  \Drupal::service('asu_config.config_manager')->importConfigFile('field.storage.block_content.field_display_as_grid');
+  \Drupal::service('asu_config.config_manager')->importConfigFile('field.field.block_content.web_directory.field_display_as_grid');
+  \Drupal::service('asu_config.config_manager')->updateConfigFile('core.entity_form_display.block_content.web_directory.default');
+  \Drupal::service('asu_config.config_manager')->updateConfigFile('core.entity_view_display.block_content.web_directory.default');
+  \Drupal::state()->set('configuration_locked', TRUE);
+}
+
 // @todo This module doesn't implement hook_config_readonly_whitelist_patterns()
 // We should add that eventually. Likelihood of users tweaking this block's
 // field settings is low, no not a rush.

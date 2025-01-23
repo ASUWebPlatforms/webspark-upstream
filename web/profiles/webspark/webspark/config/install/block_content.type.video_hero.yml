@@ -3,5 +3,5 @@ status: true
 dependencies: {  }
 id: video_hero
 label: 'Video hero'
-revision: 0
+revision: false
 description: ''

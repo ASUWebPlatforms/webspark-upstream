@@ -4,7 +4,7 @@ import {
   LabelView,
   createDropdown as _createDropdown,
   addListToDropdown,
-  TextareaView
+  TextareaView,
 } from "ckeditor5/src/ui";
 import { SelectView } from "./selectview";
 // import { TextAreaView } from "./textareaview";
@@ -42,11 +42,14 @@ export function createSelect(label, options, locale) {
 export function createInput(label, locale) {
   const labelView = new LabelView(locale);
   const inputTextView = new InputTextView(locale);
+  const errorView = new LabelView();
 
   labelView.text = label;
 
+  errorView.text = '';
+
   // Wraps the label and input in a container.
-  return createContainer([labelView, inputTextView]);
+  return createContainer([labelView, inputTextView, errorView]);
 }
 
 // Creates a button element with label, icon, and CSS class.

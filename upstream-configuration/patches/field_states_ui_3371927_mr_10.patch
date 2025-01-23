@@ -1,0 +1,27 @@
+From c4b8790af6a10a1a12e49573a290c0917cdfc0e0 Mon Sep 17 00:00:00 2001
+From: Jo Fitzgerald <20467-jofitz@users.noreply.drupalcode.org>
+Date: Fri, 19 Apr 2024 17:27:13 +0000
+Subject: [PATCH] Include type as a hidden form element to ake it available in
+ $form_state
+
+---
+ src/FieldStateManager.php | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/src/FieldStateManager.php b/src/FieldStateManager.php
+index 3db119b..768bad2 100644
+--- a/src/FieldStateManager.php
++++ b/src/FieldStateManager.php
+@@ -414,6 +414,9 @@ class FieldStateManager extends DefaultPluginManager {
+         $title = t('Add new field state: @type', ['@type' => $field_state->label()]);
+         $submit_label = t('Add');
+         $op = 'new';
++
++        $element['form']['type']['#type'] = 'hidden';
++        $element['form']['type']['#title'] = $type;
+       }
+       $element['form']['edit'] = $field_state->buildConfigurationForm([], $form_state);
+       $element['form']['edit']['#type'] = 'fieldset';
+-- 
+GitLab
+

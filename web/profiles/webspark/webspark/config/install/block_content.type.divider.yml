@@ -3,5 +3,5 @@ status: true
 dependencies: {  }
 id: divider
 label: Divider
-revision: 0
+revision: false
 description: 'Add spacing between blocks.'

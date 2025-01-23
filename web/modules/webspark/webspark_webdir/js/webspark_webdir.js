@@ -14,15 +14,6 @@
       $loggedIn = drupalSettings.user.uid !== 0;
 
       elements.forEach((value, index) => {
-
-        // Unset filter values if default sort is webdir_customized.
-        if (value.dataset.defaultSort === 'webdir_customized') {
-          value.dataset.filterEmployee = null;
-          value.dataset.filterExpertise = null;
-          value.dataset.filterTitle = null;
-          value.dataset.filterCampuses = null;
-        }
-
         props = {
           searchType: value.dataset.searchType,
           API_URL: value.dataset.searchUrl.replace(/\/$/, "") + "/",
@@ -43,6 +34,7 @@
             usePager: value.dataset.usePager,
             profilesPerPage: value.dataset.profilesPerPage,
             doNotDisplayProfiles: value.dataset.doNotDisplayProfiles,
+            grid: value.dataset.grid,
           },
           alphaFilter: value.dataset.alphaFilter,
           appPathFolder: value.dataset.appPathFolder,
@@ -130,11 +122,6 @@ jQuery.fn.extend({
       const displaySettingsBlock = document.querySelector('[data-drupal-selector="edit-settings-block-form-group-display-settings"]');
       const alphaFilterBlock = document.querySelector('.form-item-settings-block-form-field-webdir-disable-alpha-value');
       let initAlphaFilterCheckboxState = document.querySelector('[data-drupal-selector="edit-settings-block-form-field-webdir-disable-alpha-value"]').checked;
-      // Initially hide filters if default sort is 'webdir_customized'.
-      if (defaultSort?.options[defaultSort.selectedIndex].value === 'webdir_customized') {
-        initAlphaFilterCheckboxState = document.querySelector('[data-drupal-selector="edit-settings-block-form-field-webdir-disable-alpha-value"]').checked = false;
-        hide();
-      }
 
       // Update initAlphaFilterState if changed.
       document.querySelector('[data-drupal-selector="edit-settings-block-form-field-webdir-disable-alpha-value"]')?.addEventListener( 'change', function () {
@@ -142,11 +129,7 @@ jQuery.fn.extend({
       })
       // Hide/Show filters if input changes.
       document.querySelector('[data-drupal-selector="edit-settings-block-form-field-default-sort"]').addEventListener('input', function () {
-        if (defaultSort?.options[defaultSort.selectedIndex].value === 'webdir_customized') {
-          hide();
-        } else {
-          show(initAlphaFilterCheckboxState);
-        }
+        show(initAlphaFilterCheckboxState);
       });
 
       function hide() {
@@ -164,16 +147,6 @@ jQuery.fn.extend({
 
         // Hide people list.
         peopleListBlock.style.display = 'none';
-
-        // Add disclaimer about filters not being applied for webdir_customized.
-        const disclaimer = document.createElement('div');
-        const classesToAdd = ['alert', 'alert-danger'];
-        disclaimer.id = 'filter-disclaimer';
-        disclaimer.classList.add(...classesToAdd);
-        disclaimer.innerHTML = '<small><strong class="text-danger">Please note: </strong>Some filter settings are not available when using the Web Directory customized sort option and have been hidden.</small>';
-        if (document.getElementById('filter-disclaimer') === null) {
-          displaySettingsBlock.parentNode.insertBefore(disclaimer, displaySettingsBlock);
-        }
 
         // Disable alpha filter.
         document.querySelector('[data-drupal-selector="edit-settings-block-form-field-webdir-disable-alpha-value"]').checked = true;
