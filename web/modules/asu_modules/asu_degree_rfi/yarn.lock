@@ -17,10 +17,10 @@
     react-tooltip "^4.2.21"
     styled-components "^5.3.0"
 
-"@asu/app-rfi@2.4.1":
-  version "2.4.1"
-  resolved "https://npm.pkg.github.com/download/@asu/app-rfi/2.4.1/63a88bec185326f2c17a245c426566ce78bdb5ec#63a88bec185326f2c17a245c426566ce78bdb5ec"
-  integrity sha512-BOs+m1oOxzPvXAl595rDEB5UkPMMUOctLO3Q/dcK7xtDaBjUi15LH6J3/u2qMbAJCGLxiAOG+eP4Qh3nSIoJTA==
+"@asu/app-rfi@2.4.2":
+  version "2.4.2"
+  resolved "https://npm.pkg.github.com/download/@asu/app-rfi/2.4.2/e94cf5abb248ee195d3d7edcc408259e025ac64b#e94cf5abb248ee195d3d7edcc408259e025ac64b"
+  integrity sha512-YRL7A9yYxaYiQvEYuP4+XC/tsI2Hwq/s/z+rlooBH9XWVIO2CgxQfny/5ssXZURSAsjBMWQzLEIHRnfhCAuKGA==
   dependencies:
     "@asu/components-core" "^3.0.0"
     formik "^2.1.4"
