@@ -7,6 +7,6 @@
   "license": "MIT",
   "dependencies": {
     "@asu/app-degree-pages": "2.6.2",
-    "@asu/app-rfi": "2.4.1"
+    "@asu/app-rfi": "2.4.2"
   }
 }
