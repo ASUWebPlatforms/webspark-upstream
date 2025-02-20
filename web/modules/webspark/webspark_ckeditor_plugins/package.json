@@ -9,8 +9,8 @@
     "build": "webpack"
   },
   "devDependencies": {
-    "@ckeditor/ckeditor5-dev-utils": "^30.0.0",
-    "ckeditor5": "~34.1.0",
+    "@ckeditor/ckeditor5-dev-utils": "43.0.1",
+    "ckeditor5": "^44.2.0",
     "css-loader": "^6.8.1",
     "raw-loader": "^4.0.2",
     "terser-webpack-plugin": "^5.2.0",
@@ -19,6 +19,6 @@
   },
   "dependencies": {
     "@ckeditor/ckeditor5-list": "^39.0.2",
-    "@ckeditor/ckeditor5-table": "^39.0.2"
+    "@ckeditor/ckeditor5-table": "^44.2.0"
   }
 }

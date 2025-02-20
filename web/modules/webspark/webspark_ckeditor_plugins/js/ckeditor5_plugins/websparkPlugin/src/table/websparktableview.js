@@ -2,6 +2,7 @@ import { icons } from "ckeditor5/src/core";
 import {
   FocusCycler,
   Model,
+  ViewModel,
   View,
   ViewCollection,
   submitHandler,
@@ -276,7 +277,7 @@ function prepareListOptions(options) {
   for (const option of options) {
     const def = {
       type: "button",
-      model: new Model({
+      model: new ViewModel({
         commandName: "websparkTable",
         commandParam: option.model,
         label: option.title,
