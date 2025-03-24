@@ -746,16 +746,20 @@ function webspark_update_10013(&$sandbox): void {
 /**
  * WS2-2223 - Changed comments permissions and register: admin_only
  */
+// We cannot read in WHOLE role permissions after a site has been launched.
+// This overwrites user permissions that have been customized after the fact.
+// Commenting it out. New sites will get the new permissions. Existing sites can
+// apply manually.
 function webspark_update_10014(&$sandbox): void{
-  \Drupal::state()->set('configuration_locked', FALSE);
-
-  //Changed comments permissions
-  \Drupal::service('asu_config.config_manager')->updateConfigFile('user.role.authenticated');
-  \Drupal::service('asu_config.config_manager')->updateConfigFile('user.role.anonymous');
-  //Changed register: admin_only
-  \Drupal::service('asu_config.config_manager')->updateConfigFile('user.settings');
-
-  \Drupal::state()->set('configuration_locked', TRUE);
+//  \Drupal::state()->set('configuration_locked', FALSE);
+//
+//  //Changed comments permissions
+//  \Drupal::service('asu_config.config_manager')->updateConfigFile('user.role.authenticated');
+//  \Drupal::service('asu_config.config_manager')->updateConfigFile('user.role.anonymous');
+//  //Changed register: admin_only
+//  \Drupal::service('asu_config.config_manager')->updateConfigFile('user.settings');
+//
+//  \Drupal::state()->set('configuration_locked', TRUE);
 }
 
 /**
