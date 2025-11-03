@@ -362,7 +362,7 @@ function webspark_update_9019(&$sandbox) {
   $new_results = [];
   // Convert node_type to entity_bundle:node and add result to $new_results.
   foreach ($results as $result) {
-    $fixUp = _fix_serialized(str_replace('node_type', 'entity_bundle:node', $result->data));
+    $fixUp = _fix_serialized(preg_replace('/\bnode_type\b/', 'entity_bundle:node', $result->data));
     $new_results[$result->name] = ['name'=> $result->name, 'data' => $fixUp];
   }
   foreach ($new_results as $nr) {
